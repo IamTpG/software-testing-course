@@ -1,0 +1,112 @@
+===============================================
+ HW01 - Git Commit Log   |   Branch: homework/hw01
+ Student: TpG <ltphu.dev@gmail.com>
+===============================================
+
+--- Summary (hash | author | date | message) ---
+67a5b6b | TpG <ltphu.dev@gmail.com> | 2026-06-02 01:54 | docs(hw01): add consolidated main report
+8ccd0ad | TpG <ltphu.dev@gmail.com> | 2026-06-02 01:54 | docs(hw01): add AI audit report, disclosure, privacy checklist, prompt log and self-assessment
+1eb4280 | TpG <ltphu.dev@gmail.com> | 2026-06-02 01:54 | feat(hw01): add Requirement 3 - Senko BD1410 fan test cases, results and evidence
+db89b64 | TpG <ltphu.dev@gmail.com> | 2026-06-02 01:54 | feat(hw01): add Requirement 2 - 20 software defects with AI hallucination demo
+6585f35 | TpG <ltphu.dev@gmail.com> | 2026-06-02 01:54 | feat(hw01): add Requirement 1 - QA/QC job market survey and role mindmap
+39748b0 | TpG <ltphu.dev@gmail.com> | 2026-06-02 01:54 | chore(hw01): add assignment brief and shared PDF stylesheet
+e8f1c46 | TpG <ltphu.dev@gmail.com> | 2026-06-02 01:54 | chore: add .gitignore for Claude Code local files
+
+--- Details (with files changed per commit) ---
+
+commit 67a5b6bd28ac8fcdb6b0049b8c45f873001c88f8
+Author: TpG <ltphu.dev@gmail.com>
+Date:   2026-06-02 01:54:57
+
+    docs(hw01): add consolidated main report
+
+ hw01/report.md  | 1839 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ hw01/report.pdf |  Bin 0 -> 8999528 bytes
+ 2 files changed, 1839 insertions(+)
+
+commit 8ccd0ad5a2b103104f59e9b0c925905cf4b7beed
+Author: TpG <ltphu.dev@gmail.com>
+Date:   2026-06-02 01:54:56
+
+    docs(hw01): add AI audit report, disclosure, privacy checklist, prompt log and self-assessment
+
+ hw01/[AI-02] - FIT@HCMUS - AI Audit Report_Vn.docx |  Bin 0 -> 1287070 bytes
+ ...AI-02] - FIT@HCMUS - AI Audit Report_Vn.docx.md |   85 +
+ ...I-02] - FIT@HCMUS - AI Audit Report_Vn.docx.pdf |  Bin 0 -> 632318 bytes
+ ...AI-03] - FIT@HCMUS - AI Disclosure Form_Vn.docx |  Bin 0 -> 263727 bytes
+ ...3] - FIT@HCMUS - AI Disclosure Form_Vn.docx.pdf |  Bin 0 -> 278838 bytes
+ ...-05] - FIT@HCMUS - AI Privacy Checklist_Vn.docx |  Bin 0 -> 259898 bytes
+ ... - FIT@HCMUS - AI Privacy Checklist_Vn.docx.pdf |  Bin 0 -> 212242 bytes
+ ... FIT@HCMUS - AI Student Acknowledgement_Vn.docx |  Bin 0 -> 259737 bytes
+ ...@HCMUS - AI Student Acknowledgement_Vn.docx.pdf |  Bin 0 -> 216883 bytes
+ hw01/prompt_log.txt                                | 2605 ++++++++++++++++++++
+ hw01/self-assessment.csv                           |    8 +
+ 11 files changed, 2698 insertions(+)
+
+commit 1eb42800677be6c58dc44f21c8d067ac7bdd0340
+Author: TpG <ltphu.dev@gmail.com>
+Date:   2026-06-02 01:54:32
+
+    feat(hw01): add Requirement 3 - Senko BD1410 fan test cases, results and evidence
+
+ hw01/checklist.csv              |  21 ++++
+ hw01/device-id-frame.jpg        | Bin 0 -> 3019504 bytes
+ hw01/images/device-id-frame.jpg | Bin 0 -> 3019504 bytes
+ hw01/product-tests.md           | 230 ++++++++++++++++++++++++++++++++++++++++
+ hw01/test-cases.csv             |  16 +++
+ hw01/test-summary-report.csv    |  30 ++++++
+ hw01/videos-links.md            |   7 ++
+ 7 files changed, 304 insertions(+)
+
+commit db89b645d8dc4a67d60033d0614f0163f7bd59ab
+Author: TpG <ltphu.dev@gmail.com>
+Date:   2026-06-02 01:54:32
+
+    feat(hw01): add Requirement 2 - 20 software defects with AI hallucination demo
+
+ hw01/defects.md                      | 755 +++++++++++++++++++++++++++++++++++
+ hw01/images/chatgpt-correct.png      | Bin 0 -> 312008 bytes
+ hw01/images/claude-hallucination.png | Bin 0 -> 263400 bytes
+ 3 files changed, 755 insertions(+)
+
+commit 6585f35db4df725798b57c92d5f377070e2e5554
+Author: TpG <ltphu.dev@gmail.com>
+Date:   2026-06-02 01:54:32
+
+    feat(hw01): add Requirement 1 - QA/QC job market survey and role mindmap
+
+ hw01/images/job-01.png      | Bin 0 -> 369637 bytes
+ hw01/images/job-02.png      | Bin 0 -> 398331 bytes
+ hw01/images/job-03.png      | Bin 0 -> 360846 bytes
+ hw01/images/job-04.png      | Bin 0 -> 404272 bytes
+ hw01/images/job-05.png      | Bin 0 -> 378119 bytes
+ hw01/images/job-06.png      | Bin 0 -> 379909 bytes
+ hw01/images/job-07.png      | Bin 0 -> 367403 bytes
+ hw01/images/job-08.png      | Bin 0 -> 378168 bytes
+ hw01/images/job-09.png      | Bin 0 -> 365202 bytes
+ hw01/images/job-10.png      | Bin 0 -> 418539 bytes
+ hw01/job-market.md          | 583 ++++++++++++++++++++++++++++++++++++++++++++
+ hw01/links.md               |  10 +
+ hw01/qa-qc-role-mindmap.md  | 184 ++++++++++++++
+ hw01/qa-qc-role-mindmap.png | Bin 0 -> 522397 bytes
+ 14 files changed, 777 insertions(+)
+
+commit 39748b0f9942f3891d051c571ae45c08625068fe
+Author: TpG <ltphu.dev@gmail.com>
+Date:   2026-06-02 01:54:31
+
+    chore(hw01): add assignment brief and shared PDF stylesheet
+
+ ...26.HW01.Jobs.Defects.PhysicalProduct_En.docx.md | 164 +++++++++++++++++++++
+ hw01/pdf-style.css                                 |  38 +++++
+ 2 files changed, 202 insertions(+)
+
+commit e8f1c46daf44d5a83caca0bcbd27ae72898021a3
+Author: TpG <ltphu.dev@gmail.com>
+Date:   2026-06-02 01:54:31
+
+    chore: add .gitignore for Claude Code local files
+
+ .gitignore | 2 ++
+ 1 file changed, 2 insertions(+)
+

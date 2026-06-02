@@ -1,0 +1,38 @@
+.evidence-shot {
+  display: block;
+  width: 100%;
+  max-height: 105mm;
+  object-fit: contain;
+  margin: 6px 0 12px 0;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0 14px 0;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 6px 8px;
+  vertical-align: top;
+}
+
+h2 {
+  margin-top: 18px;
+}
+
+h3 {
+  margin-top: 12px;
+  margin-bottom: 6px;
+}
+
+@page {
+  size: A4;
+  margin: 15mm 10mm 15mm 10mm;
+}
