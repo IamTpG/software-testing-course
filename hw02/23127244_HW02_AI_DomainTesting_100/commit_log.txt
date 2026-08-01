@@ -1,0 +1,445 @@
+﻿* commit b87b7ae4cd52c79c2e24eb1cc7c07e12b1e49ca3
+| Author: TpG <ltphu.dev@gmail.com>
+| Date:   Tue Jul 7 10:42:29 2026 +0700
+| 
+|     docs: add AI critique
+| 
+|  AI-Critique.md | 11 +++++++++++
+|  1 file changed, 11 insertions(+)
+| 
+* commit ce957cbb72c6464f57267dd5ac344d28222e1fc2
+| Author: TpG <ltphu.dev@gmail.com>
+| Date:   Tue Jul 7 10:29:10 2026 +0700
+| 
+|     docs: add AI audit report
+|     
+|     Log the domain-testing skill sessions and API execution runs across
+|     all four features, with verdicts and corrections for each.
+| 
+|  [AI-02] - AI Audit Report_Vn.md | 90 +++++++++++++++++++++++++++++++++++++++
+|  1 file changed, 90 insertions(+)
+| 
+* commit a0a725c33ffbf43ac26b169b8c72e53742488c7b
+| Author: TpG <ltphu.dev@gmail.com>
+| Date:   Tue Jul 7 10:29:02 2026 +0700
+| 
+|     docs: fill in student ID in report and readme
+| 
+|  HW02-README.md        | 4 ++--
+|  reports/MainReport.md | 2 +-
+|  2 files changed, 3 insertions(+), 3 deletions(-)
+| 
+* commit 9ac8f2c11a0b93b701a1c87e7d45205d875b94fe
+| Author: TpG <ltphu.dev@gmail.com>
+| Date:   Tue Jul 7 09:49:53 2026 +0700
+| 
+|     docs(main-report): add GitHub issue links to the bug inventory tables
+|     
+|     Cross-link each defect to its filed issue, and fix a stale
+|     screenshot reference for FR-19's DELETE-validation defect.
+| 
+|  reports/MainReport.md | 46 +++++++++++++++++++++++-----------------------
+|  1 file changed, 23 insertions(+), 23 deletions(-)
+| 
+* commit fa0ec2674d4c7c58987517d338315207423a4fde
+| Author: TpG <ltphu.dev@gmail.com>
+| Date:   Tue Jul 7 09:48:31 2026 +0700
+| 
+|     docs(reports): cross-link filed GitHub issue URLs into defect summaries
+|     
+|     Add the corresponding group-repo issue link to each confirmed defect
+|     across all four reports, verified against the actual filed issues.
+| 
+|  reports/FR-04-ProfileManagement/DomainTesting_BVA.md   | 10 +++++-----
+|  reports/FR-08-Checkout/DomainTesting_BVA.md            |  8 ++++----
+|  reports/FR-11-OrderHistory-Mobile/DomainTesting_BVA.md |  4 ++--
+|  reports/FR-19-UserManagement/DomainTesting_BVA.md      |  6 +++---
+|  4 files changed, 14 insertions(+), 14 deletions(-)
+| 
+* commit 19986a6b77bf1609b2d58878d377d8cda2481e5f
+| Author: TpG <ltphu.dev@gmail.com>
+| Date:   Tue Jul 7 09:35:46 2026 +0700
+| 
+|     docs: move homework submission summary to HW02-README.md
+|     
+|     Separate the submission's self-assessment table and test summary
+|     from the repo's actual README (the system spec), and update the
+|     cross-reference in MainReport.md accordingly.
+| 
+|  HW02-README.md        |  86 +++++++++++++++++++++++++
+|  reports/MainReport.md | 162 ++++++++++++++++++++++++++++++++++++++++++++++++
+|  2 files changed, 248 insertions(+)
+| 
+* commit b000a6c54664da2094cef6ee7f48c78b9f2e91e9
+| Author: TpG <ltphu.dev@gmail.com>
+| Date:   Tue Jul 7 09:35:13 2026 +0700
+| 
+|     fix(readme): restore original system spec, accidentally overwritten
+|     
+|     README.md was overwritten with homework-submission content in a
+|     previous commit. Restore the instructor-provided system requirements
+|     spec; the submission content is moved to HW02-README.md instead.
+| 
+|  README.md | 338 ++++++++++++++++++++++++++++++++++++++++++++++++------------
+|  1 file changed, 270 insertions(+), 68 deletions(-)
+| 
+* commit a88d65135b38e949467bb14d1fe4f129a2c47f55
+| Author: TpG <ltphu.dev@gmail.com>
+| Date:   Tue Jul 7 09:33:54 2026 +0700
+| 
+|     docs(readme): fill in self-assessment grades
+| 
+|  README.md | 338 ++++++++++++------------------------------------------------
+|  1 file changed, 68 insertions(+), 270 deletions(-)
+| 
+* commit b99eea64728c0d12e55a4098f42d5a88950d3357
+| Author: TpG <ltphu.dev@gmail.com>
+| Date:   Tue Jul 7 09:32:24 2026 +0700
+| 
+|     docs(fr-19): record manual UI execution for TC-14 and TC-15
+|     
+|     Replace design-time bug predictions with observed results from
+|     actually testing the admin self-delete and non-admin bypass cases
+|     through the real admin panel.
+| 
+|  reports/FR-19-UserManagement/DomainTesting_BVA.md | 4 ++--
+|  1 file changed, 2 insertions(+), 2 deletions(-)
+| 
+* commit aac7f13334f24d84edbc0abefcf16c19d215ac04
+| Author: TpG <ltphu.dev@gmail.com>
+| Date:   Tue Jul 7 09:12:57 2026 +0700
+| 
+|     docs(github-issues): add filing instructions
+|     
+|     Explain how to turn each drafted issue into a real GitHub issue,
+|     including attaching the referenced screenshot from screenshots/.
+| 
+|  github-issues/README.md | 22 ++++++++++++++++++++++
+|  1 file changed, 22 insertions(+)
+| 
+* commit 28cd1c5091ae7a93734ba3f3e3759d461b883de2
+| Author: TpG <ltphu.dev@gmail.com>
+| Date:   Tue Jul 7 09:12:49 2026 +0700
+| 
+|     docs(github-issues): add FR-11 bug report drafts
+|     
+|     Draft 2 issues for Order History (Mobile): unauthenticated IDOR on
+|     order detail, and missing status color differentiation.
+| 
+|  github-issues/fr-11-order-history.md | 87 ++++++++++++++++++++++++++++++++++
+|  1 file changed, 87 insertions(+)
+| 
+* commit 8e71cc4ea960be4f4e5808a8d59062a2a92eea75
+| Author: TpG <ltphu.dev@gmail.com>
+| Date:   Tue Jul 7 09:12:42 2026 +0700
+| 
+|     docs(github-issues): add FR-19 bug report drafts
+|     
+|     Draft 3 issues for Admin User Management: missing role check on
+|     admin endpoints, missing self-deletion guard, and false-positive
+|     delete responses for invalid ids.
+| 
+|  github-issues/fr-19-admin-users.md | 130 +++++++++++++++++++++++++++++++++++
+|  1 file changed, 130 insertions(+)
+| 
+* commit 0fa60f388acd2b1762321f59d69e5ea628ebe74c
+| Author: TpG <ltphu.dev@gmail.com>
+| Date:   Tue Jul 7 09:12:35 2026 +0700
+| 
+|     docs(github-issues): add FR-08 bug report drafts
+|     
+|     Draft 4 issues for Checkout: editable total input, backend accepting
+|     unvalidated total_amount, cart not cleared after checkout, and
+|     checkout succeeding for an empty cart.
+| 
+|  github-issues/fr-08-checkout.md | 170 ++++++++++++++++++++++++++++++++++++++
+|  1 file changed, 170 insertions(+)
+| 
+* commit 948e6a957cd0bbf522603f958cd9b803fe8011b3
+| Author: TpG <ltphu.dev@gmail.com>
+| Date:   Tue Jul 7 09:12:28 2026 +0700
+| 
+|     docs(github-issues): add FR-04 bug report drafts
+|     
+|     Draft 5 issues for Profile Management: role privilege escalation,
+|     phone regex mismatch, empty phone blocking unrelated saves, missing
+|     server-side validation, and field-omission NULL coercion.
+| 
+|  github-issues/fr-04-profile.md | 211 +++++++++++++++++++++++++++++++++++++++
+|  1 file changed, 211 insertions(+)
+| 
+* commit d7d7ef06798c6fc3764711876541d988e89cfba3
+| Author: TpG <ltphu.dev@gmail.com>
+| Date:   Tue Jul 7 09:12:21 2026 +0700
+| 
+|     docs(screenshots): add evidence for remaining per-issue bug findings
+|     
+|     Add screenshots for FR-04's no-server-validation issue, FR-08's
+|     empty-cart phantom order, and FR-19's false-positive delete response,
+|     so every filed GitHub issue has its own supporting evidence.
+| 
+|  screenshots/FR-04-TC-06-1.png | Bin 0 -> 59981 bytes
+|  screenshots/FR-04-TC-06-2.png | Bin 0 -> 53936 bytes
+|  screenshots/FR-08-TC-16.png   | Bin 0 -> 60946 bytes
+|  screenshots/FR-08-TC-17.png   | Bin 0 -> 50901 bytes
+|  screenshots/FR-19-TC-11.png   | Bin 0 -> 42092 bytes
+|  5 files changed, 0 insertions(+), 0 deletions(-)
+| 
+* commit 1cb63c8a9a331fa59fe48ac33a2adb3c081a39e7
+| Author: TpG <ltphu.dev@gmail.com>
+| Date:   Tue Jul 7 08:57:16 2026 +0700
+| 
+|     docs(fr-08): remove non-issue auth status code inconsistency finding
+|     
+|     Drop the flagged 401 vs 403 discrepancy from TC-02/TC-03 and the defect
+|     summary; both cases correctly reject unauthenticated requests, so this
+|     was not a genuine defect worth reporting.
+| 
+|  reports/FR-08-Checkout/DomainTesting_BVA.md | 9 ++++-----
+|  1 file changed, 4 insertions(+), 5 deletions(-)
+| 
+* commit 776eaa278208fa81bd43c4f8ec9fe16812330167
+| Author: TpG <ltphu.dev@gmail.com>
+| Date:   Tue Jul 7 01:45:30 2026 +0700
+| 
+|     docs(screenshots): add bug evidence screenshots for reported defects
+|     
+|     Add API- and UI-captured screenshots for confirmed bugs across FR-04,
+|     FR-08, FR-19, and FR-11, named by feature and test case (FR-XX-TC-YY)
+|     for cross-referencing with the reports and GitHub issues.
+| 
+|  screenshots/FR-04-TC-08-1.png                  | Bin 0 -> 58919 bytes
+|  screenshots/FR-04-TC-08-2.png                  | Bin 0 -> 55321 bytes
+|  screenshots/FR-04-TC-11.png                    | Bin 0 -> 84153 bytes
+|  screenshots/FR-04-TC-13.png                    | Bin 0 -> 83023 bytes
+|  screenshots/FR-04-TC-15.png                    | Bin 0 -> 83037 bytes
+|  screenshots/FR-04-TC-23.png                    | Bin 0 -> 80866 bytes
+|  screenshots/FR-04-TC-31-1.png                  | Bin 0 -> 64839 bytes
+|  screenshots/FR-04-TC-31-2.png                  | Bin 0 -> 56601 bytes
+|  screenshots/FR-08-TC-01-cart-not-cleared-1.png | Bin 0 -> 54914 bytes
+|  screenshots/FR-08-TC-01-cart-not-cleared-2.png | Bin 0 -> 99878 bytes
+|  screenshots/FR-08-TC-01-editable-total.png     | Bin 0 -> 78489 bytes
+|  screenshots/FR-11-TC-10.png                    | Bin 0 -> 97993 bytes
+|  screenshots/FR-11-TC-11.jpg                    | Bin 0 -> 184619 bytes
+|  screenshots/FR-19-TC-04.png                    | Bin 0 -> 64589 bytes
+|  screenshots/FR-19-TC-14-1.png                  | Bin 0 -> 65118 bytes
+|  screenshots/FR-19-TC-14-2.png                  | Bin 0 -> 45118 bytes
+|  screenshots/FR-19-TC-15-1.png                  | Bin 0 -> 182299 bytes
+|  screenshots/FR-19-TC-15-2.png                  | Bin 0 -> 143241 bytes
+|  18 files changed, 0 insertions(+), 0 deletions(-)
+| 
+* commit ed284be0652671e0beb79216ea01c33e4af45141
+| Author: TpG <ltphu.dev@gmail.com>
+| Date:   Tue Jul 7 01:45:19 2026 +0700
+| 
+|     docs(reports): record real execution results across all four features
+|     
+|     Replace predicted "Actual" values with observed API/UI results, resolve
+|     the previously-undetermined field-omission cases (silent NULL coercion),
+|     and correct two over-flagged findings: the FR-08 checkout route-guard
+|     case (spec only requires the checkout action be blocked, which the 401
+|     enforces) and the descoped coupon-math note.
+| 
+|  .../FR-04-ProfileManagement/DomainTesting_BVA.md  | 76 ++++++++++-----------
+|  reports/FR-08-Checkout/DomainTesting_BVA.md       | 44 ++++++------
+|  .../DomainTesting_BVA.md                          | 20 +++---
+|  reports/FR-19-UserManagement/DomainTesting_BVA.md | 28 ++++----
+|  4 files changed, 84 insertions(+), 84 deletions(-)
+| 
+* commit cc49dd08fb2bc4af2ac8e2939e7268b901c26809
+| Author: TpG <ltphu.dev@gmail.com>
+| Date:   Mon Jul 6 22:57:59 2026 +0700
+| 
+|     chore(backend): add gitignore for node modules
+| 
+|  backend/.gitignore | 1 +
+|  1 file changed, 1 insertion(+)
+| 
+* commit 532c5a3eb963f08efacdbf0f2d27bd4886be7761
+| Author: TpG <ltphu.dev@gmail.com>
+| Date:   Mon Jul 6 22:51:30 2026 +0700
+| 
+|     chore: switch backend API port from 3000 to 5000
+|     
+|     Update all frontend clients (web, admin, mobile) and the backend
+|     listener to use port 5000 instead of 3000, and bind the server to
+|     0.0.0.0 so it's reachable from the mobile app over LAN.
+| 
+|  backend/database.sqlite                   | Bin 36864 -> 36864 bytes
+|  backend/server.js                         |   4 +-
+|  frontend-admin/src/App.jsx                |   2 +-
+|  frontend-mobile/App.js                    |   2 +-
+|  frontend-web/src/context/AuthContext.jsx  |   4 +-
+|  frontend-web/src/pages/Checkout.jsx       | 100 +++++++++++++++++++---------
+|  frontend-web/src/pages/ForgotPassword.jsx |  55 ++++++++++-----
+|  frontend-web/src/pages/Home.jsx           |   2 +-
+|  frontend-web/src/pages/ProductDetail.jsx  |   2 +-
+|  frontend-web/src/pages/Profile.jsx        |   6 +-
+|  frontend-web/src/pages/Register.jsx       |  44 +++++++-----
+|  11 files changed, 145 insertions(+), 76 deletions(-)
+| 
+* commit 25c2a8f301bda843955b9f80d364f563524a5ee2
+| Author: TpG <ltphu.dev@gmail.com>
+| Date:   Mon Jul 6 22:26:12 2026 +0700
+| 
+|     docs(fr-11): add domain testing and BVA report for mobile order history
+|     
+|     Cover order-count boundaries, status translation/color, and the
+|     GET /orders/:id vs /my-orders auth/ownership contrast, including 11
+|     test cases and a critical IDOR finding where any caller can fetch any
+|     user's order by id with no authentication or ownership check.
+| 
+|  .../DomainTesting_BVA.md                          | 116 ++++++++++++++++++++
+|  1 file changed, 116 insertions(+)
+| 
+* commit 45e8fadce90fe3f9d0fbe045920dc061c47bb6f6
+| Author: TpG <ltphu.dev@gmail.com>
+| Date:   Mon Jul 6 21:48:18 2026 +0700
+| 
+|     docs(fr-08): correct FR-11 cross-reference in defect summary
+|     
+|     The missing order_items table doesn't actually block FR-11 compliance
+|     since FR-11's spec only requires order code, date, total, and status,
+|     not itemized line items.
+| 
+|  reports/FR-08-Checkout/DomainTesting_BVA.md | 2 +-
+|  1 file changed, 1 insertion(+), 1 deletion(-)
+| 
+* commit 81388910ceed689ebc2368b22270e6dfcf5da4bf
+| Author: TpG <ltphu.dev@gmail.com>
+| Date:   Mon Jul 6 21:40:46 2026 +0700
+| 
+|     docs(fr-19): add domain testing and BVA report for admin user management
+|     
+|     Cover caller role gating, self-deletion protection, and delete target-id
+|     validity for GET/DELETE /api/admin/users, including 15 test cases and
+|     critical findings such as a missing role check that lets any
+|     authenticated user delete the sole admin account.
+| 
+|  reports/FR-19-UserManagement/DomainTesting_BVA.md | 102 ++++++++++++++++++++
+|  1 file changed, 102 insertions(+)
+| 
+* commit 4688ef61399456c8f530c7d216bc115ddbcd9c98
+| Author: TpG <ltphu.dev@gmail.com>
+| Date:   Mon Jul 6 20:48:02 2026 +0700
+| 
+|     docs(fr-08): add domain testing and BVA report for checkout
+|     
+|     Cover auth gating, total_amount tampering boundaries, cart emptiness,
+|     coupon interaction, shipping address, and order-owner identity for
+|     POST /api/checkout, including 20 test cases and 9 documented defects
+|     such as the missing server-side total recalculation.
+| 
+|  reports/FR-08-Checkout/DomainTesting_BVA.md | 145 ++++++++++++++++++++++++++
+|  1 file changed, 145 insertions(+)
+| 
+* commit c1d8f2d6b6e715bbdb67b4aef8031bf16d29dc8e
+| Author: TpG <ltphu.dev@gmail.com>
+| Date:   Mon Jul 6 17:24:47 2026 +0700
+| 
+|     docs(fr-04): add domain testing and BVA report for profile management
+|     
+|     Cover equivalence partitioning and boundary value analysis for name,
+|     phone, shipping address, email immutability, and role fields on
+|     PUT /api/users/me, including 37 test cases and documented assumptions.
+| 
+|  .../FR-04-ProfileManagement/DomainTesting_BVA.md  | 151 ++++++++++++++++++++
+|  1 file changed, 151 insertions(+)
+| 
+* commit 0c33c02aceeacb0caea56739cfdd715979760254
+| Author: TpG <ltphu.dev@gmail.com>
+| Date:   Mon Jul 6 17:21:13 2026 +0700
+| 
+|     feat(skills): add domain-testing QA skill
+|     
+|     Add a Claude Code skill that walks through Domain Testing, Equivalence
+|     Partitioning, and Boundary Value Analysis via a strict 6-step,
+|     human-in-the-loop workflow (requirement grounding, variable hunt,
+|     domain/EP definition, BVA, combinatorics strategy, and final test case
+|     generation).
+| 
+|  .claude/skills/domain-testing/SKILL.md | 100 +++++++++++++++++++++++++++++++
+|  1 file changed, 100 insertions(+)
+| 
+* commit 85af3ba875c88283615e22cb108f13e2fccaf0e9
+| Author: ttbhanh-hcmus <ttbhanh@hcmus.edu.vn>
+| Date:   Fri May 15 08:30:35 2026 +0700
+| 
+|     first upload
+| 
+|  README.md                                 |  290 +-
+|  api_specification.md                      |  214 +
+|  backend/database.js                       |  119 +
+|  backend/database.sqlite                   |  Bin 0 -> 36864 bytes
+|  backend/package-lock.json                 | 1663 +++++
+|  backend/package.json                      |   20 +
+|  backend/server.js                         |  572 ++
+|  backend/test_profile.js                   |    8 +
+|  frontend-admin/.gitignore                 |   24 +
+|  frontend-admin/README.md                  |   16 +
+|  frontend-admin/eslint.config.js           |   21 +
+|  frontend-admin/index.html                 |   13 +
+|  frontend-admin/package-lock.json          | 3681 +++++++++++
+|  frontend-admin/package.json               |   32 +
+|  frontend-admin/postcss.config.js          |    6 +
+|  frontend-admin/public/favicon.svg         |    1 +
+|  frontend-admin/public/icons.svg           |   24 +
+|  frontend-admin/src/App.css                |  184 +
+|  frontend-admin/src/App.jsx                |  922 +++
+|  frontend-admin/src/assets/hero.png        |  Bin 0 -> 13057 bytes
+|  frontend-admin/src/assets/react.svg       |    1 +
+|  frontend-admin/src/assets/vite.svg        |    1 +
+|  frontend-admin/src/index.css              |    8 +
+|  frontend-admin/src/main.jsx               |   10 +
+|  frontend-admin/tailwind.config.js         |   11 +
+|  frontend-admin/vite.config.js             |   11 +
+|  frontend-mobile/.gitignore                |   41 +
+|  frontend-mobile/App.js                    | 1300 ++++
+|  frontend-mobile/app.json                  |   29 +
+|  frontend-mobile/assets/adaptive-icon.png  |  Bin 0 -> 17547 bytes
+|  frontend-mobile/assets/favicon.png        |  Bin 0 -> 1466 bytes
+|  frontend-mobile/assets/icon.png           |  Bin 0 -> 22380 bytes
+|  frontend-mobile/assets/splash-icon.png    |  Bin 0 -> 17547 bytes
+|  frontend-mobile/index.js                  |    8 +
+|  frontend-mobile/package-lock.json         | 8773 +++++++++++++++++++++++++++
+|  frontend-mobile/package.json              |   18 +
+|  frontend-web/.gitignore                   |   24 +
+|  frontend-web/README.md                    |   16 +
+|  frontend-web/eslint.config.js             |   21 +
+|  frontend-web/index.html                   |   13 +
+|  frontend-web/package-lock.json            | 3681 +++++++++++
+|  frontend-web/package.json                 |   32 +
+|  frontend-web/postcss.config.js            |    6 +
+|  frontend-web/public/favicon.svg           |    1 +
+|  frontend-web/public/icons.svg             |   24 +
+|  frontend-web/src/App.css                  |  184 +
+|  frontend-web/src/App.jsx                  |   71 +
+|  frontend-web/src/assets/hero.png          |  Bin 0 -> 13057 bytes
+|  frontend-web/src/assets/react.svg         |    1 +
+|  frontend-web/src/assets/vite.svg          |    1 +
+|  frontend-web/src/context/AuthContext.jsx  |   50 +
+|  frontend-web/src/context/CartContext.jsx  |   36 +
+|  frontend-web/src/index.css                |   14 +
+|  frontend-web/src/main.jsx                 |   10 +
+|  frontend-web/src/pages/Cart.jsx           |   79 +
+|  frontend-web/src/pages/Checkout.jsx       |  151 +
+|  frontend-web/src/pages/ForgotPassword.jsx |  100 +
+|  frontend-web/src/pages/Home.jsx           |  116 +
+|  frontend-web/src/pages/Login.jsx          |   69 +
+|  frontend-web/src/pages/ProductDetail.jsx  |   73 +
+|  frontend-web/src/pages/Profile.jsx        |  217 +
+|  frontend-web/src/pages/Register.jsx       |   83 +
+|  frontend-web/tailwind.config.js           |   11 +
+|  frontend-web/vite.config.js               |    7 +
+|  run_servers.sh                            |    5 +
+|  setup_guide.md                            |  117 +
+|  66 files changed, 23232 insertions(+), 2 deletions(-)
+| 
+* commit 2f9bf2bab45855abf211377a5d5eba10031649e3
+  Author: Hanh Tran <ttbhanh@fit.hcmus.edu.vn>
+  Date:   Fri May 15 08:27:44 2026 +0700
+  
+      Initial commit
+  
+   README.md | 2 ++
+   1 file changed, 2 insertions(+)
