@@ -1,0 +1,4 @@
+Quy trình chung kiểm thử tự động
+record -> chỉnh script (khởi tạo trước khi test, testcases, huy du lieu và ánh xạ vào tools) -> thực thi (data driven, (mock object*))
+
+Trình bày kịch bản demo trước -> Thêm 1 slide
