@@ -198,6 +198,7 @@ export default function App() {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            data-testid="admin-login-email-input"
           />
           <input
             className="w-full border p-2 mb-4"
@@ -205,8 +206,9 @@ export default function App() {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            data-testid="admin-login-password-input"
           />
-          <button className="w-full bg-blue-600 text-white p-2 rounded">
+          <button className="w-full bg-blue-600 text-white p-2 rounded" data-testid="admin-login-submit-button">
             Login
           </button>
         </form>
@@ -257,6 +259,7 @@ export default function App() {
           <li
             className={`cursor-pointer hover:text-blue-300 ${activeTab === "users" ? "text-blue-400" : ""}`}
             onClick={() => setActiveTab("users")}
+            data-testid="admin-nav-users"
           >
             Người dùng
           </li>
@@ -877,7 +880,7 @@ export default function App() {
         )}
 
         {activeTab === "users" && (
-          <div>
+          <div data-testid="admin-users-panel">
             <h2 className="text-2xl font-bold mb-6">Quản lý Người dùng</h2>
             <table className="w-full bg-white shadow rounded text-left">
               <thead>
@@ -892,9 +895,9 @@ export default function App() {
                   <th className="p-3">Hành động</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody data-testid="admin-users-tbody">
                 {users.map((u) => (
-                  <tr key={u.id} className="border-b">
+                  <tr key={u.id} className="border-b" data-testid={`admin-user-row-${u.id}`}>
                     <td className="p-3">
                       <input type="checkbox" />
                     </td>
@@ -906,6 +909,7 @@ export default function App() {
                       <button
                         className="bg-red-500 text-white px-3 py-1 rounded"
                         onClick={() => deleteUser(u.id)}
+                        data-testid={`admin-delete-user-${u.id}`}
                       >
                         Xóa
                       </button>
