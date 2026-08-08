@@ -1,0 +1,42 @@
+[
+  {
+    "id": "TC-01",
+    "description": "Name/Address true lower boundary (1/0 chars)",
+    "name": "A",
+    "phone": "912345678",
+    "address": "",
+    "expectedStatus": 200
+  },
+  {
+    "id": "TC-02",
+    "description": "Name/Address LB+1 (2/1 chars)",
+    "name": "An",
+    "phone": "912345678",
+    "address": "X",
+    "expectedStatus": 200
+  },
+  {
+    "id": "TC-03",
+    "description": "Name/Address UB-1 (99/254 chars)",
+    "name": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "phone": "912345678",
+    "address": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+    "expectedStatus": 200
+  },
+  {
+    "id": "TC-04",
+    "description": "Name/Address upper boundary (100/255 chars)",
+    "name": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "phone": "912345678",
+    "address": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+    "expectedStatus": 200
+  },
+  {
+    "id": "TC-37",
+    "description": "Full-form happy path (all 3 fields, current-implementation-passing values)",
+    "name": "Nguyen Van A",
+    "phone": "912345678",
+    "address": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+    "expectedStatus": 200
+  }
+]
