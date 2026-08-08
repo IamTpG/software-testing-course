@@ -32,6 +32,7 @@ export default function Login() {
             onChange={(e) => setEmail(e.target.value)}
             className="w-full border p-2 rounded"
             required
+            data-testid="login-username-input"
           />
         </div>
         <div>
@@ -42,6 +43,7 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
             className="w-full border p-2 rounded"
             required
+            data-testid="login-password-input"
           />
         </div>
 
@@ -54,6 +56,7 @@ export default function Login() {
           type="submit"
           className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
           tabIndex={1}
+          data-testid="login-submit-button"
         >
           Sign In
         </button>

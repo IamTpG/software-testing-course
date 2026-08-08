@@ -121,6 +121,7 @@ export default function Profile() {
               value={user.email}
               disabled
               className="w-full border p-2 rounded bg-gray-100"
+              data-testid="profile-email-input"
             />
           </div>
           <div>
@@ -131,6 +132,7 @@ export default function Profile() {
               onChange={(e) => setName(e.target.value)}
               className="w-full border p-2 rounded"
               required
+              data-testid="profile-name-input"
             />
           </div>
           <div>
@@ -141,6 +143,7 @@ export default function Profile() {
               onChange={(e) => setPhone(e.target.value)}
               className="w-full border p-2 rounded"
               placeholder="VD: 0912345678"
+              data-testid="profile-phone-input"
             />
           </div>
           <div>
@@ -152,11 +155,13 @@ export default function Profile() {
               onChange={(e) => setShippingAddress(e.target.value)}
               className="w-full border p-2 rounded h-24"
               placeholder="Nhập địa chỉ của bạn"
+              data-testid="profile-address-input"
             />
           </div>
           <button
             type="submit"
             className="w-full bg-blue-600 text-white py-2 rounded"
+            data-testid="profile-submit-button"
           >
             Cập nhật
           </button>
