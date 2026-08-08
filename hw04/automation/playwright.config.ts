@@ -16,16 +16,22 @@ const REPORT_TITLE = `Run by: ${STUDENT_ID} | ${new Date().toISOString()}`;
  */
 export default defineConfig({
   testDir: './tests',
-  /* Run tests in files in parallel */
-  fullyParallel: true,
+  /* Every feature's cases share one live, mutable backend/DB row (e.g. one
+   * seeded user account) rather than isolated fixtures per case. Parallel
+   * workers hitting the same row can interleave writes/reads across tests,
+   * so we run fully serial to keep each case's assertions reading only its
+   * own write. Suite is small enough that this costs negligible wall-clock. */
+  fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
-  /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  workers: 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['html', { outputFolder: 'playwright-report', open: 'never', title: REPORT_TITLE }]],
+  /* Both reporters live here (not passed via --reporter on the CLI) because
+   * the CLI flag replaces this array wholesale and falls back to each named
+   * reporter's default options, silently dropping the html title below. */
+  reporter: [['list'], ['html', { outputFolder: 'playwright-report', open: 'never', title: REPORT_TITLE }]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
