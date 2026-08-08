@@ -76,6 +76,7 @@ export default function Home() {
             <div
               key={p.id}
               className="border rounded shadow-sm p-4 flex flex-col bg-white"
+              data-testid={`product-card-${p.id}`}
             >
               <img
                 src={p.imageUrl}
@@ -97,6 +98,7 @@ export default function Home() {
                 <button
                   onClick={() => addToCart({ ...p, quantity: 1 }, 1)}
                   className="flex-1 bg-blue-600 text-white py-2 rounded hover:bg-blue-700 text-sm"
+                  data-testid={`add-to-cart-${p.id}`}
                 >
                   Thêm vào giỏ
                 </button>

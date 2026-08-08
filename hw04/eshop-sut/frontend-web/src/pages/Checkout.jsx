@@ -76,12 +76,12 @@ export default function Checkout() {
   }
 
   return (
-    <div className="max-w-lg mx-auto bg-white p-6 border rounded shadow-sm">
+    <div className="max-w-lg mx-auto bg-white p-6 border rounded shadow-sm" data-testid="checkout-form">
       <h2 className="text-2xl font-bold mb-6">Xác Nhận Đơn Hàng</h2>
 
       <div className="mb-6">
         <h3 className="font-semibold mb-2">Sản phẩm:</h3>
-        <ul className="list-disc pl-5">
+        <ul className="list-disc pl-5" data-testid="checkout-product-list">
           {cart.map((item, index) => (
             <li key={index}>{item.name} x {item.quantity} — {(item.price * item.quantity).toLocaleString()} ₫</li>
           ))}
@@ -99,6 +99,7 @@ export default function Checkout() {
             setCouponError('');
           }}
           className="border p-2 rounded text-red-600 font-bold"
+          data-testid="checkout-total-input"
         />
       </div>
 
@@ -112,11 +113,13 @@ export default function Checkout() {
             value={couponCode}
             onChange={e => { setCouponCode(e.target.value); setCouponResult(null); setCouponError(''); }}
             className="flex-1 border p-2 rounded uppercase"
+            data-testid="checkout-coupon-input"
           />
           <button
             onClick={handleApplyCoupon}
             disabled={applyingCoupon || !couponCode.trim()}
             className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 disabled:opacity-50"
+            data-testid="checkout-apply-coupon-button"
           >
             {applyingCoupon ? '...' : 'Áp dụng'}
           </button>
@@ -143,6 +146,7 @@ export default function Checkout() {
         onClick={handleCheckout}
         disabled={loading}
         className="w-full bg-green-600 text-white py-3 rounded hover:bg-green-700 disabled:opacity-50"
+        data-testid="checkout-submit-button"
       >
         {loading ? 'Đang xử lý...' : 'Xác Nhận Thanh Toán'}
       </button>
