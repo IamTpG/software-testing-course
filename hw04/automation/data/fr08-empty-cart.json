@@ -1,0 +1,12 @@
+[
+  {
+    "id": "TC-16",
+    "description": "Empty cart, honest total (0)",
+    "tamperedTotal": 0
+  },
+  {
+    "id": "TC-17",
+    "description": "Empty cart, tampered total (1,000,000,000) - stacked severity",
+    "tamperedTotal": 1000000000
+  }
+]

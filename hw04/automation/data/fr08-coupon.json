@@ -1,0 +1,7 @@
+[
+  {
+    "id": "TC-18",
+    "description": "Coupon-applied checkout persists whatever /api/apply-coupon returned (coupon math correctness itself is FR-09's scope, not FR-08's)",
+    "couponCode": "SAVE10"
+  }
+]

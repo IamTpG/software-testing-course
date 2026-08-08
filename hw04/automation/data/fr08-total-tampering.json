@@ -1,0 +1,57 @@
+[
+  {
+    "id": "TC-01",
+    "description": "Honest total (= true cart total)",
+    "tamperedTotal": 58000000
+  },
+  {
+    "id": "TC-05",
+    "description": "TT-1 (57,999,999)",
+    "tamperedTotal": 57999999
+  },
+  {
+    "id": "TC-06",
+    "description": "TT+1 (58,000,001)",
+    "tamperedTotal": 58000001
+  },
+  {
+    "id": "TC-07",
+    "description": "Negative total (-1), LB-1",
+    "tamperedTotal": -1
+  },
+  {
+    "id": "TC-08",
+    "description": "Zero total, LB",
+    "tamperedTotal": 0
+  },
+  {
+    "id": "TC-09",
+    "description": "1 VND total, LB+1",
+    "tamperedTotal": 1
+  },
+  {
+    "id": "TC-10",
+    "description": "999,999,999 (UB-1)",
+    "tamperedTotal": 999999999
+  },
+  {
+    "id": "TC-11",
+    "description": "1,000,000,000 (UB)",
+    "tamperedTotal": 1000000000
+  },
+  {
+    "id": "TC-12",
+    "description": "1,000,000,001 (UB+1)",
+    "tamperedTotal": 1000000001
+  },
+  {
+    "id": "TC-13",
+    "description": "Number.MAX_SAFE_INTEGER architectural-extreme probe",
+    "tamperedTotal": 9007199254740991
+  },
+  {
+    "id": "TC-14",
+    "description": "Decimal total (58,000,000.5), malformed-format class",
+    "tamperedTotal": 58000000.5
+  }
+]
