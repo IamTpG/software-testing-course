@@ -1,0 +1,4 @@
+[
+  { "id": "TC-06", "description": "Admin deletes another existing user (Test User, id=2) - correct behavior, no defect", "targetId": 2 },
+  { "id": "TC-14", "description": "Admin deletes their own account via the real Xoa button, no confirmation - critical bug (F2)", "targetId": 1 }
+]

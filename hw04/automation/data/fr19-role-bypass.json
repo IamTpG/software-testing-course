@@ -1,0 +1,10 @@
+[
+  { "id": "TC-15", "description": "Non-admin (role=user) token bypasses the login gate", "role": "user" },
+  { "id": "TC-05", "description": "Garbage role 'superadmin' bypasses the login gate", "role": "superadmin" },
+  { "id": "EXTRA-1", "description": "Garbage role 'moderator'", "role": "moderator" },
+  { "id": "EXTRA-2", "description": "Numeric-string role '0'", "role": "0" },
+  { "id": "EXTRA-3", "description": "Numeric-string role '999'", "role": "999" },
+  { "id": "EXTRA-4", "description": "Uppercase 'ADMIN' (case-sensitivity probe)", "role": "ADMIN" },
+  { "id": "EXTRA-5", "description": "String literal 'null' role", "role": "null" },
+  { "id": "EXTRA-6", "description": "Role with trailing whitespace 'admin '", "role": "admin " }
+]
