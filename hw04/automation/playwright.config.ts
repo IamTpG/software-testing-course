@@ -95,5 +95,12 @@ export default defineConfig({
       reuseExistingServer: !process.env.CI,
       timeout: 30_000,
     },
+    {
+      command: 'npm run dev',
+      cwd: '../eshop-sut/frontend-admin',
+      url: 'http://localhost:5174',
+      reuseExistingServer: !process.env.CI,
+      timeout: 30_000,
+    },
   ],
 });
