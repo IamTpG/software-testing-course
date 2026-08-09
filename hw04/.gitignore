@@ -1,0 +1,5 @@
+# Packaged submission export - a snapshot copy of automation/ and reports/
+# for zipping, not a second source of truth. Regenerate before final zip;
+# un-ignore and commit it only once truly final (see SUBMISSION_CHECKLIST.md).
+23127244_HW04_AI_Automation_100/
+23127244_HW04_AI_Automation_100.zip
