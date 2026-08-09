@@ -23,7 +23,7 @@
 **[1] Prompt:**
 > "This is a software testing course and I want to do Homework 04... Read the requirement carefully and summarize the homework. Then suggest the first thing to do."
 
-**AI output:** Read the HW04 requirement and HW02's `MainReport.md`/BVA reports; summarized the assignment (AI-first automation of the 3 HW02-selected web features, data-driven, 3-browser, HTML report with student-ID watermark, AI Audit Report/Critique appendices, ≥8 spec-touching commits over ≥4 days); recommended scaffolding Playwright first.
+**AI output:** Read the HW04 requirement and HW02's `MainReport.md`/BVA reports; summarized the assignment (AI-first automation of the 3 HW02-selected web features, data-driven, 3-browser, HTML report with student-ID watermark, AI Audit Report/Critique appendices); recommended scaffolding Playwright first.
 
 ---
 
