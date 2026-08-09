@@ -34,7 +34,7 @@ Full HTML reports (with `Run by: 23127244 | {ISO timestamp}` in the title, satis
 
 - `automation/` — Playwright project (specs, page objects, fixtures, data files, the `playwright-automation` Agent Skill, per-feature `SELECTED-CASES.md` rationale, `ai-audit-log/`, `AUTONOMOUS-SESSION-LOG.md`)
 - `eshop-sut/` — the SUT, vendored fresh for this homework (see `eshop-sut/setup_guide.md` to run it standalone)
-- `reports/` — `MainReport.md`, `AI-Critique.md`, `Bug-Report.md` (see also `automation/ai-audit-log/` — raw audit trail per feature; a formatted AI-Audit-Report appendix per assignment §9 has not been assembled yet)
+- `reports/` — `MainReport.md`, `AI-Critique.md`, `Bug-Report.md`, `AI-Audit-Report.md` (see also `automation/ai-audit-log/` for the unabbreviated per-feature raw material)
 
 ## Running the suite
 
