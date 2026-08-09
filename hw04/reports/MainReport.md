@@ -115,7 +115,7 @@ TC-01–TC-04, TC-37 (FR-04 boundary/happy-path saves), TC-01, TC-04, TC-18 (FR-
 
 ### 4.2 GitHub Issues status
 
-All defects above are **re-confirmations** of HW02-documented findings (the FR-04/FR-08/FR-19 bugs were already discovered and analyzed in HW02's Domain Testing pass — this homework demonstrates they are also triggerable through real browser automation, cross-browser, not just direct API calls). New GitHub Issues on `IamTpG/eshop-sut` for this homework's submission, each with a screenshot from a failed automated run, are tracked separately — see the accompanying Bug Report draft.
+All defects above are **re-confirmations** of HW02-documented findings (the FR-04/FR-08/FR-19 bugs were already discovered and analyzed in HW02's Domain Testing pass — this homework demonstrates they are also triggerable through real browser automation, cross-browser, not just direct API calls). New GitHub Issues on `dinosauce-285/Software-Testing-G02` — the group's single shared issue-tracking repo, required by the instructors — for this homework's submission, each with a screenshot from a failed automated run, are tracked separately — see the accompanying Bug Report draft.
 
 ### 4.3 Known, documented scope limitation: FR-19's single-browser destructive cases
 

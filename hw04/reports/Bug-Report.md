@@ -2,7 +2,7 @@
 
 7 defects, each independently re-confirmed via automated cross-browser UI testing (all originally discovered in HW02's Domain Testing pass — this report demonstrates each is also triggerable through real browser interaction, not just direct API calls). Screenshots are in [`reports/screenshots/`](screenshots/), captured automatically by Playwright at the moment of the failing assertion (`screenshot: 'only-on-failure'`).
 
-**Status: draft content only.** None of these have been posted to GitHub Issues on `IamTpG/eshop-sut` yet — that's a separate, explicit step for you to review and authorize before anything gets posted publicly.
+**Status: draft content only.** None of these have been posted to GitHub Issues on `dinosauce-285/Software-Testing-G02` (the group's shared issue-tracking repo, required by the instructors) yet — that's a separate, explicit step for you to review and authorize before anything gets posted publicly.
 
 ---
 
@@ -132,4 +132,4 @@
 
 ## Next step
 
-Once you've reviewed this content, let me know and I can post these as GitHub Issues on `IamTpG/eshop-sut` (one per bug, each with its screenshot attached) — I won't do that without your explicit go-ahead since it's a public action on your repo.
+Once you've reviewed this content, let me know and I can post these as GitHub Issues on `dinosauce-285/Software-Testing-G02` (one per bug, each with its screenshot attached) — I won't do that without your explicit go-ahead since it's a public action on your group's shared repo, not just yours.
