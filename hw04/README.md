@@ -15,7 +15,7 @@ Automation of the same 3 web features selected in HW02 (FR-04, FR-08, FR-19), dr
 | Browser runs | 117 across Chromium, Firefox, WebKit (>=9 total required; every feature runs on all 3 browsers, with one documented exception - Sec.4.3 of the Main Report) |
 | Confirmed bugs (this homework's automated evidence) | 7 (3 in FR-04, 2 in FR-08, 2 in FR-19 - all re-confirmations of HW02-documented defects, now additionally demonstrated via cross-browser UI automation) |
 | Script defects found & fixed during review | 6 (see Main Report Sec.5, AI Gap Analysis) |
-| Demo video | TBD |
+| Demo video | https://youtu.be/aO6r65lkFN4 |
 
 Full HTML reports (with `Run by: 23127244 | {ISO timestamp}` in the title, satisfying the anti-cheat requirement) are generated fresh by running `npx playwright test` from `automation/` — see `automation/README`-equivalent instructions below. `playwright-report/` and `test-results/` are gitignored build artifacts, not committed; they must be regenerated to view.
 
