@@ -2,7 +2,7 @@
 
 7 defects, each independently re-confirmed via automated cross-browser UI testing (all originally discovered in HW02's Domain Testing pass — this report demonstrates each is also triggerable through real browser interaction, not just direct API calls). Screenshots are in [`reports/screenshots/`](screenshots/), captured automatically by Playwright at the moment of the failing assertion (`screenshot: 'only-on-failure'`).
 
-**Status: draft content only.** None of these have been posted to GitHub Issues on `dinosauce-285/Software-Testing-G02` (the group's shared issue-tracking repo, required by the instructors) yet — that's a separate, explicit step for you to review and authorize before anything gets posted publicly.
+**Status: posted.** All 7 issues are live on `dinosauce-285/Software-Testing-G02` (issues #63-#69), each with its screenshot embedded.
 
 ---
 
@@ -21,6 +21,7 @@
 
 **Automated evidence:** `automation/tests/fr04-profile/profile-phone-bugs.spec.ts` — TC-13, TC-15 (valid numbers wrongly rejected), TC-23 (invalid number wrongly accepted).
 **Screenshot:** `screenshots/BUG-A11-phone-regex-rejects-valid-number.png` (Profile page with a valid `0912345678` entered, immediately before the assertion on the rejection alert fails)
+**GitHub Issue:** https://github.com/dinosauce-285/Software-Testing-G02/issues/63
 
 ---
 
@@ -40,6 +41,7 @@
 
 **Automated evidence:** `profile-phone-bugs.spec.ts` — TC-11.
 **Screenshot:** `screenshots/BUG-A12-empty-phone-blocks-form-save.png`
+**GitHub Issue:** https://github.com/dinosauce-285/Software-Testing-G02/issues/64
 
 ---
 
@@ -58,6 +60,7 @@
 
 **Automated evidence:** `automation/tests/fr04-profile/profile-invalid-fields.spec.ts` — TC-06, TC-07, TC-09.
 **Screenshot:** `screenshots/BUG-A13-zero-name-validation.png`
+**GitHub Issue:** https://github.com/dinosauce-285/Software-Testing-G02/issues/65
 
 ---
 
@@ -76,6 +79,7 @@
 
 **Automated evidence:** `automation/tests/fr08-checkout/checkout-total-tampering.spec.ts` — TC-05 through TC-14 (10 of 11 rows; TC-01, the honest value, correctly passes since it can't be distinguished from a coincidence at that one value).
 **Screenshot:** `screenshots/BUG-B08-total-amount-not-recalculated.png` (zero-total case)
+**GitHub Issue:** https://github.com/dinosauce-285/Software-Testing-G02/issues/66
 
 ---
 
@@ -93,6 +97,7 @@
 
 **Automated evidence:** `automation/tests/fr08-checkout/checkout-empty-cart.spec.ts` — TC-16, TC-17.
 **Screenshot:** `screenshots/BUG-B10-empty-cart-checkout-accepted.png`
+**GitHub Issue:** https://github.com/dinosauce-285/Software-Testing-G02/issues/67
 
 ---
 
@@ -110,6 +115,7 @@
 
 **Automated evidence:** `automation/tests/fr19-user-management/user-management-role-bypass.spec.ts` — 8/8 rows.
 **Screenshot:** `screenshots/BUG-C08-no-role-check-admin-panel.png` (full dashboard rendered for a bypassed non-admin session)
+**GitHub Issue:** https://github.com/dinosauce-285/Software-Testing-G02/issues/68
 
 ---
 
@@ -127,9 +133,10 @@
 
 **Automated evidence:** `automation/tests/fr19-user-management/zz-user-management-destructive.spec.ts` — TC-14.
 **Screenshot:** `screenshots/BUG-F2-admin-self-deletion.png` (Users table completely empty immediately after: both the admin and the previously-deleted Test User are gone)
+**GitHub Issue:** https://github.com/dinosauce-285/Software-Testing-G02/issues/69
 
 ---
 
-## Next step
+## Status
 
-Once you've reviewed this content, let me know and I can post these as GitHub Issues on `dinosauce-285/Software-Testing-G02` (one per bug, each with its screenshot attached) — I won't do that without your explicit go-ahead since it's a public action on your group's shared repo, not just yours.
+All 7 issues posted. See each bug's "GitHub Issue" link above.
