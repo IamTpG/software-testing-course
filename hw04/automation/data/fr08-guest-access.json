@@ -1,0 +1,6 @@
+[
+  {
+    "id": "TC-04",
+    "description": "Guest (logged-out) can view /checkout by direct URL; only the payment action itself is gated"
+  }
+]

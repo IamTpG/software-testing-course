@@ -1,0 +1,29 @@
+[
+  {
+    "id": "TC-06",
+    "description": "Whitespace-only name (invalid business rule, spec expects rejection)",
+    "field": "name",
+    "invalidValue": "   ",
+    "fillerPhone": "912345678",
+    "fillerAddress": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+    "bugRef": "BUG-A-13"
+  },
+  {
+    "id": "TC-07",
+    "description": "Name 101 chars (UB+1, spec expects cap enforcement)",
+    "field": "name",
+    "invalidValue": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "fillerPhone": "912345678",
+    "fillerAddress": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+    "bugRef": "BUG-A-13"
+  },
+  {
+    "id": "TC-09",
+    "description": "Address 256 chars (UB+1, spec expects cap enforcement)",
+    "field": "address",
+    "invalidValue": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+    "fillerName": "Nguyen Van A",
+    "fillerPhone": "912345678",
+    "bugRef": "BUG-A-13"
+  }
+]

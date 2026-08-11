@@ -1,0 +1,38 @@
+[
+  {
+    "id": "TC-11",
+    "description": "Empty phone (spec: optional, should save)",
+    "phone": "",
+    "fillerName": "Nguyen Van A",
+    "fillerAddress": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+    "expectSuccessAlert": true,
+    "bugRef": "BUG-A-11 / BUG-A-12"
+  },
+  {
+    "id": "TC-13",
+    "description": "Spec-valid 10-digit phone starting with 0 (LB)",
+    "phone": "0912345678",
+    "fillerName": "Nguyen Van A",
+    "fillerAddress": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+    "expectSuccessAlert": true,
+    "bugRef": "BUG-A-11"
+  },
+  {
+    "id": "TC-15",
+    "description": "Spec-valid 11-digit phone starting with 0 (UB)",
+    "phone": "09123456789",
+    "fillerName": "Nguyen Van A",
+    "fillerAddress": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+    "expectSuccessAlert": true,
+    "bugRef": "BUG-A-11"
+  },
+  {
+    "id": "TC-23",
+    "description": "Wrong-prefix phone (starts with 1, spec-invalid, should be rejected)",
+    "phone": "1912345678",
+    "fillerName": "Nguyen Van A",
+    "fillerAddress": "123 Nguyen Trai, Thanh Xuan, Hanoi",
+    "expectSuccessAlert": false,
+    "bugRef": "BUG-A-11"
+  }
+]

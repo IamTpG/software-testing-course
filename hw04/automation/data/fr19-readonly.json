@@ -1,0 +1,4 @@
+[
+  { "id": "TC-03", "description": "GET as admin, 2 seeded users, password field never exposed" },
+  { "id": "ADMIN-LOGIN-BLOCK", "description": "Real login attempt as non-admin is blocked client-side (UI convenience gate, not a real security control per A10)" }
+]
