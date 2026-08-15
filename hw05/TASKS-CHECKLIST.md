@@ -33,6 +33,14 @@ For **each** of the 3 scenarios (Load / Stress / Spike):
 - [ ] 🔴 MANUAL — Human review: go through the AI-generated plan and correct it (unrealistic ramp-up/think-time, wrong thread counts, weak/missing assertions). Write down *what* was wrong and *why* the AI missed it (prompt quality / model limitation / endpoint quirk) — goes into the Main Report.
 - [ ] Commit the reviewed plan + CSV (Section 12: one commit per scenario).
 
+### Load / read-heavy — `GET /api/products/:id` — done building, pending your review sign-off
+
+- [x] Designed: 30 threads, 30s ramp-up, 300s hold, Gaussian think-time 2000ms±1000ms, Aggregate Report listener. Reasoning logged in conversation (this is the AI-audit-worthy content — copy into `reports/AI-Audit-Report.md` later).
+- [x] Self-verified against the live SUT before building (not just assumed): confirmed seeded product IDs are only 1-5 (documented as a known dataset-size limitation), read `server.js:159-165` and found two real bugs — (a) even-ID products return `price` as a string instead of a number, (b) a nonexistent product ID returns HTTP 200 `{}` instead of 404. Neither affects this plan's assertions, but both are candidates for the GitHub Issues bug log.
+- [x] Built `test-plans/23127244_Load_20260815.jmx` + `data/23127244_Load_products.csv`.
+- [x] Smoke-tested the actual `.jmx` logic (temp reduced-scale copy, not committed): positive run → 0% errors, correct CSV substitution per request; negative-control run (assertion deliberately broken) → 100% errors with the expected failure message — proves the assertion is live, not a silent no-op.
+- [ ] 🔴 MANUAL — Your review/sign-off on the design before it's "final." Push back on anything before Phase 2 execution.
+
 ## Phase 2 — Task 1: Execution & evidence
 
 For **each** scenario:
