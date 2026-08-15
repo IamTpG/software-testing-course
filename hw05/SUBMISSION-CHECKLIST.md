@@ -4,36 +4,32 @@ Zip filename: `23127244_HW05_AI_Performance_<SelfAssessedGrade>.zip` (grade = 3-
 
 ## Required contents
 
-- [ ] **Main report** (Markdown **and** PDF) — performance-testing report + AI-analysis critique section.
-- [ ] **Public GitHub repository link** — test plans and data files pushed and accessible.
-- [ ] **Three test plans**, filenames matching `23127244_{ScenarioType}_{YYYYMMDD}`:
-  - [ ] `23127244_Load_YYYYMMDD.jmx` — read-heavy, `GET /api/products/:id`
-  - [ ] `23127244_Stress_YYYYMMDD.jmx` — auth-heavy, `POST /api/forgot-password`
-  - [ ] `23127244_Spike_YYYYMMDD.jmx` — transactional, `POST /api/apply-coupon`
-- [ ] **Three raw `.jtl` logs** (full files, not just summaries) — one per scenario.
-- [ ] **Three HTML report folders** — one per scenario.
-- [ ] **Resource-monitor screenshots** — tool + htop/Task Manager together, one set per scenario run.
-- [ ] **Hardware-spec screenshots** — dxdiag/screenfetch + spec table; hostname matches prior HW deployments.
-- [ ] **Unlisted YouTube demo video link** — ≥6 min total, tool + resource monitor same frame, your own Vietnamese narration.
-- [ ] **AI Critique** (Markdown + PDF) — 200–300 words.
-- [ ] **AI Audit Report** (Markdown + PDF) — every AI interaction: tool, date/time, prompt, output.
-- [ ] **Git commit log** — text file, one commit per procedure step (each scenario's plan, AI analysis, continuous-testing proposal).
-- [ ] **Bug report** — GitHub Issues screenshots, if any bugs/perf issues were found.
-- [ ] **`README.md`** with:
-  - [ ] Self-assessment table (Section 15 template, all 6 rows filled).
-  - [ ] Test summary: scenarios run, endpoint groups covered.
-  - [ ] Endurance threshold with concrete numbers (max stable RPS, memory ceiling).
-  - [ ] Number of bugs / performance issues logged.
-  - [ ] Demo video link.
-- [ ] **Agent Skill** + its own end-to-end demo video link (Section 7).
-- [ ] Any other supporting materials (CSV data files, etc.).
+- [~] **Main report** (Markdown **and** PDF) — `reports/MainReport.md` done. 🔴 PDF conversion still needed (your workflow).
+- [x] **Public GitHub repository link** — `IamTpG/software-testing-course` (public), test plans/data pushed.
+- [x] **Three test plans**, filenames matching `23127244_{ScenarioType}_{YYYYMMDD}`:
+  - [x] `23127244_Load_20260815.jmx` — read-heavy, `GET /api/products/:id`
+  - [x] `23127244_Stress_20260815.jmx` — auth-heavy, `POST /api/forgot-password`
+  - [x] `23127244_Spike_20260815.jmx` — transactional, `POST /api/apply-coupon`
+  - (bonus, not required: `23127244_Endurance_20260815.jmx`, Section 6's soak-test requirement)
+- [x] **Three raw `.jtl` logs** (full files) — all 4 present in `results/`, verified clean (no dry-run contamination, cross-checked against `statistics.json`).
+- [x] **Three HTML report folders** — all 4 present in `results/`.
+- [~] **Resource-monitor screenshots** — `reports/screenshots/23127244_{Load,Stress,Spike}_run.png` present, confirmed by content, Machine ID redacted. 🔴 Bug-report screenshots for issues #7/#8/#9 still pending (text-only posted so far).
+- [ ] 🔴 **Hardware-spec screenshot** — spec table done (`reports/Hardware-Report.md`), but the actual screenshot (dxdiag/screenfetch/neofetch, or GNOME Settings→About) still not taken.
+- [x] **Unlisted YouTube demo video link** — https://youtu.be/GmoYPY6HPyg, confirmed by you as the full narrated recording.
+- [x] **AI Critique** (Markdown done, `reports/AI-Critique.md`, 271 words) — 🔴 needs your read-and-confirm (Section 10 tests your own reflection) + PDF conversion.
+- [x] **AI Audit Report** (Markdown done, `reports/AI-Audit-Report.md`) — 🔴 PDF conversion still needed.
+- [x] **Git commit log** — `reports/Git-Commit-Log.txt` (will re-export once more before final zip).
+- [~] **Bug report** — 3 posted (#7/#8/#9, text-only), 1 drafted but not posted (#4, SQL injection — needs your manual review/post decision, `reports/github-issues-draft.md`). Screenshots pending for all.
+- [x] **`README.md`** — `README.md` done, all 4 bullets covered; self-assessment grade column intentionally left blank for you.
+- [~] **Agent Skill** — `.claude/skills/jmeter-perf-testing/` done + demonstrated end-to-end in `skill-demo/`. 🔴 Its own demo video still needs recording.
+- [x] Any other supporting materials — CSVs, `RUN-COMMANDS.md`, `Narration-Script.md`/`.pdf`, `Endurance-Threshold.md`, `AI-Log-Analysis.md`, `Optimization-Proposals.md`, `AI-Misinterpretation-Hunt.md`, `Continuous-Performance-Testing-Proposal.md` all present and committed.
 
 ## Anti-cheat verification (TAs will check these)
 
-- [ ] Test-plan filenames exactly match `23127244_{ScenarioType}_{YYYYMMDD}`.
-- [ ] `.jtl` logs are the full raw files, not trimmed/summarized.
-- [ ] Demo video shows tool + resource monitor in the same frame, with your own voice narration (not AI-generated narration, not silent/text-only).
-- [ ] Hardware report hostname matches your hostname from previous homework deployments.
+- [x] Test-plan filenames exactly match `23127244_{ScenarioType}_{YYYYMMDD}`.
+- [x] `.jtl` logs are the full raw files, verified not trimmed/summarized (row counts + `statistics.json` cross-checked).
+- [x] Demo video confirmed by you as tool + resource monitor same frame, your own Vietnamese narration.
+- [ ] 🔴 Hardware report hostname — spec table has the right hostname (`tpg-inspiron`), but the actual screenshot evidence is still missing (see above).
 
 ## Self-assessment table to fill into README.md
 

@@ -125,7 +125,7 @@ For **each** scenario:
 
 ## Phase 9 — Packaging & submission
 
-- [ ] Assemble zip contents per Section 14 (see `SUBMISSION-CHECKLIST.md`).
+- [x] Cross-checked every required item in `SUBMISSION-CHECKLIST.md` against what's actually in the repo — everything content-wise is done; only the physically-manual items remain (see that file's status markers). Zip assembly itself is a MANUAL step (below).
 - [ ] 🔴 MANUAL — Decide self-assessed grade (3-digit, 000–100).
 - [ ] 🔴 MANUAL — Zip and submit `23127244_HW05_AI_Performance_<grade>.zip` to Moodle before deadline (no late submissions accepted).
 - [ ] 🔴 MANUAL — If selected for oral defense (30% random), prepare to explain your process in 5–7 minutes.
