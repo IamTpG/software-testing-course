@@ -398,3 +398,49 @@ dashboard statistics.json.
 Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
 
 ----------------------------------------
+commit 3730364
+Author: IamTpG <ltphu.dev@gmail.com>
+Date:   2026-08-15 23:34:21 +0700
+
+    feat(hw05): Phase 8 - Main Report, AI Audit Report, AI Critique draft, README
+
+Main Report synthesizes Tasks 1-3 with cross-references to every
+supporting doc and real result (271,393 total samples across 4 runs).
+AI Audit Report is a chronological log of every major AI interaction
+with real timestamps from git history, covering both this main
+session and the independent fresh session used for Task 2.
+
+AI Critique drafted as a starting point (271 words, within the
+200-300 requirement) centered on a genuine finding - the gap between
+the Spike design's curl-probe calibration and the real sustained run's
+136 Duration Assertion failures - rather than a generic answer.
+Explicitly flagged as needing the student's own read-and-confirm
+before final, since Section 10 tests personal reflection.
+
+README has the test summary + self-assessment table (grade column
+left blank, that's the student's call). Git commit log exported.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+----------------------------------------
+commit 1e9445c
+Author: IamTpG <ltphu.dev@gmail.com>
+Date:   2026-08-15 23:35:46 +0700
+
+    chore(hw05): commit user's trim of RUN-COMMANDS.md, add Narration-Script.pdf
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+----------------------------------------
+commit 1ef5e5e
+Author: IamTpG <ltphu.dev@gmail.com>
+Date:   2026-08-15 23:37:07 +0700
+
+    docs(hw05): cross-check submission checklist against actual repo state
+
+Everything content-wise is done; remaining items are all physically
+manual (screenshots, PDF conversion, zip, Moodle submission).
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+----------------------------------------
