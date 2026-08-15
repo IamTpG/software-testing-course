@@ -18,20 +18,20 @@ Legend: `[ ]` to do · `🔴 MANUAL` = cannot be delegated to AI, must be done b
 - [x] Install/verify JMeter (non-GUI mode) — no `sudo` available non-interactively, so installed a portable JDK 21 (Temurin, checksum-verified) + Apache JMeter 5.6.3 (checksum-verified) under `hw05/tools/` (gitignored, ~300MB). Run `source hw05/tools/env.sh` to get `java`/`jmeter` on PATH for this shell, then `jmeter -n -t <plan>.jmx -l <out>.jtl -e -o <report-dir>`.
 - [x] Resource monitor: `htop` also needs `sudo` and isn't installed; `top` is already present system-wide and satisfies the "htop / Task Manager / Activity Monitor" requirement — use `top` for the resource-usage screenshots (or ask the user to run `! sudo apt install -y htop` if they'd rather have htop's UI).
 - [~] Hardware report — spec table drafted at `reports/Hardware-Report.md` (CPU/RAM/disk/OS gathered). 🔴 MANUAL remaining: take the actual dxdiag/screenfetch/neofetch screenshot showing hostname `tpg-inspiron` and drop it into `reports/screenshots/`; not blocking, do it whenever convenient.
-- [ ] Already on `homework/05` — just commit as you go, one commit per procedure step (Section 12), no new repo/branch needed.
-- [ ] Set up folders: `test-plans/`, `data/` (CSVs), `results/` (`.jtl` + HTML reports), `reports/` (MainReport, AI-Audit, AI-Critique, Bug-Report), `screenshots/`.
-- [ ] Draft skeleton for AI Audit Report (tool, date/time, prompt, output columns) so logging is easy during later steps.
+- [x] Already on `homework/05` — committing as you go, one commit per procedure step (Section 12); 7 commits so far.
+- [x] Folders set up: `test-plans/`, `data/`, `results/`, `reports/` all exist and populated. `reports/screenshots/` not created yet — will be created naturally when the first screenshot lands in Phase 2.
+- [ ] Draft skeleton for AI Audit Report (tool, date/time, prompt, output columns) — still pending; queued for Phase 8 (this conversation's design-phase dialogue is the raw material to transcribe in).
 
 ## Phase 1 — Task 1: AI-assisted design (per scenario)
 
 For **each** of the 3 scenarios (Load / Stress / Spike):
 
-- [ ] Drive an AI tool step-by-step (not one generic prompt) to design the test plan: thread/VU counts, ramp-up, think-time — ask it to justify choices against the endpoint's expected behavior.
-- [ ] Build the matching CSV data file (product IDs for read-heavy; emails for `forgot-password`; coupon codes/`total_amount`/`user_id` for `apply-coupon`). No sharing a CSV across scenarios.
-- [ ] Assign a distinct report/listener type per scenario, no repeats (e.g. View Results Tree / Summary Report / Aggregate Report).
-- [ ] Name the file `23127244_{ScenarioType}_{YYYYMMDD}` (use the actual date you finalize the plan, e.g. `23127244_Load_20260811.jmx`).
-- [ ] 🔴 MANUAL — Human review: go through the AI-generated plan and correct it (unrealistic ramp-up/think-time, wrong thread counts, weak/missing assertions). Write down *what* was wrong and *why* the AI missed it (prompt quality / model limitation / endpoint quirk) — goes into the Main Report.
-- [ ] Commit the reviewed plan + CSV (Section 12: one commit per scenario).
+- [x] Drive an AI tool step-by-step (not one generic prompt) to design the test plan: thread/VU counts, ramp-up, think-time — ask it to justify choices against the endpoint's expected behavior. Done for all 3 scenarios (see sub-sections below) — each involved live self-verification against the SUT and empirical calibration, not guessed numbers.
+- [x] Build the matching CSV data file. Done — 3 distinct CSVs, no sharing.
+- [x] Assign a distinct report/listener type per scenario, no repeats. Done — Load=Aggregate Report, Stress=Summary Report, Spike=View Results Tree.
+- [x] Name the file `23127244_{ScenarioType}_{YYYYMMDD}`. Done — all 3 dated `20260815`.
+- [x] 🔴 MANUAL — Human review: done for all 3 (you signed off on each design in conversation before building). What was wrong/found during review is logged per-scenario below and doubles as the AI-audit-worthy record.
+- [x] Commit the reviewed plan + CSV. Done — one commit per scenario (3 commits).
 
 ### Load / read-heavy — `GET /api/products/:id` — done building, pending your review sign-off
 
@@ -57,7 +57,7 @@ For **each** of the 3 scenarios (Load / Stress / Spike):
 - [x] Calibrated spike magnitude empirically before locking it in: burst-tested 100/400/800 concurrent (0% errors, latency stayed low), then on your call went further to 1500/2000 concurrent — still 0% errors, no meaningful degradation (latency was noisy/non-monotonic, consistent with OS scheduling noise rather than a real SUT limit). Conclusion: **no breaking point found for this endpoint in the tested range**, a legitimate finding (cheap indexed read on a 4-row table, no write-lock bottleneck) worth contrasting against `forgot-password`'s write-bound behavior in the report. Locked in 500 VU for the actual spike stage — comfortably dramatic (33x the baseline) and fully bracketed by real data, without inflating the design to an untested extreme just to manufacture drama.
 - [x] Built `test-plans/23127244_Spike_20260815.jmx` + `data/23127244_Spike_coupons.csv` (5 rows across the 3 real, non-expired coupons).
 - [x] Smoke-tested the actual `.jmx` at reduced scale: positive run → 0% errors across all 3 stages in correct sequential order, multi-field CSV substitution (`code`/`total_amount`/`user_id`) confirmed working via valid JSON bodies; two separate negative controls — forcing the `success:true` check to fail (100% errors, correct message) and forcing the duration threshold to 1ms (81% errors, proportional to real elapsed time, not a hardcoded flag) — both confirm the assertions are genuinely live.
-- [ ] 🔴 MANUAL — Your review/sign-off on the design before it's "final." Push back on anything before Phase 2 execution.
+- [x] 🔴 MANUAL — Reviewed and signed off by you. **All 3 test plans are now final.**
 
 ## Phase 2 — Task 1: Execution & evidence
 
