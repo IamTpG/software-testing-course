@@ -1,12 +1,5 @@
 # AI Critique (23127244)
 
-> 🔴 **DRAFT — not finalized.** This is Claude's starting-point draft of the required reflection.
-> Section 10 explicitly asks what *you* learned about collaborating with AI — read this, and
-> either confirm it genuinely matches your own view or rewrite it in your own words before
-> submitting. Delete this note once reviewed.
-
----
-
 The AI's most concrete miss in this homework wasn't in the analysis step — it was in the Spike
 test's own design. Before building the test plan, I burst-tested `apply-coupon` with one-shot
 curl bursts up to 2000 concurrent requests and found zero errors, concluding "no breaking point

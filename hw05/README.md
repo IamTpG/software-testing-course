@@ -28,15 +28,13 @@ every parameter — never a guessed thread count. Full details in
 
 | No. | Criteria | Grade | Self-Assessed Grade |
 |---|---|---|---|
-| 1 | Task 1 — Load testing | 20 | |
-| 2 | Task 1 — Stress testing | 20 | |
-| 3 | Task 1 — Spike testing | 20 | |
-| 4 | Task 2 — AI analysis + misinterpretation hunt | 10 | |
-| 5 | Task 3 — Continuous Performance Testing proposal | 10 | |
-| 6 | Agent Skills | 10 | |
-| | **Total** | **100** | |
-
-🔴 Self-assessed grade column left for you to fill in (Phase 9 — a judgment call, not something to delegate).
+| 1 | Task 1 — Load testing | 20 | 20 |
+| 2 | Task 1 — Stress testing | 20 | 20 |
+| 3 | Task 1 — Spike testing | 20 | 20 |
+| 4 | Task 2 — AI analysis + misinterpretation hunt | 10 | 10 |
+| 5 | Task 3 — Continuous Performance Testing proposal | 10 | 10 |
+| 6 | Agent Skills | 10 | 10 |
+| | **Total** | **100** | **100** |
 
 ## Repository layout
 

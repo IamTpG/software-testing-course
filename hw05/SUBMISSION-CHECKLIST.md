@@ -14,7 +14,7 @@ Zip filename: `23127244_HW05_AI_Performance_<SelfAssessedGrade>.zip` (grade = 3-
 - [x] **Three raw `.jtl` logs** (full files) — all 4 present in `results/`, verified clean (no dry-run contamination, cross-checked against `statistics.json`).
 - [x] **Three HTML report folders** — all 4 present in `results/`.
 - [~] **Resource-monitor screenshots** — `reports/screenshots/23127244_{Load,Stress,Spike}_run.png` present, confirmed by content, Machine ID redacted. 🔴 Bug-report screenshots for issues #7/#8/#9 still pending (text-only posted so far).
-- [ ] 🔴 **Hardware-spec screenshot** — spec table done (`reports/Hardware-Report.md`), but the actual screenshot (dxdiag/screenfetch/neofetch, or GNOME Settings→About) still not taken.
+- [x] **Hardware-spec screenshot** — `reports/screenshots/23127244_Hardware.png` (GNOME Settings→About), wired into `reports/Hardware-Report.md`.
 - [x] **Unlisted YouTube demo video link** — https://youtu.be/GmoYPY6HPyg, confirmed by you as the full narrated recording.
 - [x] **AI Critique** (Markdown done, `reports/AI-Critique.md`, 271 words) — 🔴 needs your read-and-confirm (Section 10 tests your own reflection) + PDF conversion.
 - [x] **AI Audit Report** (Markdown done, `reports/AI-Audit-Report.md`) — 🔴 PDF conversion still needed.
@@ -29,7 +29,7 @@ Zip filename: `23127244_HW05_AI_Performance_<SelfAssessedGrade>.zip` (grade = 3-
 - [x] Test-plan filenames exactly match `23127244_{ScenarioType}_{YYYYMMDD}`.
 - [x] `.jtl` logs are the full raw files, verified not trimmed/summarized (row counts + `statistics.json` cross-checked).
 - [x] Demo video confirmed by you as tool + resource monitor same frame, your own Vietnamese narration.
-- [ ] 🔴 Hardware report hostname — spec table has the right hostname (`tpg-inspiron`), but the actual screenshot evidence is still missing (see above).
+- [x] Hardware report hostname — `tpg-inspiron` confirmed visible in both the spec table and the screenshot.
 
 ## Self-assessment table to fill into README.md
 
