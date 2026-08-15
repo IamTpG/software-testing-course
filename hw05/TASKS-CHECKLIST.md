@@ -63,6 +63,8 @@ For **each** of the 3 scenarios (Load / Stress / Spike):
 
 For **each** scenario:
 
+- [ ] Do a dry run first (untimed, no recording) to confirm the command works end-to-end — safe to repeat, none of the 3 endpoints mutate state that would corrupt a later run.
+- [ ] ⚠️ Verified: JMeter **appends** to an existing `.jtl` filename rather than overwriting it (confirmed by running the same plan twice into the same file — both runs' rows ended up merged into one file). Before the real recorded run, delete both the old `.jtl` **and** the `_report` folder, not just the report folder: `rm -f ../results/23127244_{Scenario}_20260815.jtl && rm -rf ../results/23127244_{Scenario}_20260815_report`.
 - [ ] 🔴 MANUAL — Run the `.jmx` via JMeter non-GUI while recording resource monitor in the same view; screenshot tool + htop together.
 - [ ] Note: no account-lockout handling needed for this endpoint set (only `/login` has the 3-fail lockout, and we're not targeting it) — skip that step, but double-check `forgot-password` under Stress doesn't hit an undocumented rate limit; if it does, document the reset steps like the lockout case.
 - [ ] Save raw `.jtl` log and the generated HTML report folder for each run.
