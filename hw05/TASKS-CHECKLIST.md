@@ -8,7 +8,9 @@ Chosen endpoint groups (posted to groupmates to avoid duplication):
 | Auth-heavy | `POST /api/forgot-password` | Stress |
 | Transactional | `POST /api/apply-coupon` | Spike |
 
-Legend: `[ ]` to do · `🔴 MANUAL` = cannot be delegated to AI, must be done by hand.
+Legend: `[ ]` to do · `🔴 MANUAL` = cannot be delegated, must be done by hand.
+
+**Operating mode (from Phase 6 onward):** user has delegated everything except physically-manual actions — taking screenshots, recording video, exporting PDFs, zipping the submission, Moodle upload, and oral defense. Claude proceeds autonomously through design/build/execution without per-step confirmation checkpoints. One exception kept: the AI Critique paragraph (Phase 8) is drafted as a starting point, not auto-finalized — Section 10 explicitly tests the student's own reflection, so it needs the user's genuine read-and-confirm before submission, not just physical typing.
 
 ---
 
@@ -96,9 +98,9 @@ For **each** scenario:
 
 ## Phase 6 — Task 3: Continuous Performance Testing proposal
 
-- [ ] Draft (AI-assisted OK) a model that watches SUT commits, decides whether to run perf tests, flags p95 regressions.
+- [ ] Draft a model that watches SUT commits, decides whether to run perf tests, flags p95 regressions.
 - [ ] Produce a flow chart.
-- [ ] 🔴 MANUAL — Write the trade-off discussion (cost vs. false alarms) in your own words for the conclusion.
+- [ ] Write the trade-off discussion (cost vs. false alarms) for the conclusion.
 
 ## Phase 7 — Agent Skill
 
@@ -109,8 +111,8 @@ For **each** scenario:
 
 - [ ] Write Main Report (Markdown), covering Tasks 1–3, all evidence references.
 - [ ] Compile AI Audit Report appendix (every AI interaction logged: tool, timestamp, prompt, output).
-- [ ] 🔴 MANUAL — Write the AI Critique paragraph (200–300 words, your own reflection: where AI was wrong/biased/incomplete, why it missed it, what you learned).
-- [ ] Convert Main Report + AI Audit Report to PDF (you do this yourself — no AI/tooling hunt needed here, per your own workflow).
+- [ ] Draft the AI Critique paragraph (200–300 words) as a starting point. 🔴 MANUAL — user must read and confirm it genuinely reflects their own view before it's final (Section 10 explicitly tests the student's own reflection).
+- [ ] 🔴 MANUAL — Convert Main Report + AI Audit Report to PDF (user's own workflow).
 - [ ] Export Git commit log to a text file (Section 12).
 - [ ] Write `README.md`: self-assessment table + test summary (scenarios run, endpoint groups covered, endurance threshold numbers, bug/perf-issue count, demo video link).
 
@@ -118,5 +120,5 @@ For **each** scenario:
 
 - [ ] Assemble zip contents per Section 14 (see `SUBMISSION-CHECKLIST.md`).
 - [ ] 🔴 MANUAL — Decide self-assessed grade (3-digit, 000–100).
-- [ ] 🔴 MANUAL — Submit `23127244_HW05_AI_Performance_<grade>.zip` to Moodle before deadline (no late submissions accepted).
+- [ ] 🔴 MANUAL — Zip and submit `23127244_HW05_AI_Performance_<grade>.zip` to Moodle before deadline (no late submissions accepted).
 - [ ] 🔴 MANUAL — If selected for oral defense (30% random), prepare to explain your process in 5–7 minutes.
