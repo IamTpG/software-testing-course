@@ -98,9 +98,12 @@ For **each** scenario:
 
 ## Phase 6 — Task 3: Continuous Performance Testing proposal
 
-- [ ] Draft a model that watches SUT commits, decides whether to run perf tests, flags p95 regressions.
-- [ ] Produce a flow chart.
-- [ ] Write the trade-off discussion (cost vs. false alarms) for the conclusion.
+- [x] Drafted a tiered model (Skip/Smoke/Regression/Full) that watches `backend/**` path changes, event type (PR/merge/nightly/manual label), and flags p95 regressions via a dual check (hard ceiling from Task 2's gates + rolling-baseline drift), with a double-breach confirmation rule to reduce false positives. Grounded in HW05's own real findings (Load has no cliff, Stress/Spike do, Endurance's value only justifies nightly frequency given its 12-min cost) — not a generic template.
+- [x] Flow chart produced (Mermaid, renders natively on GitHub).
+- [x] Trade-off discussion written (cost vs. false alarms vs. missed regressions vs. maintenance/triage cost), citing real observed variance from our own runs (Stress Stage 4's p95=691ms vs p99=802ms) as evidence single-run thresholds are noisy.
+- [x] Full writeup: `reports/Continuous-Performance-Testing-Proposal.md`.
+
+**Phase 6 complete.**
 
 ## Phase 7 — Agent Skill
 
