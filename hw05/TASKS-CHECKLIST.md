@@ -81,7 +81,9 @@ For **each** scenario:
 
 ## Phase 4 — Demo video (Task 1 requirement)
 
-- [ ] 🔴 MANUAL — Record ≥6 min total, unlisted YouTube upload, tool + resource monitor in the same frame, **your own Vietnamese narration**. May be split into one clip per scenario as long as total ≥ 6 min.
+- [x] 🔴 MANUAL — Recorded via OBS while running the real Load/Stress/Spike scenarios, tool + `top` in the same frame, own Vietnamese narration. Confirmed by user (full narrated recording, not a silent/test capture). Unlisted YouTube link saved: `DEMO-VIDEO-LINK.txt` — https://youtu.be/GmoYPY6HPyg. Screenshots taken during this same recording session (3 of the 4 Phase 2 screenshots) confirm timing consistency with the real run data.
+
+**Phase 4 complete.**
 
 ## Phase 5 — Task 2: AI analysis & misinterpretation hunt
 
