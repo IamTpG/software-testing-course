@@ -107,8 +107,10 @@ For **each** scenario:
 
 ## Phase 7 — Agent Skill
 
-- [ ] Build a reusable Agent Skill that automates this perf-testing + log-analysis workflow for future endpoints.
-- [ ] 🔴 MANUAL — Record a second demo video (YouTube link) showing the skill run end-to-end on a complete endpoint group.
+- [x] Built `.claude/skills/jmeter-perf-testing/SKILL.md` — encodes the actual discipline used throughout this homework: self-verify against real code/live SUT before designing, calibrate thread counts empirically (not guessed), prove assertions are live via positive+negative smoke tests before any real run, and independently reproduce any AI-produced analysis claim rather than trusting it.
+- [x] **Demonstrated end-to-end on a new endpoint** (`GET /api/products?search=`, not one of the 3 graded scenarios) — real output in `skill-demo/`, not just a paper skill. Step 0 (self-verify) found a genuine **SQL injection vulnerability** (confirmed live, non-destructive boolean-bypass proof), logged as a draft bug report (Issue 4, not auto-posted — posting a live exploit payload was correctly blocked by safety controls, needs your manual review/post). Steps 1-5 (calibrate → build → smoke-test → execute → analyze) completed cleanly: 1,059 samples, 0 errors, p95=3ms. Full trail: `skill-demo/README.md`, `skill-demo/ai-audit-log/products-search.md`.
+- [ ] 🔴 MANUAL — Record a second demo video (YouTube link) showing the skill run end-to-end on a complete endpoint group. `skill-demo/README.md` has a walkthrough order to follow.
+- [ ] 🔴 MANUAL — Review and decide whether to post the draft SQL injection issue (`reports/github-issues-draft.md`, Issue 4) — not auto-posted for safety reasons.
 
 ## Phase 8 — Reports & mandatory appendices
 

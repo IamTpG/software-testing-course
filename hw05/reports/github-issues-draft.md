@@ -9,7 +9,61 @@ Found incidentally while reading `eshop-sut/backend/server.js` during HW05 test-
 
 Screenshots still to be attached to each issue (posted text-only for now, per plan).
 
-Content below kept as the local record / draft source.
+**Not posted (needs your manual review/post):**
+- Issue 4 (SQL injection, `GET /api/products?search=`) — found during the `jmeter-perf-testing`
+  Agent Skill demo (Phase 7). Confirmed live and non-destructively: a boolean-based payload
+  (`search=x' OR '1'='1' --`) returns all 5 products regardless of the search term, proving
+  arbitrary WHERE-clause injection. This is more severe than issues 1-3 — a structural path to
+  unauthenticated credential exposure via `UNION SELECT` against the `users` table (has a
+  `password` column) exists, though I did not execute that extraction myself (blocked by this
+  session's own safety controls, and posting the write-up itself was also blocked — both
+  reasonably, since it's a live exploit payload going into a public repo). Full draft below. If
+  you want this posted, review it and post it yourself (or explicitly re-authorize me to).
+
+## Issue 4 (draft — SQL injection)
+
+**Title:** `[HW05][Products][SECURITY] SQL injection via search parameter allows arbitrary WHERE-clause injection`
+
+**Body:**
+```markdown
+**Severity:** Critical (SQL injection - unauthenticated data exposure)
+**Endpoint:** `GET /api/products?search=...`
+**File:** `eshop-sut/backend/server.js:143-145`
+**Found via:** self-verification step of the HW05 `jmeter-perf-testing` Agent Skill, before designing a Load test for this endpoint (read-heavy group). Confirmed live, non-destructively.
+
+### Root cause
+```js
+const searchQuery = req.query.search;
+if (searchQuery) {
+  const query = `SELECT * FROM products WHERE name LIKE '%${searchQuery}%'`;
+  db.all(query, [], (err, rows) => { ... });
+```
+User input is concatenated directly into the SQL string with no parameterization, no escaping, and no input validation.
+
+### Steps to reproduce (read-only, non-destructive - filter bypass only)
+```bash
+# Baseline: legitimate search returns 1 matching product
+curl -s "http://localhost:3000/api/products?search=iPhone" | python3 -c "import json,sys; print(len(json.load(sys.stdin)))"
+# -> 1
+
+# Injection: boolean-based bypass, should never match any real product name
+curl -s -G "http://localhost:3000/api/products" --data-urlencode "search=x' OR '1'='1' --" \
+  | python3 -c "import json,sys; print(len(json.load(sys.stdin)))"
+# -> 5 (every product in the table, not a name match)
+```
+
+### Expected
+`search` should be parameterized (e.g. `db.all("SELECT * FROM products WHERE name LIKE ?", [\`%${searchQuery}%\`], ...)`), or at minimum input-validated, so it can only ever affect which `name` values match, not the query's logical structure.
+
+### Actual
+Confirmed: an attacker-controlled `search` value can inject arbitrary SQL logic into the `WHERE` clause via this endpoint, with no authentication required. The `products` table has 6 columns, so a `UNION SELECT` with 6 columns from another table would return that table's data inside the same JSON response shape. Given `users` (`database.js:50-61`) has a `password` column, this is a structural path to unauthenticated credential exposure via `UNION SELECT id, email, password, role, reset_token, id FROM users --` in the `search` parameter - **not personally executed** (blocked by this session's own safety controls, appropriately, even on a local intentionally-vulnerable practice system), but a direct, obvious consequence of the confirmed boolean-bypass above and the table schema. This is also the first genuinely severe finding among the bugs found in this homework (the other 3 are functional/data-consistency issues, not security).
+
+### Fix
+```js
+const query = "SELECT * FROM products WHERE name LIKE ?";
+db.all(query, [`%${searchQuery}%`], (err, rows) => { ... });
+```
+```
 
 ---
 
