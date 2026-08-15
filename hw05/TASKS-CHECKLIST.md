@@ -68,7 +68,7 @@ For **each** scenario:
 - [ ] 🔴 MANUAL — Run the `.jmx` via JMeter non-GUI while recording resource monitor in the same view; screenshot tool + htop together.
 - [ ] Note: no account-lockout handling needed for this endpoint set (only `/login` has the 3-fail lockout, and we're not targeting it) — skip that step, but double-check `forgot-password` under Stress doesn't hit an undocumented rate limit; if it does, document the reset steps like the lockout case.
 - [ ] Save raw `.jtl` log and the generated HTML report folder for each run.
-- [ ] 🔴 MANUAL — Log any genuine bugs/errors hit during runs to GitHub Issues with screenshots (encouraged, not penalized if none for perf-only issues).
+- [~] Logged 3 genuine bugs found during test design to GitHub Issues (posted, text-only for now): [#7](https://github.com/IamTpG/software-testing-course/issues/7) price type flip, [#8](https://github.com/IamTpG/software-testing-course/issues/8) 404-as-200, [#9](https://github.com/IamTpG/software-testing-course/issues/9) coupon negative discount. 🔴 MANUAL remaining: attach a screenshot to each (not blocking — can edit the issue later).
 
 ## Phase 3 — Endurance / soak test
 

@@ -1,6 +1,15 @@
 # GitHub Issues draft — IamTpG/software-testing-course
 
-Review before posting. Each `##` heading below is one issue: title first line, body follows. Found incidentally while reading `eshop-sut/backend/server.js` during HW05 test-plan design (self-verification step before building each JMeter plan) — not the focus of this homework, but genuine functional bugs worth recording per Section 6 Task 1.
+Found incidentally while reading `eshop-sut/backend/server.js` during HW05 test-plan design (self-verification step before building each JMeter plan) — not the focus of this homework, but genuine functional bugs worth recording per Section 6 Task 1.
+
+**Posted:**
+- Issue 1 (price type flip): https://github.com/IamTpG/software-testing-course/issues/7
+- Issue 2 (404-as-200): https://github.com/IamTpG/software-testing-course/issues/8
+- Issue 3 (coupon negative discount): https://github.com/IamTpG/software-testing-course/issues/9
+
+Screenshots still to be attached to each issue (posted text-only for now, per plan).
+
+Content below kept as the local record / draft source.
 
 ---
 
@@ -112,8 +121,7 @@ Also visible directly in the HW05 Spike test run's View Results Tree report (`re
 
 ---
 
-## Before posting
+## After posting
 
-- [ ] Confirm target repo: `IamTpG/software-testing-course` (public, matches Section 14's required repo link).
-- [ ] Optional: attach a real screenshot per issue (curl/Postman output, or for Issue 3 specifically, a screenshot of the View Results Tree panel showing the response — that data is already saved in `results/23127244_Spike_20260815_report`).
-- [ ] Explicit go-ahead needed before I run `gh issue create` — this posts publicly.
+- [x] Posted to `IamTpG/software-testing-course` (issues #7, #8, #9).
+- [ ] Attach a real screenshot to each issue (curl/Postman output, or for Issue 3 specifically, a screenshot of the View Results Tree panel showing the response — that data is already saved in `results/23127244_Spike_20260815_report`). Can be added by editing the issue directly on GitHub, no need to repost.
