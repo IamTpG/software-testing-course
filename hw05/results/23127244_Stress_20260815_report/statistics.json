@@ -1,0 +1,34 @@
+{
+  "Total" : {
+    "transaction" : "Total",
+    "sampleCount" : 24681,
+    "errorCount" : 79,
+    "errorPct" : 0.32008427,
+    "meanResTime" : 240.33187472144647,
+    "medianResTime" : 175.0,
+    "minResTime" : 3.0,
+    "maxResTime" : 7682.0,
+    "pct1ResTime" : 634.0,
+    "pct2ResTime" : 668.0,
+    "pct3ResTime" : 757.0,
+    "throughput" : 189.73125057655054,
+    "receivedKBytesPerSec" : 64.84954853690692,
+    "sentKBytesPerSec" : 39.92876718120599
+  },
+  "POST /api/forgot-password" : {
+    "transaction" : "POST /api/forgot-password",
+    "sampleCount" : 24681,
+    "errorCount" : 79,
+    "errorPct" : 0.32008427,
+    "meanResTime" : 240.33187472144647,
+    "medianResTime" : 175.0,
+    "minResTime" : 3.0,
+    "maxResTime" : 7682.0,
+    "pct1ResTime" : 634.0,
+    "pct2ResTime" : 668.0,
+    "pct3ResTime" : 757.0,
+    "throughput" : 189.73125057655054,
+    "receivedKBytesPerSec" : 64.84954853690692,
+    "sentKBytesPerSec" : 39.92876718120599
+  }
+}

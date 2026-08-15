@@ -1,0 +1,34 @@
+{
+  "POST /api/apply-coupon" : {
+    "transaction" : "POST /api/apply-coupon",
+    "sampleCount" : 32699,
+    "errorCount" : 136,
+    "errorPct" : 0.41591486,
+    "meanResTime" : 118.10590537936916,
+    "medianResTime" : 98.0,
+    "minResTime" : 0.0,
+    "maxResTime" : 4237.0,
+    "pct1ResTime" : 133.0,
+    "pct2ResTime" : 150.0,
+    "pct3ResTime" : 261.0,
+    "throughput" : 603.8373467277294,
+    "receivedKBytesPerSec" : 234.8129310782612,
+    "sentKBytesPerSec" : 139.75532341257016
+  },
+  "Total" : {
+    "transaction" : "Total",
+    "sampleCount" : 32699,
+    "errorCount" : 136,
+    "errorPct" : 0.41591486,
+    "meanResTime" : 118.10590537936916,
+    "medianResTime" : 98.0,
+    "minResTime" : 0.0,
+    "maxResTime" : 4237.0,
+    "pct1ResTime" : 133.0,
+    "pct2ResTime" : 150.0,
+    "pct3ResTime" : 261.0,
+    "throughput" : 603.8373467277294,
+    "receivedKBytesPerSec" : 234.8129310782612,
+    "sentKBytesPerSec" : 139.75532341257016
+  }
+}

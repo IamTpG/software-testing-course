@@ -8,4 +8,5 @@ eshop-sut/backend/database.sqlite
 eshop-sut/**/.env
 
 # JMeter run artifacts (test plans and CSVs ARE tracked; raw results go under results/ deliberately)
+jmeter.log
 *.jmeter.log
