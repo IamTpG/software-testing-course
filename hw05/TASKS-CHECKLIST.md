@@ -39,6 +39,15 @@ For **each** of the 3 scenarios (Load / Stress / Spike):
 - [x] Self-verified against the live SUT before building (not just assumed): confirmed seeded product IDs are only 1-5 (documented as a known dataset-size limitation), read `server.js:159-165` and found two real bugs — (a) even-ID products return `price` as a string instead of a number, (b) a nonexistent product ID returns HTTP 200 `{}` instead of 404. Neither affects this plan's assertions, but both are candidates for the GitHub Issues bug log.
 - [x] Built `test-plans/23127244_Load_20260815.jmx` + `data/23127244_Load_products.csv`.
 - [x] Smoke-tested the actual `.jmx` logic (temp reduced-scale copy, not committed): positive run → 0% errors, correct CSV substitution per request; negative-control run (assertion deliberately broken) → 100% errors with the expected failure message — proves the assertion is live, not a silent no-op.
+- [x] 🔴 MANUAL — Reviewed and signed off by you.
+
+### Stress / auth-heavy — `POST /api/forgot-password` — done building, pending your review sign-off
+
+- [x] Designed: staged/staircase stress (4 sequential Thread Groups via `TestPlan.serialize_threadgroups=true`, no plugins needed) — Stage1 30VU/5s ramp/30s hold, Stage2 80VU/10s/30s, Stage3 150VU/15s/30s, Stage4 400VU/20s/40s (bumped from an initial 300VU after burst-test data showed 300 might be a borderline/inconclusive breaking point). Think-time Uniform 200-800ms (shorter than Load's — models an anxious/retrying user, and needed to actually generate stress). Summary Report listener.
+- [x] Self-verified against the live SUT before building: read `server.js:68-85` — every call is a `SELECT` + `UPDATE` (a write, not read-only), no lockout on this endpoint (confirmed), only 2 seeded users (documented limitation, but realistic as a "many users hit few hot rows" stress pattern). Confirmed Content-Type: application/json is required or Express won't parse the body (would silently 404 "User not found").
+- [x] Calibrated thread counts empirically, not guessed: burst-tested concurrency 20→700 directly against the live endpoint. Found latency scales ~linearly with concurrency (SQLite single-writer serialization) but **no hard errors even at 700** (avg 1.04s, max 1.58s) — meaning a response-code-only assertion would never trip. Added a **Duration Assertion (>2000ms = fail)** as the real stress signal alongside response-code 200.
+- [x] Built `test-plans/23127244_Stress_20260815.jmx` + `data/23127244_Stress_emails.csv`.
+- [x] Smoke-tested the actual `.jmx` at reduced scale: positive run → 0% errors across all 4 stages, confirmed stages ran strictly sequentially (no interleaving, verified via timestamp+threadName ordering) and CSV/header/body substitution worked; negative-control (duration threshold forced to 1ms) → 100% errors with the expected "operation lasted too long" message, proving the Duration Assertion is live.
 - [ ] 🔴 MANUAL — Your review/sign-off on the design before it's "final." Push back on anything before Phase 2 execution.
 
 ## Phase 2 — Task 1: Execution & evidence
