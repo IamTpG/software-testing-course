@@ -4,9 +4,32 @@
 
 ---
 
+## 0. Cách đọc số liệu trên màn hình JMeter (để giải thích khi quay)
+
+Mỗi khi JMeter in ra dòng dạng:
+```
+Active: 30 Started: 30 Finished: 0
+summary =  405 in 00:00:42 =  9.7/s Avg: 2 Min: 1 Max: 41 Err: 0 (0.00%)
+```
+thì đọc như sau, giải thích đơn giản bằng lời của mình:
+
+- **Active** = đang có bao nhiêu "người dùng ảo" (luồng) chạy cùng lúc ngay lúc này.
+- **summary = ... in ...** = tổng số request đã gửi tính từ đầu bài test, và tổng thời gian đã chạy.
+- **.../s** = tốc độ trung bình, bao nhiêu request mỗi giây.
+- **Avg / Min / Max** = thời gian phản hồi trung bình / nhanh nhất / chậm nhất, tính bằng mili-giây.
+- **Err: 0 (0.00%)** = số request bị lỗi và tỷ lệ lỗi. Số này tăng lên là dấu hiệu hệ thống đang gặp vấn đề.
+
+**Riêng cho từng bài test:**
+
+- **Load**: chỉ có 1 mức tải (30 luồng) suốt 5 phút, không đổi. Đọc số liệu một lần là đủ, không cần theo dõi "giai đoạn" nào cả.
+- **Stress**: có 4 giai đoạn, số **Active** sẽ tự nhảy: 30 → 80 → 150 → 400. Cứ thấy Active đổi số là biết đã sang giai đoạn mới — không cần nhìn gì khác. Chú ý cột **Err**: nếu ở giai đoạn 150 hoặc 400 luồng mà Err bắt đầu tăng, đó chính là lúc hệ thống "vỡ trận" — đúng như mục tiêu bài Stress test là tìm điểm giới hạn.
+- **Spike**: có 3 giai đoạn: 15 (bình thường) → 500 (đột biến, chỉ kéo dài ~15 giây) → 15 (hồi phục). Khi thấy Active nhảy vọt lên 500, đó là lúc "spike" đang xảy ra — lúc này nhìn sang `top` xem CPU phản ứng ra sao. Nếu Err vẫn giữ 0% dù Active = 500, nghĩa là hệ thống chịu được cú sốc tải tốt (đây là kết quả mong đợi, không phải lỗi).
+
+---
+
 ## 1. Mở đầu (nói 1 lần, trước khi chạy Load)
 
-> "Xin chào, em là [họ tên] — mã số sinh viên 23127244. Đây là video demo cho bài tập HW05, kiểm thử hiệu năng hệ thống EShop bằng JMeter, chạy trên máy cá nhân của em — thông tin phần cứng khớp với báo cáo hardware report em đã nộp kèm.
+> "Em chào thầy, em là Lê Thiên Phú — mã số sinh viên 23127244. Đây là video demo cho bài tập HW05, kiểm thử hiệu năng hệ thống EShop bằng JMeter, chạy trên máy cá nhân của em — thông tin phần cứng khớp với báo cáo hardware report em đã nộp kèm.
 
 > Em sẽ chạy lần lượt 3 kịch bản: Load test trên endpoint xem chi tiết sản phẩm, Stress test trên endpoint quên mật khẩu, và Spike test trên endpoint áp mã giảm giá. Màn hình bên trái là công cụ giám sát tài nguyên `top`, theo dõi tiến trình backend Node.js; màn hình bên phải là JMeter chạy ở chế độ non-GUI."
 
