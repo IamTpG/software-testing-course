@@ -1,0 +1,400 @@
+commit 38e2cb4
+Author: IamTpG <ltphu.dev@gmail.com>
+Date:   2026-08-15 18:42:44 +0700
+
+    chore(hw05): vendor eshop-sut SUT and set up portable JMeter toolchain
+
+Backend endpoints for all 3 chosen groups verified responding
+(GET /api/products/:id, POST /api/forgot-password, POST /api/apply-coupon).
+JDK 21 + JMeter 5.6.3 installed under hw05/tools/ (gitignored binaries,
+tools/env.sh sourced to put them on PATH) since sudo isn't available
+non-interactively for a system package install.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+----------------------------------------
+commit 0534014
+Author: IamTpG <ltphu.dev@gmail.com>
+Date:   2026-08-15 18:43:02 +0700
+
+    docs(hw05): mark Phase 0 steps 1-3 done in tasks checklist
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+----------------------------------------
+commit 5c50b67
+Author: IamTpG <ltphu.dev@gmail.com>
+Date:   2026-08-15 18:46:13 +0700
+
+    docs(hw05): draft hardware report spec table, pending screenshot
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+----------------------------------------
+commit 359fb47
+Author: IamTpG <ltphu.dev@gmail.com>
+Date:   2026-08-15 18:53:56 +0700
+
+    feat(hw05): add Load test plan for read-heavy GET /api/products/:id
+
+30 threads / 30s ramp / 300s hold, Gaussian think-time ~2s, CSV-driven
+over product IDs 1-5, response-code + id-match assertions, Aggregate
+Report listener. Verified against the live SUT before building:
+seeded dataset is only 5 products (documented limitation), and found
+two real bugs in server.js (price serialized as string for even IDs;
+unknown product id returns 200 {} instead of 404) - neither affects
+this plan's assertions. Smoke-tested the actual jmx logic with a
+reduced-scale positive run (0% errors) and a deliberately-broken
+negative control (100% errors, correct failure message) to confirm
+the assertions are live.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+----------------------------------------
+commit dee4dcf
+Author: IamTpG <ltphu.dev@gmail.com>
+Date:   2026-08-15 19:01:18 +0700
+
+    feat(hw05): add staged Stress test plan for auth-heavy POST /api/forgot-password
+
+4 sequential Thread Groups (serialize_threadgroups=true) escalating
+30/80/150/400 VU to find the breaking point without plugins. Stage 4
+bumped from an initial 300 VU to 400 after burst-test data showed 300
+risked an inconclusive result.
+
+Verified against the live SUT before building: endpoint is a write
+(SELECT+UPDATE) not a read, no lockout on this endpoint, Content-Type
+header required or Express silently 404s. Burst-tested concurrency
+20-700 directly against the endpoint first: latency scales ~linearly
+with concurrency (SQLite single-writer serialization) but no hard
+errors even at 700 (avg 1.04s) - so response-code alone would never
+catch a breaking point. Added a Duration Assertion (>2000ms) as the
+real stress signal.
+
+Smoke-tested the actual jmx at reduced scale: positive run confirmed
+strict sequential staging (no interleaving) and correct CSV/header/
+body substitution (0% errors); negative control (1ms threshold)
+produced 100% errors with the expected failure message, confirming
+the Duration Assertion is live.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+----------------------------------------
+commit 20e0495
+Author: IamTpG <ltphu.dev@gmail.com>
+Date:   2026-08-15 19:13:26 +0700
+
+    feat(hw05): add Spike test plan for transactional POST /api/apply-coupon
+
+3 sequential stages (baseline 15VU -> spike 500VU (2s ramp) -> recovery
+15VU), modeling resilience/recovery rather than hunting a breaking
+point - the correct distinction from the Stress plan.
+
+Verified against the live SUT before designing: found a real bug in
+server.js (percent-type coupons compute a negative discount because
+discount_value is treated as a whole number instead of a fraction, e.g.
+SAVE10 on 500000 produces -4500000 "discount"). Kept the CSV to only
+valid/successful combos and built assertions around success:true + 200,
+not the discount math, so this known bug doesn't corrupt the spike
+test's pass/fail signal - it's a separate bug-report candidate instead.
+
+Calibrated the spike magnitude with real data, not a guess: burst-
+tested 100/400/800 concurrent (clean), then pushed to 1500/2000 on
+review feedback - still 0% errors, no meaningful degradation. No
+breaking point found in the tested range is the real finding here,
+worth contrasting against forgot-password's write-lock bottleneck.
+Locked in 500 VU for the actual spike stage (33x baseline, fully
+bracketed by tested data).
+
+Smoke-tested the actual jmx at reduced scale: positive run confirmed
+correct sequential staging and multi-field CSV substitution (0%
+errors); two negative controls (broken success:true check, and a 1ms
+duration threshold) both failed as expected with correct messages,
+confirming the assertions are live.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+----------------------------------------
+commit 2793f13
+Author: IamTpG <ltphu.dev@gmail.com>
+Date:   2026-08-15 19:16:38 +0700
+
+    docs(hw05): mark Phase 1 complete, all 3 test plans reviewed and signed off
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+----------------------------------------
+commit d39e090
+Author: IamTpG <ltphu.dev@gmail.com>
+Date:   2026-08-15 19:20:31 +0700
+
+    docs(hw05): note verified jtl-append behavior before recorded runs
+
+Confirmed empirically: JMeter appends to an existing .jtl filename
+rather than overwriting it. Dry runs before the real recorded run are
+safe, but the old .jtl (not just the _report folder) must be deleted
+first or the final evidence file silently mixes dry-run and real data.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+----------------------------------------
+commit 28080d4
+Author: IamTpG <ltphu.dev@gmail.com>
+Date:   2026-08-15 19:25:03 +0700
+
+    docs(hw05): add copy-paste run/cleanup command reference for Phase 2
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+----------------------------------------
+commit ac67ec0
+Author: IamTpG <ltphu.dev@gmail.com>
+Date:   2026-08-15 20:01:27 +0700
+
+    docs(hw05): add Vietnamese narration script draft for the demo video
+
+Covers intro, per-scenario talking points (Load/Stress/Spike) tied to
+the actual design justifications from this session, and wrap-up
+mentioning the 3 bugs found during design. Notes to read live numbers
+off-screen rather than memorizing scripted values.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+----------------------------------------
+commit da3d864
+Author: IamTpG <ltphu.dev@gmail.com>
+Date:   2026-08-15 20:32:03 +0700
+
+    docs(hw05): add JMeter console cheat-sheet to narration script
+
+Simple field-by-field explanation of the Active/Started/Finished and
+summary lines, plus what to watch for specifically in each of the 3
+scenarios (Load has no stages, Stress's Active count reveals which
+staircase stage it's in, Spike's Active jump to 500 marks the burst).
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+----------------------------------------
+commit 81d143d
+Author: IamTpG <ltphu.dev@gmail.com>
+Date:   2026-08-15 21:05:36 +0700
+
+    docs(hw05): add per-run screenshots and demo video link
+
+Renamed to match naming convention (23127244_{Scenario}_run.png) and
+redacted the Machine ID line (kept everything else, including hostname
+for the anti-cheat check, fully visible) since these go into a public
+GitHub repo.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+----------------------------------------
+commit 4645f87
+Author: IamTpG <ltphu.dev@gmail.com>
+Date:   2026-08-15 21:37:14 +0700
+
+    feat(hw05): add real raw .jtl logs and HTML dashboard reports for all 3 runs
+
+Verified before committing: each jtl has exactly one header line (no
+dry-run contamination from earlier testing), and each report's
+statistics.json Total row matches the raw jtl's sample/error counts
+exactly.
+
+Real results: Load 4265 samples/0 errors; Stress 24681 samples/79
+errors (0.32%, max latency 7.68s by end of Stage 4 - worse than the
+6188ms caught mid-run in the screenshot); Spike 32699 samples/136
+errors (0.42%, all HTTP 200 / Duration Assertion breaches in Stage 2,
+matching the earlier root-cause analysis).
+
+Also fixed .gitignore: the jmeter.log pattern was "*.jmeter.log" which
+doesn't match the bare "jmeter.log" JMeter actually writes.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+----------------------------------------
+commit 2c1cbdb
+Author: IamTpG <ltphu.dev@gmail.com>
+Date:   2026-08-15 21:51:22 +0700
+
+    docs(hw05): draft 3 bug reports found during test design (not yet posted)
+
+Price-type inconsistency and 404-as-200 on products/:id, and the
+coupon percent-discount formula bug found during Spike design. Each
+includes exact file:line, repro steps, and real curl output already
+captured during this session. Drafted for review before posting to
+GitHub Issues, same workflow as HW04.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+----------------------------------------
+commit 331ee17
+Author: IamTpG <ltphu.dev@gmail.com>
+Date:   2026-08-15 21:58:51 +0700
+
+    docs(hw05): post 3 bug reports to GitHub Issues (#7, #8, #9)
+
+Posted text-only for now; screenshots to be attached to each issue
+later without needing to repost.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+----------------------------------------
+commit a52e68a
+Author: IamTpG <ltphu.dev@gmail.com>
+Date:   2026-08-15 22:01:27 +0700
+
+    docs(hw05): mark Phase 2 complete in tasks checklist
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+----------------------------------------
+commit 1761b3a
+Author: IamTpG <ltphu.dev@gmail.com>
+Date:   2026-08-15 22:05:45 +0700
+
+    feat(hw05): add endurance/soak test plan, 150 VU sustained 12min
+
+Flat sustained load against POST /api/forgot-password (the endpoint
+with a demonstrated real bottleneck), calibrated from the Stress
+test's own Stage 3 data (150 VU, clean at 222.6 RPS, but only tested
+for ~30s there). Verified JMeter's duration field includes ramp-up
+(not additive) by checking the real Load run's wall-clock time before
+setting timing, so the 735s duration gives exactly 720s of sustained
+load after a 15s ramp.
+
+Smoke-tested at reduced scale before running for real. Real 12-minute
+run + a parallel backend memory sampler now running in the background.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+----------------------------------------
+commit 57c7853
+Author: IamTpG <ltphu.dev@gmail.com>
+Date:   2026-08-15 22:19:35 +0700
+
+    feat(hw05): endurance test results - 285.6 RPS stable, 192.6MB peak memory
+
+Real 12-minute soak run against POST /api/forgot-password at 150 VU:
+209,748 samples, 0 errors (no HTTP failures, no Duration Assertion
+breaches), no degradation trend across any of the 12 minutes. Actually
+higher stable throughput (285.6 RPS) than the short Stress Stage 3
+snapshot suggested (222.6 RPS) - no competing adjacent stages, and
+JIT/connection-pool warm-up improves steady-state efficiency.
+
+Memory: peak RSS 192.6MB during warm-up (t=120s, before the run
+settled), then GC-compacted to a steady 88-116MB for the remaining
+~10 minutes - healthy GC behavior, not a leak. Full writeup in
+reports/Endurance-Threshold.md.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+----------------------------------------
+commit bc8b3bd
+Author: IamTpG <ltphu.dev@gmail.com>
+Date:   2026-08-15 22:36:21 +0700
+
+    docs(hw05): mark Phase 4 complete, demo video already recorded
+
+User confirmed the previously-provided YouTube link is the full
+narrated recording covering all 3 scenarios, not a placeholder.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+----------------------------------------
+commit b35c96a
+Author: IamTpG <ltphu.dev@gmail.com>
+Date:   2026-08-15 23:12:49 +0700
+
+    feat(hw05): Task 2 - AI log analysis, optimization proposals, and misinterpretation hunt
+
+Used a genuinely independent fresh Claude session (no access to this
+design conversation, only 2 self-contained prompts with repo file
+access) for the AI-first analysis step, then independently verified
+its output rather than re-reading it.
+
+Prompt 1 output (AI-Log-Analysis.md): per-scenario stats, percentiles,
+failure classification, and CI threshold proposals computed directly
+from the raw .jtl files. Cross-checked every claim with separate
+computations - all correct, including the most surprising one
+(JMeter's own dashboard reports a 6.5x-wrong median for Stress: 175ms
+vs the true 27ms, confirmed two independent ways).
+
+Prompt 2 output (Optimization-Proposals.md): 8 optimizations tied to
+specific findings, verified against live PRAGMA state and the actual
+source. Went beyond reading - executed both proposed SQL rewrites
+against a copy of the real database and confirmed byte-identical
+results to the current code. 8/8 classified feasible, 0 hallucinated.
+
+Full verification methodology and tables in
+reports/AI-Misinterpretation-Hunt.md.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+----------------------------------------
+commit b81827e
+Author: IamTpG <ltphu.dev@gmail.com>
+Date:   2026-08-15 23:17:51 +0700
+
+    docs(hw05): shift to autonomous execution mode past Phase 5
+
+User has delegated everything except physically-manual actions
+(screenshots, video, PDF export, zip/submission). AI Critique kept as
+a drafted-not-finalized exception since Section 10 explicitly tests
+the student's own reflection.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+----------------------------------------
+commit 4168c19
+Author: IamTpG <ltphu.dev@gmail.com>
+Date:   2026-08-15 23:19:19 +0700
+
+    feat(hw05): Task 3 - continuous performance testing proposal
+
+Tiered decision model (Skip/Smoke/Regression/Full) driven by path
+filters and event type, not "run everything every time" - grounded in
+HW05's own real findings: Load showed no cliff in any test, Stress/
+Spike both have demonstrated breaking points, and Endurance's 12-min
+cost only justifies nightly frequency.
+
+Regression flagging uses two distinct checks (hard ceiling from Task
+2's gates + rolling-baseline drift) plus a double-breach confirmation
+rule, since our own Stress data shows real run-to-run variance
+(Stage 4 p95=691ms vs p99=802ms) that a naive single-run threshold
+would misread as either a false alarm or a missed regression.
+
+Includes a Mermaid flow chart and a trade-off discussion covering
+cost, false alarms, missed regressions, and ongoing triage/maintenance
+cost.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+----------------------------------------
+commit b219fb8
+Author: IamTpG <ltphu.dev@gmail.com>
+Date:   2026-08-15 23:29:39 +0700
+
+    feat(hw05): Task 7 - jmeter-perf-testing Agent Skill + end-to-end demo
+
+Encodes the actual discipline used throughout this homework: self-
+verify against real code/live SUT before designing, calibrate thread
+counts empirically, prove assertions are live via positive+negative
+smoke tests, independently reproduce any AI analysis claim rather
+than trusting it.
+
+Demonstrated end-to-end on GET /api/products?search= (not one of the
+3 graded scenarios) with real output, not a paper skill. Step 0 found
+a genuine SQL injection vulnerability (unparameterized search param,
+server.js:143-145) - confirmed live and non-destructively via a
+boolean-based bypass (all 5 products returned regardless of search
+term). Logged as a draft bug report rather than auto-posted, since
+posting a live exploit payload publicly was correctly blocked by
+safety controls - needs manual review before posting.
+
+Steps 1-5 (calibrate/build/smoke-test/execute/analyze) completed
+cleanly: 1,059 samples, 0 errors, p95=3ms, cross-checked against the
+dashboard statistics.json.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+----------------------------------------

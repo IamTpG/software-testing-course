@@ -114,12 +114,14 @@ For **each** scenario:
 
 ## Phase 8 — Reports & mandatory appendices
 
-- [ ] Write Main Report (Markdown), covering Tasks 1–3, all evidence references.
-- [ ] Compile AI Audit Report appendix (every AI interaction logged: tool, timestamp, prompt, output).
-- [ ] Draft the AI Critique paragraph (200–300 words) as a starting point. 🔴 MANUAL — user must read and confirm it genuinely reflects their own view before it's final (Section 10 explicitly tests the student's own reflection).
-- [ ] 🔴 MANUAL — Convert Main Report + AI Audit Report to PDF (user's own workflow).
-- [ ] Export Git commit log to a text file (Section 12).
-- [ ] Write `README.md`: self-assessment table + test summary (scenarios run, endpoint groups covered, endurance threshold numbers, bug/perf-issue count, demo video link).
+- [x] Wrote Main Report (`reports/MainReport.md`) — Tasks 1-3, all evidence cross-referenced to the actual supporting docs/results.
+- [x] Compiled AI Audit Report (`reports/AI-Audit-Report.md`) — chronological log of every major AI interaction, both this main session and the independent fresh session used for Task 2, with real timestamps pulled from git history.
+- [x] Drafted the AI Critique (`reports/AI-Critique.md`, 271 words) as a starting point, centered on a genuine finding (the Spike design's curl-probe vs. real-run gap) rather than a generic answer. 🔴 MANUAL — needs your read-and-confirm before it's final.
+- [ ] 🔴 MANUAL — Convert Main Report + AI Audit Report to PDF (your own workflow).
+- [x] Exported Git commit log to `reports/Git-Commit-Log.txt` (will re-export once more before final zip to catch remaining commits).
+- [x] Wrote `README.md`: self-assessment table (grade column left blank for you) + test summary.
+
+**Phase 8 complete except the two 🔴 MANUAL items above.**
 
 ## Phase 9 — Packaging & submission
 
