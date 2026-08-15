@@ -74,8 +74,10 @@ For **each** scenario:
 
 ## Phase 3 — Endurance / soak test
 
-- [ ] Design a 10–15 min sustained-load run (AI-assisted) against one or more of the 3 endpoints.
-- [ ] 🔴 MANUAL — Execute it, monitor resources live, and record the empirical threshold (max stable RPS, memory ceiling) with concrete numbers.
+- [x] Designed: flat 150 VU sustained for 12 min (735s = 15s ramp + 720s hold, verified empirically that JMeter's `duration` field is measured from thread-group start and includes ramp-up, not additive — confirmed against the real Load run's wall-clock time) against `POST /api/forgot-password`, the endpoint with a demonstrated real bottleneck (Load/Spike showed no meaningful limits in testing, so less informative to soak-test). Calibrated from the Stress run's own data: Stage 3 (150 VU) ran clean at 222.6 RPS but only for ~30s — this endurance run checks whether that holds for a genuinely sustained window, which a short staged test can't reveal (e.g. slow memory growth, gradual queue buildup).
+- [x] Built `test-plans/23127244_Endurance_20260815.jmx` (reuses the Stress CSV — same endpoint/group, not a new one requiring its own data file). Smoke-tested at reduced scale (5 VU/5s), 0% errors, confirmed working before committing to the real run.
+- [x] Section 6 doesn't require a screenshot/video-in-frame for this step (unlike the 3 main scenarios) — running the real 12-min soak myself in the background, with a parallel backend memory sampler (`ps` every 10s → `results/23127244_Endurance_20260815_memory.csv`) to get real RSS/CPU-over-time numbers, not just the JMeter-side throughput/error stats.
+- [ ] 🔴 MANUAL — none expected for this step; results to be reported once the background run finishes (~12 min).
 
 ## Phase 4 — Demo video (Task 1 requirement)
 
