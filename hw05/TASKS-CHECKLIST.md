@@ -63,12 +63,14 @@ For **each** of the 3 scenarios (Load / Stress / Spike):
 
 For **each** scenario:
 
-- [ ] Do a dry run first (untimed, no recording) to confirm the command works end-to-end — safe to repeat, none of the 3 endpoints mutate state that would corrupt a later run.
-- [ ] ⚠️ Verified: JMeter **appends** to an existing `.jtl` filename rather than overwriting it (confirmed by running the same plan twice into the same file — both runs' rows ended up merged into one file). Before the real recorded run, delete both the old `.jtl` **and** the `_report` folder, not just the report folder: `rm -f ../results/23127244_{Scenario}_20260815.jtl && rm -rf ../results/23127244_{Scenario}_20260815_report`.
-- [ ] 🔴 MANUAL — Run the `.jmx` via JMeter non-GUI while recording resource monitor in the same view; screenshot tool + htop together.
-- [ ] Note: no account-lockout handling needed for this endpoint set (only `/login` has the 3-fail lockout, and we're not targeting it) — skip that step, but double-check `forgot-password` under Stress doesn't hit an undocumented rate limit; if it does, document the reset steps like the lockout case.
-- [ ] Save raw `.jtl` log and the generated HTML report folder for each run.
+- [x] Dry run done first (Load), confirmed the command works end-to-end before the real take.
+- [x] ⚠️ Verified: JMeter **appends** to an existing `.jtl` filename rather than overwriting it. Cleanup step applied before the real recorded run.
+- [x] 🔴 MANUAL — Ran all 3 `.jmx` files via JMeter non-GUI with OBS screen recording (tool + `top` in the same frame). Screenshots taken mid-run for all 3, confirmed by content: `23127244_Load_run.png`, `23127244_Stress_run.png`, `23127244_Spike_run.png` (Machine ID redacted before committing, hostname kept visible).
+- [x] Confirmed: no account-lockout handling needed (only `/login` has it, not targeted). `forgot-password` under Stress didn't hit any undocumented rate limit — its errors were the intended Duration Assertion (SLA), not rate-limiting.
+- [x] Real `.jtl` logs + HTML report folders committed for all 3: Load 4265 samples/0 errors, Stress 24681/79 errors (0.32%, max 7.68s), Spike 32699/136 errors (0.42%, all HTTP 200 / Duration Assertion breaches — verified root cause, not a real failure).
 - [~] Logged 3 genuine bugs found during test design to GitHub Issues (posted, text-only for now): [#7](https://github.com/IamTpG/software-testing-course/issues/7) price type flip, [#8](https://github.com/IamTpG/software-testing-course/issues/8) 404-as-200, [#9](https://github.com/IamTpG/software-testing-course/issues/9) coupon negative discount. 🔴 MANUAL remaining: attach a screenshot to each (not blocking — can edit the issue later).
+
+**Phase 2 complete.**
 
 ## Phase 3 — Endurance / soak test
 
