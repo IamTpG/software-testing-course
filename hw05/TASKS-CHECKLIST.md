@@ -70,7 +70,7 @@ For **each** scenario:
 - [x] 🔴 MANUAL — Ran all 3 `.jmx` files via JMeter non-GUI with OBS screen recording (tool + `top` in the same frame). Screenshots taken mid-run for all 3, confirmed by content: `23127244_Load_run.png`, `23127244_Stress_run.png`, `23127244_Spike_run.png` (Machine ID redacted before committing, hostname kept visible).
 - [x] Confirmed: no account-lockout handling needed (only `/login` has it, not targeted). `forgot-password` under Stress didn't hit any undocumented rate limit — its errors were the intended Duration Assertion (SLA), not rate-limiting.
 - [x] Real `.jtl` logs + HTML report folders committed for all 3: Load 4265 samples/0 errors, Stress 24681/79 errors (0.32%, max 7.68s), Spike 32699/136 errors (0.42%, all HTTP 200 / Duration Assertion breaches — verified root cause, not a real failure).
-- [~] Logged 3 genuine bugs found during test design to GitHub Issues (posted, text-only for now): [#7](https://github.com/IamTpG/software-testing-course/issues/7) price type flip, [#8](https://github.com/IamTpG/software-testing-course/issues/8) 404-as-200, [#9](https://github.com/IamTpG/software-testing-course/issues/9) coupon negative discount. 🔴 MANUAL remaining: attach a screenshot to each (not blocking — can edit the issue later).
+- [x] Logged 3 genuine bugs found during test design to GitHub Issues, screenshots attached: [#7](https://github.com/IamTpG/software-testing-course/issues/7) price type flip, [#8](https://github.com/IamTpG/software-testing-course/issues/8) 404-as-200, [#9](https://github.com/IamTpG/software-testing-course/issues/9) coupon negative discount. (4th bug, SQL injection, found later during the Phase 7 Agent Skill demo — see Phase 7.)
 
 **Phase 2 complete.**
 
@@ -108,9 +108,9 @@ For **each** scenario:
 ## Phase 7 — Agent Skill
 
 - [x] Built `.claude/skills/jmeter-perf-testing/SKILL.md` — encodes the actual discipline used throughout this homework: self-verify against real code/live SUT before designing, calibrate thread counts empirically (not guessed), prove assertions are live via positive+negative smoke tests before any real run, and independently reproduce any AI-produced analysis claim rather than trusting it.
-- [x] **Demonstrated end-to-end on a new endpoint** (`GET /api/products?search=`, not one of the 3 graded scenarios) — real output in `skill-demo/`, not just a paper skill. Step 0 (self-verify) found a genuine **SQL injection vulnerability** (confirmed live, non-destructive boolean-bypass proof), logged as a draft bug report (Issue 4, not auto-posted — posting a live exploit payload was correctly blocked by safety controls, needs your manual review/post). Steps 1-5 (calibrate → build → smoke-test → execute → analyze) completed cleanly: 1,059 samples, 0 errors, p95=3ms. Full trail: `skill-demo/README.md`, `skill-demo/ai-audit-log/products-search.md`.
+- [x] **Demonstrated end-to-end on a new endpoint** (`GET /api/products?search=`, not one of the 3 graded scenarios) — real output in `skill-demo/`, not just a paper skill. Step 0 (self-verify) found a genuine **SQL injection vulnerability** (confirmed live, non-destructive boolean-bypass proof). Steps 1-5 (calibrate → build → smoke-test → execute → analyze) completed cleanly: 1,059 samples, 0 errors, p95=3ms. Full trail: `skill-demo/README.md`, `skill-demo/ai-audit-log/products-search.md`.
+- [x] Reviewed and posted as [#10](https://github.com/IamTpG/software-testing-course/issues/10) — held back from auto-posting for human review (a live exploit payload going public), student reviewed and approved posting.
 - [ ] 🔴 MANUAL — Record a second demo video (YouTube link) showing the skill run end-to-end on a complete endpoint group. `skill-demo/README.md` has a walkthrough order to follow.
-- [ ] 🔴 MANUAL — Review and decide whether to post the draft SQL injection issue (`reports/github-issues-draft.md`, Issue 4) — not auto-posted for safety reasons.
 
 ## Phase 8 — Reports & mandatory appendices
 

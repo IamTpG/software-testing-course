@@ -16,7 +16,7 @@ every parameter — never a guessed thread count. Full details in
 | Stress result | 79 errors (0.32%) — real breaking point between 150→400 VU (p95 49ms→691ms) |
 | Spike result | 136 errors (0.42%), all Duration Assertion breaches (HTTP 200 throughout), concentrated in the spike stage |
 | **Endurance threshold** | **285.6 req/s sustained for 12 min, 0% errors**; peak memory 192.6MB (warm-up), steady-state 88-116MB (no leak) |
-| Bugs found & reported | 4 total — [#7](https://github.com/IamTpG/software-testing-course/issues/7), [#8](https://github.com/IamTpG/software-testing-course/issues/8), [#9](https://github.com/IamTpG/software-testing-course/issues/9) posted; #4 (SQL injection, critical) drafted but not auto-posted — see `reports/github-issues-draft.md` |
+| Bugs found & reported | 4 total, all posted with screenshots — [#7](https://github.com/IamTpG/software-testing-course/issues/7), [#8](https://github.com/IamTpG/software-testing-course/issues/8), [#9](https://github.com/IamTpG/software-testing-course/issues/9), [#10](https://github.com/IamTpG/software-testing-course/issues/10) (SQL injection, Critical) |
 | Task 2 — AI misinterpretation hunt | 0 real misinterpretations found (rigorously verified, not assumed) — see `reports/AI-Misinterpretation-Hunt.md` |
 | Task 2 — Optimization judgment | 8/8 proposals classified feasible, 0 hallucinated (2 SQL rewrites tested against real data) |
 | Task 3 | Tiered continuous performance-testing proposal — see `reports/Continuous-Performance-Testing-Proposal.md` |

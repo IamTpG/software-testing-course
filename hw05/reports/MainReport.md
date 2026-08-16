@@ -98,7 +98,7 @@ homework, but genuine and worth recording per Section 6:
 | [#7](https://github.com/IamTpG/software-testing-course/issues/7) | `products/:id` price field flips string/number by id parity | Minor | Posted |
 | [#8](https://github.com/IamTpG/software-testing-course/issues/8) | `products/:id` returns HTTP 200 `{}` instead of 404 for unknown id | Minor | Posted |
 | [#9](https://github.com/IamTpG/software-testing-course/issues/9) | `apply-coupon` percent-discount formula produces a large *negative* discount | Major | Posted |
-| #4 (draft) | `products?search=` SQL injection — unauthenticated arbitrary WHERE-clause injection | **Critical** | **Drafted, not auto-posted** — found during the Agent Skill demo (§4); posting a working exploit payload was correctly blocked by safety controls, needs manual review (`github-issues-draft.md`) |
+| [#10](https://github.com/IamTpG/software-testing-course/issues/10) | `products?search=` SQL injection — unauthenticated arbitrary WHERE-clause injection | **Critical** | Posted — found during the Agent Skill demo (§4); auto-posting was correctly held back for human review, then approved and posted by the student |
 
 ---
 

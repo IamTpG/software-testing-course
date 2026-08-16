@@ -118,9 +118,10 @@ severity via a `UNION SELECT`-based credential-extraction proof-of-concept was *
 session's own safety controls**, appropriately, even on a local intentionally-vulnerable practice
 system; posting the write-up to the public repo was **also blocked** for the same reason (a live
 exploit payload going public). Both left for the student's manual review/decision rather than
-worked around. Steps 1-5 (calibrate/build/smoke-test/execute/analyze) completed cleanly: 1,059
-samples, 0 errors, p95=3ms. Full trail: `skill-demo/README.md`,
-`skill-demo/ai-audit-log/products-search.md`.
+worked around — the student reviewed and approved posting, and it's now
+[issue #10](https://github.com/IamTpG/software-testing-course/issues/10). Steps 1-5
+(calibrate/build/smoke-test/execute/analyze) completed cleanly: 1,059 samples, 0 errors, p95=3ms.
+Full trail: `skill-demo/README.md`, `skill-demo/ai-audit-log/products-search.md`.
 
 ---
 

@@ -2,25 +2,22 @@
 
 Found incidentally while reading `eshop-sut/backend/server.js` during HW05 test-plan design (self-verification step before building each JMeter plan) — not the focus of this homework, but genuine functional bugs worth recording per Section 6 Task 1.
 
-**Posted:**
+**Posted (all 4, all with screenshots attached):**
 - Issue 1 (price type flip): https://github.com/IamTpG/software-testing-course/issues/7
 - Issue 2 (404-as-200): https://github.com/IamTpG/software-testing-course/issues/8
 - Issue 3 (coupon negative discount): https://github.com/IamTpG/software-testing-course/issues/9
+- Issue 10 (SQL injection, `GET /api/products?search=`) — https://github.com/IamTpG/software-testing-course/issues/10.
+  Found during the `jmeter-perf-testing` Agent Skill demo (Phase 7). Confirmed live and
+  non-destructively: a boolean-based payload (`search=x' OR '1'='1' --`) returns all 5 products
+  regardless of the search term, proving arbitrary WHERE-clause injection. More severe than
+  issues 1-3 — a structural path to unauthenticated credential exposure via `UNION SELECT`
+  against the `users` table (has a `password` column) exists, though that extraction was not
+  personally executed (blocked by this session's own safety controls, appropriately). Posting
+  itself was initially held back for the same reason (a live exploit payload going public needs a
+  human decision, not automatic posting) — reviewed and approved by the student, then posted.
+  Full text below (kept as the local record).
 
-Screenshots still to be attached to each issue (posted text-only for now, per plan).
-
-**Not posted (needs your manual review/post):**
-- Issue 4 (SQL injection, `GET /api/products?search=`) — found during the `jmeter-perf-testing`
-  Agent Skill demo (Phase 7). Confirmed live and non-destructively: a boolean-based payload
-  (`search=x' OR '1'='1' --`) returns all 5 products regardless of the search term, proving
-  arbitrary WHERE-clause injection. This is more severe than issues 1-3 — a structural path to
-  unauthenticated credential exposure via `UNION SELECT` against the `users` table (has a
-  `password` column) exists, though I did not execute that extraction myself (blocked by this
-  session's own safety controls, and posting the write-up itself was also blocked — both
-  reasonably, since it's a live exploit payload going into a public repo). Full draft below. If
-  you want this posted, review it and post it yourself (or explicitly re-authorize me to).
-
-## Issue 4 (draft — SQL injection)
+## Issue 10 — SQL injection (posted)
 
 **Title:** `[HW05][Products][SECURITY] SQL injection via search parameter allows arbitrary WHERE-clause injection`
 
@@ -177,5 +174,5 @@ Also visible directly in the HW05 Spike test run's View Results Tree report (`re
 
 ## After posting
 
-- [x] Posted to `IamTpG/software-testing-course` (issues #7, #8, #9).
-- [ ] Attach a real screenshot to each issue (curl/Postman output, or for Issue 3 specifically, a screenshot of the View Results Tree panel showing the response — that data is already saved in `results/23127244_Spike_20260815_report`). Can be added by editing the issue directly on GitHub, no need to repost.
+- [x] Posted to `IamTpG/software-testing-course` — issues [#7](https://github.com/IamTpG/software-testing-course/issues/7), [#8](https://github.com/IamTpG/software-testing-course/issues/8), [#9](https://github.com/IamTpG/software-testing-course/issues/9), [#10](https://github.com/IamTpG/software-testing-course/issues/10).
+- [x] Screenshot attached to all 4 (as issue comments, via raw GitHub URLs to `reports/screenshots/`).
