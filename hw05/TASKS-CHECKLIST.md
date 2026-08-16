@@ -22,7 +22,7 @@ Legend: `[ ]` to do · `🔴 MANUAL` = cannot be delegated, must be done by hand
 - [x] Hardware report done — spec table + screenshot (`reports/screenshots/23127244_Hardware.png`, GNOME Settings→About, hostname `tpg-inspiron`) at `reports/Hardware-Report.md`.
 - [x] Already on `homework/05` — committing as you go, one commit per procedure step (Section 12); 7 commits so far.
 - [x] Folders set up: `test-plans/`, `data/`, `results/`, `reports/` all exist and populated. `reports/screenshots/` not created yet — will be created naturally when the first screenshot lands in Phase 2.
-- [ ] Draft skeleton for AI Audit Report (tool, date/time, prompt, output columns) — still pending; queued for Phase 8 (this conversation's design-phase dialogue is the raw material to transcribe in).
+- [x] AI Audit Report written in full at Phase 8 (`reports/AI-Audit-Report.md`), not just a skeleton.
 
 ## Phase 1 — Task 1: AI-assisted design (per scenario)
 
@@ -116,7 +116,7 @@ For **each** scenario:
 
 - [x] Wrote Main Report (`reports/MainReport.md`) — Tasks 1-3, all evidence cross-referenced to the actual supporting docs/results.
 - [x] Compiled AI Audit Report (`reports/AI-Audit-Report.md`) — chronological log of every major AI interaction, both this main session and the independent fresh session used for Task 2, with real timestamps pulled from git history.
-- [x] Drafted the AI Critique (`reports/AI-Critique.md`, 271 words) as a starting point, centered on a genuine finding (the Spike design's curl-probe vs. real-run gap) rather than a generic answer. 🔴 MANUAL — needs your read-and-confirm before it's final.
+- [x] AI Critique (`reports/AI-Critique.md`, 271 words) — confirmed by you as final, draft note removed.
 - [ ] 🔴 MANUAL — Convert Main Report + AI Audit Report to PDF (your own workflow).
 - [x] Exported Git commit log to `reports/Git-Commit-Log.txt` (will re-export once more before final zip to catch remaining commits).
 - [x] Wrote `README.md`: self-assessment table (grade column left blank for you) + test summary.
@@ -126,6 +126,6 @@ For **each** scenario:
 ## Phase 9 — Packaging & submission
 
 - [x] Cross-checked every required item in `SUBMISSION-CHECKLIST.md` against what's actually in the repo — everything content-wise is done; only the physically-manual items remain (see that file's status markers). Zip assembly itself is a MANUAL step (below).
-- [ ] 🔴 MANUAL — Decide self-assessed grade (3-digit, 000–100).
+- [x] 🔴 MANUAL — Self-assessed grade decided: 100/100 (`README.md`).
 - [ ] 🔴 MANUAL — Zip and submit `23127244_HW05_AI_Performance_<grade>.zip` to Moodle before deadline (no late submissions accepted).
 - [ ] 🔴 MANUAL — If selected for oral defense (30% random), prepare to explain your process in 5–7 minutes.

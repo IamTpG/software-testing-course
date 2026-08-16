@@ -16,7 +16,7 @@ Zip filename: `23127244_HW05_AI_Performance_<SelfAssessedGrade>.zip` (grade = 3-
 - [~] **Resource-monitor screenshots** — `reports/screenshots/23127244_{Load,Stress,Spike}_run.png` present, confirmed by content, Machine ID redacted. 🔴 Bug-report screenshots for issues #7/#8/#9 still pending (text-only posted so far).
 - [x] **Hardware-spec screenshot** — `reports/screenshots/23127244_Hardware.png` (GNOME Settings→About), wired into `reports/Hardware-Report.md`.
 - [x] **Unlisted YouTube demo video link** — https://youtu.be/GmoYPY6HPyg, confirmed by you as the full narrated recording.
-- [x] **AI Critique** (Markdown done, `reports/AI-Critique.md`, 271 words) — 🔴 needs your read-and-confirm (Section 10 tests your own reflection) + PDF conversion.
+- [x] **AI Critique** (Markdown done and confirmed by you, `reports/AI-Critique.md`, 271 words) — 🔴 PDF conversion still needed.
 - [x] **AI Audit Report** (Markdown done, `reports/AI-Audit-Report.md`) — 🔴 PDF conversion still needed.
 - [x] **Git commit log** — `reports/Git-Commit-Log.txt` (will re-export once more before final zip).
 - [~] **Bug report** — 3 posted (#7/#8/#9, text-only), 1 drafted but not posted (#4, SQL injection — needs your manual review/post decision, `reports/github-issues-draft.md`). Screenshots pending for all.
