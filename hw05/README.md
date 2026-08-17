@@ -48,7 +48,7 @@ every parameter — never a guessed thread count. Full details in
 - `reports/` — `MainReport.md`, `AI-Critique.md`, `AI-Audit-Report.md`, `Endurance-Threshold.md`,
   `AI-Log-Analysis.md`, `Optimization-Proposals.md`, `AI-Misinterpretation-Hunt.md`,
   `Continuous-Performance-Testing-Proposal.md`, `Hardware-Report.md`, `github-issues-draft.md`,
-  `Git-Commit-Log.txt`, `Narration-Script.md`
+  `Git-Commit-Log.txt`
 - `TASKS-CHECKLIST.md` — the full step-by-step working log, timestamped, everything traceable
 
 ## Running the tests
@@ -59,5 +59,5 @@ source ../../tools/env.sh                     # portable JDK + JMeter on PATH
 cd ../../test-plans
 jmeter -n -t 23127244_Load_20260815.jmx -l ../results/23127244_Load_20260815.jtl -e -o ../results/23127244_Load_20260815_report
 ```
-See `RUN-COMMANDS.md` for the full copy-paste reference (all 4 scenarios + cleanup steps — JMeter
-appends to an existing `.jtl` rather than overwriting it, verified the hard way).
+Note: JMeter appends to an existing `.jtl` filename rather than overwriting it — delete the old
+`.jtl` and `_report` folder before rerunning a scenario, or the file mixes old and new data.

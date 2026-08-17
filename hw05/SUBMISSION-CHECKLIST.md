@@ -26,7 +26,7 @@ Moodle expects — check) as `23127244_HW05_AI_Performance_100.zip` when ready.
 - [x] **Bug report** — all 4 issues posted with screenshots, referenced in `reports/github-issues-draft.md` and `README.md`: [#7](https://github.com/IamTpG/software-testing-course/issues/7), [#8](https://github.com/IamTpG/software-testing-course/issues/8), [#9](https://github.com/IamTpG/software-testing-course/issues/9), [#10](https://github.com/IamTpG/software-testing-course/issues/10) (SQL injection, Critical).
 - [x] **`README.md`** — self-assessment table filled (100/100), test summary complete.
 - [x] **Agent Skill** — `.claude/skills/jmeter-perf-testing/SKILL.md` + full demo trail in `skill-demo/` + its own video link `SKILL-DEMO-VIDEO-LINK.txt` → https://youtu.be/Hnoe-5KldYE.
-- [x] Supporting materials — `data/` (all 4 CSVs), `reports/Endurance-Threshold.md`, `AI-Log-Analysis.md`, `Optimization-Proposals.md`, `AI-Misinterpretation-Hunt.md`, `Continuous-Performance-Testing-Proposal.md`, `Narration-Script.pdf` (your own).
+- [x] Supporting materials — `data/` (all 4 CSVs), `reports/Endurance-Threshold.md`, `AI-Log-Analysis.md`, `Optimization-Proposals.md`, `AI-Misinterpretation-Hunt.md`, `Continuous-Performance-Testing-Proposal.md`.
 
 Stray local files (`jmeter.log` in `test-plans/` and `skill-demo/test-plans/`) were found and
 removed from the packaged folder — not deliverables, just JMeter's own run log.
