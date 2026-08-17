@@ -1,51 +1,64 @@
 # HW05 — Submission Checklist (23127244)
 
-Zip filename: `23127244_HW05_AI_Performance_<SelfAssessedGrade>.zip` (grade = 3-digit, 000–100, e.g. `23127244_HW05_AI_Performance_090.zip`).
+Packaged submission folder: **`hw05/23127244_HW05_AI_Performance_100/`** (built, not committed —
+mirrors the HW04 convention of a `23127244_HW0X_..._<grade>/` snapshot folder inside the homework
+directory). Zip that folder's *contents* (not the folder itself as a subfolder, unless that's what
+Moodle expects — check) as `23127244_HW05_AI_Performance_100.zip` when ready.
 
-## Required contents
+## Contents verified present in the packaged folder
 
-- [~] **Main report** (Markdown **and** PDF) — `reports/MainReport.md` done. 🔴 PDF conversion still needed (your workflow).
-- [x] **Public GitHub repository link** — `IamTpG/software-testing-course` (public), test plans/data pushed.
-- [x] **Three test plans**, filenames matching `23127244_{ScenarioType}_{YYYYMMDD}`:
+- [x] **Main report** (Markdown) — `reports/MainReport.md`. 🔴 **PDF still missing** — convert and drop into `reports/` as `MainReport.pdf`.
+- [x] **Public GitHub repository link** — `GITHUB-REPO-LINK.txt` → https://github.com/IamTpG/software-testing-course/tree/homework/hw05/hw05 (verified resolves, HTTP 200).
+- [x] **Test plans**, filenames matching `23127244_{ScenarioType}_{YYYYMMDD}`, in `test-plans/`:
   - [x] `23127244_Load_20260815.jmx` — read-heavy, `GET /api/products/:id`
   - [x] `23127244_Stress_20260815.jmx` — auth-heavy, `POST /api/forgot-password`
   - [x] `23127244_Spike_20260815.jmx` — transactional, `POST /api/apply-coupon`
-  - (bonus, not required: `23127244_Endurance_20260815.jmx`, Section 6's soak-test requirement)
-- [x] **Three raw `.jtl` logs** (full files) — all 4 present in `results/`, verified clean (no dry-run contamination, cross-checked against `statistics.json`).
-- [x] **Three HTML report folders** — all 4 present in `results/`.
-- [~] **Resource-monitor screenshots** — `reports/screenshots/23127244_{Load,Stress,Spike}_run.png` present, confirmed by content, Machine ID redacted. 🔴 Bug-report screenshots for issues #7/#8/#9 still pending (text-only posted so far).
-- [x] **Hardware-spec screenshot** — `reports/screenshots/23127244_Hardware.png` (GNOME Settings→About), wired into `reports/Hardware-Report.md`.
-- [x] **Unlisted YouTube demo video link** — https://youtu.be/GmoYPY6HPyg, confirmed by you as the full narrated recording.
-- [x] **AI Critique** (Markdown done and confirmed by you, `reports/AI-Critique.md`, 271 words) — 🔴 PDF conversion still needed.
-- [x] **AI Audit Report** (Markdown done, `reports/AI-Audit-Report.md`) — 🔴 PDF conversion still needed.
-- [x] **Git commit log** — `reports/Git-Commit-Log.txt` (will re-export once more before final zip).
-- [x] **Bug report** — all 4 posted with screenshots: [#7](https://github.com/IamTpG/software-testing-course/issues/7), [#8](https://github.com/IamTpG/software-testing-course/issues/8), [#9](https://github.com/IamTpG/software-testing-course/issues/9), [#10](https://github.com/IamTpG/software-testing-course/issues/10) (SQL injection, Critical).
-- [x] **`README.md`** — `README.md` done, all 4 bullets covered; self-assessment grade column intentionally left blank for you.
-- [x] **Agent Skill** — `.claude/skills/jmeter-perf-testing/` done + demonstrated end-to-end in `skill-demo/`, its own demo video recorded: https://youtu.be/Hnoe-5KldYE
-- [x] Any other supporting materials — CSVs, `RUN-COMMANDS.md`, `Narration-Script.md`/`.pdf`, `Endurance-Threshold.md`, `AI-Log-Analysis.md`, `Optimization-Proposals.md`, `AI-Misinterpretation-Hunt.md`, `Continuous-Performance-Testing-Proposal.md` all present and committed.
+  - [x] `23127244_Endurance_20260815.jmx` — bonus, Section 6's soak-test requirement
+- [x] **Raw `.jtl` logs**, full files, in `results/` — all 4, verified clean earlier (no dry-run contamination, cross-checked against `statistics.json`).
+- [x] **HTML report folders** — all 4, in `results/`.
+- [x] **Resource-monitor screenshots** — `reports/screenshots/23127244_{Load,Stress,Spike}_run.png`, confirmed by content, Machine ID redacted.
+- [x] **Hardware-spec screenshot** — `reports/screenshots/23127244_Hardware.png`, wired into `reports/Hardware-Report.md`.
+- [x] **Bug-repro screenshots** — `23127244_Bug{7,8,9,10}_*.png`, all 4, attached to their GitHub issues too.
+- [x] **Unlisted YouTube demo video link** — `DEMO-VIDEO-LINK.txt` → https://youtu.be/GmoYPY6HPyg.
+- [x] **AI Critique** (Markdown, confirmed by you, 271 words) — `reports/AI-Critique.md`. 🔴 **PDF still missing**.
+- [x] **AI Audit Report** (Markdown) — `reports/AI-Audit-Report.md`. 🔴 **PDF still missing**.
+- [x] **Git commit log** — `commit_log.txt` at the folder root.
+- [x] **Bug report** — all 4 issues posted with screenshots, referenced in `reports/github-issues-draft.md` and `README.md`: [#7](https://github.com/IamTpG/software-testing-course/issues/7), [#8](https://github.com/IamTpG/software-testing-course/issues/8), [#9](https://github.com/IamTpG/software-testing-course/issues/9), [#10](https://github.com/IamTpG/software-testing-course/issues/10) (SQL injection, Critical).
+- [x] **`README.md`** — self-assessment table filled (100/100), test summary complete.
+- [x] **Agent Skill** — `.claude/skills/jmeter-perf-testing/SKILL.md` + full demo trail in `skill-demo/` + its own video link `SKILL-DEMO-VIDEO-LINK.txt` → https://youtu.be/Hnoe-5KldYE.
+- [x] Supporting materials — `data/` (all 4 CSVs), `reports/Endurance-Threshold.md`, `AI-Log-Analysis.md`, `Optimization-Proposals.md`, `AI-Misinterpretation-Hunt.md`, `Continuous-Performance-Testing-Proposal.md`, `Narration-Script.pdf` (your own).
+
+Stray local files (`jmeter.log` in `test-plans/` and `skill-demo/test-plans/`) were found and
+removed from the packaged folder — not deliverables, just JMeter's own run log.
+
+## Still needed before zipping (all yours — PDF conversion)
+
+- [ ] 🔴 `reports/MainReport.pdf`
+- [ ] 🔴 `reports/AI-Audit-Report.pdf`
+- [ ] 🔴 `reports/AI-Critique.pdf`
 
 ## Anti-cheat verification (TAs will check these)
 
 - [x] Test-plan filenames exactly match `23127244_{ScenarioType}_{YYYYMMDD}`.
-- [x] `.jtl` logs are the full raw files, verified not trimmed/summarized (row counts + `statistics.json` cross-checked).
+- [x] `.jtl` logs are the full raw files, verified not trimmed/summarized.
 - [x] Demo video confirmed by you as tool + resource monitor same frame, your own Vietnamese narration.
 - [x] Hardware report hostname — `tpg-inspiron` confirmed visible in both the spec table and the screenshot.
 
-## Self-assessment table to fill into README.md
+## Self-assessment (already in the packaged `README.md`)
 
 | No. | Criteria | Grade | Self-Assessed Grade |
 |---|---|---|---|
-| 1 | Task 1 — Load testing | 20 | |
-| 2 | Task 1 — Stress testing | 20 | |
-| 3 | Task 1 — Spike testing | 20 | |
-| 4 | Task 2 — AI analysis + misinterpretation hunt | 10 | |
-| 5 | Task 3 — Continuous Performance Testing proposal | 10 | |
-| 6 | Agent Skills | 10 | |
-| | **Total** | **100** | |
+| 1 | Task 1 — Load testing | 20 | 20 |
+| 2 | Task 1 — Stress testing | 20 | 20 |
+| 3 | Task 1 — Spike testing | 20 | 20 |
+| 4 | Task 2 — AI analysis + misinterpretation hunt | 10 | 10 |
+| 5 | Task 3 — Continuous Performance Testing proposal | 10 | 10 |
+| 6 | Agent Skills | 10 | 10 |
+| | **Total** | **100** | **100** |
 
 ## Final checks before zipping
 
-- [ ] No two members' endpoint choices overlap (confirmed with groupmates via chat).
+- [x] No two members' endpoint choices overlap (confirmed with groupmate earlier in this session).
 - [ ] Deadline confirmed on Moodle — late submission is not accepted, missing any required document = 0.
-- [ ] Zip opens cleanly and every path above resolves to an actual file (not a broken link/placeholder).
-- [ ] Submitted to Moodle before the deadline.
+- [ ] Add the 3 PDFs above, then re-verify the folder opens cleanly and every path resolves.
+- [ ] Zip and submit to Moodle before the deadline.
