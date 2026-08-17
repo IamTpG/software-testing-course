@@ -110,7 +110,9 @@ For **each** scenario:
 - [x] Built `.claude/skills/jmeter-perf-testing/SKILL.md` — encodes the actual discipline used throughout this homework: self-verify against real code/live SUT before designing, calibrate thread counts empirically (not guessed), prove assertions are live via positive+negative smoke tests before any real run, and independently reproduce any AI-produced analysis claim rather than trusting it.
 - [x] **Demonstrated end-to-end on a new endpoint** (`GET /api/products?search=`, not one of the 3 graded scenarios) — real output in `skill-demo/`, not just a paper skill. Step 0 (self-verify) found a genuine **SQL injection vulnerability** (confirmed live, non-destructive boolean-bypass proof). Steps 1-5 (calibrate → build → smoke-test → execute → analyze) completed cleanly: 1,059 samples, 0 errors, p95=3ms. Full trail: `skill-demo/README.md`, `skill-demo/ai-audit-log/products-search.md`.
 - [x] Reviewed and posted as [#10](https://github.com/IamTpG/software-testing-course/issues/10) — held back from auto-posting for human review (a live exploit payload going public), student reviewed and approved posting.
-- [ ] 🔴 MANUAL — Record a second demo video (YouTube link) showing the skill run end-to-end on a complete endpoint group. `skill-demo/README.md` has a walkthrough order to follow.
+- [x] 🔴 MANUAL — Recorded second demo video (skill run end-to-end via `/jmeter-perf-testing`, isolated `demo/` folder, all 6 steps + result walkthrough). Link saved: `SKILL-DEMO-VIDEO-LINK.txt` — https://youtu.be/Hnoe-5KldYE
+
+**Phase 7 complete.**
 
 ## Phase 8 — Reports & mandatory appendices
 

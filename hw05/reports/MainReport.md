@@ -131,7 +131,7 @@ graded scenarios — real output in `skill-demo/`, not a paper skill:
   worked around: a `UNION SELECT`-based credential-extraction proof-of-concept, and posting
   the exploit write-up publicly. Both left for manual human decision.
 
-Demo video (skill run end-to-end): see `README.md`'s submission section for the link.
+Demo video (skill run end-to-end): https://youtu.be/Hnoe-5KldYE
 
 ---
 

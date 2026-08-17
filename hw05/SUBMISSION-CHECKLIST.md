@@ -21,7 +21,7 @@ Zip filename: `23127244_HW05_AI_Performance_<SelfAssessedGrade>.zip` (grade = 3-
 - [x] **Git commit log** — `reports/Git-Commit-Log.txt` (will re-export once more before final zip).
 - [x] **Bug report** — all 4 posted with screenshots: [#7](https://github.com/IamTpG/software-testing-course/issues/7), [#8](https://github.com/IamTpG/software-testing-course/issues/8), [#9](https://github.com/IamTpG/software-testing-course/issues/9), [#10](https://github.com/IamTpG/software-testing-course/issues/10) (SQL injection, Critical).
 - [x] **`README.md`** — `README.md` done, all 4 bullets covered; self-assessment grade column intentionally left blank for you.
-- [~] **Agent Skill** — `.claude/skills/jmeter-perf-testing/` done + demonstrated end-to-end in `skill-demo/`. 🔴 Its own demo video still needs recording.
+- [x] **Agent Skill** — `.claude/skills/jmeter-perf-testing/` done + demonstrated end-to-end in `skill-demo/`, its own demo video recorded: https://youtu.be/Hnoe-5KldYE
 - [x] Any other supporting materials — CSVs, `RUN-COMMANDS.md`, `Narration-Script.md`/`.pdf`, `Endurance-Threshold.md`, `AI-Log-Analysis.md`, `Optimization-Proposals.md`, `AI-Misinterpretation-Hunt.md`, `Continuous-Performance-Testing-Proposal.md` all present and committed.
 
 ## Anti-cheat verification (TAs will check these)

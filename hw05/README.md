@@ -22,7 +22,7 @@ every parameter — never a guessed thread count. Full details in
 | Task 3 | Tiered continuous performance-testing proposal — see `reports/Continuous-Performance-Testing-Proposal.md` |
 | Agent Skill | `.claude/skills/jmeter-perf-testing/`, demonstrated end-to-end on a new endpoint (`products?search=`) in `skill-demo/` |
 | Demo video (Load/Stress/Spike) | https://youtu.be/GmoYPY6HPyg |
-| Demo video (Agent Skill) | 🔴 pending — see `TASKS-CHECKLIST.md` Phase 7 |
+| Demo video (Agent Skill) | https://youtu.be/Hnoe-5KldYE |
 
 ## Self-assessment
 
