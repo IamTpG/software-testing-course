@@ -7,7 +7,7 @@ Moodle expects — check) as `23127244_HW05_AI_Performance_100.zip` when ready.
 
 ## Contents verified present in the packaged folder
 
-- [x] **Main report** (Markdown) — `reports/MainReport.md`. 🔴 **PDF still missing** — convert and drop into `reports/` as `MainReport.pdf`.
+- [x] **Main report** (Markdown + PDF) — `reports/MainReport.md` + `MainReport.pdf` (5 pages, verified valid).
 - [x] **Public GitHub repository link** — `GITHUB-REPO-LINK.txt` → https://github.com/IamTpG/software-testing-course/tree/homework/hw05/hw05 (verified resolves, HTTP 200).
 - [x] **Test plans**, filenames matching `23127244_{ScenarioType}_{YYYYMMDD}`, in `test-plans/`:
   - [x] `23127244_Load_20260815.jmx` — read-heavy, `GET /api/products/:id`
@@ -20,8 +20,8 @@ Moodle expects — check) as `23127244_HW05_AI_Performance_100.zip` when ready.
 - [x] **Hardware-spec screenshot** — `reports/screenshots/23127244_Hardware.png`, wired into `reports/Hardware-Report.md`.
 - [x] **Bug-repro screenshots** — `23127244_Bug{7,8,9,10}_*.png`, all 4, attached to their GitHub issues too.
 - [x] **Unlisted YouTube demo video link** — `DEMO-VIDEO-LINK.txt` → https://youtu.be/GmoYPY6HPyg.
-- [x] **AI Critique** (Markdown, confirmed by you, 271 words) — `reports/AI-Critique.md`. 🔴 **PDF still missing**.
-- [x] **AI Audit Report** (Markdown) — `reports/AI-Audit-Report.md`. 🔴 **PDF still missing**.
+- [x] **AI Critique** (Markdown + PDF, confirmed by you, 271 words) — `reports/AI-Critique.md` + `.pdf` (1 page, verified valid).
+- [x] **AI Audit Report** (Markdown + PDF) — `reports/AI-Audit-Report.md` + `.pdf` (4 pages, verified valid).
 - [x] **Git commit log** — `commit_log.txt` at the folder root.
 - [x] **Bug report** — all 4 issues posted with screenshots, referenced in `reports/github-issues-draft.md` and `README.md`: [#7](https://github.com/IamTpG/software-testing-course/issues/7), [#8](https://github.com/IamTpG/software-testing-course/issues/8), [#9](https://github.com/IamTpG/software-testing-course/issues/9), [#10](https://github.com/IamTpG/software-testing-course/issues/10) (SQL injection, Critical).
 - [x] **`README.md`** — self-assessment table filled (100/100), test summary complete.
@@ -31,11 +31,7 @@ Moodle expects — check) as `23127244_HW05_AI_Performance_100.zip` when ready.
 Stray local files (`jmeter.log` in `test-plans/` and `skill-demo/test-plans/`) were found and
 removed from the packaged folder — not deliverables, just JMeter's own run log.
 
-## Still needed before zipping (all yours — PDF conversion)
-
-- [ ] 🔴 `reports/MainReport.pdf`
-- [ ] 🔴 `reports/AI-Audit-Report.pdf`
-- [ ] 🔴 `reports/AI-Critique.pdf`
+All 3 PDFs added and verified valid — no more content gaps.
 
 ## Anti-cheat verification (TAs will check these)
 
@@ -59,6 +55,6 @@ removed from the packaged folder — not deliverables, just JMeter's own run log
 ## Final checks before zipping
 
 - [x] No two members' endpoint choices overlap (confirmed with groupmate earlier in this session).
+- [x] Everything content-wise is done — folder is submission-ready.
 - [ ] Deadline confirmed on Moodle — late submission is not accepted, missing any required document = 0.
-- [ ] Add the 3 PDFs above, then re-verify the folder opens cleanly and every path resolves.
-- [ ] Zip and submit to Moodle before the deadline.
+- [ ] 🔴 MANUAL — Zip and submit to Moodle before the deadline.
