@@ -1,0 +1,39 @@
+id,phase,category,description,search_param,expected_status,expected_behavior,ai_reasoning
+PA-01,generated,domain-partition,No search param at all,<omit>,200,all_5,Optional param per spec; equivalence class: absent input
+PA-02,generated,domain-partition,Empty string search value,,200,all_5,"Empty string is JS-falsy, should equal the 'absent' partition"
+PA-03,generated,domain-partition,Exact-substring match on known product name,iPhone,200,count=1,Positive equivalence class: valid keyword with exactly one match
+PA-04,generated,domain-partition,Case-insensitivity of match (uppercase),IPHONE,200,count=1,SQLite LIKE is case-insensitive for ASCII by default
+PA-05,generated,domain-partition,Case-insensitivity of match (lowercase),iphone,200,count=1,"Same equivalence class as PA-04, different boundary value"
+PA-06,generated,domain-partition,Numeric-substring keyword,15,200,count=1,Only 'iPhone 15 Pro Max' contains '15'
+PA-07,generated,domain-partition,Keyword with zero matches,NonExistentXYZ123,200,empty,"Negative equivalence class: valid string, no match"
+PA-08,generated,domain-partition,Keyword matching multiple products,Pro,200,count=3,"Matches iPhone 15 Pro Max, MacBook Pro M3, AirPods Pro 2"
+PA-09,generated,domain-partition,Single space as search value,<space>,200,all_5,Treated as equivalent to the empty-string/absent partition -- assumed falsy like PA-02
+PA-10,generated,domain-partition,Literal percent character as search value,%,200,all_5,LIKE wildcard collapsing: '%%%' still matches everything
+PA-11,generated,domain-partition,Literal underscore character as search value,_,200,all_5,SQL LIKE single-char wildcard matches any non-empty name
+PA-12,generated,domain-partition,Leading/trailing spaces around a valid keyword,<space>iPhone<space>,200,all_5,"Assumed the server trims whitespace before matching, like most search UIs do -- should still match iPhone"
+PA-13,generated,domain-partition,Very long search string (2000 chars),<'a'*2000>,200,empty,Boundary/robustness check -- no length validation documented in spec
+PA-14,generated,domain-partition,Duplicate search query parameter,search=a&search=b,400,handled_gracefully,Assumed Express would reject or error on a duplicate key rather than silently coerce it
+PA-15,generated,domain-partition,"Vietnamese diacritics, single word",Bàn,200,count=1,Product names contain Vietnamese Unicode; must match multi-byte UTF-8 correctly
+PA-16,generated,domain-partition,"Vietnamese diacritics, multi-word substring across a space",phím cơ,200,count=1,Same as PA-15 but crossing a word boundary with embedded space
+PA-17,generated,security,Bracket-array query shape: search[]=x,<bracket-array>,200,count_matching_x,Assumed Express coerces this into a normal string search for the literal value 'x'
+PA-18,generated,security,Single quote breaks SQL syntax,',500,sql_error,Minimal SQLi probe: does an unescaped quote reach the query string unmodified?
+PA-19,generated,security,Boolean-based SQLi bypass (OR 1=1),zzznonexistent' OR '1'='1' --,200,all_5,Classic authentication/filter-bypass payload; expect all rows regardless of the harmless prefix
+PA-20,generated,security,"Boolean-based blind SQLi, false branch",x' AND 1=2 --,200,empty,"Complementary probe to PA-19 to prove the injection point responds to boolean logic, not just OR-bypass"
+PA-21,generated,security,SQL syntax error triggered deliberately,x' AND (SELECT,500,sql_error,Malformed nested query to see how the server surfaces DB errors
+PA-22,generated,security,XSS-style payload in search (reflected-output check),<script>alert(1)</script>,200,empty,"Endpoint returns JSON not HTML on the success path, so classic reflected-XSS shouldn't apply here -- included to confirm no raw HTML echo on the happy path"
+PA-23,generated,schema,Content-Type header on success,iPhone,200,content_type_json,Response contract should declare application/json
+PA-24,generated,schema,Top-level response shape is a JSON array,iPhone,200,is_array,Spec doesn't show an explicit example for the list endpoint; inferred from admin CSV import using an array shape elsewhere
+PA-25,generated,schema,Product object has exactly the documented fields,iPhone,200,fields_match,"Fields per spec's Add/Edit body example: name, price, description, imageUrl, category_id, plus id"
+PA-26,generated,schema,'id' field type is integer,iPhone,200,id_is_int,Primary key should be numeric
+PA-27,generated,schema,'name' field type is non-empty string,iPhone,200,name_is_string,Basic type contract
+PA-28,generated,schema,"'price' field type is number, not string",iPhone,200,price_is_number,AI flagged this as worth checking because a sibling endpoint (GET /api/products/:id) is known to stringify price for even IDs
+PA-29,generated,schema,'category_id' is an integer within the seeded category range,iPhone,200,category_id_is_int,Referential sanity check against categories 1-3
+PA-30,generated,schema,Error-path Content-Type differs from success-path,',500,content_type_html,"AI noted the error handler uses res.send() with a template string starting with '<h1>', which Express auto-detects as HTML"
+PA-31,generated,domain-partition,"Search value that is only whitespace-adjacent punctuation, no letters",!!!,200,empty,"Symbol-only keyword, no SQL meta-characters involved, pure domain partition"
+PA-32,generated,domain-partition,Search value equal to a category name rather than a product name,Điện thoại,200,empty,Only the 'name' column is searched per the handler; category/description text must NOT match
+PA-33,generated,schema,imageUrl field is a well-formed URL string,iPhone,200,imageurl_is_url,Basic format sanity on the imageUrl field
+PA-34,generated,domain-partition,Search value with only a trailing space (no leading),iPhone<space>,200,count=1,Assumed trailing space is trimmed like PA-12
+PA-35,generated,domain-partition,Search value with only a leading space (no trailing),<space>iPhone,200,count=1,Assumed leading space is trimmed like PA-12
+PA-36,generated,domain-partition,Numeric search that matches nothing,999,200,empty,No product name contains '999'
+PA-37,generated,security,Time/complexity-based DoS probe: many wildcard characters,%%%%%%%%%%%%%%%%%%%%,200,all_5,Repeated wildcards should still collapse harmlessly rather than cause pathological backtracking
+PA-38,generated,schema,"Response for a zero-match search is an empty array, not null/404",NonExistentXYZ123,200,empty_array_not_null,Contract check: absence of matches must not change the response shape
