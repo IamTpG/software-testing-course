@@ -63,13 +63,14 @@ Repeat for **each of the 3 selected APIs**. Target ≥ 35 AI-generated cases per
 - [x] `reports/CICD-Report.md` written: pipeline config + both runs with commit/run links.
 - [ ] 🔴 MANUAL — Screenshot the two pipeline runs (green + red) from the Actions UI for the CI/CD report.
 
-## Phase 3 — Agent Skill (Create level, G9.5)
+## Phase 3 — Agent Skill (Create level, G9.5) — ✅ complete except the 2 manual items
 
-- [ ] Design an AI-driven API test generator for the SUT: given the spec, it produces test cases automatically.
-- [ ] 🔴 MANUAL — **Self-drawn diagram** (you draw it — any tool is fine, but it must not be AI-generated; this is an anti-cheat requirement the TAs check).
-- [ ] Claude writes the pseudocode to match your diagram.
-- [ ] Optionally implement as a reusable Agent Skill (`.claude/skills/`) and demo it generating tests for one API.
-- [ ] 🔴 MANUAL — Record demo video of the skill running end-to-end, upload to YouTube (unlisted).
+- [x] Designed a 6-stage AI-driven API test generator (Ground → Generate ×3 lenses → Verify/empirical gate → Extend → Emit → Execute & lock), every stage explicitly tied to a real mistake caught during this homework's own 3-API pipeline. `reports/AI-Test-Generator-Design.md`.
+- [ ] 🔴 MANUAL — **Self-drawn diagram** of the 6-stage pipeline (see the design doc's Section 5 for exactly what to draw — Verify as a feedback loop, Execute & Lock looping back on failure). Any tool fine, must not be AI-generated (anti-cheat).
+- [x] Pseudocode written to match the design (in the same doc, Section 4).
+- [x] Implemented as a reusable Agent Skill: `.claude/skills/api-test-generator/SKILL.md`.
+- [x] **Demonstrated end-to-end on a new endpoint** (`POST /api/register`, not one of the 3 graded APIs) — real output in `skill-demo/`. 21 cases (16 generated, 3 corrected in audit, 5 extended), 2 clean Newman runs. Surfaced 3 bonus findings: plaintext passwords confirmed at the source, no unique constraint on `users.email` (silent permanent account lockout), no email/password format validation.
+- [ ] 🔴 MANUAL — Record demo video of the skill running end-to-end, upload to YouTube (unlisted). Encouraged per Section 7, not strictly required.
 
 ## Phase 4 — Mandatory appendices & reports
 
