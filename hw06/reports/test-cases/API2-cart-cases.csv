@@ -1,41 +1,41 @@
-id,phase,category,description,body_summary,expected_status,expected_behavior,ai_reasoning
-PB-01,generated,domain-partition,"Valid full body, existing product","{id:1,name:'iPhone 15 Pro Max',price:30000000,quantity:1}",200,accepted,Positive baseline case
-PB-02,generated,domain-partition,id references a nonexistent product,"{id:999,...}",200,accepted,No documented product-existence check in the spec; testing whether the server validates against the products table
-PB-03,generated,domain-partition,id is negative,"{id:-1,...}",200,accepted,Boundary value below the valid range
-PB-04,generated,domain-partition,id is zero,"{id:0,...}",200,accepted,Boundary value at zero
-PB-05,generated,domain-partition,"id is a string, not a number","{id:'abc',...}",200,accepted,Type-confusion boundary
-PB-06,generated,domain-partition,id field missing entirely,"{name,price,quantity only}",200,accepted,Required-field-absence equivalence class
-PB-07,generated,domain-partition,id is a float,"{id:1.5,...}",200,accepted,Non-integer numeric boundary
-PB-08,generated,domain-partition,name field missing entirely,"{id,price,quantity only}",200,accepted,Required-field-absence equivalence class
-PB-09,generated,domain-partition,name is an empty string,"{name:'',...}",200,accepted,Empty-string boundary
-PB-10,generated,domain-partition,name is a very long string (5000 chars),"{name:'a'*5000,...}",200,accepted,"Upper length boundary, robustness check"
-PB-11,generated,domain-partition,"name is a number, not a string","{name:12345,...}",200,accepted,Type-confusion boundary
-PB-12,generated,domain-partition,price is negative,"{price:-500000,...}",200,accepted,Boundary value below the valid range -- price should never be negative
-PB-13,generated,domain-partition,price is zero,"{price:0,...}",200,accepted,Boundary value at zero
-PB-14,generated,domain-partition,price field missing entirely,"{id,name,quantity only}",200,accepted,Required-field-absence equivalence class
-PB-15,generated,domain-partition,"price is a string, not a number","{price:'100000',...}",200,accepted,Type-confusion boundary
-PB-16,generated,domain-partition,price is an extremely large number,"{price:1e15,...}",200,accepted,Upper numeric boundary / overflow-style check
-PB-17,generated,domain-partition,quantity is negative,"{quantity:-3,...}",200,accepted,Boundary value below the valid range
-PB-18,generated,domain-partition,quantity is zero,"{quantity:0,...}",200,accepted,Boundary value at zero -- arguably meaningless to add zero of a product
-PB-19,generated,domain-partition,quantity field missing entirely,"{id,name,price only}",200,accepted,Required-field-absence equivalence class
-PB-20,generated,domain-partition,quantity is a float,"{quantity:2.5,...}",200,accepted,Non-integer numeric boundary -- can't have half an item
-PB-21,generated,domain-partition,quantity is an extremely large number,"{quantity:1000000,...}",200,accepted,Upper numeric boundary
-PB-22,generated,domain-partition,"quantity is a string, not a number","{quantity:'5',...}",200,accepted,Type-confusion boundary
-PB-23,generated,domain-partition,Body is an empty object,{},200,accepted,Minimal/degenerate body
-PB-24,generated,domain-partition,Body is a JSON array instead of an object,"[1,2,3]",400,rejected,"Assumed the handler validates the body is a plain object before storing it, given it's meant to represent a single cart line item"
-PB-25,generated,domain-partition,Body is the JSON literal null,null,200,accepted,"Assumed 'null' is syntactically valid JSON, so body-parser would accept it and pass null through to the handler unchanged"
-PB-26,generated,domain-partition,Malformed JSON syntax,{bad json,400,json_syntax_error,Baseline malformed-input probe
-PB-27,generated,domain-partition,POST with no Content-Type header (form-encoded send),"id=1&name=x&price=100&quantity=1, no header",400,rejected,"Assumed body-parser would reject/ignore a body it can't identify as JSON, returning a client error"
-PB-28,generated,domain-partition,"Body has extra, undocumented fields","{...valid fields, discount:9999999, isFree:true}",200,accepted,Testing whether unexpected fields are silently accepted or rejected
-PB-29,generated,domain-partition,Same product id added twice in separate requests,two POSTs with id:2,200,merged_quantity,"Assumed a real e-commerce cart merges repeat adds of the same product into one line item with an incremented quantity, as most cart UIs do"
-PB-30,generated,domain-partition,Oversized payload (>100kb name field),"{name:'x'*200000,...}",413,payload_too_large,Testing body-parser's default size limit
-PB-31,generated,security,No Authorization header at all,(none),401,unauthorized,SEC-02: sensitive APIs require a valid JWT
-PB-32,generated,security,Malformed/garbage bearer token,Authorization: Bearer garbage.token.here,403,forbidden,"SEC-02 -- token presence isn't enough, it must actually verify"
-PB-33,generated,security,"Tampered JWT signature (valid shape, corrupted signature)",Authorization: Bearer <token with last 2 chars replaced>,403,forbidden,"Confirms signature verification, not just structural JWT parsing"
-PB-34,generated,security,Authorization header missing the 'Bearer ' prefix,"Authorization: <raw token, no 'Bearer '>",401,unauthorized,Header-parsing boundary: authHeader.split(' ')[1] semantics
-PB-35,generated,security,Cross-user cart isolation,User B's GET after User A's POSTs,200,empty_for_user_b,SEC-02-adjacent access-control check: carts must be scoped per authenticated user
-PB-36,generated,security,XSS-style payload in the name field,"{name:'<script>alert(1)</script>',...}",200,accepted_unescaped,SEC-04: user input must be escaped wherever it's later displayed -- checking whether the API layer stores it verbatim (frontend-rendering risk)
-PB-37,generated,schema,POST success response shape,valid body,200,message_field_exact,Response contract: exactly {message:'Added to cart'}
-PB-38,generated,schema,GET /api/cart top-level response shape,(after at least one item added),200,is_array,Contract check: array of cart line items
-PB-39,generated,schema,Round-trip integrity: GET reflects exactly what was POSTed,"POST a well-formed item, then GET",200,fields_match_exactly,No server-side transformation/normalization should occur between POST and GET
-PB-40,generated,schema,Fresh user's GET /api/cart before any POST,"new user, no prior activity",200,empty_array_not_null,Empty-state contract: [] not null/undefined
+id,phase,category,description,body_summary,expected_status,expected_behavior,ai_reasoning,audit_label,audit_notes
+PB-01,generated,domain-partition,"Valid full body, existing product","{id:1,name:'iPhone 15 Pro Max',price:30000000,quantity:1}",200,accepted,Positive baseline case,VALID,
+PB-02,generated,domain-partition,id references a nonexistent product,"{id:999,...}",200,accepted,No documented product-existence check in the spec; testing whether the server validates against the products table,VALID,
+PB-03,generated,domain-partition,id is negative,"{id:-1,...}",200,accepted,Boundary value below the valid range,VALID,
+PB-04,generated,domain-partition,id is zero,"{id:0,...}",200,accepted,Boundary value at zero,VALID,
+PB-05,generated,domain-partition,"id is a string, not a number","{id:'abc',...}",200,accepted,Type-confusion boundary,VALID,
+PB-06,generated,domain-partition,id field missing entirely,"{name,price,quantity only}",200,accepted,Required-field-absence equivalence class,VALID,
+PB-07,generated,domain-partition,id is a float,"{id:1.5,...}",200,accepted,Non-integer numeric boundary,VALID,
+PB-08,generated,domain-partition,name field missing entirely,"{id,price,quantity only}",200,accepted,Required-field-absence equivalence class,VALID,
+PB-09,generated,domain-partition,name is an empty string,"{name:'',...}",200,accepted,Empty-string boundary,VALID,
+PB-10,generated,domain-partition,name is a very long string (5000 chars),"{name:'a'*5000,...}",200,accepted,"Upper length boundary, robustness check",VALID,
+PB-11,generated,domain-partition,"name is a number, not a string","{name:12345,...}",200,accepted,Type-confusion boundary,VALID,
+PB-12,generated,domain-partition,price is negative,"{price:-500000,...}",200,accepted,Boundary value below the valid range -- price should never be negative,VALID,
+PB-13,generated,domain-partition,price is zero,"{price:0,...}",200,accepted,Boundary value at zero,VALID,
+PB-14,generated,domain-partition,price field missing entirely,"{id,name,quantity only}",200,accepted,Required-field-absence equivalence class,VALID,
+PB-15,generated,domain-partition,"price is a string, not a number","{price:'100000',...}",200,accepted,Type-confusion boundary,VALID,
+PB-16,generated,domain-partition,price is an extremely large number,"{price:1e15,...}",200,accepted,Upper numeric boundary / overflow-style check,VALID,
+PB-17,generated,domain-partition,quantity is negative,"{quantity:-3,...}",200,accepted,Boundary value below the valid range,VALID,
+PB-18,generated,domain-partition,quantity is zero,"{quantity:0,...}",200,accepted,Boundary value at zero -- arguably meaningless to add zero of a product,VALID,
+PB-19,generated,domain-partition,quantity field missing entirely,"{id,name,price only}",200,accepted,Required-field-absence equivalence class,VALID,
+PB-20,generated,domain-partition,quantity is a float,"{quantity:2.5,...}",200,accepted,Non-integer numeric boundary -- can't have half an item,VALID,
+PB-21,generated,domain-partition,quantity is an extremely large number,"{quantity:1000000,...}",200,accepted,Upper numeric boundary,VALID,
+PB-22,generated,domain-partition,"quantity is a string, not a number","{quantity:'5',...}",200,accepted,Type-confusion boundary,VALID,
+PB-23,generated,domain-partition,Body is an empty object,{},200,accepted,Minimal/degenerate body,VALID,
+PB-24,generated,domain-partition,Body is a JSON array instead of an object,"[1,2,3]",200,accepted,"Assumed the handler validates the body is a plain object before storing it, given it's meant to represent a single cart line item",INVALID,"AI assumed the handler validates the body is a plain object before storing it. Wrong: the handler does req.body.push() with zero type checking -- a JSON array body is accepted (200) and pushed into the cart array as-is (a nested array inside the cart array). Corrected expected_status 400->200, expected_behavior rejected->accepted."
+PB-25,generated,domain-partition,Body is the JSON literal null,null,400,rejected,"Assumed 'null' is syntactically valid JSON, so body-parser would accept it and pass null through to the handler unchanged",INVALID,"AI assumed 'null' being syntactically valid JSON means body-parser accepts it. Wrong: Express's body-parser runs in 'strict' mode by default, which only accepts a top-level object ({...}) or array ([...]) -- any other valid JSON value (null, a bare number, a bare string) is rejected with a 400 SyntaxError before the route handler ever runs. Corrected expected_status 200->400, expected_behavior accepted->rejected."
+PB-26,generated,domain-partition,Malformed JSON syntax,{bad json,400,json_syntax_error,Baseline malformed-input probe,VALID,
+PB-27,generated,domain-partition,POST with no Content-Type header (form-encoded send),"id=1&name=x&price=100&quantity=1, no header",200,accepted_but_corrupted,"Assumed body-parser would reject/ignore a body it can't identify as JSON, returning a client error",INVALID,"AI assumed a Content-Type mismatch causes a client error. Wrong: body-parser.json() only PARSES the body when Content-Type matches -- it does not reject the request outright. req.body ends up undefined, which still gets pushed into the cart array; JSON.stringify(undefined) inside an array serializes as null on the next GET. So the request succeeds (200) but silently corrupts the cart's shape with a null entry. Corrected expected_status 400->200, expected_behavior rejected->accepted_but_corrupted."
+PB-28,generated,domain-partition,"Body has extra, undocumented fields","{...valid fields, discount:9999999, isFree:true}",200,accepted,Testing whether unexpected fields are silently accepted or rejected,VALID,
+PB-29,generated,domain-partition,Same product id added twice in separate requests,two POSTs with id:2,200,duplicate_entries_not_merged,"Assumed a real e-commerce cart merges repeat adds of the same product into one line item with an incremented quantity, as most cart UIs do",INVALID,"AI assumed cart semantics merge repeat adds into one line item with incremented quantity, matching common e-commerce UX. Wrong: the handler unconditionally does userCarts[userId].push(req.body) with no lookup for an existing entry with the same id -- two POSTs of the same product produce two separate, unmerged line items. Corrected expected_behavior merged_quantity->duplicate_entries_not_merged."
+PB-30,generated,domain-partition,Oversized payload (>100kb name field),"{name:'x'*200000,...}",413,payload_too_large,Testing body-parser's default size limit,VALID,Confirmed: 413 PayloadTooLargeError from body-parser's default 100kb JSON limit.
+PB-31,generated,security,No Authorization header at all,(none),401,unauthorized,SEC-02: sensitive APIs require a valid JWT,VALID,
+PB-32,generated,security,Malformed/garbage bearer token,Authorization: Bearer garbage.token.here,403,forbidden,"SEC-02 -- token presence isn't enough, it must actually verify",VALID,
+PB-33,generated,security,"Tampered JWT signature (valid shape, corrupted signature)",Authorization: Bearer <token with last 2 chars replaced>,403,forbidden,"Confirms signature verification, not just structural JWT parsing",VALID,"Confirmed: 403 -- JWT signature verification is genuinely enforced, not just structural presence."
+PB-34,generated,security,Authorization header missing the 'Bearer ' prefix,"Authorization: <raw token, no 'Bearer '>",401,unauthorized,Header-parsing boundary: authHeader.split(' ')[1] semantics,VALID,
+PB-35,generated,security,Cross-user cart isolation,User B's GET after User A's POSTs,200,empty_for_user_b,SEC-02-adjacent access-control check: carts must be scoped per authenticated user,VALID,"Confirmed: registered a second user, added items as user A, GET as user B returned [] -- carts are correctly isolated per JWT-authenticated user."
+PB-36,generated,security,XSS-style payload in the name field,"{name:'<script>alert(1)</script>',...}",200,accepted_unescaped,SEC-04: user input must be escaped wherever it's later displayed -- checking whether the API layer stores it verbatim (frontend-rendering risk),VALID,
+PB-37,generated,schema,POST success response shape,valid body,200,message_field_exact,Response contract: exactly {message:'Added to cart'},VALID,
+PB-38,generated,schema,GET /api/cart top-level response shape,(after at least one item added),200,is_array,Contract check: array of cart line items,VALID,
+PB-39,generated,schema,Round-trip integrity: GET reflects exactly what was POSTed,"POST a well-formed item, then GET",200,fields_match_exactly,No server-side transformation/normalization should occur between POST and GET,VALID,
+PB-40,generated,schema,Fresh user's GET /api/cart before any POST,"new user, no prior activity",200,empty_array_not_null,Empty-state contract: [] not null/undefined,VALID,
