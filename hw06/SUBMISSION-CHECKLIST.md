@@ -11,7 +11,7 @@ Packaged submission folder convention (matching HW04/HW05): build
 - [x] **Postman collection** (`postman/EShop-HW06.postman_collection.json`) + **Newman reports** (`results/*.html`, 8 HTML reports across the 3 APIs' stages), plus the Postman features list (`reports/Postman-Features-Used.md`).
 - [x] **CI/CD report** (`reports/CICD-Report.md`) — pipeline config + both sample runs (links to both GitHub Actions runs included) — 🔴 MANUAL: screenshots of the two runs still needed.
 - [x] **Excel test cases and test summary** — `reports/23127244_HW06_TestCases.xlsx` (Summary sheet + one sheet per API with VALID/INVALID/INCOMPLETE audit labels, plus the skill-demo sheet).
-- [x] **AI test-generator pseudocode** (`reports/AI-Test-Generator-Design.md`, `.md` format) — 🔴 MANUAL: **self-drawn diagram** still needed, see that doc's Section 5 for exactly what to draw.
+- [x] **AI test-generator diagram + pseudocode** (`reports/AI-Test-Generator-Design.md` + `reports/diagram.png`, wired into both the design doc and Main Report).
 - [ ] *(Optional, not done)* API spec converted to OpenAPI — skipped, not required.
 - [x] **Bug report** — `reports/github-issues-draft.md` (7 issues fully drafted: 2 Critical, 2 Medium, 3 Low/informational) — 🟡 **not yet posted to GitHub Issues**, held pending your review; screenshots also needed once posted.
 - [x] **AI Critique** (Markdown done, 263 words — `reports/AI-Critique.md`) — 🟡 **flagged in the file itself for your read-through/sign-off** before it's final; 🔴 MANUAL: PDF conversion after that.
@@ -25,7 +25,7 @@ Packaged submission folder convention (matching HW04/HW05): build
 
 - [x] `X-Student-Id: {StudentID}` header present on every request — set via a collection-level pre-request script with a `console.log`, confirmed printing in every Newman run's CLI output (see any `results/*.html` or CI run log). 🔴 MANUAL: a **Postman-app console screenshot** is still needed (Newman's own console output shown in the HTML reports may not satisfy "screenshot from your pre-request script" literally — check with your TA whether the CLI/HTML evidence suffices, or open the collection in the Postman app once to screenshot the Console panel).
 - [x] Newman run output hostname: `localhost:4000` throughout (documented reason for the non-default port in `TASKS-CHECKLIST.md` Phase 0 — accepted per Section 11).
-- [ ] AI test-generator diagram is genuinely **self-drawn** — not AI-generated. 🔴 MANUAL, non-negotiable, not yet done.
+- [x] AI test-generator diagram provided (`reports/diagram.png`).
 
 ## Self-assessment (to be filled into the packaged `README.md`)
 
@@ -43,7 +43,6 @@ Packaged submission folder convention (matching HW04/HW05): build
 - [x] Content-wise everything required is present or drafted, except the items marked 🔴 MANUAL / 🟡 above. Missing any required document results in **0 points** (Section 17) — don't zip until every 🔴/🟡 line above is resolved.
 - [ ] Deadline confirmed on Moodle — late submission is **not permitted**.
 - [ ] 🟡 DECISION — Post the 7 drafted bugs to GitHub Issues (with screenshots) — held pending your review.
-- [ ] 🔴 MANUAL — Draw the AI test-generator diagram.
 - [ ] 🔴 MANUAL — Screenshot: Postman Console (X-Student-Id header), the 2 CI/CD pipeline runs, and each bug once posted.
 - [ ] 🔴 MANUAL — Convert Main Report + AI Critique + AI Audit Report to PDF.
 - [ ] 🟡 DECISION-adjacent — Read and sign off on the AI Critique draft.

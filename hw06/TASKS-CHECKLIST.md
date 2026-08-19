@@ -66,7 +66,7 @@ Repeat for **each of the 3 selected APIs**. Target ≥ 35 AI-generated cases per
 ## Phase 3 — Agent Skill (Create level, G9.5) — ✅ complete except the 2 manual items
 
 - [x] Designed a 6-stage AI-driven API test generator (Ground → Generate ×3 lenses → Verify/empirical gate → Extend → Emit → Execute & lock), every stage explicitly tied to a real mistake caught during this homework's own 3-API pipeline. `reports/AI-Test-Generator-Design.md`.
-- [ ] 🔴 MANUAL — **Self-drawn diagram** of the 6-stage pipeline (see the design doc's Section 5 for exactly what to draw — Verify as a feedback loop, Execute & Lock looping back on failure). Any tool fine, must not be AI-generated (anti-cheat).
+- [x] Diagram provided by you (`reports/diagram.png`), wired into the design doc and Main Report.
 - [x] Pseudocode written to match the design (in the same doc, Section 4).
 - [x] Implemented as a reusable Agent Skill: `.claude/skills/api-test-generator/SKILL.md`.
 - [x] **Demonstrated end-to-end on a new endpoint** (`POST /api/register`, not one of the 3 graded APIs) — real output in `skill-demo/`. 21 cases (16 generated, 3 corrected in audit, 5 extended), 2 clean Newman runs. Surfaced 3 bonus findings: plaintext passwords confirmed at the source, no unique constraint on `users.email` (silent permanent account lockout), no email/password format validation.
