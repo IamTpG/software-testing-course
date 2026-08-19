@@ -72,14 +72,14 @@ Repeat for **each of the 3 selected APIs**. Target ≥ 35 AI-generated cases per
 - [x] **Demonstrated end-to-end on a new endpoint** (`POST /api/register`, not one of the 3 graded APIs) — real output in `skill-demo/`. 21 cases (16 generated, 3 corrected in audit, 5 extended), 2 clean Newman runs. Surfaced 3 bonus findings: plaintext passwords confirmed at the source, no unique constraint on `users.email` (silent permanent account lockout), no email/password format validation.
 - [ ] 🔴 MANUAL — Record demo video of the skill running end-to-end, upload to YouTube (unlisted). Encouraged per Section 7, not strictly required.
 
-## Phase 4 — Mandatory appendices & reports
+## Phase 4 — Mandatory appendices & reports — ✅ complete except PDF conversion
 
-- [ ] Main report (Markdown): full pipeline documentation for all 3 APIs + Postman features list + CI/CD summary.
-- [ ] AI Audit Report: tool name, date/time, prompt, output — for every significant AI interaction.
-- [ ] 🟡 DECISION-adjacent — AI Critique (200–300 words): Claude drafts, but this is your genuine reflection — needs your read-and-confirm before it's final, not just typing it out (same treatment as HW05 Phase 8).
-- [ ] Export Git commit log to a text file.
-- [ ] `README.md`: self-assessment table (grade column blank for you) + test summary (APIs, cases generated/added/executed/passed/failed, bug count).
-- [ ] 🔴 MANUAL — Convert Main Report + AI Critique + AI Audit Report to PDF.
+- [x] Main report (`reports/MainReport.md`): full pipeline documentation for all 3 APIs, cross-API comparison table, Postman features + CI/CD summary, Agent Skill summary, totals (133/133 pass, 7 bugs).
+- [x] AI Audit Report (`reports/AI-Audit-Report.md`): chronological tool/date/prompt/output log, pulled from real commit timestamps, covering all 5 phases.
+- [x] AI Critique drafted (`reports/AI-Critique.md`, 263 words) — 🟡 **needs your read-through and sign-off**, explicitly flagged as a draft in the file itself, not auto-finalized.
+- [x] Git commit log exported (`reports/Git-Commit-Log.txt`).
+- [x] `README.md` written: self-assessment table (grade column blank for you) + full test summary table + repo layout.
+- [ ] 🔴 MANUAL — Convert Main Report + AI Critique + AI Audit Report to PDF (your own workflow).
 
 ## Phase 5 — Packaging & submission
 
