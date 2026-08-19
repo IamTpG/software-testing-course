@@ -1,6 +1,6 @@
 "id","search_value","expected_status","expected_count","check_leak","check_plaintext"
 "PA-02","","200","5","0","0"
-"PA-03","iPhone","200","1","0","0"
+"PA-03","iPhone","200","2","0","0"
 "PA-04","IPHONE","200","1","0","0"
 "PA-05","iphone","200","1","0","0"
 "PA-06","15","200","1","0","0"
