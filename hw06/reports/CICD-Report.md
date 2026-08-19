@@ -36,7 +36,7 @@ without any extra plumbing.
 **Run:** https://github.com/IamTpG/software-testing-course/actions/runs/32222854961 — ✅ success, 32s
 **Result:** all 8 Newman steps green — 133/133 test cases across the 3 APIs pass.
 
-🔴 MANUAL — screenshot of this run's green checkmarks to attach.
+![CI/CD run 1 - all green, succeeded in 32s](screenshots/run1.png)
 
 ## Sample run 2 — one test case failing
 
@@ -54,7 +54,7 @@ assertion, not a real regression.
 Exactly one assertion failed; every other one of the 133 test cases across all 3 APIs
 still passed in this same run.
 
-🔴 MANUAL — screenshot of this run's red ✗ + the failure detail to attach.
+![CI/CD run 2 - red status, PA-03 assertion failure detail expanded](screenshots/run2.png)
 
 **Reverted:** [`96c2e41`](https://github.com/IamTpG/software-testing-course/commit/96c2e41) — "Revert ..." — confirmed green again at
 https://github.com/IamTpG/software-testing-course/actions/runs/32223059167 (✅ success, restores the repo to its correct, fully-passing final state).
