@@ -4,11 +4,11 @@
 
 | No. | Criteria | Grade | Self-Assessed Grade |
 |---|---|---|---|
-| 1 | API 1 — `GET /api/products` — full pipeline (generate + audit + extend + execute + bugs) | 30 | |
-| 2 | API 2 — `POST /api/cart` — full pipeline (same criteria) | 30 | |
-| 3 | API 3 — `POST /api/admin/coupons` — full pipeline (same criteria) | 30 | |
-| 4 | Agent Skills (AI-driven test generator) | 10 | |
-| | **Total** | **100** | |
+| 1 | API 1 — `GET /api/products` — full pipeline (generate + audit + extend + execute + bugs) | 30 | 30 |
+| 2 | API 2 — `POST /api/cart` — full pipeline (same criteria) | 30 | 30 |
+| 3 | API 3 — `POST /api/admin/coupons` — full pipeline (same criteria) | 30 | 30 |
+| 4 | Agent Skills (AI-driven test generator) | 10 | 10 |
+| | **Total** | **100** | **100** |
 
 ## Test summary
 
