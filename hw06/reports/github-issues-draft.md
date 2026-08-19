@@ -55,7 +55,7 @@ before storage, independent of this injection vector.
   attempted against the shared local SUT instance.
 
 ### Evidence
-🔴 MANUAL — screenshot of the reproduction (request + leaked response) to attach here.
+![Bug 1 - SQL injection leaks plaintext credentials](screenshots/1.png)
 
 ---
 
@@ -82,7 +82,7 @@ Error responses should be `application/json`, e.g.
 (see Issue 1's related-findings note).
 
 ### Evidence
-🔴 MANUAL — screenshot to attach.
+![Bug 2 - HTML error page leaking the raw SQLITE_ERROR message](screenshots/2.png)
 
 ---
 
@@ -120,7 +120,7 @@ outside an explicit allowlist. `id` should ideally be checked against the real
 `products` table.
 
 ### Evidence
-🔴 MANUAL — screenshot to attach.
+![Bug 3 - hostile cart fields (negative price/quantity) accepted with 200](screenshots/3.png)
 
 ---
 
@@ -152,7 +152,11 @@ adds of the same product into one line item (typical cart UX) or explicitly docu
 duplicates are intentional.
 
 ### Evidence
-🔴 MANUAL — screenshot to attach.
+Part 1 — a Content-Type-missing POST corrupts the cart with a `null` entry:
+![Bug 4a - null entry in the cart after a Content-Type-missing POST](screenshots/4a.png)
+
+Part 2 — 3 duplicate adds of the same product create 3 unmerged line items:
+![Bug 4b - three separate id:555 entries instead of one merged item](screenshots/4b.png)
 
 ---
 
@@ -209,7 +213,7 @@ same file (`/api/admin/users`, `/api/admin/orders`, `/api/admin/import-products`
 only the coupons endpoints were in this homework's selected scope.
 
 ### Evidence
-🔴 MANUAL — screenshot to attach.
+![Bug 5 - a regular (non-admin) user's token successfully creates a coupon](screenshots/5.png)
 
 ---
 
@@ -249,7 +253,7 @@ explicitly default them in JS before binding (as already done, inconsistently, f
 `max_uses_per_user || 1`).
 
 ### Evidence
-🔴 MANUAL — screenshot to attach.
+![Bug 6 - a coupon created without "type" is stored with type/discount_value/min_order_amount/expired_at all NULL](screenshots/6.png)
 
 ---
 
@@ -276,7 +280,7 @@ Validate `discount_value` against `[0, 100]` when `type === 'percent'`; validate
 integer (reject or clamp negatives, not just zero).
 
 ### Evidence
-🔴 MANUAL — screenshot to attach.
+![Bug 7 - a percent-type coupon accepted with discount_value:500, no upper-bound check](screenshots/7.png)
 
 ---
 
