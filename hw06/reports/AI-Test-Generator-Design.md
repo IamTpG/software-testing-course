@@ -177,17 +177,9 @@ def generate_api_test_suite(endpoint_spec, sut_source_path=None, sut_live_url=No
 
 ## 5. Diagram
 
-**🔴 MANUAL — self-drawn, not AI-generated (Section 11 anti-cheat requirement).**
-Draw the 6-stage pipeline above (Ground → Generate → Verify → Extend → Emit →
-Execute & Lock) as a flowchart, with:
-- The **Verify** stage shown as a decision gate feeding back into itself (mismatch →
-  correct expectation → re-verify), since that's the design's core mechanism.
-- The **Execute & Lock** stage's failure path looping back to Verify/Extend, not just to
-  itself — it's a second correction pass, not a rubber stamp.
-- Optionally, annotate each stage with which real bug/finding from this homework it's
-  grounded in (see the "Grounded in" notes in Section 3 above), to show the design isn't
-  generic.
+![AI test generator pipeline diagram](diagram.png)
 
-Any tool is fine (paper + photo, Excalidraw, draw.io, PowerPoint) as long as *you* made
-the layout/shape decisions — not an AI image generator or an AI-driven diagramming
-prompt.
+The 6-stage pipeline (Ground → Generate → Verify → Extend → Emit → Execute & Lock), with
+the **Verify** stage as a decision gate feeding back into itself on a mismatch (the
+design's core mechanism), and the **Execute & Lock** stage's failure path looping back to
+Verify rather than just to itself — a second correction pass, not a rubber stamp.

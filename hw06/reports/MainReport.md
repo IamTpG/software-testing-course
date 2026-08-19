@@ -1,7 +1,7 @@
 # HW06 — API Testing on EShop: Main Report
 
-**Student:** 23127244
-**SUT:** EShop (`ttbhanh/eshop-sut`, vendored fork `IamTpG/eshop-sut`)
+**Student:** 23127244  
+**SUT:** EShop (`ttbhanh/eshop-sut`, vendored fork `IamTpG/eshop-sut`)  
 **Selected APIs:** `GET /api/products` (Pool A), `POST /api/cart` (Pool B),
 `POST /api/admin/coupons` (Pool C) — chosen to avoid overlap with groupmate selections
 (`POST /api/login`, `POST /api/checkout`, `PUT /api/admin/orders/:id/status`) and for
@@ -144,6 +144,10 @@ skill (`.claude/skills/api-test-generator/`), and demonstrated end-to-end on a *
 endpoint (`POST /api/register`) — 21 cases, 3 audit corrections, 5 extensions, surfacing 3
 bonus findings (plaintext passwords confirmed at the source, a silent permanent-lockout
 bug from a missing UNIQUE constraint, no format validation). See `skill-demo/README.md`.
+
+![AI test generator pipeline diagram](diagram.png)
+
+Full design write-up and pseudocode: `AI-Test-Generator-Design.md`.
 
 ## 9. Summary
 
