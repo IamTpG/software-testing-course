@@ -1,0 +1,133 @@
+# HW05 — Tasks Checklist (23127244)
+
+Chosen endpoint groups (posted to groupmates to avoid duplication):
+
+| Group | Endpoint | Scenario |
+|---|---|---|
+| Read-heavy | `GET /api/products/:id` (product detail) | Load |
+| Auth-heavy | `POST /api/forgot-password` | Stress |
+| Transactional | `POST /api/apply-coupon` | Spike |
+
+Legend: `[ ]` to do · `🔴 MANUAL` = cannot be delegated, must be done by hand.
+
+**Operating mode (from Phase 6 onward):** user has delegated everything except physically-manual actions — taking screenshots, recording video, exporting PDFs, zipping the submission, Moodle upload, and oral defense. Claude proceeds autonomously through design/build/execution without per-step confirmation checkpoints. One exception kept: the AI Critique paragraph (Phase 8) is drafted as a starting point, not auto-finalized — Section 10 explicitly tests the student's own reflection, so it needs the user's genuine read-and-confirm before submission, not just physical typing.
+
+---
+
+## Phase 0 — Setup (endpoint-agnostic, safe to do immediately)
+
+- [x] Clone `eshop-sut` into `hw05/eshop-sut/`, run backend locally (`node server.js`, port 3000), confirm all 3 target endpoints respond: `GET /api/products/:id` → 200, `POST /api/forgot-password` (seeded user `test@eshop.com`) → 200, `POST /api/apply-coupon` (code `SAVE10`) → 200. Note: `apply-coupon`'s `final_amount` looked wrong (10x the input `total_amount`) — flag as a candidate bug to verify/log later, not a setup blocker.
+- [x] Install/verify JMeter (non-GUI mode) — no `sudo` available non-interactively, so installed a portable JDK 21 (Temurin, checksum-verified) + Apache JMeter 5.6.3 (checksum-verified) under `hw05/tools/` (gitignored, ~300MB). Run `source hw05/tools/env.sh` to get `java`/`jmeter` on PATH for this shell, then `jmeter -n -t <plan>.jmx -l <out>.jtl -e -o <report-dir>`.
+- [x] Resource monitor: `htop` also needs `sudo` and isn't installed; `top` is already present system-wide and satisfies the "htop / Task Manager / Activity Monitor" requirement — use `top` for the resource-usage screenshots (or ask the user to run `! sudo apt install -y htop` if they'd rather have htop's UI).
+- [x] Hardware report done — spec table + screenshot (`reports/screenshots/23127244_Hardware.png`, GNOME Settings→About, hostname `tpg-inspiron`) at `reports/Hardware-Report.md`.
+- [x] Already on `homework/05` — committing as you go, one commit per procedure step (Section 12); 7 commits so far.
+- [x] Folders set up: `test-plans/`, `data/`, `results/`, `reports/` all exist and populated. `reports/screenshots/` not created yet — will be created naturally when the first screenshot lands in Phase 2.
+- [x] AI Audit Report written in full at Phase 8 (`reports/AI-Audit-Report.md`), not just a skeleton.
+
+## Phase 1 — Task 1: AI-assisted design (per scenario)
+
+For **each** of the 3 scenarios (Load / Stress / Spike):
+
+- [x] Drive an AI tool step-by-step (not one generic prompt) to design the test plan: thread/VU counts, ramp-up, think-time — ask it to justify choices against the endpoint's expected behavior. Done for all 3 scenarios (see sub-sections below) — each involved live self-verification against the SUT and empirical calibration, not guessed numbers.
+- [x] Build the matching CSV data file. Done — 3 distinct CSVs, no sharing.
+- [x] Assign a distinct report/listener type per scenario, no repeats. Done — Load=Aggregate Report, Stress=Summary Report, Spike=View Results Tree.
+- [x] Name the file `23127244_{ScenarioType}_{YYYYMMDD}`. Done — all 3 dated `20260815`.
+- [x] 🔴 MANUAL — Human review: done for all 3 (you signed off on each design in conversation before building). What was wrong/found during review is logged per-scenario below and doubles as the AI-audit-worthy record.
+- [x] Commit the reviewed plan + CSV. Done — one commit per scenario (3 commits).
+
+### Load / read-heavy — `GET /api/products/:id` — done building, pending your review sign-off
+
+- [x] Designed: 30 threads, 30s ramp-up, 300s hold, Gaussian think-time 2000ms±1000ms, Aggregate Report listener. Reasoning logged in conversation (this is the AI-audit-worthy content — copy into `reports/AI-Audit-Report.md` later).
+- [x] Self-verified against the live SUT before building (not just assumed): confirmed seeded product IDs are only 1-5 (documented as a known dataset-size limitation), read `server.js:159-165` and found two real bugs — (a) even-ID products return `price` as a string instead of a number, (b) a nonexistent product ID returns HTTP 200 `{}` instead of 404. Neither affects this plan's assertions, but both are candidates for the GitHub Issues bug log.
+- [x] Built `test-plans/23127244_Load_20260815.jmx` + `data/23127244_Load_products.csv`.
+- [x] Smoke-tested the actual `.jmx` logic (temp reduced-scale copy, not committed): positive run → 0% errors, correct CSV substitution per request; negative-control run (assertion deliberately broken) → 100% errors with the expected failure message — proves the assertion is live, not a silent no-op.
+- [x] 🔴 MANUAL — Reviewed and signed off by you.
+
+### Stress / auth-heavy — `POST /api/forgot-password` — done building, pending your review sign-off
+
+- [x] Designed: staged/staircase stress (4 sequential Thread Groups via `TestPlan.serialize_threadgroups=true`, no plugins needed) — Stage1 30VU/5s ramp/30s hold, Stage2 80VU/10s/30s, Stage3 150VU/15s/30s, Stage4 400VU/20s/40s (bumped from an initial 300VU after burst-test data showed 300 might be a borderline/inconclusive breaking point). Think-time Uniform 200-800ms (shorter than Load's — models an anxious/retrying user, and needed to actually generate stress). Summary Report listener.
+- [x] Self-verified against the live SUT before building: read `server.js:68-85` — every call is a `SELECT` + `UPDATE` (a write, not read-only), no lockout on this endpoint (confirmed), only 2 seeded users (documented limitation, but realistic as a "many users hit few hot rows" stress pattern). Confirmed Content-Type: application/json is required or Express won't parse the body (would silently 404 "User not found").
+- [x] Calibrated thread counts empirically, not guessed: burst-tested concurrency 20→700 directly against the live endpoint. Found latency scales ~linearly with concurrency (SQLite single-writer serialization) but **no hard errors even at 700** (avg 1.04s, max 1.58s) — meaning a response-code-only assertion would never trip. Added a **Duration Assertion (>2000ms = fail)** as the real stress signal alongside response-code 200.
+- [x] Built `test-plans/23127244_Stress_20260815.jmx` + `data/23127244_Stress_emails.csv`.
+- [x] Smoke-tested the actual `.jmx` at reduced scale: positive run → 0% errors across all 4 stages, confirmed stages ran strictly sequentially (no interleaving, verified via timestamp+threadName ordering) and CSV/header/body substitution worked; negative-control (duration threshold forced to 1ms) → 100% errors with the expected "operation lasted too long" message, proving the Duration Assertion is live.
+- [x] 🔴 MANUAL — Reviewed and signed off by you.
+
+### Spike / transactional — `POST /api/apply-coupon` — done building, pending your review sign-off
+
+- [x] Designed: 3 sequential stages (baseline 15VU/10s ramp/20s hold → spike 500VU/2s ramp/15s hold → recovery 15VU/10s ramp/20s hold), modeling resilience/recovery rather than hunting a breaking point (this is the correct distinction from Stress: Stress finds the ceiling, Spike checks how the system handles and recovers from a sudden surge). Think-time Uniform 500-1200ms baseline/recovery, 50-150ms during the spike (near-back-to-back burst pacing). View Results Tree listener.
+- [x] Self-verified against the live SUT before designing: read `server.js:362-437` and found a real bug — for `type:"percent"` coupons, `discount_amount = total_amount * (1 - coupon.discount_value)` treats `discount_value` as a whole number (10) instead of a fraction (0.10), so `SAVE10` produces a large *negative* discount (confirmed live earlier: total_amount 500000 -> discount_amount -4500000). Deliberately kept the CSV to only valid/successful combos and designed assertions around `success:true` + HTTP 200, not the discount math itself — so this known bug doesn't corrupt the spike test's pass/fail signal; it's logged separately as a bug-report candidate instead.
+- [x] Calibrated spike magnitude empirically before locking it in: burst-tested 100/400/800 concurrent (0% errors, latency stayed low), then on your call went further to 1500/2000 concurrent — still 0% errors, no meaningful degradation (latency was noisy/non-monotonic, consistent with OS scheduling noise rather than a real SUT limit). Conclusion: **no breaking point found for this endpoint in the tested range**, a legitimate finding (cheap indexed read on a 4-row table, no write-lock bottleneck) worth contrasting against `forgot-password`'s write-bound behavior in the report. Locked in 500 VU for the actual spike stage — comfortably dramatic (33x the baseline) and fully bracketed by real data, without inflating the design to an untested extreme just to manufacture drama.
+- [x] Built `test-plans/23127244_Spike_20260815.jmx` + `data/23127244_Spike_coupons.csv` (5 rows across the 3 real, non-expired coupons).
+- [x] Smoke-tested the actual `.jmx` at reduced scale: positive run → 0% errors across all 3 stages in correct sequential order, multi-field CSV substitution (`code`/`total_amount`/`user_id`) confirmed working via valid JSON bodies; two separate negative controls — forcing the `success:true` check to fail (100% errors, correct message) and forcing the duration threshold to 1ms (81% errors, proportional to real elapsed time, not a hardcoded flag) — both confirm the assertions are genuinely live.
+- [x] 🔴 MANUAL — Reviewed and signed off by you. **All 3 test plans are now final.**
+
+## Phase 2 — Task 1: Execution & evidence
+
+For **each** scenario:
+
+- [x] Dry run done first (Load), confirmed the command works end-to-end before the real take.
+- [x] ⚠️ Verified: JMeter **appends** to an existing `.jtl` filename rather than overwriting it. Cleanup step applied before the real recorded run.
+- [x] 🔴 MANUAL — Ran all 3 `.jmx` files via JMeter non-GUI with OBS screen recording (tool + `top` in the same frame). Screenshots taken mid-run for all 3, confirmed by content: `23127244_Load_run.png`, `23127244_Stress_run.png`, `23127244_Spike_run.png` (Machine ID redacted before committing, hostname kept visible).
+- [x] Confirmed: no account-lockout handling needed (only `/login` has it, not targeted). `forgot-password` under Stress didn't hit any undocumented rate limit — its errors were the intended Duration Assertion (SLA), not rate-limiting.
+- [x] Real `.jtl` logs + HTML report folders committed for all 3: Load 4265 samples/0 errors, Stress 24681/79 errors (0.32%, max 7.68s), Spike 32699/136 errors (0.42%, all HTTP 200 / Duration Assertion breaches — verified root cause, not a real failure).
+- [x] Logged 3 genuine bugs found during test design to GitHub Issues, screenshots attached: [#7](https://github.com/IamTpG/software-testing-course/issues/7) price type flip, [#8](https://github.com/IamTpG/software-testing-course/issues/8) 404-as-200, [#9](https://github.com/IamTpG/software-testing-course/issues/9) coupon negative discount. (4th bug, SQL injection, found later during the Phase 7 Agent Skill demo — see Phase 7.)
+
+**Phase 2 complete.**
+
+## Phase 3 — Endurance / soak test
+
+- [x] Designed: flat 150 VU sustained for 12 min (735s = 15s ramp + 720s hold, verified empirically that JMeter's `duration` field is measured from thread-group start and includes ramp-up, not additive — confirmed against the real Load run's wall-clock time) against `POST /api/forgot-password`, the endpoint with a demonstrated real bottleneck (Load/Spike showed no meaningful limits in testing, so less informative to soak-test). Calibrated from the Stress run's own data: Stage 3 (150 VU) ran clean at 222.6 RPS but only for ~30s — this endurance run checks whether that holds for a genuinely sustained window, which a short staged test can't reveal (e.g. slow memory growth, gradual queue buildup).
+- [x] Built `test-plans/23127244_Endurance_20260815.jmx` (reuses the Stress CSV — same endpoint/group, not a new one requiring its own data file). Smoke-tested at reduced scale (5 VU/5s), 0% errors, confirmed working before committing to the real run.
+- [x] Section 6 doesn't require a screenshot/video-in-frame for this step (unlike the 3 main scenarios) — running the real 12-min soak myself in the background, with a parallel backend memory sampler (`ps` every 10s → `results/23127244_Endurance_20260815_memory.csv`) to get real RSS/CPU-over-time numbers, not just the JMeter-side throughput/error stats.
+- [x] **Real 12-min run complete.** Max stable RPS: **285.6 req/s at 150 VU, 0% errors** across all 209,748 samples (no HTTP errors, no Duration Assertion breaches) — no degradation trend across any of the 12 minutes. Memory ceiling: **peak 192.6 MB during warm-up** (t=120s), then GC-compacted down to a **steady-state 88-116 MB** for the remaining ~10 min (no leak). Full writeup: `reports/Endurance-Threshold.md`. Data: `results/23127244_Endurance_20260815.jtl` + `_report/` + `_memory.csv`.
+
+## Phase 4 — Demo video (Task 1 requirement)
+
+- [x] 🔴 MANUAL — Recorded via OBS while running the real Load/Stress/Spike scenarios, tool + `top` in the same frame, own Vietnamese narration. Confirmed by user (full narrated recording, not a silent/test capture). Unlisted YouTube link saved: `DEMO-VIDEO-LINK.txt` — https://youtu.be/GmoYPY6HPyg. Screenshots taken during this same recording session (3 of the 4 Phase 2 screenshots) confirm timing consistency with the real run data.
+
+**Phase 4 complete.**
+
+## Phase 5 — Task 2: AI analysis & misinterpretation hunt
+
+- [x] Prompted a genuinely independent fresh Claude session (no access to this conversation, only the 2 prompts below with repo file access) to analyze all 4 raw `.jtl` logs and propose CI thresholds: `reports/AI-Log-Analysis.md`.
+- [x] Cross-checked every checkable claim against the raw data independently (own separate computations, not just re-reading its numbers): total counts, per-stage/per-scenario error rates, both duration values, failure overage ranges, and the most surprising claim (JMeter's own dashboard reports a 6.5x-wrong median for Stress) — all confirmed correct except one trivial KB/1000-vs-1024 rounding note. Full writeup with the verification table: `reports/AI-Misinterpretation-Hunt.md`.
+- [x] Had the same fresh session propose optimizations (WAL, query-collapsing rewrites, indexes, connection pooling, clustering, bulk-import batching): `reports/Optimization-Proposals.md`.
+- [x] Judged each: verified live PRAGMA state and SQLite version by independently re-querying the real DB, and — going further than reading — actually executed both proposed SQL rewrites against a copy of the real database and confirmed byte-identical results to the current code. **8/8 classified feasible, 0 hallucinated.** Full reasoning per proposal: `reports/AI-Misinterpretation-Hunt.md`.
+
+**Phase 5 complete.**
+
+## Phase 6 — Task 3: Continuous Performance Testing proposal
+
+- [x] Drafted a tiered model (Skip/Smoke/Regression/Full) that watches `backend/**` path changes, event type (PR/merge/nightly/manual label), and flags p95 regressions via a dual check (hard ceiling from Task 2's gates + rolling-baseline drift), with a double-breach confirmation rule to reduce false positives. Grounded in HW05's own real findings (Load has no cliff, Stress/Spike do, Endurance's value only justifies nightly frequency given its 12-min cost) — not a generic template.
+- [x] Flow chart produced (Mermaid, renders natively on GitHub).
+- [x] Trade-off discussion written (cost vs. false alarms vs. missed regressions vs. maintenance/triage cost), citing real observed variance from our own runs (Stress Stage 4's p95=691ms vs p99=802ms) as evidence single-run thresholds are noisy.
+- [x] Full writeup: `reports/Continuous-Performance-Testing-Proposal.md`.
+
+**Phase 6 complete.**
+
+## Phase 7 — Agent Skill
+
+- [x] Built `.claude/skills/jmeter-perf-testing/SKILL.md` — encodes the actual discipline used throughout this homework: self-verify against real code/live SUT before designing, calibrate thread counts empirically (not guessed), prove assertions are live via positive+negative smoke tests before any real run, and independently reproduce any AI-produced analysis claim rather than trusting it.
+- [x] **Demonstrated end-to-end on a new endpoint** (`GET /api/products?search=`, not one of the 3 graded scenarios) — real output in `skill-demo/`, not just a paper skill. Step 0 (self-verify) found a genuine **SQL injection vulnerability** (confirmed live, non-destructive boolean-bypass proof). Steps 1-5 (calibrate → build → smoke-test → execute → analyze) completed cleanly: 1,059 samples, 0 errors, p95=3ms. Full trail: `skill-demo/README.md`, `skill-demo/ai-audit-log/products-search.md`.
+- [x] Reviewed and posted as [#10](https://github.com/IamTpG/software-testing-course/issues/10) — held back from auto-posting for human review (a live exploit payload going public), student reviewed and approved posting.
+- [x] 🔴 MANUAL — Recorded second demo video (skill run end-to-end via `/jmeter-perf-testing`, isolated `demo/` folder, all 6 steps + result walkthrough). Link saved: `SKILL-DEMO-VIDEO-LINK.txt` — https://youtu.be/Hnoe-5KldYE
+
+**Phase 7 complete.**
+
+## Phase 8 — Reports & mandatory appendices
+
+- [x] Wrote Main Report (`reports/MainReport.md`) — Tasks 1-3, all evidence cross-referenced to the actual supporting docs/results.
+- [x] Compiled AI Audit Report (`reports/AI-Audit-Report.md`) — chronological log of every major AI interaction, both this main session and the independent fresh session used for Task 2, with real timestamps pulled from git history.
+- [x] AI Critique (`reports/AI-Critique.md`, 271 words) — confirmed by you as final, draft note removed.
+- [ ] 🔴 MANUAL — Convert Main Report + AI Audit Report to PDF (your own workflow).
+- [x] Exported Git commit log to `reports/Git-Commit-Log.txt` (will re-export once more before final zip to catch remaining commits).
+- [x] Wrote `README.md`: self-assessment table (grade column left blank for you) + test summary.
+
+**Phase 8 complete except the two 🔴 MANUAL items above.**
+
+## Phase 9 — Packaging & submission
+
+- [x] Cross-checked every required item in `SUBMISSION-CHECKLIST.md` against what's actually in the repo — everything content-wise is done; only the physically-manual items remain (see that file's status markers). Zip assembly itself is a MANUAL step (below).
+- [x] 🔴 MANUAL — Self-assessed grade decided: 100/100 (`README.md`).
+- [ ] 🔴 MANUAL — Zip and submit `23127244_HW05_AI_Performance_<grade>.zip` to Moodle before deadline (no late submissions accepted).
+- [ ] 🔴 MANUAL — If selected for oral defense (30% random), prepare to explain your process in 5–7 minutes.

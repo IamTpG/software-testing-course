@@ -1,0 +1,2342 @@
+* commit e71b276fc2a25912fbae60c550d91457fb682a7e
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Mon Aug 17 22:47:29 2026 +0700
+| 
+|     chore(hw05): remove recording-support materials, both videos are done
+|     
+|     RUN-COMMANDS.md and Narration-Script.md/.pdf were working aids for
+|     recording the two demo videos - no longer needed now that both are
+|     recorded and uploaded. Also removed the local demo/ recording kit
+|     (untracked). Cleaned up dangling references in README.md and
+|     SUBMISSION-CHECKLIST.md.
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/README.md                    |   6 +--
+|  hw05/RUN-COMMANDS.md              |   7 ---
+|  hw05/SUBMISSION-CHECKLIST.md      |   2 +-
+|  hw05/reports/Narration-Script.md  |  93 ------------------------------------
+|  hw05/reports/Narration-Script.pdf | Bin 138408 -> 0 bytes
+|  5 files changed, 4 insertions(+), 104 deletions(-)
+| 
+* commit 4fd7370b822939267a94749002ffd1259531c4fe
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Mon Aug 17 22:44:06 2026 +0700
+| 
+|     chore(hw05): gitignore the packaged submission export, update submission checklist
+|     
+|     Packaged 23127244_HW05_AI_Performance_100/ built for zipping - kept
+|     gitignored until final (same convention as HW04), commit only once
+|     the 3 PDFs are added. Checklist now cross-references the actual
+|     packaged folder contents.
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/.gitignore              |  4 +++
+|  hw05/SUBMISSION-CHECKLIST.md | 73 +++++++++++++++++++++++++-----------------
+|  2 files changed, 47 insertions(+), 30 deletions(-)
+| 
+* commit df4828ea70f802ef97e422b5ec7aa29defcfe1d5
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Mon Aug 17 22:37:36 2026 +0700
+| 
+|     docs(hw05): add Agent Skill demo video link, mark Phase 7 fully complete
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/README.md                 | 2 +-
+|  hw05/SKILL-DEMO-VIDEO-LINK.txt | 1 +
+|  hw05/SUBMISSION-CHECKLIST.md   | 2 +-
+|  hw05/TASKS-CHECKLIST.md        | 4 +++-
+|  hw05/reports/MainReport.md     | 2 +-
+|  5 files changed, 7 insertions(+), 4 deletions(-)
+| 
+* commit 1a3bb93da749e11d65d09e709d0f66084c2d9aa3
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sun Aug 16 13:37:42 2026 +0700
+| 
+|     docs(hw05): SQL injection bug posted as issue #10, sync all references
+|     
+|     Posted with student approval after review. Renamed the screenshot to
+|     drop the _DRAFT suffix and match the real issue number. Updated every
+|     doc that referenced this as pending (README, checklists, Main Report,
+|     AI Audit Report, github-issues-draft.md) to reflect posted status.
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/README.md                                    |   2 +-
+|  hw05/SUBMISSION-CHECKLIST.md                      |   2 +-
+|  hw05/TASKS-CHECKLIST.md                           |   6 ++--
+|  hw05/reports/AI-Audit-Report.md                   |   7 +++--
+|  hw05/reports/MainReport.md                        |   2 +-
+|  hw05/reports/github-issues-draft.md               |  33 +++++++++-----------
+|  ..._DRAFT.png => 23127244_Bug10_SQLInjection.png} | Bin
+|  7 files changed, 25 insertions(+), 27 deletions(-)
+| 
+* commit 4d588d9e065707b02946a415baf3f5c191c9d9ed
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sun Aug 16 13:33:10 2026 +0700
+| 
+|     docs(hw05): add bug repro screenshots for issues #7, #8, #9, and draft #4
+|     
+|     All 4 verified by content: price-type flip (int vs str), 404-as-200,
+|     coupon negative discount, and SQL injection filter bypass (1 row for
+|     a legitimate search vs 5 for the injected payload).
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  .../screenshots/23127244_Bug4_SQLInjection_DRAFT.png | Bin 0 -> 132867 bytes
+|  .../screenshots/23127244_Bug7_PriceTypeFlip.png      | Bin 0 -> 129258 bytes
+|  .../screenshots/23127244_Bug8_404AsStatus200.png     | Bin 0 -> 90989 bytes
+|  .../23127244_Bug9_CouponNegativeDiscount.png         | Bin 0 -> 101856 bytes
+|  4 files changed, 0 insertions(+), 0 deletions(-)
+| 
+* commit 76c445a1f6807cb4069f2eca93cf5357e225fa5b
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sun Aug 16 13:19:43 2026 +0700
+| 
+|     docs(hw05): sync checklists with confirmed state (AI Critique, grade)
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/SUBMISSION-CHECKLIST.md | 2 +-
+|  hw05/TASKS-CHECKLIST.md      | 6 +++---
+|  2 files changed, 4 insertions(+), 4 deletions(-)
+| 
+* commit eb458138fe2f755b84eac37638c8e2d2aba2d100
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 23:55:24 2026 +0700
+| 
+|     docs(hw05): hardware screenshot, finalized AI Critique, self-assessed 100
+|     
+|     Hardware screenshot taken (GNOME Settings->About), reconciled spec
+|     table numbers with what it actually shows (20.0 GiB physical RAM vs
+|     the ~18 GiB available-to-OS figure queried earlier, 512.1 GB total
+|     disk vs the 118 GB root partition). AI Critique confirmed by the
+|     student as-is, draft note removed. Self-assessed grade: 100/100.
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/README.md                                 |  16 +++++++---------
+|  hw05/SUBMISSION-CHECKLIST.md                   |   4 ++--
+|  hw05/TASKS-CHECKLIST.md                        |   2 +-
+|  hw05/reports/AI-Critique.md                    |   7 -------
+|  hw05/reports/Hardware-Report.md                |  12 ++++--------
+|  hw05/reports/screenshots/23127244_Hardware.png | Bin 0 -> 113886 bytes
+|  6 files changed, 14 insertions(+), 27 deletions(-)
+| 
+* commit 39334dc453dc0c1c1174495c30d73f982f0361d6
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 23:37:38 2026 +0700
+| 
+|     docs(hw05): final re-export of git commit log
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/reports/Git-Commit-Log.txt | 46 +++++++++++++++++++++++++++++++++++++++
+|  1 file changed, 46 insertions(+)
+| 
+* commit 1ef5e5e781de12dc5aace5c0b30ddda93170caa2
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 23:37:07 2026 +0700
+| 
+|     docs(hw05): cross-check submission checklist against actual repo state
+|     
+|     Everything content-wise is done; remaining items are all physically
+|     manual (screenshots, PDF conversion, zip, Moodle submission).
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/SUBMISSION-CHECKLIST.md | 50 +++++++++++++++++++-----------------------
+|  hw05/TASKS-CHECKLIST.md      |  2 +-
+|  2 files changed, 24 insertions(+), 28 deletions(-)
+| 
+* commit 1e9445cd7b0457fed672a16d6ecb3f2de5ba7ad2
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 23:35:46 2026 +0700
+| 
+|     chore(hw05): commit user's trim of RUN-COMMANDS.md, add Narration-Script.pdf
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/RUN-COMMANDS.md              |  69 +-----------------------------------
+|  hw05/reports/Narration-Script.pdf | Bin 0 -> 138408 bytes
+|  2 files changed, 1 insertion(+), 68 deletions(-)
+| 
+* commit 37303649dc261c88d3ad3f7864dfc6c646537867
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 23:34:21 2026 +0700
+| 
+|     feat(hw05): Phase 8 - Main Report, AI Audit Report, AI Critique draft, README
+|     
+|     Main Report synthesizes Tasks 1-3 with cross-references to every
+|     supporting doc and real result (271,393 total samples across 4 runs).
+|     AI Audit Report is a chronological log of every major AI interaction
+|     with real timestamps from git history, covering both this main
+|     session and the independent fresh session used for Task 2.
+|     
+|     AI Critique drafted as a starting point (271 words, within the
+|     200-300 requirement) centered on a genuine finding - the gap between
+|     the Spike design's curl-probe calibration and the real sustained run's
+|     136 Duration Assertion failures - rather than a generic answer.
+|     Explicitly flagged as needing the student's own read-and-confirm
+|     before final, since Section 10 tests personal reflection.
+|     
+|     README has the test summary + self-assessment table (grade column
+|     left blank, that's the student's call). Git commit log exported.
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/README.md                  |  65 +++++++
+|  hw05/TASKS-CHECKLIST.md         |  14 +-
+|  hw05/reports/AI-Audit-Report.md | 162 +++++++++++++++
+|  hw05/reports/AI-Critique.md     |  28 +++
+|  hw05/reports/Git-Commit-Log.txt | 400 ++++++++++++++++++++++++++++++++++++++
+|  hw05/reports/MainReport.md      | 188 ++++++++++++++++++
+|  6 files changed, 851 insertions(+), 6 deletions(-)
+| 
+* commit b219fb8c57039e3442337bdbd297d98aec08ef21
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 23:29:39 2026 +0700
+| 
+|     feat(hw05): Task 7 - jmeter-perf-testing Agent Skill + end-to-end demo
+|     
+|     Encodes the actual discipline used throughout this homework: self-
+|     verify against real code/live SUT before designing, calibrate thread
+|     counts empirically, prove assertions are live via positive+negative
+|     smoke tests, independently reproduce any AI analysis claim rather
+|     than trusting it.
+|     
+|     Demonstrated end-to-end on GET /api/products?search= (not one of the
+|     3 graded scenarios) with real output, not a paper skill. Step 0 found
+|     a genuine SQL injection vulnerability (unparameterized search param,
+|     server.js:143-145) - confirmed live and non-destructively via a
+|     boolean-based bypass (all 5 products returned regardless of search
+|     term). Logged as a draft bug report rather than auto-posted, since
+|     posting a live exploit payload publicly was correctly blocked by
+|     safety controls - needs manual review before posting.
+|     
+|     Steps 1-5 (calibrate/build/smoke-test/execute/analyze) completed
+|     cleanly: 1,059 samples, 0 errors, p95=3ms, cross-checked against the
+|     dashboard statistics.json.
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/.claude/skills/jmeter-perf-testing/SKILL.md  |   116 +
+|  hw05/TASKS-CHECKLIST.md                           |     6 +-
+|  hw05/reports/github-issues-draft.md               |    56 +-
+|  hw05/skill-demo/README.md                         |    29 +
+|  hw05/skill-demo/ai-audit-log/products-search.md   |    61 +
+|  .../data/23127244_SkillDemo_search_terms.csv      |     6 +
+|  .../results/23127244_SkillDemo_20260815.jtl       |  1060 ++
+|  .../content/css/dashboard.css                     |    48 +
+|  .../content/css/jquery-ui.min.css                 |     7 +
+|  .../content/css/jquery-ui.structure.min.css       |     5 +
+|  .../content/css/jquery-ui.theme.min.css           |     5 +
+|  .../content/css/legends.css                       |    61 +
+|  .../content/css/theme.blue.css                    |   233 +
+|  .../content/js/curvedLines.js                     |   483 +
+|  .../content/js/customGraph.js                     |    50 +
+|  .../content/js/dashboard-commons.js               |   462 +
+|  .../content/js/dashboard.js                       |   235 +
+|  .../content/js/graph.js                           |  1416 +++
+|  .../content/js/hashtable.js                       |   402 +
+|  .../content/js/jquery-ui.min.js                   |    13 +
+|  .../content/js/jquery.cookie.js                   |   117 +
+|  .../content/js/jquery.flot.stack.js               |    83 +
+|  .../js/jquery.numberformatter-1.2.3.min.js        |     1 +
+|  .../content/js/jquery.tablesorter.min.js          |     2 +
+|  .../content/pages/CustomsGraphs.html              |   176 +
+|  .../content/pages/OverTime.html                   |   512 +
+|  .../content/pages/ResponseTimes.html              |   373 +
+|  .../content/pages/Throughput.html                 |   463 +
+|  .../content/pages/icon-apache.png                 |   Bin 0 -> 4944 bytes
+|  .../23127244_SkillDemo_20260815_report/index.html |   203 +
+|  .../sbadmin2-1.0.7/README.md                      |    27 +
+|  .../sbadmin2-1.0.7/bower.json                     |    39 +
+|  .../bower_components/bootstrap/.bower.json        |    48 +
+|  .../bower_components/bootstrap/README.md          |   134 +
+|  .../bootstrap/dist/css/bootstrap.min.css          |     6 +
+|  .../dist/fonts/glyphicons-halflings-regular.eot   |   Bin 0 -> 20127 bytes
+|  .../dist/fonts/glyphicons-halflings-regular.svg   |   288 +
+|  .../dist/fonts/glyphicons-halflings-regular.ttf   |   Bin 0 -> 45404 bytes
+|  .../dist/fonts/glyphicons-halflings-regular.woff  |   Bin 0 -> 23424 bytes
+|  .../dist/fonts/glyphicons-halflings-regular.woff2 |   Bin 0 -> 18028 bytes
+|  .../bootstrap/dist/js/bootstrap.min.js            |     7 +
+|  .../bower_components/flot-axislabels/.bower.json  |    14 +
+|  .../bower_components/flot-axislabels/README.md    |   101 +
+|  .../flot-axislabels/jquery.flot.axislabels.js     |   466 +
+|  .../bower_components/flot.tooltip/.bower.json     |    24 +
+|  .../bower_components/flot.tooltip/bower.json      |    13 +
+|  .../flot.tooltip/js/excanvas.min.js               |     1 +
+|  .../flot.tooltip/js/jquery.flot.js                |  3168 ++++++
+|  .../flot.tooltip/js/jquery.flot.tooltip.js        |   490 +
+|  .../flot.tooltip/js/jquery.flot.tooltip.min.js    |    12 +
+|  .../flot.tooltip/js/jquery.flot.tooltip.source.js |   479 +
+|  .../bower_components/flot/.bower.json             |    19 +
+|  .../bower_components/flot/.travis.yml             |     3 +
+|  .../sbadmin2-1.0.7/bower_components/flot/API.md   |  1498 +++
+|  .../bower_components/flot/CONTRIBUTING.md         |    98 +
+|  .../sbadmin2-1.0.7/bower_components/flot/FAQ.md   |    75 +
+|  .../sbadmin2-1.0.7/bower_components/flot/Makefile |    12 +
+|  .../sbadmin2-1.0.7/bower_components/flot/NEWS.md  |  1026 ++
+|  .../bower_components/flot/PLUGINS.md              |   143 +
+|  .../bower_components/flot/README.md               |   110 +
+|  .../bower_components/flot/component.json          |     8 +
+|  .../bower_components/flot/excanvas.js             |  1428 +++
+|  .../bower_components/flot/excanvas.min.js         |     1 +
+|  .../bower_components/flot/flot.jquery.json        |    27 +
+|  .../bower_components/flot/jquery.colorhelpers.js  |   180 +
+|  .../bower_components/flot/jquery.flot.canvas.js   |   345 +
+|  .../flot/jquery.flot.categories.js                |   190 +
+|  .../flot/jquery.flot.crosshair.js                 |   176 +
+|  .../flot/jquery.flot.errorbars.js                 |   353 +
+|  .../flot/jquery.flot.fillbetween.js               |   226 +
+|  .../bower_components/flot/jquery.flot.image.js    |   241 +
+|  .../bower_components/flot/jquery.flot.js          |  3168 ++++++
+|  .../bower_components/flot/jquery.flot.navigate.js |   346 +
+|  .../bower_components/flot/jquery.flot.pie.js      |   820 ++
+|  .../bower_components/flot/jquery.flot.resize.js   |    59 +
+|  .../flot/jquery.flot.selection.js                 |   360 +
+|  .../bower_components/flot/jquery.flot.stack.js    |   188 +
+|  .../bower_components/flot/jquery.flot.symbol.js   |    71 +
+|  .../flot/jquery.flot.threshold.js                 |   142 +
+|  .../bower_components/flot/jquery.flot.time.js     |   432 +
+|  .../bower_components/flot/package.json            |    11 +
+|  .../bower_components/font-awesome/.bower.json     |    36 +
+|  .../bower_components/font-awesome/.npmignore      |    42 +
+|  .../bower_components/font-awesome/bower.json      |    23 +
+|  .../font-awesome/css/font-awesome.css             |  1672 +++
+|  .../font-awesome/css/font-awesome.min.css         |     4 +
+|  .../font-awesome/fonts/FontAwesome.otf            |   Bin 0 -> 85908 bytes
+|  .../font-awesome/fonts/fontawesome-webfont.eot    |   Bin 0 -> 56006 bytes
+|  .../font-awesome/fonts/fontawesome-webfont.svg    |   520 +
+|  .../font-awesome/fonts/fontawesome-webfont.ttf    |   Bin 0 -> 112160 bytes
+|  .../font-awesome/fonts/fontawesome-webfont.woff   |   Bin 0 -> 65452 bytes
+|  .../font-awesome/less/bordered-pulled.less        |    16 +
+|  .../bower_components/font-awesome/less/core.less  |    11 +
+|  .../font-awesome/less/extras.less                 |     2 +
+|  .../font-awesome/less/fixed-width.less            |     6 +
+|  .../font-awesome/less/font-awesome.less           |    17 +
+|  .../bower_components/font-awesome/less/icons.less |   552 +
+|  .../font-awesome/less/larger.less                 |    13 +
+|  .../bower_components/font-awesome/less/list.less  |    19 +
+|  .../font-awesome/less/mixins.less                 |    25 +
+|  .../bower_components/font-awesome/less/path.less  |    14 +
+|  .../font-awesome/less/rotated-flipped.less        |    20 +
+|  .../font-awesome/less/spinning.less               |    29 +
+|  .../font-awesome/less/stacked.less                |    20 +
+|  .../font-awesome/less/variables.less              |   561 +
+|  .../font-awesome/scss/_bordered-pulled.scss       |    16 +
+|  .../bower_components/font-awesome/scss/_core.scss |    11 +
+|  .../font-awesome/scss/_extras.scss                |    44 +
+|  .../font-awesome/scss/_fixed-width.scss           |     6 +
+|  .../font-awesome/scss/_icons.scss                 |   552 +
+|  .../font-awesome/scss/_larger.scss                |    13 +
+|  .../bower_components/font-awesome/scss/_list.scss |    19 +
+|  .../font-awesome/scss/_mixins.scss                |    25 +
+|  .../bower_components/font-awesome/scss/_path.scss |    14 +
+|  .../font-awesome/scss/_rotated-flipped.scss       |    20 +
+|  .../font-awesome/scss/_spinning.scss              |    29 +
+|  .../font-awesome/scss/_stacked.scss               |    20 +
+|  .../font-awesome/scss/_variables.scss             |   561 +
+|  .../font-awesome/scss/font-awesome.scss           |    17 +
+|  .../bower_components/jquery/.bower.json           |    37 +
+|  .../bower_components/jquery/bower.json            |    27 +
+|  .../bower_components/jquery/dist/jquery.js        | 10364 ++++++++++++++++++
+|  .../bower_components/jquery/dist/jquery.min.js    |     2 +
+|  .../bower_components/jquery/dist/jquery.min.map   |     1 +
+|  .../bower_components/metisMenu/.bower.json        |    45 +
+|  .../bower_components/metisMenu/README.md          |   113 +
+|  .../metisMenu/dist/metisMenu.min.css              |    10 +
+|  .../metisMenu/dist/metisMenu.min.js               |     9 +
+|  .../sbadmin2-1.0.7/dist/css/sb-admin-2.css        |   431 +
+|  .../sbadmin2-1.0.7/dist/js/sb-admin-2.js          |    36 +
+|  .../sbadmin2-1.0.7/less/mixins.less               |     1 +
+|  .../sbadmin2-1.0.7/less/sb-admin-2.less           |   366 +
+|  .../sbadmin2-1.0.7/less/variables.less            |    14 +
+|  .../statistics.json                               |    34 +
+|  .../test-plans/23127244_SkillDemo_20260815.jmx    |   145 +
+|  135 files changed, 40338 insertions(+), 3 deletions(-)
+| 
+* commit 4168c19bbef351124f05f97fee90b14b577a56ca
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 23:19:19 2026 +0700
+| 
+|     feat(hw05): Task 3 - continuous performance testing proposal
+|     
+|     Tiered decision model (Skip/Smoke/Regression/Full) driven by path
+|     filters and event type, not "run everything every time" - grounded in
+|     HW05's own real findings: Load showed no cliff in any test, Stress/
+|     Spike both have demonstrated breaking points, and Endurance's 12-min
+|     cost only justifies nightly frequency.
+|     
+|     Regression flagging uses two distinct checks (hard ceiling from Task
+|     2's gates + rolling-baseline drift) plus a double-breach confirmation
+|     rule, since our own Stress data shows real run-to-run variance
+|     (Stage 4 p95=691ms vs p99=802ms) that a naive single-run threshold
+|     would misread as either a false alarm or a missed regression.
+|     
+|     Includes a Mermaid flow chart and a trade-off discussion covering
+|     cost, false alarms, missed regressions, and ongoing triage/maintenance
+|     cost.
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/TASKS-CHECKLIST.md                           |   9 +-
+|  .../Continuous-Performance-Testing-Proposal.md    | 111 ++++++++++++++++++++
+|  2 files changed, 117 insertions(+), 3 deletions(-)
+| 
+* commit b81827e1115b160721de766b609990c4158aec5d
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 23:17:51 2026 +0700
+| 
+|     docs(hw05): shift to autonomous execution mode past Phase 5
+|     
+|     User has delegated everything except physically-manual actions
+|     (screenshots, video, PDF export, zip/submission). AI Critique kept as
+|     a drafted-not-finalized exception since Section 10 explicitly tests
+|     the student's own reflection.
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/TASKS-CHECKLIST.md | 14 ++++++++------
+|  1 file changed, 8 insertions(+), 6 deletions(-)
+| 
+* commit b35c96ae764a73810a6ba815eb034a8b501fa3f9
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 23:12:49 2026 +0700
+| 
+|     feat(hw05): Task 2 - AI log analysis, optimization proposals, and misinterpretation hunt
+|     
+|     Used a genuinely independent fresh Claude session (no access to this
+|     design conversation, only 2 self-contained prompts with repo file
+|     access) for the AI-first analysis step, then independently verified
+|     its output rather than re-reading it.
+|     
+|     Prompt 1 output (AI-Log-Analysis.md): per-scenario stats, percentiles,
+|     failure classification, and CI threshold proposals computed directly
+|     from the raw .jtl files. Cross-checked every claim with separate
+|     computations - all correct, including the most surprising one
+|     (JMeter's own dashboard reports a 6.5x-wrong median for Stress: 175ms
+|     vs the true 27ms, confirmed two independent ways).
+|     
+|     Prompt 2 output (Optimization-Proposals.md): 8 optimizations tied to
+|     specific findings, verified against live PRAGMA state and the actual
+|     source. Went beyond reading - executed both proposed SQL rewrites
+|     against a copy of the real database and confirmed byte-identical
+|     results to the current code. 8/8 classified feasible, 0 hallucinated.
+|     
+|     Full verification methodology and tables in
+|     reports/AI-Misinterpretation-Hunt.md.
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/TASKS-CHECKLIST.md                   |   9 +-
+|  hw05/reports/AI-Log-Analysis.md           | 272 ++++++++++++++++++++++++
+|  hw05/reports/AI-Misinterpretation-Hunt.md |  78 +++++++
+|  hw05/reports/Optimization-Proposals.md    | 318 ++++++++++++++++++++++++++++
+|  hw05/reports/analyze_logs.py              | 120 +++++++++++
+|  5 files changed, 794 insertions(+), 3 deletions(-)
+| 
+* commit bc8b3bdf0d66c958c822f5cdd09229cc20bdee18
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 22:36:21 2026 +0700
+| 
+|     docs(hw05): mark Phase 4 complete, demo video already recorded
+|     
+|     User confirmed the previously-provided YouTube link is the full
+|     narrated recording covering all 3 scenarios, not a placeholder.
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/TASKS-CHECKLIST.md | 4 +++-
+|  1 file changed, 3 insertions(+), 1 deletion(-)
+| 
+* commit 57c78530b37687315c3fdbcd1b56ab02098d8e06
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 22:19:35 2026 +0700
+| 
+|     feat(hw05): endurance test results - 285.6 RPS stable, 192.6MB peak memory
+|     
+|     Real 12-minute soak run against POST /api/forgot-password at 150 VU:
+|     209,748 samples, 0 errors (no HTTP failures, no Duration Assertion
+|     breaches), no degradation trend across any of the 12 minutes. Actually
+|     higher stable throughput (285.6 RPS) than the short Stress Stage 3
+|     snapshot suggested (222.6 RPS) - no competing adjacent stages, and
+|     JIT/connection-pool warm-up improves steady-state efficiency.
+|     
+|     Memory: peak RSS 192.6MB during warm-up (t=120s, before the run
+|     settled), then GC-compacted to a steady 88-116MB for the remaining
+|     ~10 minutes - healthy GC behavior, not a leak. Full writeup in
+|     reports/Endurance-Threshold.md.
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/TASKS-CHECKLIST.md                           |      2 +-
+|  hw05/reports/Endurance-Threshold.md               |     34 +
+|  hw05/results/23127244_Endurance_20260815.jtl      | 209749 +++++++++++++++++
+|  .../23127244_Endurance_20260815_memory.csv        |     79 +
+|  .../content/css/dashboard.css                     |     48 +
+|  .../content/css/jquery-ui.min.css                 |      7 +
+|  .../content/css/jquery-ui.structure.min.css       |      5 +
+|  .../content/css/jquery-ui.theme.min.css           |      5 +
+|  .../content/css/legends.css                       |     61 +
+|  .../content/css/theme.blue.css                    |    233 +
+|  .../content/js/curvedLines.js                     |    483 +
+|  .../content/js/customGraph.js                     |     50 +
+|  .../content/js/dashboard-commons.js               |    462 +
+|  .../content/js/dashboard.js                       |    235 +
+|  .../content/js/graph.js                           |   1416 +
+|  .../content/js/hashtable.js                       |    402 +
+|  .../content/js/jquery-ui.min.js                   |     13 +
+|  .../content/js/jquery.cookie.js                   |    117 +
+|  .../content/js/jquery.flot.stack.js               |     83 +
+|  .../js/jquery.numberformatter-1.2.3.min.js        |      1 +
+|  .../content/js/jquery.tablesorter.min.js          |      2 +
+|  .../content/pages/CustomsGraphs.html              |    176 +
+|  .../content/pages/OverTime.html                   |    512 +
+|  .../content/pages/ResponseTimes.html              |    373 +
+|  .../content/pages/Throughput.html                 |    463 +
+|  .../content/pages/icon-apache.png                 |    Bin 0 -> 4944 bytes
+|  .../23127244_Endurance_20260815_report/index.html |    203 +
+|  .../sbadmin2-1.0.7/README.md                      |     27 +
+|  .../sbadmin2-1.0.7/bower.json                     |     39 +
+|  .../bower_components/bootstrap/.bower.json        |     48 +
+|  .../bower_components/bootstrap/README.md          |    134 +
+|  .../bootstrap/dist/css/bootstrap.min.css          |      6 +
+|  .../dist/fonts/glyphicons-halflings-regular.eot   |    Bin 0 -> 20127 bytes
+|  .../dist/fonts/glyphicons-halflings-regular.svg   |    288 +
+|  .../dist/fonts/glyphicons-halflings-regular.ttf   |    Bin 0 -> 45404 bytes
+|  .../dist/fonts/glyphicons-halflings-regular.woff  |    Bin 0 -> 23424 bytes
+|  .../dist/fonts/glyphicons-halflings-regular.woff2 |    Bin 0 -> 18028 bytes
+|  .../bootstrap/dist/js/bootstrap.min.js            |      7 +
+|  .../bower_components/flot-axislabels/.bower.json  |     14 +
+|  .../bower_components/flot-axislabels/README.md    |    101 +
+|  .../flot-axislabels/jquery.flot.axislabels.js     |    466 +
+|  .../bower_components/flot.tooltip/.bower.json     |     24 +
+|  .../bower_components/flot.tooltip/bower.json      |     13 +
+|  .../flot.tooltip/js/excanvas.min.js               |      1 +
+|  .../flot.tooltip/js/jquery.flot.js                |   3168 +
+|  .../flot.tooltip/js/jquery.flot.tooltip.js        |    490 +
+|  .../flot.tooltip/js/jquery.flot.tooltip.min.js    |     12 +
+|  .../flot.tooltip/js/jquery.flot.tooltip.source.js |    479 +
+|  .../bower_components/flot/.bower.json             |     19 +
+|  .../bower_components/flot/.travis.yml             |      3 +
+|  .../sbadmin2-1.0.7/bower_components/flot/API.md   |   1498 +
+|  .../bower_components/flot/CONTRIBUTING.md         |     98 +
+|  .../sbadmin2-1.0.7/bower_components/flot/FAQ.md   |     75 +
+|  .../sbadmin2-1.0.7/bower_components/flot/Makefile |     12 +
+|  .../sbadmin2-1.0.7/bower_components/flot/NEWS.md  |   1026 +
+|  .../bower_components/flot/PLUGINS.md              |    143 +
+|  .../bower_components/flot/README.md               |    110 +
+|  .../bower_components/flot/component.json          |      8 +
+|  .../bower_components/flot/excanvas.js             |   1428 +
+|  .../bower_components/flot/excanvas.min.js         |      1 +
+|  .../bower_components/flot/flot.jquery.json        |     27 +
+|  .../bower_components/flot/jquery.colorhelpers.js  |    180 +
+|  .../bower_components/flot/jquery.flot.canvas.js   |    345 +
+|  .../flot/jquery.flot.categories.js                |    190 +
+|  .../flot/jquery.flot.crosshair.js                 |    176 +
+|  .../flot/jquery.flot.errorbars.js                 |    353 +
+|  .../flot/jquery.flot.fillbetween.js               |    226 +
+|  .../bower_components/flot/jquery.flot.image.js    |    241 +
+|  .../bower_components/flot/jquery.flot.js          |   3168 +
+|  .../bower_components/flot/jquery.flot.navigate.js |    346 +
+|  .../bower_components/flot/jquery.flot.pie.js      |    820 +
+|  .../bower_components/flot/jquery.flot.resize.js   |     59 +
+|  .../flot/jquery.flot.selection.js                 |    360 +
+|  .../bower_components/flot/jquery.flot.stack.js    |    188 +
+|  .../bower_components/flot/jquery.flot.symbol.js   |     71 +
+|  .../flot/jquery.flot.threshold.js                 |    142 +
+|  .../bower_components/flot/jquery.flot.time.js     |    432 +
+|  .../bower_components/flot/package.json            |     11 +
+|  .../bower_components/font-awesome/.bower.json     |     36 +
+|  .../bower_components/font-awesome/.npmignore      |     42 +
+|  .../bower_components/font-awesome/bower.json      |     23 +
+|  .../font-awesome/css/font-awesome.css             |   1672 +
+|  .../font-awesome/css/font-awesome.min.css         |      4 +
+|  .../font-awesome/fonts/FontAwesome.otf            |    Bin 0 -> 85908 bytes
+|  .../font-awesome/fonts/fontawesome-webfont.eot    |    Bin 0 -> 56006 bytes
+|  .../font-awesome/fonts/fontawesome-webfont.svg    |    520 +
+|  .../font-awesome/fonts/fontawesome-webfont.ttf    |    Bin 0 -> 112160 bytes
+|  .../font-awesome/fonts/fontawesome-webfont.woff   |    Bin 0 -> 65452 bytes
+|  .../font-awesome/less/bordered-pulled.less        |     16 +
+|  .../bower_components/font-awesome/less/core.less  |     11 +
+|  .../font-awesome/less/extras.less                 |      2 +
+|  .../font-awesome/less/fixed-width.less            |      6 +
+|  .../font-awesome/less/font-awesome.less           |     17 +
+|  .../bower_components/font-awesome/less/icons.less |    552 +
+|  .../font-awesome/less/larger.less                 |     13 +
+|  .../bower_components/font-awesome/less/list.less  |     19 +
+|  .../font-awesome/less/mixins.less                 |     25 +
+|  .../bower_components/font-awesome/less/path.less  |     14 +
+|  .../font-awesome/less/rotated-flipped.less        |     20 +
+|  .../font-awesome/less/spinning.less               |     29 +
+|  .../font-awesome/less/stacked.less                |     20 +
+|  .../font-awesome/less/variables.less              |    561 +
+|  .../font-awesome/scss/_bordered-pulled.scss       |     16 +
+|  .../bower_components/font-awesome/scss/_core.scss |     11 +
+|  .../font-awesome/scss/_extras.scss                |     44 +
+|  .../font-awesome/scss/_fixed-width.scss           |      6 +
+|  .../font-awesome/scss/_icons.scss                 |    552 +
+|  .../font-awesome/scss/_larger.scss                |     13 +
+|  .../bower_components/font-awesome/scss/_list.scss |     19 +
+|  .../font-awesome/scss/_mixins.scss                |     25 +
+|  .../bower_components/font-awesome/scss/_path.scss |     14 +
+|  .../font-awesome/scss/_rotated-flipped.scss       |     20 +
+|  .../font-awesome/scss/_spinning.scss              |     29 +
+|  .../font-awesome/scss/_stacked.scss               |     20 +
+|  .../font-awesome/scss/_variables.scss             |    561 +
+|  .../font-awesome/scss/font-awesome.scss           |     17 +
+|  .../bower_components/jquery/.bower.json           |     37 +
+|  .../bower_components/jquery/bower.json            |     27 +
+|  .../bower_components/jquery/dist/jquery.js        |  10364 +
+|  .../bower_components/jquery/dist/jquery.min.js    |      2 +
+|  .../bower_components/jquery/dist/jquery.min.map   |      1 +
+|  .../bower_components/metisMenu/.bower.json        |     45 +
+|  .../bower_components/metisMenu/README.md          |    113 +
+|  .../metisMenu/dist/metisMenu.min.css              |     10 +
+|  .../metisMenu/dist/metisMenu.min.js               |      9 +
+|  .../sbadmin2-1.0.7/dist/css/sb-admin-2.css        |    431 +
+|  .../sbadmin2-1.0.7/dist/js/sb-admin-2.js          |     36 +
+|  .../sbadmin2-1.0.7/less/mixins.less               |      1 +
+|  .../sbadmin2-1.0.7/less/sb-admin-2.less           |    366 +
+|  .../sbadmin2-1.0.7/less/variables.less            |     14 +
+|  .../statistics.json                               |     34 +
+|  131 files changed, 248725 insertions(+), 1 deletion(-)
+| 
+* commit 1761b3a61fcc5a0d4cad9b31bc99182ef99802bf
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 22:05:45 2026 +0700
+| 
+|     feat(hw05): add endurance/soak test plan, 150 VU sustained 12min
+|     
+|     Flat sustained load against POST /api/forgot-password (the endpoint
+|     with a demonstrated real bottleneck), calibrated from the Stress
+|     test's own Stage 3 data (150 VU, clean at 222.6 RPS, but only tested
+|     for ~30s there). Verified JMeter's duration field includes ramp-up
+|     (not additive) by checking the real Load run's wall-clock time before
+|     setting timing, so the 735s duration gives exactly 720s of sustained
+|     load after a 15s ramp.
+|     
+|     Smoke-tested at reduced scale before running for real. Real 12-minute
+|     run + a parallel backend memory sampler now running in the background.
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/TASKS-CHECKLIST.md                         |   6 +-
+|  hw05/test-plans/23127244_Endurance_20260815.jmx | 150 ++++++++++++++++++++++
+|  2 files changed, 154 insertions(+), 2 deletions(-)
+| 
+* commit a52e68a3249250d413f794d8c1e908371be1959b
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 22:01:27 2026 +0700
+| 
+|     docs(hw05): mark Phase 2 complete in tasks checklist
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/TASKS-CHECKLIST.md | 12 +++++++-----
+|  1 file changed, 7 insertions(+), 5 deletions(-)
+| 
+* commit 331ee179acdc0cf9c7e3e9d28152570633ca89b4
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 21:58:51 2026 +0700
+| 
+|     docs(hw05): post 3 bug reports to GitHub Issues (#7, #8, #9)
+|     
+|     Posted text-only for now; screenshots to be attached to each issue
+|     later without needing to repost.
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/TASKS-CHECKLIST.md             |  2 +-
+|  hw05/reports/github-issues-draft.md | 18 +++++++++++++-----
+|  2 files changed, 14 insertions(+), 6 deletions(-)
+| 
+* commit 2c1cbdbb96f230f35cf0e5935fa0265bcefb6f8e
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 21:51:22 2026 +0700
+| 
+|     docs(hw05): draft 3 bug reports found during test design (not yet posted)
+|     
+|     Price-type inconsistency and 404-as-200 on products/:id, and the
+|     coupon percent-discount formula bug found during Spike design. Each
+|     includes exact file:line, repro steps, and real curl output already
+|     captured during this session. Drafted for review before posting to
+|     GitHub Issues, same workflow as HW04.
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/reports/github-issues-draft.md | 119 ++++++++++++++++++++++++++++++++++
+|  1 file changed, 119 insertions(+)
+| 
+* commit 4645f87a18b7ddf543ceef55f2ee7788d33bd824
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 21:37:14 2026 +0700
+| 
+|     feat(hw05): add real raw .jtl logs and HTML dashboard reports for all 3 runs
+|     
+|     Verified before committing: each jtl has exactly one header line (no
+|     dry-run contamination from earlier testing), and each report's
+|     statistics.json Total row matches the raw jtl's sample/error counts
+|     exactly.
+|     
+|     Real results: Load 4265 samples/0 errors; Stress 24681 samples/79
+|     errors (0.32%, max latency 7.68s by end of Stage 4 - worse than the
+|     6188ms caught mid-run in the screenshot); Spike 32699 samples/136
+|     errors (0.42%, all HTTP 200 / Duration Assertion breaches in Stage 2,
+|     matching the earlier root-cause analysis).
+|     
+|     Also fixed .gitignore: the jmeter.log pattern was "*.jmeter.log" which
+|     doesn't match the bare "jmeter.log" JMeter actually writes.
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/.gitignore                                   |     1 +
+|  hw05/results/23127244_Load_20260815.jtl           |  4266 +++
+|  .../content/css/dashboard.css                     |    48 +
+|  .../content/css/jquery-ui.min.css                 |     7 +
+|  .../content/css/jquery-ui.structure.min.css       |     5 +
+|  .../content/css/jquery-ui.theme.min.css           |     5 +
+|  .../content/css/legends.css                       |    61 +
+|  .../content/css/theme.blue.css                    |   233 +
+|  .../content/js/curvedLines.js                     |   483 +
+|  .../content/js/customGraph.js                     |    50 +
+|  .../content/js/dashboard-commons.js               |   462 +
+|  .../content/js/dashboard.js                       |   235 +
+|  .../content/js/graph.js                           |  1416 +
+|  .../content/js/hashtable.js                       |   402 +
+|  .../content/js/jquery-ui.min.js                   |    13 +
+|  .../content/js/jquery.cookie.js                   |   117 +
+|  .../content/js/jquery.flot.stack.js               |    83 +
+|  .../js/jquery.numberformatter-1.2.3.min.js        |     1 +
+|  .../content/js/jquery.tablesorter.min.js          |     2 +
+|  .../content/pages/CustomsGraphs.html              |   176 +
+|  .../content/pages/OverTime.html                   |   512 +
+|  .../content/pages/ResponseTimes.html              |   373 +
+|  .../content/pages/Throughput.html                 |   463 +
+|  .../content/pages/icon-apache.png                 |   Bin 0 -> 4944 bytes
+|  .../23127244_Load_20260815_report/index.html      |   203 +
+|  .../sbadmin2-1.0.7/README.md                      |    27 +
+|  .../sbadmin2-1.0.7/bower.json                     |    39 +
+|  .../bower_components/bootstrap/.bower.json        |    48 +
+|  .../bower_components/bootstrap/README.md          |   134 +
+|  .../bootstrap/dist/css/bootstrap.min.css          |     6 +
+|  .../dist/fonts/glyphicons-halflings-regular.eot   |   Bin 0 -> 20127 bytes
+|  .../dist/fonts/glyphicons-halflings-regular.svg   |   288 +
+|  .../dist/fonts/glyphicons-halflings-regular.ttf   |   Bin 0 -> 45404 bytes
+|  .../dist/fonts/glyphicons-halflings-regular.woff  |   Bin 0 -> 23424 bytes
+|  .../dist/fonts/glyphicons-halflings-regular.woff2 |   Bin 0 -> 18028 bytes
+|  .../bootstrap/dist/js/bootstrap.min.js            |     7 +
+|  .../bower_components/flot-axislabels/.bower.json  |    14 +
+|  .../bower_components/flot-axislabels/README.md    |   101 +
+|  .../flot-axislabels/jquery.flot.axislabels.js     |   466 +
+|  .../bower_components/flot.tooltip/.bower.json     |    24 +
+|  .../bower_components/flot.tooltip/bower.json      |    13 +
+|  .../flot.tooltip/js/excanvas.min.js               |     1 +
+|  .../flot.tooltip/js/jquery.flot.js                |  3168 ++
+|  .../flot.tooltip/js/jquery.flot.tooltip.js        |   490 +
+|  .../flot.tooltip/js/jquery.flot.tooltip.min.js    |    12 +
+|  .../flot.tooltip/js/jquery.flot.tooltip.source.js |   479 +
+|  .../bower_components/flot/.bower.json             |    19 +
+|  .../bower_components/flot/.travis.yml             |     3 +
+|  .../sbadmin2-1.0.7/bower_components/flot/API.md   |  1498 +
+|  .../bower_components/flot/CONTRIBUTING.md         |    98 +
+|  .../sbadmin2-1.0.7/bower_components/flot/FAQ.md   |    75 +
+|  .../sbadmin2-1.0.7/bower_components/flot/Makefile |    12 +
+|  .../sbadmin2-1.0.7/bower_components/flot/NEWS.md  |  1026 +
+|  .../bower_components/flot/PLUGINS.md              |   143 +
+|  .../bower_components/flot/README.md               |   110 +
+|  .../bower_components/flot/component.json          |     8 +
+|  .../bower_components/flot/excanvas.js             |  1428 +
+|  .../bower_components/flot/excanvas.min.js         |     1 +
+|  .../bower_components/flot/flot.jquery.json        |    27 +
+|  .../bower_components/flot/jquery.colorhelpers.js  |   180 +
+|  .../bower_components/flot/jquery.flot.canvas.js   |   345 +
+|  .../flot/jquery.flot.categories.js                |   190 +
+|  .../flot/jquery.flot.crosshair.js                 |   176 +
+|  .../flot/jquery.flot.errorbars.js                 |   353 +
+|  .../flot/jquery.flot.fillbetween.js               |   226 +
+|  .../bower_components/flot/jquery.flot.image.js    |   241 +
+|  .../bower_components/flot/jquery.flot.js          |  3168 ++
+|  .../bower_components/flot/jquery.flot.navigate.js |   346 +
+|  .../bower_components/flot/jquery.flot.pie.js      |   820 +
+|  .../bower_components/flot/jquery.flot.resize.js   |    59 +
+|  .../flot/jquery.flot.selection.js                 |   360 +
+|  .../bower_components/flot/jquery.flot.stack.js    |   188 +
+|  .../bower_components/flot/jquery.flot.symbol.js   |    71 +
+|  .../flot/jquery.flot.threshold.js                 |   142 +
+|  .../bower_components/flot/jquery.flot.time.js     |   432 +
+|  .../bower_components/flot/package.json            |    11 +
+|  .../bower_components/font-awesome/.bower.json     |    36 +
+|  .../bower_components/font-awesome/.npmignore      |    42 +
+|  .../bower_components/font-awesome/bower.json      |    23 +
+|  .../font-awesome/css/font-awesome.css             |  1672 +
+|  .../font-awesome/css/font-awesome.min.css         |     4 +
+|  .../font-awesome/fonts/FontAwesome.otf            |   Bin 0 -> 85908 bytes
+|  .../font-awesome/fonts/fontawesome-webfont.eot    |   Bin 0 -> 56006 bytes
+|  .../font-awesome/fonts/fontawesome-webfont.svg    |   520 +
+|  .../font-awesome/fonts/fontawesome-webfont.ttf    |   Bin 0 -> 112160 bytes
+|  .../font-awesome/fonts/fontawesome-webfont.woff   |   Bin 0 -> 65452 bytes
+|  .../font-awesome/less/bordered-pulled.less        |    16 +
+|  .../bower_components/font-awesome/less/core.less  |    11 +
+|  .../font-awesome/less/extras.less                 |     2 +
+|  .../font-awesome/less/fixed-width.less            |     6 +
+|  .../font-awesome/less/font-awesome.less           |    17 +
+|  .../bower_components/font-awesome/less/icons.less |   552 +
+|  .../font-awesome/less/larger.less                 |    13 +
+|  .../bower_components/font-awesome/less/list.less  |    19 +
+|  .../font-awesome/less/mixins.less                 |    25 +
+|  .../bower_components/font-awesome/less/path.less  |    14 +
+|  .../font-awesome/less/rotated-flipped.less        |    20 +
+|  .../font-awesome/less/spinning.less               |    29 +
+|  .../font-awesome/less/stacked.less                |    20 +
+|  .../font-awesome/less/variables.less              |   561 +
+|  .../font-awesome/scss/_bordered-pulled.scss       |    16 +
+|  .../bower_components/font-awesome/scss/_core.scss |    11 +
+|  .../font-awesome/scss/_extras.scss                |    44 +
+|  .../font-awesome/scss/_fixed-width.scss           |     6 +
+|  .../font-awesome/scss/_icons.scss                 |   552 +
+|  .../font-awesome/scss/_larger.scss                |    13 +
+|  .../bower_components/font-awesome/scss/_list.scss |    19 +
+|  .../font-awesome/scss/_mixins.scss                |    25 +
+|  .../bower_components/font-awesome/scss/_path.scss |    14 +
+|  .../font-awesome/scss/_rotated-flipped.scss       |    20 +
+|  .../font-awesome/scss/_spinning.scss              |    29 +
+|  .../font-awesome/scss/_stacked.scss               |    20 +
+|  .../font-awesome/scss/_variables.scss             |   561 +
+|  .../font-awesome/scss/font-awesome.scss           |    17 +
+|  .../bower_components/jquery/.bower.json           |    37 +
+|  .../bower_components/jquery/bower.json            |    27 +
+|  .../bower_components/jquery/dist/jquery.js        | 10364 ++++++
+|  .../bower_components/jquery/dist/jquery.min.js    |     2 +
+|  .../bower_components/jquery/dist/jquery.min.map   |     1 +
+|  .../bower_components/metisMenu/.bower.json        |    45 +
+|  .../bower_components/metisMenu/README.md          |   113 +
+|  .../metisMenu/dist/metisMenu.min.css              |    10 +
+|  .../metisMenu/dist/metisMenu.min.js               |     9 +
+|  .../sbadmin2-1.0.7/dist/css/sb-admin-2.css        |   431 +
+|  .../sbadmin2-1.0.7/dist/js/sb-admin-2.js          |    36 +
+|  .../sbadmin2-1.0.7/less/mixins.less               |     1 +
+|  .../sbadmin2-1.0.7/less/sb-admin-2.less           |   366 +
+|  .../sbadmin2-1.0.7/less/variables.less            |    14 +
+|  .../23127244_Load_20260815_report/statistics.json |    34 +
+|  hw05/results/23127244_Spike_20260815.jtl          | 32700 ++++++++++++++++++
+|  .../content/css/dashboard.css                     |    48 +
+|  .../content/css/jquery-ui.min.css                 |     7 +
+|  .../content/css/jquery-ui.structure.min.css       |     5 +
+|  .../content/css/jquery-ui.theme.min.css           |     5 +
+|  .../content/css/legends.css                       |    61 +
+|  .../content/css/theme.blue.css                    |   233 +
+|  .../content/js/curvedLines.js                     |   483 +
+|  .../content/js/customGraph.js                     |    50 +
+|  .../content/js/dashboard-commons.js               |   462 +
+|  .../content/js/dashboard.js                       |   235 +
+|  .../content/js/graph.js                           |  1416 +
+|  .../content/js/hashtable.js                       |   402 +
+|  .../content/js/jquery-ui.min.js                   |    13 +
+|  .../content/js/jquery.cookie.js                   |   117 +
+|  .../content/js/jquery.flot.stack.js               |    83 +
+|  .../js/jquery.numberformatter-1.2.3.min.js        |     1 +
+|  .../content/js/jquery.tablesorter.min.js          |     2 +
+|  .../content/pages/CustomsGraphs.html              |   176 +
+|  .../content/pages/OverTime.html                   |   512 +
+|  .../content/pages/ResponseTimes.html              |   373 +
+|  .../content/pages/Throughput.html                 |   463 +
+|  .../content/pages/icon-apache.png                 |   Bin 0 -> 4944 bytes
+|  .../23127244_Spike_20260815_report/index.html     |   203 +
+|  .../sbadmin2-1.0.7/README.md                      |    27 +
+|  .../sbadmin2-1.0.7/bower.json                     |    39 +
+|  .../bower_components/bootstrap/.bower.json        |    48 +
+|  .../bower_components/bootstrap/README.md          |   134 +
+|  .../bootstrap/dist/css/bootstrap.min.css          |     6 +
+|  .../dist/fonts/glyphicons-halflings-regular.eot   |   Bin 0 -> 20127 bytes
+|  .../dist/fonts/glyphicons-halflings-regular.svg   |   288 +
+|  .../dist/fonts/glyphicons-halflings-regular.ttf   |   Bin 0 -> 45404 bytes
+|  .../dist/fonts/glyphicons-halflings-regular.woff  |   Bin 0 -> 23424 bytes
+|  .../dist/fonts/glyphicons-halflings-regular.woff2 |   Bin 0 -> 18028 bytes
+|  .../bootstrap/dist/js/bootstrap.min.js            |     7 +
+|  .../bower_components/flot-axislabels/.bower.json  |    14 +
+|  .../bower_components/flot-axislabels/README.md    |   101 +
+|  .../flot-axislabels/jquery.flot.axislabels.js     |   466 +
+|  .../bower_components/flot.tooltip/.bower.json     |    24 +
+|  .../bower_components/flot.tooltip/bower.json      |    13 +
+|  .../flot.tooltip/js/excanvas.min.js               |     1 +
+|  .../flot.tooltip/js/jquery.flot.js                |  3168 ++
+|  .../flot.tooltip/js/jquery.flot.tooltip.js        |   490 +
+|  .../flot.tooltip/js/jquery.flot.tooltip.min.js    |    12 +
+|  .../flot.tooltip/js/jquery.flot.tooltip.source.js |   479 +
+|  .../bower_components/flot/.bower.json             |    19 +
+|  .../bower_components/flot/.travis.yml             |     3 +
+|  .../sbadmin2-1.0.7/bower_components/flot/API.md   |  1498 +
+|  .../bower_components/flot/CONTRIBUTING.md         |    98 +
+|  .../sbadmin2-1.0.7/bower_components/flot/FAQ.md   |    75 +
+|  .../sbadmin2-1.0.7/bower_components/flot/Makefile |    12 +
+|  .../sbadmin2-1.0.7/bower_components/flot/NEWS.md  |  1026 +
+|  .../bower_components/flot/PLUGINS.md              |   143 +
+|  .../bower_components/flot/README.md               |   110 +
+|  .../bower_components/flot/component.json          |     8 +
+|  .../bower_components/flot/excanvas.js             |  1428 +
+|  .../bower_components/flot/excanvas.min.js         |     1 +
+|  .../bower_components/flot/flot.jquery.json        |    27 +
+|  .../bower_components/flot/jquery.colorhelpers.js  |   180 +
+|  .../bower_components/flot/jquery.flot.canvas.js   |   345 +
+|  .../flot/jquery.flot.categories.js                |   190 +
+|  .../flot/jquery.flot.crosshair.js                 |   176 +
+|  .../flot/jquery.flot.errorbars.js                 |   353 +
+|  .../flot/jquery.flot.fillbetween.js               |   226 +
+|  .../bower_components/flot/jquery.flot.image.js    |   241 +
+|  .../bower_components/flot/jquery.flot.js          |  3168 ++
+|  .../bower_components/flot/jquery.flot.navigate.js |   346 +
+|  .../bower_components/flot/jquery.flot.pie.js      |   820 +
+|  .../bower_components/flot/jquery.flot.resize.js   |    59 +
+|  .../flot/jquery.flot.selection.js                 |   360 +
+|  .../bower_components/flot/jquery.flot.stack.js    |   188 +
+|  .../bower_components/flot/jquery.flot.symbol.js   |    71 +
+|  .../flot/jquery.flot.threshold.js                 |   142 +
+|  .../bower_components/flot/jquery.flot.time.js     |   432 +
+|  .../bower_components/flot/package.json            |    11 +
+|  .../bower_components/font-awesome/.bower.json     |    36 +
+|  .../bower_components/font-awesome/.npmignore      |    42 +
+|  .../bower_components/font-awesome/bower.json      |    23 +
+|  .../font-awesome/css/font-awesome.css             |  1672 +
+|  .../font-awesome/css/font-awesome.min.css         |     4 +
+|  .../font-awesome/fonts/FontAwesome.otf            |   Bin 0 -> 85908 bytes
+|  .../font-awesome/fonts/fontawesome-webfont.eot    |   Bin 0 -> 56006 bytes
+|  .../font-awesome/fonts/fontawesome-webfont.svg    |   520 +
+|  .../font-awesome/fonts/fontawesome-webfont.ttf    |   Bin 0 -> 112160 bytes
+|  .../font-awesome/fonts/fontawesome-webfont.woff   |   Bin 0 -> 65452 bytes
+|  .../font-awesome/less/bordered-pulled.less        |    16 +
+|  .../bower_components/font-awesome/less/core.less  |    11 +
+|  .../font-awesome/less/extras.less                 |     2 +
+|  .../font-awesome/less/fixed-width.less            |     6 +
+|  .../font-awesome/less/font-awesome.less           |    17 +
+|  .../bower_components/font-awesome/less/icons.less |   552 +
+|  .../font-awesome/less/larger.less                 |    13 +
+|  .../bower_components/font-awesome/less/list.less  |    19 +
+|  .../font-awesome/less/mixins.less                 |    25 +
+|  .../bower_components/font-awesome/less/path.less  |    14 +
+|  .../font-awesome/less/rotated-flipped.less        |    20 +
+|  .../font-awesome/less/spinning.less               |    29 +
+|  .../font-awesome/less/stacked.less                |    20 +
+|  .../font-awesome/less/variables.less              |   561 +
+|  .../font-awesome/scss/_bordered-pulled.scss       |    16 +
+|  .../bower_components/font-awesome/scss/_core.scss |    11 +
+|  .../font-awesome/scss/_extras.scss                |    44 +
+|  .../font-awesome/scss/_fixed-width.scss           |     6 +
+|  .../font-awesome/scss/_icons.scss                 |   552 +
+|  .../font-awesome/scss/_larger.scss                |    13 +
+|  .../bower_components/font-awesome/scss/_list.scss |    19 +
+|  .../font-awesome/scss/_mixins.scss                |    25 +
+|  .../bower_components/font-awesome/scss/_path.scss |    14 +
+|  .../font-awesome/scss/_rotated-flipped.scss       |    20 +
+|  .../font-awesome/scss/_spinning.scss              |    29 +
+|  .../font-awesome/scss/_stacked.scss               |    20 +
+|  .../font-awesome/scss/_variables.scss             |   561 +
+|  .../font-awesome/scss/font-awesome.scss           |    17 +
+|  .../bower_components/jquery/.bower.json           |    37 +
+|  .../bower_components/jquery/bower.json            |    27 +
+|  .../bower_components/jquery/dist/jquery.js        | 10364 ++++++
+|  .../bower_components/jquery/dist/jquery.min.js    |     2 +
+|  .../bower_components/jquery/dist/jquery.min.map   |     1 +
+|  .../bower_components/metisMenu/.bower.json        |    45 +
+|  .../bower_components/metisMenu/README.md          |   113 +
+|  .../metisMenu/dist/metisMenu.min.css              |    10 +
+|  .../metisMenu/dist/metisMenu.min.js               |     9 +
+|  .../sbadmin2-1.0.7/dist/css/sb-admin-2.css        |   431 +
+|  .../sbadmin2-1.0.7/dist/js/sb-admin-2.js          |    36 +
+|  .../sbadmin2-1.0.7/less/mixins.less               |     1 +
+|  .../sbadmin2-1.0.7/less/sb-admin-2.less           |   366 +
+|  .../sbadmin2-1.0.7/less/variables.less            |    14 +
+|  .../statistics.json                               |    34 +
+|  hw05/results/23127244_Stress_20260815.jtl         | 24682 +++++++++++++
+|  .../content/css/dashboard.css                     |    48 +
+|  .../content/css/jquery-ui.min.css                 |     7 +
+|  .../content/css/jquery-ui.structure.min.css       |     5 +
+|  .../content/css/jquery-ui.theme.min.css           |     5 +
+|  .../content/css/legends.css                       |    61 +
+|  .../content/css/theme.blue.css                    |   233 +
+|  .../content/js/curvedLines.js                     |   483 +
+|  .../content/js/customGraph.js                     |    50 +
+|  .../content/js/dashboard-commons.js               |   462 +
+|  .../content/js/dashboard.js                       |   235 +
+|  .../content/js/graph.js                           |  1416 +
+|  .../content/js/hashtable.js                       |   402 +
+|  .../content/js/jquery-ui.min.js                   |    13 +
+|  .../content/js/jquery.cookie.js                   |   117 +
+|  .../content/js/jquery.flot.stack.js               |    83 +
+|  .../js/jquery.numberformatter-1.2.3.min.js        |     1 +
+|  .../content/js/jquery.tablesorter.min.js          |     2 +
+|  .../content/pages/CustomsGraphs.html              |   176 +
+|  .../content/pages/OverTime.html                   |   512 +
+|  .../content/pages/ResponseTimes.html              |   373 +
+|  .../content/pages/Throughput.html                 |   463 +
+|  .../content/pages/icon-apache.png                 |   Bin 0 -> 4944 bytes
+|  .../23127244_Stress_20260815_report/index.html    |   203 +
+|  .../sbadmin2-1.0.7/README.md                      |    27 +
+|  .../sbadmin2-1.0.7/bower.json                     |    39 +
+|  .../bower_components/bootstrap/.bower.json        |    48 +
+|  .../bower_components/bootstrap/README.md          |   134 +
+|  .../bootstrap/dist/css/bootstrap.min.css          |     6 +
+|  .../dist/fonts/glyphicons-halflings-regular.eot   |   Bin 0 -> 20127 bytes
+|  .../dist/fonts/glyphicons-halflings-regular.svg   |   288 +
+|  .../dist/fonts/glyphicons-halflings-regular.ttf   |   Bin 0 -> 45404 bytes
+|  .../dist/fonts/glyphicons-halflings-regular.woff  |   Bin 0 -> 23424 bytes
+|  .../dist/fonts/glyphicons-halflings-regular.woff2 |   Bin 0 -> 18028 bytes
+|  .../bootstrap/dist/js/bootstrap.min.js            |     7 +
+|  .../bower_components/flot-axislabels/.bower.json  |    14 +
+|  .../bower_components/flot-axislabels/README.md    |   101 +
+|  .../flot-axislabels/jquery.flot.axislabels.js     |   466 +
+|  .../bower_components/flot.tooltip/.bower.json     |    24 +
+|  .../bower_components/flot.tooltip/bower.json      |    13 +
+|  .../flot.tooltip/js/excanvas.min.js               |     1 +
+|  .../flot.tooltip/js/jquery.flot.js                |  3168 ++
+|  .../flot.tooltip/js/jquery.flot.tooltip.js        |   490 +
+|  .../flot.tooltip/js/jquery.flot.tooltip.min.js    |    12 +
+|  .../flot.tooltip/js/jquery.flot.tooltip.source.js |   479 +
+|  .../bower_components/flot/.bower.json             |    19 +
+|  .../bower_components/flot/.travis.yml             |     3 +
+|  .../sbadmin2-1.0.7/bower_components/flot/API.md   |  1498 +
+|  .../bower_components/flot/CONTRIBUTING.md         |    98 +
+|  .../sbadmin2-1.0.7/bower_components/flot/FAQ.md   |    75 +
+|  .../sbadmin2-1.0.7/bower_components/flot/Makefile |    12 +
+|  .../sbadmin2-1.0.7/bower_components/flot/NEWS.md  |  1026 +
+|  .../bower_components/flot/PLUGINS.md              |   143 +
+|  .../bower_components/flot/README.md               |   110 +
+|  .../bower_components/flot/component.json          |     8 +
+|  .../bower_components/flot/excanvas.js             |  1428 +
+|  .../bower_components/flot/excanvas.min.js         |     1 +
+|  .../bower_components/flot/flot.jquery.json        |    27 +
+|  .../bower_components/flot/jquery.colorhelpers.js  |   180 +
+|  .../bower_components/flot/jquery.flot.canvas.js   |   345 +
+|  .../flot/jquery.flot.categories.js                |   190 +
+|  .../flot/jquery.flot.crosshair.js                 |   176 +
+|  .../flot/jquery.flot.errorbars.js                 |   353 +
+|  .../flot/jquery.flot.fillbetween.js               |   226 +
+|  .../bower_components/flot/jquery.flot.image.js    |   241 +
+|  .../bower_components/flot/jquery.flot.js          |  3168 ++
+|  .../bower_components/flot/jquery.flot.navigate.js |   346 +
+|  .../bower_components/flot/jquery.flot.pie.js      |   820 +
+|  .../bower_components/flot/jquery.flot.resize.js   |    59 +
+|  .../flot/jquery.flot.selection.js                 |   360 +
+|  .../bower_components/flot/jquery.flot.stack.js    |   188 +
+|  .../bower_components/flot/jquery.flot.symbol.js   |    71 +
+|  .../flot/jquery.flot.threshold.js                 |   142 +
+|  .../bower_components/flot/jquery.flot.time.js     |   432 +
+|  .../bower_components/flot/package.json            |    11 +
+|  .../bower_components/font-awesome/.bower.json     |    36 +
+|  .../bower_components/font-awesome/.npmignore      |    42 +
+|  .../bower_components/font-awesome/bower.json      |    23 +
+|  .../font-awesome/css/font-awesome.css             |  1672 +
+|  .../font-awesome/css/font-awesome.min.css         |     4 +
+|  .../font-awesome/fonts/FontAwesome.otf            |   Bin 0 -> 85908 bytes
+|  .../font-awesome/fonts/fontawesome-webfont.eot    |   Bin 0 -> 56006 bytes
+|  .../font-awesome/fonts/fontawesome-webfont.svg    |   520 +
+|  .../font-awesome/fonts/fontawesome-webfont.ttf    |   Bin 0 -> 112160 bytes
+|  .../font-awesome/fonts/fontawesome-webfont.woff   |   Bin 0 -> 65452 bytes
+|  .../font-awesome/less/bordered-pulled.less        |    16 +
+|  .../bower_components/font-awesome/less/core.less  |    11 +
+|  .../font-awesome/less/extras.less                 |     2 +
+|  .../font-awesome/less/fixed-width.less            |     6 +
+|  .../font-awesome/less/font-awesome.less           |    17 +
+|  .../bower_components/font-awesome/less/icons.less |   552 +
+|  .../font-awesome/less/larger.less                 |    13 +
+|  .../bower_components/font-awesome/less/list.less  |    19 +
+|  .../font-awesome/less/mixins.less                 |    25 +
+|  .../bower_components/font-awesome/less/path.less  |    14 +
+|  .../font-awesome/less/rotated-flipped.less        |    20 +
+|  .../font-awesome/less/spinning.less               |    29 +
+|  .../font-awesome/less/stacked.less                |    20 +
+|  .../font-awesome/less/variables.less              |   561 +
+|  .../font-awesome/scss/_bordered-pulled.scss       |    16 +
+|  .../bower_components/font-awesome/scss/_core.scss |    11 +
+|  .../font-awesome/scss/_extras.scss                |    44 +
+|  .../font-awesome/scss/_fixed-width.scss           |     6 +
+|  .../font-awesome/scss/_icons.scss                 |   552 +
+|  .../font-awesome/scss/_larger.scss                |    13 +
+|  .../bower_components/font-awesome/scss/_list.scss |    19 +
+|  .../font-awesome/scss/_mixins.scss                |    25 +
+|  .../bower_components/font-awesome/scss/_path.scss |    14 +
+|  .../font-awesome/scss/_rotated-flipped.scss       |    20 +
+|  .../font-awesome/scss/_spinning.scss              |    29 +
+|  .../font-awesome/scss/_stacked.scss               |    20 +
+|  .../font-awesome/scss/_variables.scss             |   561 +
+|  .../font-awesome/scss/font-awesome.scss           |    17 +
+|  .../bower_components/jquery/.bower.json           |    37 +
+|  .../bower_components/jquery/bower.json            |    27 +
+|  .../bower_components/jquery/dist/jquery.js        | 10364 ++++++
+|  .../bower_components/jquery/dist/jquery.min.js    |     2 +
+|  .../bower_components/jquery/dist/jquery.min.map   |     1 +
+|  .../bower_components/metisMenu/.bower.json        |    45 +
+|  .../bower_components/metisMenu/README.md          |   113 +
+|  .../metisMenu/dist/metisMenu.min.css              |    10 +
+|  .../metisMenu/dist/metisMenu.min.js               |     9 +
+|  .../sbadmin2-1.0.7/dist/css/sb-admin-2.css        |   431 +
+|  .../sbadmin2-1.0.7/dist/js/sb-admin-2.js          |    36 +
+|  .../sbadmin2-1.0.7/less/mixins.less               |     1 +
+|  .../sbadmin2-1.0.7/less/sb-admin-2.less           |   366 +
+|  .../sbadmin2-1.0.7/less/variables.less            |    14 +
+|  .../statistics.json                               |    34 +
+|  385 files changed, 178235 insertions(+)
+| 
+* commit 81d143d6dbfac2369fd9529918a0c9df41d8bd8a
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 21:05:36 2026 +0700
+| 
+|     docs(hw05): add per-run screenshots and demo video link
+|     
+|     Renamed to match naming convention (23127244_{Scenario}_run.png) and
+|     redacted the Machine ID line (kept everything else, including hostname
+|     for the anti-cheat check, fully visible) since these go into a public
+|     GitHub repo.
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/DEMO-VIDEO-LINK.txt                         |   1 +
+|  hw05/reports/screenshots/23127244_Load_run.png   | Bin 0 -> 710797 bytes
+|  hw05/reports/screenshots/23127244_Spike_run.png  | Bin 0 -> 670630 bytes
+|  hw05/reports/screenshots/23127244_Stress_run.png | Bin 0 -> 734967 bytes
+|  4 files changed, 1 insertion(+)
+| 
+* commit da3d8642e1c495a600b18b4730f5956a6e78accd
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 20:32:03 2026 +0700
+| 
+|     docs(hw05): add JMeter console cheat-sheet to narration script
+|     
+|     Simple field-by-field explanation of the Active/Started/Finished and
+|     summary lines, plus what to watch for specifically in each of the 3
+|     scenarios (Load has no stages, Stress's Active count reveals which
+|     staircase stage it's in, Spike's Active jump to 500 marks the burst).
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/reports/Narration-Script.md | 25 ++++++++++++++++++++++++-
+|  1 file changed, 24 insertions(+), 1 deletion(-)
+| 
+* commit ac67ec07368a73ee3b0eecdde55c6664f00cbb7d
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 20:01:27 2026 +0700
+| 
+|     docs(hw05): add Vietnamese narration script draft for the demo video
+|     
+|     Covers intro, per-scenario talking points (Load/Stress/Spike) tied to
+|     the actual design justifications from this session, and wrap-up
+|     mentioning the 3 bugs found during design. Notes to read live numbers
+|     off-screen rather than memorizing scripted values.
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/reports/Narration-Script.md | 70 ++++++++++++++++++++++++++++++++++++++
+|  1 file changed, 70 insertions(+)
+| 
+* commit 28080d4cef76f07db95fc3054baeb71f10fdb6ba
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 19:25:03 2026 +0700
+| 
+|     docs(hw05): add copy-paste run/cleanup command reference for Phase 2
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/RUN-COMMANDS.md | 74 ++++++++++++++++++++++++++++++++++++++++++++++++++
+|  1 file changed, 74 insertions(+)
+| 
+* commit d39e0904f0192793ca414bb09ca1898e4b9c8934
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 19:20:31 2026 +0700
+| 
+|     docs(hw05): note verified jtl-append behavior before recorded runs
+|     
+|     Confirmed empirically: JMeter appends to an existing .jtl filename
+|     rather than overwriting it. Dry runs before the real recorded run are
+|     safe, but the old .jtl (not just the _report folder) must be deleted
+|     first or the final evidence file silently mixes dry-run and real data.
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/TASKS-CHECKLIST.md | 2 ++
+|  1 file changed, 2 insertions(+)
+| 
+* commit 2793f13d88240a7d23d0cabe55922672adc985d5
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 19:16:38 2026 +0700
+| 
+|     docs(hw05): mark Phase 1 complete, all 3 test plans reviewed and signed off
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/TASKS-CHECKLIST.md | 20 ++++++++++----------
+|  1 file changed, 10 insertions(+), 10 deletions(-)
+| 
+* commit 20e0495a08a273adfac28162291f87dd53bbe954
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 19:13:26 2026 +0700
+| 
+|     feat(hw05): add Spike test plan for transactional POST /api/apply-coupon
+|     
+|     3 sequential stages (baseline 15VU -> spike 500VU (2s ramp) -> recovery
+|     15VU), modeling resilience/recovery rather than hunting a breaking
+|     point - the correct distinction from the Stress plan.
+|     
+|     Verified against the live SUT before designing: found a real bug in
+|     server.js (percent-type coupons compute a negative discount because
+|     discount_value is treated as a whole number instead of a fraction, e.g.
+|     SAVE10 on 500000 produces -4500000 "discount"). Kept the CSV to only
+|     valid/successful combos and built assertions around success:true + 200,
+|     not the discount math, so this known bug doesn't corrupt the spike
+|     test's pass/fail signal - it's a separate bug-report candidate instead.
+|     
+|     Calibrated the spike magnitude with real data, not a guess: burst-
+|     tested 100/400/800 concurrent (clean), then pushed to 1500/2000 on
+|     review feedback - still 0% errors, no meaningful degradation. No
+|     breaking point found in the tested range is the real finding here,
+|     worth contrasting against forgot-password's write-lock bottleneck.
+|     Locked in 500 VU for the actual spike stage (33x baseline, fully
+|     bracketed by tested data).
+|     
+|     Smoke-tested the actual jmx at reduced scale: positive run confirmed
+|     correct sequential staging and multi-field CSV substitution (0%
+|     errors); two negative controls (broken success:true check, and a 1ms
+|     duration threshold) both failed as expected with correct messages,
+|     confirming the assertions are live.
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/TASKS-CHECKLIST.md                     |   9 +
+|  hw05/data/23127244_Spike_coupons.csv        |   6 +
+|  hw05/test-plans/23127244_Spike_20260815.jmx | 302 ++++++++++++++++++++++++++
+|  3 files changed, 317 insertions(+)
+| 
+* commit dee4dcf4b50fc7f22629ae9ebdb2cd81fa01f776
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 19:01:18 2026 +0700
+| 
+|     feat(hw05): add staged Stress test plan for auth-heavy POST /api/forgot-password
+|     
+|     4 sequential Thread Groups (serialize_threadgroups=true) escalating
+|     30/80/150/400 VU to find the breaking point without plugins. Stage 4
+|     bumped from an initial 300 VU to 400 after burst-test data showed 300
+|     risked an inconclusive result.
+|     
+|     Verified against the live SUT before building: endpoint is a write
+|     (SELECT+UPDATE) not a read, no lockout on this endpoint, Content-Type
+|     header required or Express silently 404s. Burst-tested concurrency
+|     20-700 directly against the endpoint first: latency scales ~linearly
+|     with concurrency (SQLite single-writer serialization) but no hard
+|     errors even at 700 (avg 1.04s) - so response-code alone would never
+|     catch a breaking point. Added a Duration Assertion (>2000ms) as the
+|     real stress signal.
+|     
+|     Smoke-tested the actual jmx at reduced scale: positive run confirmed
+|     strict sequential staging (no interleaving) and correct CSV/header/
+|     body substitution (0% errors); negative control (1ms threshold)
+|     produced 100% errors with the expected failure message, confirming
+|     the Duration Assertion is live.
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/TASKS-CHECKLIST.md                      |   9 +
+|  hw05/data/23127244_Stress_emails.csv         |   3 +
+|  hw05/test-plans/23127244_Stress_20260815.jmx | 333 +++++++++++++++++++++++++
+|  3 files changed, 345 insertions(+)
+| 
+* commit 359fb47d4e8f44a8ac757dd7f4cfbbb1729605a5
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 18:53:56 2026 +0700
+| 
+|     feat(hw05): add Load test plan for read-heavy GET /api/products/:id
+|     
+|     30 threads / 30s ramp / 300s hold, Gaussian think-time ~2s, CSV-driven
+|     over product IDs 1-5, response-code + id-match assertions, Aggregate
+|     Report listener. Verified against the live SUT before building:
+|     seeded dataset is only 5 products (documented limitation), and found
+|     two real bugs in server.js (price serialized as string for even IDs;
+|     unknown product id returns 200 {} instead of 404) - neither affects
+|     this plan's assertions. Smoke-tested the actual jmx logic with a
+|     reduced-scale positive run (0% errors) and a deliberately-broken
+|     negative control (100% errors, correct failure message) to confirm
+|     the assertions are live.
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/TASKS-CHECKLIST.md                    |   8 ++
+|  hw05/data/23127244_Load_products.csv       |   6 ++
+|  hw05/test-plans/23127244_Load_20260815.jmx | 138 +++++++++++++++++++++++++++
+|  3 files changed, 152 insertions(+)
+| 
+* commit 5c50b67a947c1a593a0224ef0132130f0b7101a6
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 18:46:13 2026 +0700
+| 
+|     docs(hw05): draft hardware report spec table, pending screenshot
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/TASKS-CHECKLIST.md         |  2 +-
+|  hw05/reports/Hardware-Report.md | 24 ++++++++++++++++++++++++
+|  2 files changed, 25 insertions(+), 1 deletion(-)
+| 
+* commit 053401496ed881b0e584db18514e1ff26c929a80
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 18:43:02 2026 +0700
+| 
+|     docs(hw05): mark Phase 0 steps 1-3 done in tasks checklist
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/TASKS-CHECKLIST.md | 6 +++---
+|  1 file changed, 3 insertions(+), 3 deletions(-)
+| 
+* commit 38e2cb4c946902926cc099cf72c4d0c4c5f56755
+| Author: IamTpG <ltphu.dev@gmail.com>
+| Date:   Sat Aug 15 18:42:44 2026 +0700
+| 
+|     chore(hw05): vendor eshop-sut SUT and set up portable JMeter toolchain
+|     
+|     Backend endpoints for all 3 chosen groups verified responding
+|     (GET /api/products/:id, POST /api/forgot-password, POST /api/apply-coupon).
+|     JDK 21 + JMeter 5.6.3 installed under hw05/tools/ (gitignored binaries,
+|     tools/env.sh sourced to put them on PATH) since sudo isn't available
+|     non-interactively for a system package install.
+|     
+|     Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+| 
+|  hw05/.gitignore                                   |   11 +
+|  hw05/2026.HW05.Performance Testing_En.md          |  205 +
+|  hw05/2026.HW05.Performance Testing_En.pdf         |  Bin 0 -> 491943 bytes
+|  hw05/SUBMISSION-CHECKLIST.md                      |   55 +
+|  hw05/TASKS-CHECKLIST.md                           |   85 +
+|  hw05/eshop-sut/README.md                          |  288 +
+|  hw05/eshop-sut/api_specification.md               |  214 +
+|  hw05/eshop-sut/backend/database.js                |  119 +
+|  hw05/eshop-sut/backend/package-lock.json          | 1663 ++++
+|  hw05/eshop-sut/backend/package.json               |   20 +
+|  hw05/eshop-sut/backend/server.js                  |  572 ++
+|  hw05/eshop-sut/backend/test_profile.js            |    8 +
+|  hw05/eshop-sut/frontend-admin/.gitignore          |   24 +
+|  hw05/eshop-sut/frontend-admin/README.md           |   16 +
+|  hw05/eshop-sut/frontend-admin/eslint.config.js    |   21 +
+|  hw05/eshop-sut/frontend-admin/index.html          |   13 +
+|  hw05/eshop-sut/frontend-admin/package-lock.json   | 3681 ++++++++
+|  hw05/eshop-sut/frontend-admin/package.json        |   32 +
+|  hw05/eshop-sut/frontend-admin/postcss.config.js   |    6 +
+|  hw05/eshop-sut/frontend-admin/public/favicon.svg  |    1 +
+|  hw05/eshop-sut/frontend-admin/public/icons.svg    |   24 +
+|  hw05/eshop-sut/frontend-admin/src/App.css         |  184 +
+|  hw05/eshop-sut/frontend-admin/src/App.jsx         |  922 ++
+|  hw05/eshop-sut/frontend-admin/src/assets/hero.png |  Bin 0 -> 13057 bytes
+|  .../eshop-sut/frontend-admin/src/assets/react.svg |    1 +
+|  hw05/eshop-sut/frontend-admin/src/assets/vite.svg |    1 +
+|  hw05/eshop-sut/frontend-admin/src/index.css       |    8 +
+|  hw05/eshop-sut/frontend-admin/src/main.jsx        |   10 +
+|  hw05/eshop-sut/frontend-admin/tailwind.config.js  |   11 +
+|  hw05/eshop-sut/frontend-admin/vite.config.js      |   11 +
+|  hw05/eshop-sut/frontend-mobile/.gitignore         |   41 +
+|  hw05/eshop-sut/frontend-mobile/App.js             | 1300 +++
+|  hw05/eshop-sut/frontend-mobile/app.json           |   29 +
+|  .../frontend-mobile/assets/adaptive-icon.png      |  Bin 0 -> 17547 bytes
+|  hw05/eshop-sut/frontend-mobile/assets/favicon.png |  Bin 0 -> 1466 bytes
+|  hw05/eshop-sut/frontend-mobile/assets/icon.png    |  Bin 0 -> 22380 bytes
+|  .../frontend-mobile/assets/splash-icon.png        |  Bin 0 -> 17547 bytes
+|  hw05/eshop-sut/frontend-mobile/index.js           |    8 +
+|  hw05/eshop-sut/frontend-mobile/package-lock.json  | 8773 +++++++++++++++++++
+|  hw05/eshop-sut/frontend-mobile/package.json       |   18 +
+|  hw05/eshop-sut/frontend-web/.gitignore            |   24 +
+|  hw05/eshop-sut/frontend-web/README.md             |   16 +
+|  hw05/eshop-sut/frontend-web/eslint.config.js      |   21 +
+|  hw05/eshop-sut/frontend-web/index.html            |   13 +
+|  hw05/eshop-sut/frontend-web/package-lock.json     | 3681 ++++++++
+|  hw05/eshop-sut/frontend-web/package.json          |   32 +
+|  hw05/eshop-sut/frontend-web/postcss.config.js     |    6 +
+|  hw05/eshop-sut/frontend-web/public/favicon.svg    |    1 +
+|  hw05/eshop-sut/frontend-web/public/icons.svg      |   24 +
+|  hw05/eshop-sut/frontend-web/src/App.css           |  184 +
+|  hw05/eshop-sut/frontend-web/src/App.jsx           |   71 +
+|  hw05/eshop-sut/frontend-web/src/assets/hero.png   |  Bin 0 -> 13057 bytes
+|  hw05/eshop-sut/frontend-web/src/assets/react.svg  |    1 +
+|  hw05/eshop-sut/frontend-web/src/assets/vite.svg   |    1 +
+|  .../frontend-web/src/context/AuthContext.jsx      |   50 +
+|  .../frontend-web/src/context/CartContext.jsx      |   36 +
+|  hw05/eshop-sut/frontend-web/src/index.css         |   14 +
+|  hw05/eshop-sut/frontend-web/src/main.jsx          |   10 +
+|  hw05/eshop-sut/frontend-web/src/pages/Cart.jsx    |   79 +
+|  .../eshop-sut/frontend-web/src/pages/Checkout.jsx |  151 +
+|  .../frontend-web/src/pages/ForgotPassword.jsx     |  100 +
+|  hw05/eshop-sut/frontend-web/src/pages/Home.jsx    |  116 +
+|  hw05/eshop-sut/frontend-web/src/pages/Login.jsx   |   69 +
+|  .../frontend-web/src/pages/ProductDetail.jsx      |   73 +
+|  hw05/eshop-sut/frontend-web/src/pages/Profile.jsx |  217 +
+|  .../eshop-sut/frontend-web/src/pages/Register.jsx |   83 +
+|  hw05/eshop-sut/frontend-web/tailwind.config.js    |   11 +
+|  hw05/eshop-sut/frontend-web/vite.config.js        |    7 +
+|  hw05/eshop-sut/run_servers.sh                     |    5 +
+|  hw05/eshop-sut/setup_guide.md                     |  117 +
+|  hw05/tools/env.sh                                 |    6 +
+|  71 files changed, 23594 insertions(+)
+|   
+*   commit 9b4d9d966e1912d19e14bf9263eea736ac98ddc8
+|\  Merge: 1432102 5fe9427
+| | Author: Le Thien Phu <ltphu.dev@gmail.com>
+| | Date:   Tue Aug 11 15:00:15 2026 +0700
+| | 
+| |     Merge pull request #6 from IamTpG/homework/a03
+| |     
+| |     homework/a03
+| | 
+| * commit 5fe942730ac8015f64b80df78b807643520782d4
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Tue Aug 11 11:01:41 2026 +0700
+| | 
+| |     fix(a03): keep ASCII diagrams within 70-char width for PDF export
+| |     
+| |     Replace wide box-drawing diagrams (up to 81 chars) with compact
+| |     tree/list-style ASCII diagrams so they no longer get cut off when
+| |     exporting the markdown to PDF.
+| | 
+| |  a03/23127244.md  |  79 ++++++++++++++++++++++++++++++---------------------
+| |  a03/23127244.pdf | Bin 427324 -> 425071 bytes
+| |  2 files changed, 46 insertions(+), 33 deletions(-)
+| | 
+| * commit 62fc1a952a22279802fa963aef47c39d98473a05
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Tue Aug 11 10:47:28 2026 +0700
+| | 
+| |     docs(a03): add Crypto Strategy Lab architecture assignment submission
+| |     
+| |     Include the assignment requirements, reference slide deck, and the
+| |     completed Vietnamese answer (Markdown and PDF) covering module
+| |     decomposition, MACD extensibility, scaling to 100k backtests, and
+| |     architecture verification via ATAM-style scenarios.
+| | 
+| |  a03/23127244.md                                  | 317 +++++++++++++++++++
+| |  a03/23127244.pdf                                 | Bin 0 -> 427324 bytes
+| |  a03/KienTrucDoAn_slide.pdf                       | Bin 0 -> 634776 bytes
+| |  a03/Software_Architecture_Crypto_Strategy_Lab.md |  81 +++++
+| |  4 files changed, 398 insertions(+)
+| |   
+* |   commit 143210224609b72b876c07918b814726469655f7
+|\ \  Merge: ea4f15e c8a8ba0
+| |/  Author: Le Thien Phu <ltphu.dev@gmail.com>
+|/|   Date:   Tue Aug 11 10:50:28 2026 +0700
+| |   
+| |       Merge pull request #5 from IamTpG/homework/hw04
+| |       
+| |       homework/hw04
+| | 
+| * commit c8a8ba0f3d0498669f76e1bee494004b92206b6a
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Mon Aug 10 23:12:32 2026 +0700
+| | 
+| |     docs(hw04): link posted GitHub Issues in bug report
+| |     
+| |     All 7 defects filed on dinosauce-285/Software-Testing-G02
+| |     (issues #63-#69), each with its screenshot embedded via raw
+| |     GitHub URLs from the pushed homework/hw04 branch.
+| | 
+| |  hw04/reports/Bug-Report.md          |  13 +-
+| |  hw04/reports/github-issues-draft.md | 204 ++++++++++++++++++++++++++++++++
+| |  2 files changed, 214 insertions(+), 3 deletions(-)
+| | 
+| * commit 4f353632fc9efcace6993a2810225451bc8250fb
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Mon Aug 10 22:41:38 2026 +0700
+| | 
+| |     docs(hw04): add demo video link
+| | 
+| |  hw04/README.md | 2 +-
+| |  1 file changed, 1 insertion(+), 1 deletion(-)
+| | 
+| * commit f73878917341a3aac93de94f9afed8686d6ff394
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Sun Aug 9 16:34:51 2026 +0700
+| | 
+| |     docs(hw04): remove commit-cadence mention from AI audit report
+| | 
+| |  hw04/reports/AI-Audit-Report.md | 2 +-
+| |  1 file changed, 1 insertion(+), 1 deletion(-)
+| | 
+| * commit 9fcdad959237ef13647c9eaad1118f642fd3cea9
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Sun Aug 9 16:23:38 2026 +0700
+| | 
+| |     docs(hw04): fix bug-tracking repo reference
+| |     
+| |     Bugs get reported on dinosauce-285/Software-Testing-G02, the group's
+| |     single shared issue-tracking repo required by the instructors - not
+| |     the personal SUT fork.
+| | 
+| |  hw04/reports/Bug-Report.md | 4 ++--
+| |  hw04/reports/MainReport.md | 2 +-
+| |  2 files changed, 3 insertions(+), 3 deletions(-)
+| | 
+| * commit 5419a2aa31ee376ad68785726f51b57442797d7e
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Sun Aug 9 16:15:25 2026 +0700
+| | 
+| |     chore(hw04): ignore the packaged submission export until final
+| |     
+| |     23127244_HW04_AI_Automation_100/ is a point-in-time snapshot of
+| |     automation/ and reports/ for zipping, not a second source of truth -
+| |     committing it now would duplicate tracked content that will keep
+| |     changing as more commits land. Un-ignore and commit it once truly
+| |     final, right before submission.
+| | 
+| |  hw04/.gitignore | 5 +++++
+| |  1 file changed, 5 insertions(+)
+| | 
+| * commit a1f2cba98aaf06ed5925eb3dab80ef20af8b7550
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Sun Aug 9 16:08:03 2026 +0700
+| | 
+| |     docs(hw04): add AI Audit Report appendix
+| |     
+| |     Compiles the per-feature ai-audit-log files into the assignment's
+| |     required tool/date-time/prompt/output format. Timestamps are drawn
+| |     from actual git commit history rather than reconstructed from memory.
+| | 
+| |  hw04/README.md                  |   2 +-
+| |  hw04/reports/AI-Audit-Report.md | 151 ++++++++++++++++++++++++++++++++++++
+| |  2 files changed, 152 insertions(+), 1 deletion(-)
+| | 
+| * commit 7867ec596a13b9fd999b555cf250124cc76de9d5
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Sun Aug 9 16:02:34 2026 +0700
+| | 
+| |     docs(hw04): add bug report draft with screenshot evidence
+| |     
+| |     Draft content for 7 confirmed defects, each with a real screenshot
+| |     captured from a failing automated run. Not yet posted as GitHub
+| |     Issues - pending review.
+| | 
+| |  hw04/reports/Bug-Report.md                       | 135 +++++++++++++++++++
+| |  .../BUG-A11-phone-regex-rejects-valid-number.png | Bin 0 -> 46759 bytes
+| |  .../BUG-A12-empty-phone-blocks-form-save.png     | Bin 0 -> 47791 bytes
+| |  .../screenshots/BUG-A13-zero-name-validation.png | Bin 0 -> 42719 bytes
+| |  .../BUG-B08-total-amount-not-recalculated.png    | Bin 0 -> 29700 bytes
+| |  .../BUG-B10-empty-cart-checkout-accepted.png     | Bin 0 -> 29700 bytes
+| |  .../BUG-C08-no-role-check-admin-panel.png        | Bin 0 -> 29211 bytes
+| |  .../screenshots/BUG-F2-admin-self-deletion.png   | Bin 0 -> 77380 bytes
+| |  8 files changed, 135 insertions(+)
+| | 
+| * commit 9241f9ae93ed27febf75a3d26e2555404d23fb5f
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Sun Aug 9 16:02:26 2026 +0700
+| | 
+| |     test(hw04): capture screenshots on failure
+| |     
+| |     Needed as evidence for the bug report / GitHub Issues, which the
+| |     assignment requires one screenshot per issue for.
+| | 
+| |  hw04/automation/playwright.config.ts | 3 +++
+| |  1 file changed, 3 insertions(+)
+| | 
+| * commit d7f0a2405263f3fb3ad52aedcb0fea45e5bebac8
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Sun Aug 9 15:53:22 2026 +0700
+| | 
+| |     docs(hw04): add README with self-assessment and test summary
+| | 
+| |  hw04/README.md | 47 +++++++++++++++++++++++++++++++++++++++++++++++
+| |  1 file changed, 47 insertions(+)
+| | 
+| * commit 535a5a6e9a3ea055d4b2293333dab85b8af2f1cf
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Sun Aug 9 15:52:23 2026 +0700
+| | 
+| |     docs(hw04): add AI critique
+| | 
+| |  hw04/reports/AI-Critique.md | 7 +++++++
+| |  1 file changed, 7 insertions(+)
+| | 
+| * commit 4051f5d972a8f99a87545c0670820ddcef5d4438
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Sun Aug 9 15:51:56 2026 +0700
+| | 
+| |     docs(hw04): add HW04 main report
+| |     
+| |     Automation methodology, per-feature results, consolidated defect
+| |     inventory, and the AI gap analysis covering all 6 script defects found
+| |     and fixed during execution review.
+| | 
+| |  hw04/reports/MainReport.md | 196 +++++++++++++++++++++++++++++++++++++++++
+| |  1 file changed, 196 insertions(+)
+| | 
+| * commit 6d89119d1655fb4a9ceffe977b92265f52191b61
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Sun Aug 9 02:10:01 2026 +0700
+| | 
+| |     docs(hw04): add FR-19 AI audit log and update session log
+| | 
+| |  hw04/automation/AUTONOMOUS-SESSION-LOG.md        |  7 ++++-
+| |  .../ai-audit-log/fr19-user-management.md         | 28 ++++++++++++++++++++
+| |  2 files changed, 34 insertions(+), 1 deletion(-)
+| | 
+| * commit 9ca4111909b55f66525ecfc9b2daae031c73d899
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Sun Aug 9 02:09:53 2026 +0700
+| | 
+| |     test(hw04): add FR-19 data-driven Playwright suite
+| |     
+| |     12 UI-only cases: 5 pre-existing HW02 IDs (TC-03/05/06/14/15) plus a
+| |     data-driven expansion of TC-15's own already-precedented localStorage
+| |     token-bypass technique across 6 more non-admin role values, in place of
+| |     IDs that have no UI affordance at all (delete-by-nonexistent-id) or
+| |     would require reinterpreting the case (auth-state, forged fields).
+| |     
+| |     Destructive cases (TC-06/TC-14, account deletion) are restricted to a
+| |     single browser project since there is no DB reseed mechanism mid-run.
+| | 
+| |  hw04/automation/data/fr19-destructive.json       |  4 ++
+| |  hw04/automation/data/fr19-readonly.json          |  4 ++
+| |  hw04/automation/data/fr19-role-bypass.json       | 10 +++
+| |  hw04/automation/fixtures/admin-fixtures.ts       | 64 ++++++++++++++++++++
+| |  hw04/automation/pages/AdminLoginPage.ts          | 15 +++++
+| |  hw04/automation/pages/AdminUsersPage.ts          | 41 +++++++++++++
+| |  .../tests/fr19-user-management/SELECTED-CASES.md | 37 +++++++++++
+| |  .../user-management-readonly.spec.ts             | 40 ++++++++++++
+| |  .../user-management-role-bypass.spec.ts          | 36 +++++++++++
+| |  .../zz-user-management-destructive.spec.ts       | 55 +++++++++++++++++
+| |  10 files changed, 306 insertions(+)
+| | 
+| * commit eb7dca890dc29a4d3bafb81fdbc3794b8e83676a
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Sun Aug 9 02:09:39 2026 +0700
+| | 
+| |     chore(hw04): add frontend-admin dev server to webServer config
+| |     
+| |     Third SUT frontend (port 5174) needed for FR-19's admin panel tests.
+| | 
+| |  hw04/automation/playwright.config.ts | 7 +++++++
+| |  1 file changed, 7 insertions(+)
+| | 
+| * commit 74784892ef676b78eb787dea5f54d5b58f80a479
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Sun Aug 9 02:09:31 2026 +0700
+| | 
+| |     test(hw04): add data-testid hooks to frontend-admin for stable selectors
+| |     
+| |     Same non-functional pattern as the other two frontends - no behavior
+| |     change.
+| | 
+| |  hw04/eshop-sut/frontend-admin/src/App.jsx | 12 ++++++++----
+| |  1 file changed, 8 insertions(+), 4 deletions(-)
+| | 
+| * commit aa2539b3b129c8a3ac7d292d0ae62e9a146bebb7
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Sun Aug 9 01:40:21 2026 +0700
+| | 
+| |     docs(hw04): add FR-08 AI audit log and update session log
+| | 
+| |  hw04/automation/AUTONOMOUS-SESSION-LOG.md     |  7 ++++-
+| |  hw04/automation/ai-audit-log/fr08-checkout.md | 32 +++++++++++++++++++++++
+| |  2 files changed, 38 insertions(+), 1 deletion(-)
+| | 
+| * commit 6afaac95e72897d31ad941ab8c89853da4c41dc7
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Sun Aug 9 01:40:15 2026 +0700
+| | 
+| |     test(hw04): add FR-08 data-driven Playwright suite
+| |     
+| |     15 pre-existing HW02 test cases (TC-01/04/05/06/07/08/09/10/11/12/13/14/16/17/18),
+| |     driven entirely through the real UI, grouped into 4 data-driven scripts.
+| |     Cart is rebuilt via real Home-page clicks per case since CartContext has
+| |     no persistence; navigation to Checkout goes through the app's own client-
+| |     side Link/button clicks (CartPage) rather than a hard page.goto(), which
+| |     would otherwise wipe the in-memory cart.
+| | 
+| |  hw04/automation/data/fr08-coupon.json            |  7 ++
+| |  hw04/automation/data/fr08-empty-cart.json        | 12 +++
+| |  hw04/automation/data/fr08-guest-access.json      |  6 ++
+| |  hw04/automation/data/fr08-total-tampering.json   | 57 ++++++++++++++
+| |  hw04/automation/fixtures/checkout-fixtures.ts    | 36 +++++++++
+| |  hw04/automation/pages/CartPage.ts                | 23 ++++++
+| |  hw04/automation/pages/CheckoutPage.ts            | 81 ++++++++++++++++++++
+| |  hw04/automation/pages/HomePage.ts                | 18 +++++
+| |  .../tests/fr08-checkout/SELECTED-CASES.md        | 27 +++++++
+| |  .../tests/fr08-checkout/checkout-coupon.spec.ts  | 42 ++++++++++
+| |  .../fr08-checkout/checkout-empty-cart.spec.ts    | 28 +++++++
+| |  .../fr08-checkout/checkout-guest-access.spec.ts  | 19 +++++
+| |  .../checkout-total-tampering.spec.ts             | 45 +++++++++++
+| |  13 files changed, 401 insertions(+)
+| | 
+| * commit 3f7abfd6000d4d5c559ec4820498deaf84f0bf65
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Sun Aug 9 01:40:03 2026 +0700
+| | 
+| |     test(hw04): raise SAVE10's max_uses_per_user for repeatable cross-browser runs
+| |     
+| |     All 3 browser projects share one live DB within a single suite
+| |     invocation (the server only reseeds on restart), so the seeded cap
+| |     of 1 use per account made the coupon checkout test pass on whichever
+| |     browser ran first and fail on the other two with "already used" -
+| |     a test-repeatability issue, not a product bug (the usage-cap feature
+| |     itself is not what this test case targets).
+| | 
+| |  hw04/eshop-sut/backend/database.js | 2 +-
+| |  1 file changed, 1 insertion(+), 1 deletion(-)
+| | 
+| * commit d0892756ba54890cd47475252db18df6800b0c29
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Sun Aug 9 01:39:55 2026 +0700
+| | 
+| |     test(hw04): add data-testid hooks to Home and Checkout for stable selectors
+| |     
+| |     Same non-functional pattern as Login/Profile - no behavior change.
+| | 
+| |  hw04/eshop-sut/frontend-web/src/pages/Checkout.jsx | 8 ++++++--
+| |  hw04/eshop-sut/frontend-web/src/pages/Home.jsx     | 2 ++
+| |  2 files changed, 8 insertions(+), 2 deletions(-)
+| | 
+| * commit 35111a904f74eb0f639cb37d1ae353f06d407d1c
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Sun Aug 9 01:23:31 2026 +0700
+| | 
+| |     docs(hw04): add FR-04 AI audit log and autonomous session log
+| | 
+| |  hw04/automation/AUTONOMOUS-SESSION-LOG.md        | 25 +++++++++++
+| |  hw04/automation/ai-audit-log/fr04-profile.md     | 32 ++++++++++++++
+| |  .../tests/fr04-profile/SELECTED-CASES.md         | 45 ++++++++++----------
+| |  3 files changed, 79 insertions(+), 23 deletions(-)
+| | 
+| * commit d96fcbc96fcfeeb770d042a108691d1b83400c6b
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Sun Aug 9 01:23:26 2026 +0700
+| | 
+| |     test(hw04): add FR-04 data-driven Playwright suite
+| |     
+| |     12 pre-existing HW02 test cases (TC-01/02/03/04/06/07/09/11/13/15/23/37),
+| |     driven entirely through the real UI, grouped into 3 data-driven scripts
+| |     covering 3 distinct assertion patterns (network/response, DOM/persisted-
+| |     state, dialog). Negative-case assertions target the spec-correct expected
+| |     result so a failing assertion is the bug-detection signal.
+| | 
+| |  hw04/automation/data/fr04-invalid-fields.json    | 29 +++++++
+| |  hw04/automation/data/fr04-phone-bugs.json        | 38 +++++++++
+| |  hw04/automation/data/fr04-valid-boundary.json    | 42 ++++++++++
+| |  hw04/automation/fixtures/test-fixtures.ts        | 34 ++++++++
+| |  hw04/automation/pages/LoginPage.ts               | 16 ++++
+| |  hw04/automation/pages/ProfilePage.ts             | 85 ++++++++++++++++++++
+| |  .../fr04-profile/profile-invalid-fields.spec.ts  | 36 +++++++++
+| |  .../fr04-profile/profile-phone-bugs.spec.ts      | 37 +++++++++
+| |  .../fr04-profile/profile-valid-boundary.spec.ts  | 24 ++++++
+| |  9 files changed, 341 insertions(+)
+| | 
+| * commit d145407833b620989e39e24fe0b6b8edaae07efb
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Sun Aug 9 01:23:13 2026 +0700
+| | 
+| |     chore(hw04): serialize test execution and fix html reporter title loss
+| |     
+| |     - fullyParallel:false / workers:1: features share one live, mutable
+| |       backend/DB row (e.g. a single seeded user account); parallel workers
+| |       could interleave writes/reads across cases.
+| |     - Move the list reporter into the config instead of passing --reporter
+| |       on the CLI: the CLI flag replaces the reporter array wholesale and
+| |       falls back to each named reporter's default options, silently
+| |       dropping the configured html report title.
+| | 
+| |  hw04/automation/playwright.config.ts | 16 +++++++++++-----
+| |  1 file changed, 11 insertions(+), 5 deletions(-)
+| | 
+| * commit 750c4d9972cd7a2fc1442636d910052246c8cf75
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Sun Aug 9 01:23:06 2026 +0700
+| | 
+| |     test(hw04): add data-testid hooks to Login and Profile for stable selectors
+| |     
+| |     Neither page had an id, name, or data-testid on its inputs, and labels
+| |     were plain sibling text (not htmlFor-linked), so getByLabel() could not
+| |     resolve them. Non-functional attributes only, no behavior change.
+| | 
+| |  hw04/eshop-sut/frontend-web/src/pages/Login.jsx   | 3 +++
+| |  hw04/eshop-sut/frontend-web/src/pages/Profile.jsx | 5 +++++
+| |  2 files changed, 8 insertions(+)
+| | 
+| * commit 5760c280b468351681b1881d608000fd9719e147
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Sun Aug 9 00:38:37 2026 +0700
+| | 
+| |     docs(hw04): add Playwright automation generator skill and FR-04 case selection
+| |     
+| |     Adds the playwright-automation Agent Skill (step-by-step, human-in-the-loop
+| |     workflow for converting approved BVA test cases into data-driven Playwright
+| |     scripts) plus the 15 FR-04 test cases selected for this homework's automation
+| |     pass, with rationale and channel notes.
+| | 
+| |  hw04/automation/.claude/.gitignore               |  1 +
+| |  .../skills/playwright-automation/SKILL.md        | 76 ++++++++++++++++++++
+| |  .../tests/fr04-profile/SELECTED-CASES.md         | 27 +++++++
+| |  3 files changed, 104 insertions(+)
+| | 
+| * commit fb83142f08e1be8e4fd4880fa52fb1db2a613f9e
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Sun Aug 9 00:38:31 2026 +0700
+| | 
+| |     chore: scope root .claude gitignore rule to repo root only
+| |     
+| |     Homework subprojects may need to track their own .claude/skills/
+| |     directory as a graded deliverable, so the ignore rule must not
+| |     apply recursively to every nested .claude directory.
+| | 
+| |  .gitignore | 2 +-
+| |  1 file changed, 1 insertion(+), 1 deletion(-)
+| | 
+| * commit 28646096556517ab3140279c10bc758b99eddd4a
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Sun Aug 9 00:32:37 2026 +0700
+| | 
+| |     test(hw04): add SUT smoke test to verify environment setup
+| |     
+| |     Confirms the multi-browser run, auto-started webServer, and
+| |     HTML report title all work end to end before feature scripts
+| |     are generated.
+| | 
+| |  hw04/automation/tests/smoke.spec.ts | 6 ++++++
+| |  1 file changed, 6 insertions(+)
+| | 
+| * commit b6590c004b0be759c1d49bcb5e89c597900f8c4e
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Sun Aug 9 00:32:26 2026 +0700
+| | 
+| |     chore(hw04): scaffold Playwright automation project
+| |     
+| |     Configure 3-browser projects (Chromium/Firefox/WebKit), baseURL, and
+| |     webServer to auto-start the backend and frontend-web SUT. HTML
+| |     reporter title is stamped with "Run by: {StudentID} | {ISO timestamp}"
+| |     per the anti-cheat requirement.
+| | 
+| |  hw04/automation/.gitignore           |  8 +++
+| |  hw04/automation/package-lock.json    | 97 ++++++++++++++++++++++++++++++++
+| |  hw04/automation/package.json         | 18 ++++++
+| |  hw04/automation/playwright.config.ts | 93 ++++++++++++++++++++++++++++++
+| |  4 files changed, 216 insertions(+)
+| | 
+| * commit 4cd7058874250b23b4a490fcc6b72f5b50934eb1
+| | Author: IamTpG <ltphu.dev@gmail.com>
+| | Date:   Sun Aug 9 00:32:13 2026 +0700
+| | 
+| |     chore(hw04): vendor EShop SUT source
+| | 
+| |  hw04/eshop-sut/README.md                         |  288 +
+| |  hw04/eshop-sut/api_specification.md              |  214 +
+| |  hw04/eshop-sut/backend/.gitignore                |    2 +
+| |  hw04/eshop-sut/backend/database.js               |  119 +
+| |  hw04/eshop-sut/backend/package-lock.json         | 1663 ++++
+| |  hw04/eshop-sut/backend/package.json              |   20 +
+| |  hw04/eshop-sut/backend/server.js                 |  572 ++
+| |  hw04/eshop-sut/backend/test_profile.js           |    8 +
+| |  hw04/eshop-sut/frontend-admin/.gitignore         |   24 +
+| |  hw04/eshop-sut/frontend-admin/README.md          |   16 +
+| |  hw04/eshop-sut/frontend-admin/eslint.config.js   |   21 +
+| |  hw04/eshop-sut/frontend-admin/index.html         |   13 +
+| |  hw04/eshop-sut/frontend-admin/package-lock.json  | 3681 ++++++++
+| |  hw04/eshop-sut/frontend-admin/package.json       |   32 +
+| |  hw04/eshop-sut/frontend-admin/postcss.config.js  |    6 +
+| |  hw04/eshop-sut/frontend-admin/public/favicon.svg |    1 +
+| |  hw04/eshop-sut/frontend-admin/public/icons.svg   |   24 +
+| |  hw04/eshop-sut/frontend-admin/src/App.css        |  184 +
+| |  hw04/eshop-sut/frontend-admin/src/App.jsx        |  922 ++
+| |  .../eshop-sut/frontend-admin/src/assets/hero.png |  Bin 0 -> 13057 bytes
+| |  .../frontend-admin/src/assets/react.svg          |    1 +
+| |  .../eshop-sut/frontend-admin/src/assets/vite.svg |    1 +
+| |  hw04/eshop-sut/frontend-admin/src/index.css      |    8 +
+| |  hw04/eshop-sut/frontend-admin/src/main.jsx       |   10 +
+| |  hw04/eshop-sut/frontend-admin/tailwind.config.js |   11 +
+| |  hw04/eshop-sut/frontend-admin/vite.config.js     |   11 +
+| |  hw04/eshop-sut/frontend-mobile/.gitignore        |   41 +
+| |  hw04/eshop-sut/frontend-mobile/App.js            | 1300 +++
+| |  hw04/eshop-sut/frontend-mobile/app.json          |   29 +
+| |  .../frontend-mobile/assets/adaptive-icon.png     |  Bin 0 -> 17547 bytes
+| |  .../eshop-sut/frontend-mobile/assets/favicon.png |  Bin 0 -> 1466 bytes
+| |  hw04/eshop-sut/frontend-mobile/assets/icon.png   |  Bin 0 -> 22380 bytes
+| |  .../frontend-mobile/assets/splash-icon.png       |  Bin 0 -> 17547 bytes
+| |  hw04/eshop-sut/frontend-mobile/index.js          |    8 +
+| |  hw04/eshop-sut/frontend-mobile/package-lock.json | 8773 ++++++++++++++++++
+| |  hw04/eshop-sut/frontend-mobile/package.json      |   18 +
+| |  hw04/eshop-sut/frontend-web/.gitignore           |   24 +
+| |  hw04/eshop-sut/frontend-web/README.md            |   16 +
+| |  hw04/eshop-sut/frontend-web/eslint.config.js     |   21 +
+| |  hw04/eshop-sut/frontend-web/index.html           |   13 +
+| |  hw04/eshop-sut/frontend-web/package-lock.json    | 3681 ++++++++
+| |  hw04/eshop-sut/frontend-web/package.json         |   32 +
+| |  hw04/eshop-sut/frontend-web/postcss.config.js    |    6 +
+| |  hw04/eshop-sut/frontend-web/public/favicon.svg   |    1 +
+| |  hw04/eshop-sut/frontend-web/public/icons.svg     |   24 +
+| |  hw04/eshop-sut/frontend-web/src/App.css          |  184 +
+| |  hw04/eshop-sut/frontend-web/src/App.jsx          |   71 +
+| |  hw04/eshop-sut/frontend-web/src/assets/hero.png  |  Bin 0 -> 13057 bytes
+| |  hw04/eshop-sut/frontend-web/src/assets/react.svg |    1 +
+| |  hw04/eshop-sut/frontend-web/src/assets/vite.svg  |    1 +
+| |  .../frontend-web/src/context/AuthContext.jsx     |   50 +
+| |  .../frontend-web/src/context/CartContext.jsx     |   36 +
+| |  hw04/eshop-sut/frontend-web/src/index.css        |   14 +
+| |  hw04/eshop-sut/frontend-web/src/main.jsx         |   10 +
+| |  hw04/eshop-sut/frontend-web/src/pages/Cart.jsx   |   79 +
+| |  .../frontend-web/src/pages/Checkout.jsx          |  151 +
+| |  .../frontend-web/src/pages/ForgotPassword.jsx    |  100 +
+| |  hw04/eshop-sut/frontend-web/src/pages/Home.jsx   |  116 +
+| |  hw04/eshop-sut/frontend-web/src/pages/Login.jsx  |   69 +
+| |  .../frontend-web/src/pages/ProductDetail.jsx     |   73 +
+| |  .../eshop-sut/frontend-web/src/pages/Profile.jsx |  217 +
+| |  .../frontend-web/src/pages/Register.jsx          |   83 +
+| |  hw04/eshop-sut/frontend-web/tailwind.config.js   |   11 +
+| |  hw04/eshop-sut/frontend-web/vite.config.js       |    7 +
+| |  hw04/eshop-sut/run_servers.sh                    |    5 +
+| |  hw04/eshop-sut/setup_guide.md                    |  117 +
+| |  66 files changed, 23234 insertions(+)
+| | 
+| * commit 342e4ddc2e3cdbd70c7a795d828d0f7f19cf0515
+|/  Author: IamTpG <ltphu.dev@gmail.com>
+|   Date:   Sun Aug 9 00:32:03 2026 +0700
+|   
+|       docs(hw04): add HW04 automation testing requirement
+|   
+|    hw04/2026.HW04.Automation Testing_En.md  | 183 +++++++++++++++++++++++++++
+|    hw04/2026.HW04.Automation Testing_En.pdf | Bin 0 -> 463155 bytes
+|    2 files changed, 183 insertions(+)
+|   
+*   commit ea4f15efdb692117c3c4bbfef099411e3f974f9e
+|\  Merge: 5b7296b a68192a
+| | Author: Le Thien Phu <ltphu.dev@gmail.com>
+| | Date:   Sat Aug 1 23:25:48 2026 +0700
+| | 
+| |     Merge pull request #4 from IamTpG/homework/hw02
+| |     
+| |     homework/hw02
+| | 
+| * commit a68192ac6418531a674a0bd8e5eba697ba21fcba
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Sat Aug 1 16:21:56 2026 +0700
+| | 
+| |     chore(hw02): add submission zip archive
+| | 
+| |  hw02/23127244_HW02_AI_DomainTesting_100.zip | Bin 0 -> 2677586 bytes
+| |  1 file changed, 0 insertions(+), 0 deletions(-)
+| | 
+| * commit 864e013819fbedfdc8e1c002654cf94c3b2f8414
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Sat Aug 1 16:21:45 2026 +0700
+| | 
+| |     docs(hw02): add commit log, prompt log, and submission readme
+| | 
+| |  .../23127244_HW02_AI_DomainTesting_100/README.md |   91 +
+| |  .../commit_log.txt                               |  445 ++++
+| |  .../prompt_log.txt                               | 2098 ++++++++++++++++++
+| |  3 files changed, 2634 insertions(+)
+| | 
+| * commit 08a739d0314217835c96ec19d8aa2e35d705d6da
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Sat Aug 1 16:21:36 2026 +0700
+| | 
+| |     docs(hw02): add AI audit report
+| | 
+| |  .../AI-Audit-Report.md                           |  90 +++++++++++++++++++
+| |  .../AI-Audit-Report.pdf                          | Bin 0 -> 213393 bytes
+| |  2 files changed, 90 insertions(+)
+| | 
+| * commit 7507ff86c062c79b06860ed86b068c0234422d99
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Sat Aug 1 16:21:32 2026 +0700
+| | 
+| |     docs(hw02): add AI critique
+| | 
+| |  .../AI-Critique.md                                  |  11 +++++++++++
+| |  .../AI-Critique.pdf                                 | Bin 0 -> 35773 bytes
+| |  2 files changed, 11 insertions(+)
+| | 
+| * commit 0ca96ee4dd061e0251b0f681614370ad1818425e
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Sat Aug 1 16:21:27 2026 +0700
+| | 
+| |     docs(hw02): add standalone bug report
+| | 
+| |  .../Bug-Report.md                                | 153 +++++++++++++++++++
+| |  .../Bug-Report.pdf                               | Bin 0 -> 199718 bytes
+| |  2 files changed, 153 insertions(+)
+| | 
+| * commit b1a7d52b50cfbcd5cab8cd56844df3aa0f1fe57a
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Sat Aug 1 16:21:23 2026 +0700
+| | 
+| |     docs(hw02): add main report with methodology and bug inventory
+| | 
+| |  .../MainReport.pdf                               | Bin 0 -> 1209369 bytes
+| |  .../reports/MainReport.md                        | 162 +++++++++++++++++++
+| |  2 files changed, 162 insertions(+)
+| | 
+| * commit 064a49234e96267d5d929c50420b4352805eeb64
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Sat Aug 1 16:21:18 2026 +0700
+| | 
+| |     test(hw02): add FR-11 mobile order history domain testing report and evidence
+| | 
+| |  .../DomainTesting_BVA.md                         | 116 +++++++++++++++++++
+| |  .../screenshots/FR-11-TC-10.png                  | Bin 0 -> 97993 bytes
+| |  .../screenshots/FR-11-TC-11.jpg                  | Bin 0 -> 184619 bytes
+| |  3 files changed, 116 insertions(+)
+| | 
+| * commit f1d9f1725a83b16aad8388ca9a769ad20c44e6ad
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Sat Aug 1 16:21:13 2026 +0700
+| | 
+| |     test(hw02): add FR-19 admin user management domain testing report and evidence
+| | 
+| |  .../FR-19-UserManagement/DomainTesting_BVA.md    | 102 +++++++++++++++++++
+| |  .../screenshots/FR-19-TC-04.png                  | Bin 0 -> 64589 bytes
+| |  .../screenshots/FR-19-TC-11.png                  | Bin 0 -> 42092 bytes
+| |  .../screenshots/FR-19-TC-14-1.png                | Bin 0 -> 65118 bytes
+| |  .../screenshots/FR-19-TC-14-2.png                | Bin 0 -> 45118 bytes
+| |  .../screenshots/FR-19-TC-15-1.png                | Bin 0 -> 182299 bytes
+| |  .../screenshots/FR-19-TC-15-2.png                | Bin 0 -> 143241 bytes
+| |  7 files changed, 102 insertions(+)
+| | 
+| * commit 85c134e2109bbe5237494b11ced7c0e7311bcb98
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Sat Aug 1 16:21:07 2026 +0700
+| | 
+| |     test(hw02): add FR-08 checkout domain testing report and evidence
+| | 
+| |  .../reports/FR-08-Checkout/DomainTesting_BVA.md  | 144 +++++++++++++++++++
+| |  .../FR-08-TC-01-cart-not-cleared-1.png           | Bin 0 -> 54914 bytes
+| |  .../FR-08-TC-01-cart-not-cleared-2.png           | Bin 0 -> 99878 bytes
+| |  .../screenshots/FR-08-TC-01-editable-total.png   | Bin 0 -> 78489 bytes
+| |  .../screenshots/FR-08-TC-16.png                  | Bin 0 -> 60946 bytes
+| |  .../screenshots/FR-08-TC-17.png                  | Bin 0 -> 50901 bytes
+| |  6 files changed, 144 insertions(+)
+| | 
+| * commit 86a19b48bc317c63a8bc631963e0e5197cf77d34
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Sat Aug 1 16:21:03 2026 +0700
+| | 
+| |     test(hw02): add FR-04 profile management domain testing report and evidence
+| | 
+| |  .../FR-04-ProfileManagement/DomainTesting_BVA.md | 151 +++++++++++++++++++
+| |  .../screenshots/FR-04-TC-06-1.png                | Bin 0 -> 59981 bytes
+| |  .../screenshots/FR-04-TC-06-2.png                | Bin 0 -> 53936 bytes
+| |  .../screenshots/FR-04-TC-08-1.png                | Bin 0 -> 58919 bytes
+| |  .../screenshots/FR-04-TC-08-2.png                | Bin 0 -> 55321 bytes
+| |  .../screenshots/FR-04-TC-11.png                  | Bin 0 -> 84153 bytes
+| |  .../screenshots/FR-04-TC-13.png                  | Bin 0 -> 83023 bytes
+| |  .../screenshots/FR-04-TC-15.png                  | Bin 0 -> 83037 bytes
+| |  .../screenshots/FR-04-TC-23.png                  | Bin 0 -> 80866 bytes
+| |  .../screenshots/FR-04-TC-31-1.png                | Bin 0 -> 64839 bytes
+| |  .../screenshots/FR-04-TC-31-2.png                | Bin 0 -> 56601 bytes
+| |  11 files changed, 151 insertions(+)
+| | 
+| * commit 5e9c7c183c65c3d2ac17f6d45456e30de46fc749
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Sat Aug 1 16:20:40 2026 +0700
+| | 
+| |     feat(hw02): add domain-testing agent skill
+| | 
+| |  .../skills/domain-testing/SKILL.md               | 100 +++++++++++++++++++
+| |  1 file changed, 100 insertions(+)
+| |   
+* |   commit 5b7296b14dac6effd47538710cab824fdfe43a2a
+|\ \  Merge: cfa1ca6 8812e73
+| |/  Author: Le Thien Phu <ltphu.dev@gmail.com>
+|/|   Date:   Sat Aug 1 23:23:38 2026 +0700
+| |   
+| |       Merge pull request #3 from IamTpG/homework/a02
+| |       
+| |       homework/a02
+| | 
+| * commit 8812e73db500a174ccc4df31131a27051b0a276c
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Sat Aug 1 16:20:08 2026 +0700
+| | 
+| |     docs(a02): add SmartBooking architecture assignment submission
+| | 
+| |  a02/23127244.md  | 180 +++++++++++++++++++++++++++++++++++++++++++++++++++
+| |  a02/23127244.pdf | Bin 0 -> 176274 bytes
+| |  2 files changed, 180 insertions(+)
+| | 
+| * commit 34ba93372cc5901bc0c752de62095b5344e703b5
+|/  Author: TpG <ltphu.dev@gmail.com>
+|   Date:   Sat Aug 1 16:20:04 2026 +0700
+|   
+|       docs(a02): add architecture assignment prompt and reference material
+|   
+|    ...c-Huong-Su-Kien-Event-Driven-Architecture.pdf | Bin 0 -> 2884010 bytes
+|    a02/Kien-truc-microservices.pdf                  | Bin 0 -> 3911397 bytes
+|    a02/bai_tap_kien_truc_smartbooking.docx.md       | 261 +++++++++++++++++++
+|    3 files changed, 261 insertions(+)
+|   
+*   commit cfa1ca636c172ec3bd3d8285973da2acfa72d479
+|\  Merge: fac035a def133b
+| | Author: Le Thien Phu <ltphu.dev@gmail.com>
+| | Date:   Sat Aug 1 23:17:42 2026 +0700
+| | 
+| |     Merge pull request #2 from IamTpG/seminar/web-automation-testing
+| |     
+| |     seminar/web-automation-testing
+| | 
+| * commit def133bcfed102086ce2651a8a2a0cf2cd84df1a
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Sat Aug 1 16:13:57 2026 +0700
+| | 
+| |     docs(seminar): add scratch notes
+| | 
+| |  seminar/notes.txt | 4 ++++
+| |  1 file changed, 4 insertions(+)
+| | 
+| * commit c126c05845040050b98fa89efc953089505dc867
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Sat Aug 1 16:13:52 2026 +0700
+| | 
+| |     docs(seminar): add presentation slides and highlights pdf
+| | 
+| |  ...Web Automation Testing Seminar Highlights.pdf | 24159 ++++++++++++
+| |  seminar/[23KTPM2][02] Seminar Slides.pdf         | 34946 +++++++++++++++++
+| |  2 files changed, 59105 insertions(+)
+| | 
+| * commit d6aa0d1dd971d4805e39ab72ee7e421c59220197
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Sat Aug 1 16:13:47 2026 +0700
+| | 
+| |     docs(seminar): add final seminar report
+| | 
+| |  seminar/Report.md  | 1193 ++++++++++++++++++++++++++++++++++++++++++++++++
+| |  seminar/Report.pdf |  Bin 0 -> 835522 bytes
+| |  2 files changed, 1193 insertions(+)
+| | 
+| * commit 7df5221b8ec0270d6829f96e03d38ef9af3a9c18
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Sat Aug 1 16:13:43 2026 +0700
+| | 
+| |     docs(seminar): add activity worksheet
+| | 
+| |  seminar/Activity_Worksheet.md | 120 ++++++++++++++++++++++++++++++++++++++
+| |  1 file changed, 120 insertions(+)
+| | 
+| * commit 2b9bc351789a7c9440d056bd3f95a0a2b2764c5f
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Sat Aug 1 16:13:39 2026 +0700
+| | 
+| |     docs(seminar): add user guide for eshop e2e demo
+| | 
+| |  seminar/User_Guide.md | 621 ++++++++++++++++++++++++++++++++++++++++++++++
+| |  1 file changed, 621 insertions(+)
+| | 
+| * commit 7d75e15fd8c6ba3b8a6fd108a4ebee1dafd1b0d8
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Sat Aug 1 16:13:34 2026 +0700
+| | 
+| |     feat(seminar): add eshop e2e Playwright automation demo project
+| | 
+| |  seminar/eshop-e2e.zip                            | Bin 0 -> 620080 bytes
+| |  seminar/eshop-e2e/.gitignore                     |   5 +
+| |  seminar/eshop-e2e/docs/images/html-report.png    | Bin 0 -> 345299 bytes
+| |  .../eshop-e2e/docs/images/tc-c2-cart-empty.png   | Bin 0 -> 24770 bytes
+| |  .../docs/screenshots/01-sut-login-bugs.png       | Bin 0 -> 32610 bytes
+| |  .../eshop-e2e/docs/screenshots/02-sut-home.png   | Bin 0 -> 65017 bytes
+| |  .../docs/screenshots/03-html-report.png          | Bin 0 -> 178904 bytes
+| |  seminar/eshop-e2e/fixtures/test-fixtures.ts      |  45 +++++++
+| |  seminar/eshop-e2e/package-lock.json              |  75 +++++++++++
+| |  seminar/eshop-e2e/package.json                   |  15 +++
+| |  seminar/eshop-e2e/pages/CartPage.ts              |  46 +++++++
+| |  seminar/eshop-e2e/pages/CheckoutPage.ts          |  30 +++++
+| |  seminar/eshop-e2e/pages/HomePage.ts              |  35 +++++
+| |  seminar/eshop-e2e/pages/LoginPage.ts             |  48 +++++++
+| |  seminar/eshop-e2e/playwright.config.ts           |  25 ++++
+| |  seminar/eshop-e2e/tests/add-to-cart.spec.ts      | 104 +++++++++++++++
+| |  .../tests/ai-draft/login-ai-draft.spec.ts        |  34 +++++
+| |  seminar/eshop-e2e/tests/ai-fix-hides-bug.spec.ts |  39 ++++++
+| |  seminar/eshop-e2e/tests/checkout.spec.ts         | 133 +++++++++++++++++++
+| |  seminar/eshop-e2e/tests/false-pass-demo.spec.ts  |  53 ++++++++
+| |  seminar/eshop-e2e/tests/login.spec.ts            |  84 ++++++++++++
+| |  seminar/eshop-e2e/tests/probe.spec.ts            |  20 +++
+| |  .../eshop-e2e/tools/capture-docs-screenshots.mjs |  41 ++++++
+| |  23 files changed, 832 insertions(+)
+| | 
+| * commit 423f658e40d9b283da4a8d6a8342185e5342d87b
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Sat Aug 1 16:13:27 2026 +0700
+| | 
+| |     docs(seminar): add demo screencast script
+| | 
+| |  seminar/Demo_Screencast_Script.md | 360 ++++++++++++++++++++++++++++++++++
+| |  1 file changed, 360 insertions(+)
+| | 
+| * commit e34b4f12b9dc3a267ad5a7b39e9abc0b3b812394
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Sat Aug 1 16:13:21 2026 +0700
+| | 
+| |     docs(seminar): add theory slides script
+| | 
+| |  seminar/Theory_Slides_Script.md  | 216 +++++++++++++++++++++++++++++++++++
+| |  seminar/Theory_Slides_Script.pdf | Bin 0 -> 148803 bytes
+| |  2 files changed, 216 insertions(+)
+| | 
+| * commit 35c2b1fa2591e2fd67e45ddf0435eea6b103b5b8
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Sat Aug 1 16:13:12 2026 +0700
+| | 
+| |     docs(seminar): add task assignment and completion plan
+| | 
+| |  .../T02_Phan_Cong_Hoan_Thien_Ngay_14-07-2026.md  | 136 +++++++++++++++++++
+| |  1 file changed, 136 insertions(+)
+| | 
+| * commit 590f1a4f2826a91cf6305995675357e95c04ede3
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Sat Aug 1 16:13:08 2026 +0700
+| | 
+| |     docs(seminar): replace tool survey draft with finalized proposal
+| | 
+| |  ...T02_De_Xuat_Cong_Cu_Web_Automation_Testing.md | 374 +++++++++++++++++++
+| |  seminar/Tool_Survey_Proposal.md                  |  33 --
+| |  2 files changed, 374 insertions(+), 33 deletions(-)
+| | 
+| * commit a8d167645a8560366e5c804740ec7a3abcd5a720
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Thu Jun 4 09:37:11 2026 +0700
+| | 
+| |     docs(seminar): add tool survey proposal draft
+| | 
+| |  seminar/Tool_Survey_Proposal.md | 33 +++++++++++++++++++++++++++++++++
+| |  1 file changed, 33 insertions(+)
+| | 
+| * commit 9095119708e56157d7a63e524fb787949dc4a3ea
+|/  Author: TpG <ltphu.dev@gmail.com>
+|   Date:   Tue Jun 2 23:02:26 2026 +0700
+|   
+|       docs(seminar): add seminar description and guide
+|   
+|    seminar/Seminar_Guide.md              | 173 ++++++++++++++++++++++++++++++
+|    seminar/T02_Web_Automation_Testing.md |  97 +++++++++++++++++
+|    2 files changed, 270 insertions(+)
+|   
+*   commit fac035a7316fcc4705a0a1b2f5c096586728e88e
+|\  Merge: 1d0ec6f f043238
+| | Author: Le Thien Phu <ltphu.dev@gmail.com>
+| | Date:   Tue Jun 2 22:59:19 2026 +0700
+| | 
+| |     Merge pull request #1 from IamTpG/homework/hw01
+| |     
+| |     Homework/hw01
+| | 
+| * commit f0432382e955bd49cbd180ef71940cc056b31884
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Tue Jun 2 22:58:11 2026 +0700
+| | 
+| |     chore(hw01): remove temporary files
+| | 
+| |  ...-02] - FIT@HCMUS - AI Audit Report_Vn.docx.md | 85 --------------------
+| |  1 file changed, 85 deletions(-)
+| | 
+| * commit ce18120c36527ce47c4da7ee95addf781fbb98a2
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Tue Jun 2 22:57:36 2026 +0700
+| | 
+| |     docs(hw01): add git commit log and compress report pdf file
+| | 
+| |  hw01/commit-log.txt | 112 ++++++++++++++++++++++++++++++++++++++++++++++++
+| |  hw01/report.pdf     | Bin 8999528 -> 4643061 bytes
+| |  2 files changed, 112 insertions(+)
+| | 
+| * commit 67a5b6bd28ac8fcdb6b0049b8c45f873001c88f8
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Tue Jun 2 01:54:57 2026 +0700
+| | 
+| |     docs(hw01): add consolidated main report
+| | 
+| |  hw01/report.md  | 1839 +++++++++++++++++++++++++++++++++++++++++++++++++++
+| |  hw01/report.pdf |  Bin 0 -> 8999528 bytes
+| |  2 files changed, 1839 insertions(+)
+| | 
+| * commit 8ccd0ad5a2b103104f59e9b0c925905cf4b7beed
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Tue Jun 2 01:54:56 2026 +0700
+| | 
+| |     docs(hw01): add AI audit report, disclosure, privacy checklist, prompt log and self-assessment
+| | 
+| |  ...[AI-02] - FIT@HCMUS - AI Audit Report_Vn.docx |  Bin 0 -> 1287070 bytes
+| |  ...-02] - FIT@HCMUS - AI Audit Report_Vn.docx.md |   85 +
+| |  ...02] - FIT@HCMUS - AI Audit Report_Vn.docx.pdf |  Bin 0 -> 632318 bytes
+| |  ...-03] - FIT@HCMUS - AI Disclosure Form_Vn.docx |  Bin 0 -> 263727 bytes
+| |  ... - FIT@HCMUS - AI Disclosure Form_Vn.docx.pdf |  Bin 0 -> 278838 bytes
+| |  ...5] - FIT@HCMUS - AI Privacy Checklist_Vn.docx |  Bin 0 -> 259898 bytes
+| |  ... FIT@HCMUS - AI Privacy Checklist_Vn.docx.pdf |  Bin 0 -> 212242 bytes
+| |  ...IT@HCMUS - AI Student Acknowledgement_Vn.docx |  Bin 0 -> 259737 bytes
+| |  ...CMUS - AI Student Acknowledgement_Vn.docx.pdf |  Bin 0 -> 216883 bytes
+| |  hw01/prompt_log.txt                              | 2605 ++++++++++++++++++
+| |  hw01/self-assessment.csv                         |    8 +
+| |  11 files changed, 2698 insertions(+)
+| | 
+| * commit 1eb42800677be6c58dc44f21c8d067ac7bdd0340
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Tue Jun 2 01:54:32 2026 +0700
+| | 
+| |     feat(hw01): add Requirement 3 - Senko BD1410 fan test cases, results and evidence
+| | 
+| |  hw01/checklist.csv              |  21 ++++
+| |  hw01/device-id-frame.jpg        | Bin 0 -> 3019504 bytes
+| |  hw01/images/device-id-frame.jpg | Bin 0 -> 3019504 bytes
+| |  hw01/product-tests.md           | 230 ++++++++++++++++++++++++++++++++++++
+| |  hw01/test-cases.csv             |  16 +++
+| |  hw01/test-summary-report.csv    |  30 +++++
+| |  hw01/videos-links.md            |   7 ++
+| |  7 files changed, 304 insertions(+)
+| | 
+| * commit db89b645d8dc4a67d60033d0614f0163f7bd59ab
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Tue Jun 2 01:54:32 2026 +0700
+| | 
+| |     feat(hw01): add Requirement 2 - 20 software defects with AI hallucination demo
+| | 
+| |  hw01/defects.md                      | 755 +++++++++++++++++++++++++++++++
+| |  hw01/images/chatgpt-correct.png      | Bin 0 -> 312008 bytes
+| |  hw01/images/claude-hallucination.png | Bin 0 -> 263400 bytes
+| |  3 files changed, 755 insertions(+)
+| | 
+| * commit 6585f35db4df725798b57c92d5f377070e2e5554
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Tue Jun 2 01:54:32 2026 +0700
+| | 
+| |     feat(hw01): add Requirement 1 - QA/QC job market survey and role mindmap
+| | 
+| |  hw01/images/job-01.png      | Bin 0 -> 369637 bytes
+| |  hw01/images/job-02.png      | Bin 0 -> 398331 bytes
+| |  hw01/images/job-03.png      | Bin 0 -> 360846 bytes
+| |  hw01/images/job-04.png      | Bin 0 -> 404272 bytes
+| |  hw01/images/job-05.png      | Bin 0 -> 378119 bytes
+| |  hw01/images/job-06.png      | Bin 0 -> 379909 bytes
+| |  hw01/images/job-07.png      | Bin 0 -> 367403 bytes
+| |  hw01/images/job-08.png      | Bin 0 -> 378168 bytes
+| |  hw01/images/job-09.png      | Bin 0 -> 365202 bytes
+| |  hw01/images/job-10.png      | Bin 0 -> 418539 bytes
+| |  hw01/job-market.md          | 583 ++++++++++++++++++++++++++++++++++++++++
+| |  hw01/links.md               |  10 +
+| |  hw01/qa-qc-role-mindmap.md  | 184 +++++++++++++
+| |  hw01/qa-qc-role-mindmap.png | Bin 0 -> 522397 bytes
+| |  14 files changed, 777 insertions(+)
+| | 
+| * commit 39748b0f9942f3891d051c571ae45c08625068fe
+| | Author: TpG <ltphu.dev@gmail.com>
+| | Date:   Tue Jun 2 01:54:31 2026 +0700
+| | 
+| |     chore(hw01): add assignment brief and shared PDF stylesheet
+| | 
+| |  ....HW01.Jobs.Defects.PhysicalProduct_En.docx.md | 164 +++++++++++++++++++
+| |  hw01/pdf-style.css                               |  38 +++++
+| |  2 files changed, 202 insertions(+)
+| | 
+| * commit e8f1c46daf44d5a83caca0bcbd27ae72898021a3
+|/  Author: TpG <ltphu.dev@gmail.com>
+|   Date:   Tue Jun 2 01:54:31 2026 +0700
+|   
+|       chore: add .gitignore for Claude Code local files
+|   
+|    .gitignore | 2 ++
+|    1 file changed, 2 insertions(+)
+| 
+* commit 1d0ec6f9aa89c0d6c818be61a495ca4d35919c11
+  Author: TpG <ltphu.dev@gmail.com>
+  Date:   Mon May 25 20:18:21 2026 +0700
+  
+      chore: add README.md
+  
+   README.md | 1 +
+   1 file changed, 1 insertion(+)

@@ -1,0 +1,16 @@
+# Portable JDK + JMeter (downloaded, not vendored — see tools/env.sh)
+tools/jdk-*/
+tools/apache-jmeter-*/
+
+# SUT dependencies / local runtime artifacts
+eshop-sut/**/node_modules/
+eshop-sut/backend/database.sqlite
+eshop-sut/**/.env
+
+# JMeter run artifacts (test plans and CSVs ARE tracked; raw results go under results/ deliberately)
+jmeter.log
+*.jmeter.log
+
+# Packaged submission export - a snapshot copy for zipping, not a second source of truth.
+# Regenerate before final zip; un-ignore and commit it only once truly final (see SUBMISSION-CHECKLIST.md).
+23127244_HW05_AI_Performance_100/
