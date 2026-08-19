@@ -6,6 +6,10 @@ eshop-sut/**/.env
 # Postman/Newman local install
 postman/node_modules/
 
+# CI-run Newman reports -- stored as GitHub Actions artifacts on each run instead of
+# committed here; the graded deliverable reports are the 23127244_*.html ones above.
+results/ci_*.html
+
 # Packaged submission export - a snapshot copy for zipping, not a second source of truth.
 # Regenerate before final zip; un-ignore and commit it only once truly final (see SUBMISSION-CHECKLIST.md).
 23127244_HW06_AI_API_*/

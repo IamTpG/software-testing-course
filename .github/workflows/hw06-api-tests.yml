@@ -1,0 +1,155 @@
+name: HW06 API Tests (Newman)
+
+on:
+  push:
+    branches:
+      - homework/hw06
+      - main
+    paths:
+      - "hw06/**"
+      - ".github/workflows/hw06-api-tests.yml"
+  pull_request:
+    paths:
+      - "hw06/**"
+  workflow_dispatch: {}
+
+jobs:
+  newman:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: hw06
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install SUT backend dependencies
+        working-directory: hw06/eshop-sut/backend
+        run: npm install
+
+      - name: Seed the SUT database
+        working-directory: hw06/eshop-sut/backend
+        run: node database.js
+
+      - name: Start the SUT backend
+        working-directory: hw06/eshop-sut/backend
+        env:
+          PORT: 4000
+        run: |
+          nohup node server.js > server.log 2>&1 &
+          echo "Waiting for the backend to become ready..."
+          for i in $(seq 1 30); do
+            if curl -sf http://localhost:4000/api/products > /dev/null; then
+              echo "Backend is up."
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "Backend never became ready. Server log:"
+          cat server.log
+          exit 1
+
+      - name: Install Postman/Newman dependencies
+        working-directory: hw06/postman
+        run: npm install
+
+      - name: Run API1 - GET /api/products (data-driven)
+        working-directory: hw06/postman
+        run: |
+          npx newman run EShop-HW06.postman_collection.json \
+            -e EShop-HW06.postman_environment.json \
+            -d data/api1_products_search.csv \
+            --folder "Search products (data-driven, 40 cases via CSV)" \
+            --reporters cli,htmlextra \
+            --reporter-htmlextra-export ../results/ci_API1_products-search_datadriven.html
+
+      - name: Run API1 - GET /api/products (fixed-shape edge cases)
+        working-directory: hw06/postman
+        run: |
+          npx newman run EShop-HW06.postman_collection.json \
+            -e EShop-HW06.postman_environment.json \
+            --folder "PA-01 - No search param at all" \
+            --folder "PA-14 - Duplicate search query parameter" \
+            --folder "PA-17 - Bracket-array search shape (search[]=x)" \
+            --reporters cli,htmlextra \
+            --reporter-htmlextra-export ../results/ci_API1_products-search_edgecases.html
+
+      - name: Run API2 - Setup (register/login cart-test user)
+        working-directory: hw06/postman
+        run: |
+          npx newman run EShop-HW06.postman_collection.json \
+            -e EShop-HW06.postman_environment.json \
+            --folder "API 2a - Pool B - Setup (register/login cart-test user A)" \
+            --export-environment /tmp/hw06_env2a.json \
+            --reporters cli,htmlextra \
+            --reporter-htmlextra-export ../results/ci_API2_cart_setup.html
+
+      - name: Run API2 - Add to cart (data-driven)
+        working-directory: hw06/postman
+        run: |
+          npx newman run EShop-HW06.postman_collection.json \
+            -e /tmp/hw06_env2a.json \
+            -d data/api2_cart_add.csv \
+            --folder "API 2b - Pool B - Add to cart (data-driven, 31 cases via CSV)" \
+            --export-environment /tmp/hw06_env2b.json \
+            --reporters cli,htmlextra \
+            --reporter-htmlextra-export ../results/ci_API2_cart_datadriven.html
+
+      - name: Run API2 - Verification & security
+        working-directory: hw06/postman
+        run: |
+          npx newman run EShop-HW06.postman_collection.json \
+            -e /tmp/hw06_env2b.json \
+            --folder "API 2c - Pool B - Verification, error handling & security" \
+            --reporters cli,htmlextra \
+            --reporter-htmlextra-export ../results/ci_API2_cart_verify.html
+
+      - name: Run API3 - Setup (login as admin + regular user)
+        working-directory: hw06/postman
+        run: |
+          npx newman run EShop-HW06.postman_collection.json \
+            -e EShop-HW06.postman_environment.json \
+            --folder "API 3a - Pool C - Setup (login as admin + regular user)" \
+            --export-environment /tmp/hw06_env3a.json \
+            --reporters cli,htmlextra \
+            --reporter-htmlextra-export ../results/ci_API3_coupons_setup.html
+
+      - name: Run API3 - Create coupon (data-driven)
+        working-directory: hw06/postman
+        run: |
+          npx newman run EShop-HW06.postman_collection.json \
+            -e /tmp/hw06_env3a.json \
+            -d data/api3_coupons_create.csv \
+            --folder "API 3b - Pool C - Create coupon (data-driven, 31 cases via CSV)" \
+            --export-environment /tmp/hw06_env3b.json \
+            --reporters cli,htmlextra \
+            --reporter-htmlextra-export ../results/ci_API3_coupons_datadriven.html
+
+      - name: Run API3 - Verification & security (privilege escalation)
+        working-directory: hw06/postman
+        run: |
+          npx newman run EShop-HW06.postman_collection.json \
+            -e /tmp/hw06_env3b.json \
+            --folder "API 3c - Pool C - Verification & security (privilege escalation)" \
+            --reporters cli,htmlextra \
+            --reporter-htmlextra-export ../results/ci_API3_coupons_verify.html
+
+      - name: Upload Newman HTML reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: newman-html-reports
+          path: hw06/results/ci_*.html
+
+      - name: Upload SUT backend log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sut-backend-log
+          path: hw06/eshop-sut/backend/server.log
