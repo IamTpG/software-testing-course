@@ -55,13 +55,13 @@ Repeat for **each of the 3 selected APIs**. Target ≥ 35 AI-generated cases per
 
 **All 3 API pipelines complete.** 135/135 test cases pass (43+45+45), 7 bugs drafted (1 Critical SQLi+plaintext-passwords on API1, 1 Critical broken-access-control on API3, 2 Medium, 3 Low/informational).
 
-## Phase 2 — Postman feature coverage & CI/CD
+## Phase 2 — Postman feature coverage & CI/CD — ✅ complete except screenshots
 
-- [ ] Use as many Postman features as reasonably possible: workspaces, collections, variables, environments, data-driven runs (Collection Runner + data file), monitors, mock servers. List them explicitly in the report.
-- [ ] Add API tests to CI/CD: GitHub Actions running Newman in the `IamTpG/eshop-sut` fork.
-- [ ] Produce **two sample commits/pipeline runs**: one with all tests passing, one with exactly one test failing (deliberately, then documented) — both need screenshots + links in the CI/CD report.
-- [ ] Write short CI/CD report: pipeline config + the two runs, screenshots, links.
-- [ ] 🔴 MANUAL — Screenshot each pipeline run (or confirm Claude may fetch Actions UI screenshots via `gh`/browser automation if acceptable — otherwise you capture these).
+- [x] Postman features used, documented explicitly: collections (per-API folders, further split into setup/data-driven/verify sub-folders), environments, collection + environment variables (including runtime-generated unique emails/tampered tokens), collection-level + request-level pre-request scripts, dynamic test-title assertions, data-driven Collection Runner (3 CSV files, 102 rows total), chained runs via `--export-environment`, htmlextra HTML reporting, GitHub Actions integration. Monitors/Mock Servers/Workspaces explicitly noted as not applicable, with reasoning. `reports/Postman-Features-Used.md`.
+- [x] CI/CD: GitHub Actions workflow added directly in **this repo** (not the eshop-sut fork — the vendored SUT + Postman collection already live here, simpler than cross-repo checkout), triggered on `hw06/**` changes. `.github/workflows/hw06-api-tests.yml`.
+- [x] Two sample commits + pipeline runs produced: all-passing (`3635afc`, [run 32222854961](https://github.com/IamTpG/software-testing-course/actions/runs/32222854961), 32s, 133/133 pass) and one-failing (`57db2f3`, [run 32222958305](https://github.com/IamTpG/software-testing-course/actions/runs/32222958305), 23s, PA-03 deliberately broken — exactly 1 assertion fails), then reverted (`96c2e41`, [run 32223059167](https://github.com/IamTpG/software-testing-course/actions/runs/32223059167), back to green).
+- [x] `reports/CICD-Report.md` written: pipeline config + both runs with commit/run links.
+- [ ] 🔴 MANUAL — Screenshot the two pipeline runs (green + red) from the Actions UI for the CI/CD report.
 
 ## Phase 3 — Agent Skill (Create level, G9.5)
 
