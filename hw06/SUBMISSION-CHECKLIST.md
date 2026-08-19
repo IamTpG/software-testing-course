@@ -23,7 +23,8 @@ Packaged submission folder convention (matching HW04/HW05): build
 
 ## Anti-AI-Cheat verification (Section 11 — TAs check these specifically)
 
-- [x] `X-Student-Id: {StudentID}` header present on every request — set via a collection-level pre-request script with a `console.log`, confirmed printing in every Newman run's CLI output (see any `results/*.html` or CI run log). 🔴 MANUAL: a **Postman-app console screenshot** is still needed (Newman's own console output shown in the HTML reports may not satisfy "screenshot from your pre-request script" literally — check with your TA whether the CLI/HTML evidence suffices, or open the collection in the Postman app once to screenshot the Console panel).
+- [x] `X-Student-Id: {StudentID}` header present on every request — set via a collection-level pre-request script with a `console.log`. Evidenced two ways: Newman's CLI/HTML output (any `results/*.html` or CI run log) AND a Postman-app Console screenshot showing the header being set across many live requests:
+  ![Postman Console showing X-Student-Id set on every request](screenshots/console.png)
 - [x] Newman run output hostname: `localhost:4000` throughout (documented reason for the non-default port in `TASKS-CHECKLIST.md` Phase 0 — accepted per Section 11).
 - [x] AI test-generator diagram provided (`reports/diagram.png`).
 
@@ -42,7 +43,6 @@ Packaged submission folder convention (matching HW04/HW05): build
 - [x] No two group members' API selections overlap — confirmed against your groupmate's list (login/checkout/admin-orders-status) at selection time.
 - [x] Content-wise everything required is present or drafted, except the items marked 🔴 MANUAL / 🟡 above. Missing any required document results in **0 points** (Section 17) — don't zip until every 🔴/🟡 line above is resolved.
 - [ ] Deadline confirmed on Moodle — late submission is **not permitted**.
-- [ ] 🔴 MANUAL — Screenshot: Postman Console (X-Student-Id header) and the 2 CI/CD pipeline runs still needed (bug screenshots done).
 - [ ] 🔴 MANUAL — Convert Main Report + AI Critique + AI Audit Report to PDF.
 - [ ] 🟡 DECISION-adjacent — Read and sign off on the AI Critique draft.
 - [ ] 🟡 DECISION — Decide the self-assessed grade for the filename and README/checklist tables.
