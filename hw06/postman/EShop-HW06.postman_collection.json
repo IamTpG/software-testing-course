@@ -1,0 +1,264 @@
+{
+	"info": {
+		"_postman_id": "23127244-hw06-eshop-api-testing",
+		"name": "EShop HW06 - API Testing (23127244)",
+		"description": "HW06 API Testing - 3 selected APIs: GET /api/products (Pool A), POST /api/cart (Pool B), POST /api/admin/coupons (Pool C). Every request carries X-Student-Id via a collection-level pre-request script.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Collection-level: attach the required anti-cheat header to every request.",
+					"const studentId = pm.environment.get(\"studentId\");",
+					"pm.request.headers.upsert({ key: \"X-Student-Id\", value: studentId });",
+					"console.log(\"[HW06] X-Student-Id header set to: \" + studentId + \" on \" + pm.request.method + \" \" + pm.request.url.toString());"
+				]
+			}
+		}
+	],
+	"variable": [],
+	"item": [
+		{
+			"name": "API 1 - Pool A - GET /api/products (search)",
+			"item": [
+				{
+					"name": "Search products (data-driven, 40 cases via CSV)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"// Build the query string from the current data-file row rather than raw string",
+									"// substitution, so special characters (quotes, spaces, unicode, <script>) are",
+									"// properly URL-encoded by Postman instead of breaking the URL.",
+									"var searchValue = pm.iterationData.get(\"search_value\");",
+									"pm.request.url.query.clear();",
+									"if (searchValue !== undefined && searchValue !== null) {",
+									"    pm.request.url.query.add({ key: \"search\", value: searchValue });",
+									"}"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const caseId = pm.iterationData.get(\"id\");",
+									"const expectedStatus = parseInt(pm.iterationData.get(\"expected_status\"));",
+									"const isExploitRow = pm.iterationData.get(\"check_leak\") === \"1\" || pm.iterationData.get(\"check_plaintext\") === \"1\";",
+									"",
+									"pm.test(caseId + \": status code is \" + expectedStatus, function () {",
+									"    pm.response.to.have.status(expectedStatus);",
+									"});",
+									"",
+									"if (pm.response.code === 200) {",
+									"    pm.test(caseId + \": Content-Type is application/json\", function () {",
+									"        pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"    });",
+									"",
+									"    let body;",
+									"    pm.test(caseId + \": response body is a JSON array\", function () {",
+									"        body = pm.response.json();",
+									"        pm.expect(body).to.be.an(\"array\");",
+									"    });",
+									"",
+									"    const expectedCountRaw = pm.iterationData.get(\"expected_count\");",
+									"    if (expectedCountRaw !== \"\" && expectedCountRaw !== undefined && expectedCountRaw !== null) {",
+									"        const expectedCount = parseInt(expectedCountRaw);",
+									"        pm.test(caseId + \": result count is \" + expectedCount, function () {",
+									"            pm.expect(body.length).to.eql(expectedCount);",
+									"        });",
+									"    }",
+									"",
+									"    // Skip schema conformance on the two deliberate UNION-injection rows (EXT-01/EXT-05):",
+									"    // their \"products\" are leaked user rows by design (e.g. price holds a password string),",
+									"    // so asserting the normal product schema on them would be testing the wrong thing.",
+									"    if (body && body.length > 0 && !isExploitRow) {",
+									"        pm.test(caseId + \": each product matches the documented schema\", function () {",
+									"            body.forEach(function (p) {",
+									"                pm.expect(p).to.have.all.keys(\"id\", \"name\", \"price\", \"description\", \"imageUrl\", \"category_id\");",
+									"                pm.expect(p.id).to.be.a(\"number\");",
+									"                pm.expect(p.name).to.be.a(\"string\").and.to.not.be.empty;",
+									"                pm.expect(p.price).to.be.a(\"number\");",
+									"                pm.expect(p.category_id).to.be.a(\"number\");",
+									"                pm.expect(p.imageUrl).to.match(/^https?:\\/\\//);",
+									"            });",
+									"        });",
+									"    }",
+									"",
+									"    if (pm.iterationData.get(\"check_leak\") === \"1\") {",
+									"        pm.test(caseId + \": SECURITY BUG (Critical) - UNION injection leaks seeded user credentials\", function () {",
+									"            pm.expect(pm.response.text()).to.include(\"admin@eshop.com\");",
+									"            pm.expect(pm.response.text()).to.include(\"Admin123!\");",
+									"        });",
+									"    }",
+									"",
+									"    if (pm.iterationData.get(\"check_plaintext\") === \"1\") {",
+									"        pm.test(caseId + \": SECURITY BUG - leaked password is stored in plaintext, not hashed\", function () {",
+									"            const text = pm.response.text();",
+									"            pm.expect(text).to.not.match(/\\$2[aby]\\$/);",
+									"            pm.expect(text).to.include(\"Admin123!\");",
+									"        });",
+									"    }",
+									"} else if (pm.response.code === 500) {",
+									"    pm.test(caseId + \": BUG - error path Content-Type is text/html, inconsistent with the JSON success path\", function () {",
+									"        pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");",
+									"    });",
+									"    pm.test(caseId + \": BUG - raw DB engine error message is disclosed in the response body\", function () {",
+									"        pm.expect(pm.response.text()).to.include(\"SQLITE_ERROR\");",
+									"    });",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/products?search={{search_value}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"products"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "{{search_value}}"
+								}
+							]
+						},
+						"description": "Run via Collection Runner / Newman with data/api1_products_search.csv (-d flag). Covers PA-02..PA-13, PA-15..PA-38, EXT-01..EXT-05 (40 of the 43 audited/extended cases). PA-01, PA-14, PA-17 need a different URL shape and are separate requests below."
+					},
+					"response": []
+				},
+				{
+					"name": "PA-01 - No search param at all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"PA-01: no search param -> 200, all 5 products returned\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    const body = pm.response.json();",
+									"    pm.expect(body).to.be.an(\"array\").with.lengthOf(5);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/products",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"products"
+							]
+						},
+						"description": "Domain-partition case: absent optional query param -> falls to the else branch, returns all products."
+					},
+					"response": []
+				},
+				{
+					"name": "PA-14 - Duplicate search query parameter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"PA-14: duplicate search query params -> 200, empty array (qs array-join yields no match)\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    const body = pm.response.json();",
+									"    pm.expect(body).to.be.an(\"array\").with.lengthOf(0);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/products?search=a&search=b",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"products"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "a"
+								},
+								{
+									"key": "search",
+									"value": "b"
+								}
+							]
+						},
+						"description": "Malformed-shape domain-partition case: two 'search' keys -> qs parses to an array -> Array.toString() joins to 'a,b' -> LIKE pattern matches nothing."
+					},
+					"response": []
+				},
+				{
+					"name": "PA-17 - Bracket-array search shape (search[]=x)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"PA-17: bracket-array search[]=x -> 200, all 5 (the literal key 'search' is absent, else-branch runs)\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    const body = pm.response.json();",
+									"    pm.expect(body).to.be.an(\"array\").with.lengthOf(5);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/products?search[]=x",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"products"
+							],
+							"query": [
+								{
+									"key": "search[]",
+									"value": "x"
+								}
+							]
+						},
+						"description": "Security/malformed-input-shape case: req.query.search is undefined for this key shape, so the handler silently falls back to returning everything instead of validating the input."
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
