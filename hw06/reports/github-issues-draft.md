@@ -1,7 +1,17 @@
-# HW06 — Draft GitHub Issues (eshop-sut, `IamTpG/eshop-sut` fork)
+# HW06 — GitHub Issues (eshop-sut, `IamTpG/eshop-sut` fork)
 
-Draft only — not yet posted. Review before posting, especially Issue 1 (contains a live
-working exploit + real seeded credentials).
+**All 7 posted.** This file is the source content (kept for the report); the live issues
+are the graded artifact.
+
+| # | Severity | Link |
+|---|---|---|
+| 1 | Critical | https://github.com/IamTpG/eshop-sut/issues/1 |
+| 2 | Low | https://github.com/IamTpG/eshop-sut/issues/2 |
+| 3 | Medium | https://github.com/IamTpG/eshop-sut/issues/3 |
+| 4 | Low | https://github.com/IamTpG/eshop-sut/issues/4 |
+| 5 | Critical | https://github.com/IamTpG/eshop-sut/issues/5 |
+| 6 | Medium | https://github.com/IamTpG/eshop-sut/issues/6 |
+| 7 | Low | https://github.com/IamTpG/eshop-sut/issues/7 |
 
 ---
 
@@ -284,5 +294,5 @@ integer (reject or clamp negatives, not just zero).
 
 ---
 
-*All 3 selected APIs' bug reports are now drafted (7 issues total). Posting to GitHub
-Issues is held pending your review — see the conversation for the confirm/hold decision.*
+*All 7 issues posted to `IamTpG/eshop-sut` — see the table at the top of this file for
+direct links.*

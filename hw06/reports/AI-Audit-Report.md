@@ -71,6 +71,12 @@ in this homework. Concretely:
   broken access control) to informational (no JWT expiry) — none were accepted from the
   AI's first draft without independent empirical confirmation.
 
+## Phase 5 — Bug posting (2026-08-19, ~22:40)
+
+| Prompt (paraphrased) | Output |
+|---|---|
+| "Post to my repo, not the ttbhanh repo." | Confirmed target `IamTpG/eshop-sut` (the student's fork), not upstream. Found Issues were disabled on the fork (a common fork default), enabled them via `gh repo edit --enable-issues`, then posted all 7 drafted issues with their user-verified repro screenshots (embedded as `raw.githubusercontent.com` links back to this repo). All 7 confirmed live at `IamTpG/eshop-sut/issues/1`–`7`. |
+
 ## AI Critique
 
 See `AI-Critique.md` for the required 200–300 word reflection.
