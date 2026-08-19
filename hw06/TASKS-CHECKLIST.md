@@ -76,7 +76,7 @@ Repeat for **each of the 3 selected APIs**. Target ≥ 35 AI-generated cases per
 
 - [x] Main report (`reports/MainReport.md`): full pipeline documentation for all 3 APIs, cross-API comparison table, Postman features + CI/CD summary, Agent Skill summary, totals (133/133 pass, 7 bugs).
 - [x] AI Audit Report (`reports/AI-Audit-Report.md`): chronological tool/date/prompt/output log, pulled from real commit timestamps, covering all 5 phases.
-- [x] AI Critique drafted (`reports/AI-Critique.md`, 263 words) — 🟡 **needs your read-through and sign-off**, explicitly flagged as a draft in the file itself, not auto-finalized.
+- [x] AI Critique (`reports/AI-Critique.md`, 263 words) — read and confirmed final by you.
 - [x] Git commit log exported (`reports/Git-Commit-Log.txt`).
 - [x] `README.md` written: self-assessment table (grade column blank for you) + full test summary table + repo layout.
 - [ ] 🔴 MANUAL — Convert Main Report + AI Critique + AI Audit Report to PDF (your own workflow).

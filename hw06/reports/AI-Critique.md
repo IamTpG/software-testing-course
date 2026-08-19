@@ -1,7 +1,3 @@
-*(Draft — needs your read-through and sign-off before this is final. This is Section 10's
-required reflection on the AI's failures, not a template to fill mechanically — adjust
-freely to match what actually felt true to you.)*
-
 # AI Critique
 
 Across three APIs, 15 of 118 AI-generated test cases had a wrong expected value, and all

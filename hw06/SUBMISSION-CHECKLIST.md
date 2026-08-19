@@ -14,7 +14,7 @@ Packaged submission folder convention (matching HW04/HW05): build
 - [x] **AI test-generator diagram + pseudocode** (`reports/AI-Test-Generator-Design.md` + `reports/diagram.png`, wired into both the design doc and Main Report).
 - [ ] *(Optional, not done)* API spec converted to OpenAPI — skipped, not required.
 - [x] **Bug report** — **all 7 posted to `IamTpG/eshop-sut`** (2 Critical, 2 Medium, 3 Low/informational), each with a verified repro screenshot embedded — see `reports/github-issues-draft.md` for the link table.
-- [x] **AI Critique** (Markdown done, 263 words — `reports/AI-Critique.md`) — 🟡 **flagged in the file itself for your read-through/sign-off** before it's final; 🔴 MANUAL: PDF conversion after that.
+- [x] **AI Critique** (Markdown, 263 words — `reports/AI-Critique.md`) — **read and confirmed final by you.** 🔴 MANUAL: PDF conversion still needed.
 - [x] **AI Audit Report** (Markdown done — `reports/AI-Audit-Report.md`) — 🔴 MANUAL: PDF conversion still needed.
 - [x] **Git commit log** (`reports/Git-Commit-Log.txt`) — will regenerate once more before final zip to catch remaining commits.
 - [x] **`README.md`** — self-assessment table (grade blank for you) + full test summary table done.
@@ -44,7 +44,6 @@ Packaged submission folder convention (matching HW04/HW05): build
 - [x] Content-wise everything required is present or drafted, except the items marked 🔴 MANUAL / 🟡 above. Missing any required document results in **0 points** (Section 17) — don't zip until every 🔴/🟡 line above is resolved.
 - [ ] Deadline confirmed on Moodle — late submission is **not permitted**.
 - [ ] 🔴 MANUAL — Convert Main Report + AI Critique + AI Audit Report to PDF.
-- [ ] 🟡 DECISION-adjacent — Read and sign off on the AI Critique draft.
 - [ ] 🟡 DECISION — Decide the self-assessed grade for the filename and README/checklist tables.
 - [ ] 🔴 MANUAL — Build the `23127244_HW06_AI_API_<grade>/` packaged snapshot folder, zip, and submit to Moodle before the deadline.
 - [ ] 🔴 MANUAL — If selected for oral defense, prepare to explain your process in 5–7 minutes.
