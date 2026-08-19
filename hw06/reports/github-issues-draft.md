@@ -167,4 +167,118 @@ have a bounded lifetime.
 
 ---
 
-*A slot is reserved for API3 (`POST /api/admin/coupons`) findings once that pipeline runs.*
+## Issue 5 — [Critical] Missing role check on `POST /api/admin/coupons` and `DELETE /api/admin/coupons/:id` — any authenticated user can create/delete coupons
+
+**Severity:** Critical
+**Labels:** bug, security, broken-access-control
+
+### Summary
+Both handlers (`backend/server.js:457` and `:483`) only call `authenticateToken` — neither
+checks `req.user.role === 'admin'`. This directly violates **SEC-03**
+("API Admin phải kiểm tra `role = 'admin'` trong Token, không chỉ kiểm tra sự tồn tại của
+Token"), and the spec's own Section 6 preamble explicitly documents this whole route group
+as requiring an admin account. In practice, **any registered user can fully manage
+coupons** — create arbitrary discount codes, or delete existing ones — with zero admin
+involvement.
+
+### Steps to reproduce
+```
+# Log in as any regular (non-admin) user, then:
+POST /api/admin/coupons
+Authorization: Bearer <regular user's token>
+Content-Type: application/json
+
+{"code":"HACKED_BY_USER","type":"percent","discount_value":50,"min_order_amount":0,"expired_at":"2027-01-01","max_uses_per_user":1}
+```
+→ `200 {"message":"Coupon created","id":...}` (should be `403`).
+
+```
+DELETE /api/admin/coupons/<any id>
+Authorization: Bearer <regular user's token>
+```
+→ `200 {"message":"Coupon deleted"}` (should be `403`).
+
+Full lifecycle demonstrated with a single non-admin account: register → login → create a
+coupon → delete that same coupon, no admin account touched at any point.
+
+### Expected result
+Add a `requireAdmin` middleware (checking `req.user.role === 'admin'` after
+`authenticateToken`) to every route already documented under the "ADMIN: CRUD Coupons" /
+"ADMIN APIS" sections — this bug pattern likely also affects the other admin routes in the
+same file (`/api/admin/users`, `/api/admin/orders`, `/api/admin/import-products`), though
+only the coupons endpoints were in this homework's selected scope.
+
+### Evidence
+🔴 MANUAL — screenshot to attach.
+
+---
+
+## Issue 6 — [Medium] `POST /api/admin/coupons` — several fields silently become `NULL` instead of their documented DB defaults
+
+**Severity:** Medium
+**Labels:** bug, input-validation
+
+### Summary
+The `coupons` table declares `type TEXT DEFAULT 'percent'` and `min_order_amount INTEGER
+DEFAULT 0`, but the handler always explicitly binds all 6 destructured fields via `?`
+placeholders. When a field is omitted from the request body, it destructures to
+`undefined`, which binds as SQL `NULL` — **not** the column's `DEFAULT`, because defaults
+only apply when a column is omitted from the `INSERT` statement entirely, not when it's
+explicitly set to `NULL`.
+
+### Steps to reproduce
+```
+POST /api/admin/coupons
+Authorization: Bearer <admin token>
+Content-Type: application/json
+
+{"code":"NOTYPE_TEST","discount_value":10,"min_order_amount":0,"expired_at":"2027-01-01","max_uses_per_user":1}
+```
+→ coupon created with `"type": null`, not `"type": "percent"` as the schema's default
+would suggest.
+
+### Downstream impact
+A coupon created this way silently breaks `POST /api/apply-coupon`'s branching logic
+elsewhere in the same file: `coupon.type === "percent"` is `false` for a `null` type, so
+the discount math falls into the flat/fixed-amount branch instead, misapplying
+`discount_value` as a currency amount rather than a percentage.
+
+### Expected result
+Either omit unset fields from the `INSERT` column list so real DB defaults apply, or
+explicitly default them in JS before binding (as already done, inconsistently, for
+`max_uses_per_user || 1`).
+
+### Evidence
+🔴 MANUAL — screenshot to attach.
+
+---
+
+## Issue 7 — [Low] `POST /api/admin/coupons` — no validation on discount range, expiry date, or the `max_uses_per_user` fallback is inconsistent
+
+**Severity:** Low
+**Labels:** bug, input-validation
+
+### Summary
+Three related, lower-severity gaps:
+1. A `percent`-type coupon accepts `discount_value` above 100 (e.g. 500 → "500% off")
+   with no upper-bound check.
+2. `expired_at` accepts an already-past date, or a non-date string like `"not-a-date"`,
+   with no validation at all — nothing stops creating a coupon that can never be used, or
+   one with a garbage expiry value.
+3. `max_uses_per_user`'s `|| 1` fallback only catches *falsy* JS values: `0` is silently
+   "fixed" to `1`, but a genuinely invalid negative value like `-5` passes straight
+   through unmodified and gets stored as-is — the same validation gap manifests two
+   different, unpredictable ways.
+
+### Expected result
+Validate `discount_value` against `[0, 100]` when `type === 'percent'`; validate
+`expired_at` is a parseable date in the future; validate `max_uses_per_user` is a positive
+integer (reject or clamp negatives, not just zero).
+
+### Evidence
+🔴 MANUAL — screenshot to attach.
+
+---
+
+*All 3 selected APIs' bug reports are now drafted (7 issues total). Posting to GitHub
+Issues is held pending your review — see the conversation for the confirm/hold decision.*

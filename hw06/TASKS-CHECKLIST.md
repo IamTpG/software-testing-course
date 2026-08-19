@@ -45,13 +45,15 @@ Repeat for **each of the 3 selected APIs**. Target ≥ 35 AI-generated cases per
 - [x] Bugs drafted: Medium (zero input validation + mass assignment), Low (content-type corruption + unmerged duplicates), informational (JWT no expiry). Auth enforcement and cross-user cart isolation both confirmed solid (passing controls, documented not just failures). `reports/github-issues-draft.md` — 🟡 posting held until all 3 APIs done.
 - [x] 4 separate commits: generation / audit / extension / execution.
 
-### API 3 — Pool C — `POST /api/admin/coupons`
-- [ ] Generate ≥ 35 cases: domain partitions on `code`/`type` (percent vs fixed)/`discount_value`/`min_order_amount`/`expired_at`/`max_uses_per_user`, security (SEC-01–SEC-07 — role escalation/access control since this is admin-only, SQLi in `code`), schema validation of the created-coupon response.
-- [ ] 🟡 DECISION-adjacent — Audit, same process as API 1.
-- [ ] Extend: ≥ 5 original cases the AI missed, with rationale.
-- [ ] Execute via Postman + Newman with `X-Student-Id` header + admin auth token setup. Newman/HTML report.
-- [ ] Report bugs (Markdown + GitHub Issues + screenshots).
-- [ ] Commit per step.
+### API 3 — Pool C — `POST /api/admin/coupons` — ✅ pipeline complete
+- [x] Generated 40 cases, grounded in reading the handler first: found the headline issue immediately — neither POST nor DELETE checks `role==='admin'`, despite the spec documenting the whole section as admin-only. Query IS parameterized (contrast with API1). `reports/test-cases/API3-generation-log.md` + `API3-coupons-cases.csv`.
+- [x] Audited all 40 empirically: 33 correct, 7 corrected (all shared one root cause — AI over-trusted that an admin-labeled endpoint validates inputs/enforces access control it actually doesn't). `reports/test-cases/API3-audit-log.md`.
+- [x] Extended with 5 original cases: full non-admin lifecycle proof, cross-endpoint NULL-type chain into apply-coupon, max_uses_per_user falsy-coercion inconsistency, cross-API mass-assignment contrast, portfolio-level synthesis across all 3 APIs. `reports/test-cases/API3-extension-log.md`.
+- [x] Executed via Postman + Newman — 3-stage chained run. Caught a real data-contamination bug mid-execution (unique-coded SQLi payload collided with earlier manual testing, then with its own first run) — fixed with dynamic user registration + DB reseed, documented as a genuine testing lesson. **45/45 pass, 76/76 assertions.** `reports/test-cases/API3-execution-log.md`, reports in `results/`.
+- [x] Bugs drafted: **Critical** (SEC-03 completely unenforced — any user can create/delete coupons), Medium (DB-default bypass → NULL fields, chains into apply-coupon breakage), Low (no discount-range/expiry validation, inconsistent max_uses_per_user coercion). Auth mechanism, parameterized queries, and mass-assignment protection all confirmed solid (passing controls). `reports/github-issues-draft.md` — all 7 issues across 3 APIs now drafted, 🟡 posting held for your review.
+- [x] 4 separate commits: generation / audit / extension / execution.
+
+**All 3 API pipelines complete.** 135/135 test cases pass (43+45+45), 7 bugs drafted (1 Critical SQLi+plaintext-passwords on API1, 1 Critical broken-access-control on API3, 2 Medium, 3 Low/informational).
 
 ## Phase 2 — Postman feature coverage & CI/CD
 
