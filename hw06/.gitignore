@@ -1,0 +1,11 @@
+# SUT dependencies / local runtime artifacts
+eshop-sut/**/node_modules/
+eshop-sut/backend/database.sqlite
+eshop-sut/**/.env
+
+# Postman/Newman local install
+postman/node_modules/
+
+# Packaged submission export - a snapshot copy for zipping, not a second source of truth.
+# Regenerate before final zip; un-ignore and commit it only once truly final (see SUBMISSION-CHECKLIST.md).
+23127244_HW06_AI_API_*/
