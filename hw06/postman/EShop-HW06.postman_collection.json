@@ -19,7 +19,20 @@
 			}
 		}
 	],
-	"variable": [],
+	"variable": [
+		{
+			"key": "cartUserAEmail",
+			"value": ""
+		},
+		{
+			"key": "cartUserBEmail",
+			"value": ""
+		},
+		{
+			"key": "tamperedToken",
+			"value": ""
+		}
+	],
 	"item": [
 		{
 			"name": "API 1 - Pool A - GET /api/products (search)",
@@ -255,6 +268,916 @@
 							]
 						},
 						"description": "Security/malformed-input-shape case: req.query.search is undefined for this key shape, so the handler silently falls back to returning everything instead of validating the input."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "API 2a - Pool B - Setup (register/login cart-test user A)",
+			"item": [
+				{
+					"name": "Setup - Register cart-test user A",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.collectionVariables.set(\"cartUserAEmail\", \"hw06cartA_\" + Date.now() + \"@eshop.com\");"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Setup: register cart-test user A succeeds\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						},
+						"description": "Unique email per collection run (Date.now()) so re-running the suite never collides with a previous run's user.",
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\": \"Cart Test A\", \"email\": \"{{cartUserAEmail}}\", \"password\": \"Password123!\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Setup - Login as cart-test user A",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Setup: login as cart-test user A succeeds\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"const json = pm.response.json();",
+									"pm.environment.set(\"userToken\", json.token);",
+									"",
+									"const payloadB64 = json.token.split(\".\")[1].replace(/-/g, \"+\").replace(/_/g, \"/\");",
+									"const decoded = JSON.parse(atob(payloadB64));",
+									"pm.test(\"EXT2-05: BUG - JWT is issued with no 'exp' claim (tokens never expire)\", function () {",
+									"    pm.expect(decoded).to.not.have.property(\"exp\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						},
+						"description": "Captures {{userToken}} for all subsequent cart requests. Also covers EXT2-05: decodes the JWT payload and asserts no 'exp' claim.",
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\": \"{{cartUserAEmail}}\", \"password\": \"Password123!\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PB-40 - Fresh user's cart is empty",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"PB-40: fresh user's cart is an empty array, not null\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    const body = pm.response.json();",
+									"    pm.expect(body).to.be.an(\"array\").with.lengthOf(0);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{userToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/cart",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"cart"
+							]
+						},
+						"description": "Empty-state schema contract: [] not null, before any POST."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "API 2b - Pool B - Add to cart (data-driven, 31 cases via CSV)",
+			"item": [
+				{
+					"name": "Add to cart (data-driven, 31 cases via CSV)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.request.body.raw = pm.iterationData.get(\"raw_body\");"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const caseId = pm.iterationData.get(\"id\");",
+									"const expectedStatus = parseInt(pm.iterationData.get(\"expected_status\"));",
+									"",
+									"pm.test(caseId + \": status code is \" + expectedStatus, function () {",
+									"    pm.response.to.have.status(expectedStatus);",
+									"});",
+									"",
+									"if (pm.response.code === 200) {",
+									"    pm.test(caseId + \": response body is exactly {message: 'Added to cart'}\", function () {",
+									"        pm.expect(pm.response.json()).to.eql({ message: \"Added to cart\" });",
+									"    });",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{userToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/cart",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"cart"
+							]
+						},
+						"description": "Run via Collection Runner / Newman with data/api2_cart_add.csv (-d flag), using the {{userToken}} captured by API 2a. Covers PB-01..PB-26 (minus PB-27/29), PB-28, PB-30, PB-36, EXT2-01, EXT2-02 (31 of the 45 cases). The rest need different headers/multi-request sequences and live in API 2a/2c.",
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "API 2c - Pool B - Verification, error handling & security",
+			"item": [
+				{
+					"name": "PB-38 & PB-39 - GET cart, verify array shape + round-trip integrity",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"PB-38: GET /api/cart response is a JSON array\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.expect(pm.response.json()).to.be.an(\"array\");",
+									"});",
+									"pm.test(\"PB-39: round-trip integrity - the PB-01 item comes back byte-identical\", function () {",
+									"    const body = pm.response.json();",
+									"    const found = body.find(function (x) {",
+									"        return x && typeof x === \"object\" && x.id === 1 && x.name === \"iPhone 15 Pro Max\";",
+									"    });",
+									"    pm.expect(found).to.deep.equal({ id: 1, name: \"iPhone 15 Pro Max\", price: 30000000, quantity: 1 });",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{userToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/cart",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"cart"
+							]
+						},
+						"description": "Schema + round-trip checks against the accumulated cart state."
+					},
+					"response": []
+				},
+				{
+					"name": "PB-27 - POST with no Content-Type header",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"PB-27: POST with no Content-Type header still returns 200 (silently accepted)\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{userToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/cart",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"cart"
+							]
+						},
+						"description": "Form-encoded send, no Content-Type set -> body-parser silently skips parsing.",
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1"
+								},
+								{
+									"key": "name",
+									"value": "x"
+								},
+								{
+									"key": "price",
+									"value": "100"
+								},
+								{
+									"key": "quantity",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EXT2-03 - GET cart, confirm the content-type-missing POST corrupted it",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"EXT2-03: BUG - a Content-Type-missing POST corrupts the cart with a null entry\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    const body = pm.response.json();",
+									"    pm.expect(body).to.include(null);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{userToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/cart",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"cart"
+							]
+						},
+						"description": "Chained defect check following the PB-27 request above."
+					},
+					"response": []
+				},
+				{
+					"name": "PB-29/EXT2-04 - Duplicate add #1 (id=555)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"duplicate-add POST succeeds\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{userToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/cart",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"cart"
+							]
+						},
+						"description": "First of 3 identical adds.",
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\": 555, \"name\": \"dup\", \"price\": 1, \"quantity\": 1}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PB-29/EXT2-04 - Duplicate add #2 (id=555)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"duplicate-add POST succeeds\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{userToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/cart",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"cart"
+							]
+						},
+						"description": "Second of 3 identical adds.",
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\": 555, \"name\": \"dup\", \"price\": 1, \"quantity\": 1}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PB-29/EXT2-04 - Duplicate add #3 (id=555)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"duplicate-add POST succeeds\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{userToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/cart",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"cart"
+							]
+						},
+						"description": "Third of 3 identical adds.",
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\": 555, \"name\": \"dup\", \"price\": 1, \"quantity\": 1}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PB-29/EXT2-04 - GET cart, confirm 3 unmerged duplicate entries",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"PB-29/EXT2-04: BUG - 3 adds of the same product id create 3 unmerged line items (no cap, no merge)\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    const body = pm.response.json();",
+									"    const matching = body.filter(function (x) { return x && typeof x === \"object\" && x.id === 555; });",
+									"    pm.expect(matching.length).to.eql(3);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{userToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/cart",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"cart"
+							]
+						},
+						"description": "No merge, no cap -- 3 separate line items."
+					},
+					"response": []
+				},
+				{
+					"name": "PB-31 - No Authorization header",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"PB-31: no Authorization header -> 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/cart",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"cart"
+							]
+						},
+						"description": "SEC-02: sensitive APIs require a valid JWT.",
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\": 1, \"name\": \"x\", \"price\": 1, \"quantity\": 1}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PB-32 - Garbage bearer token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"PB-32: garbage bearer token -> 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer garbage.token.here"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/cart",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"cart"
+							]
+						},
+						"description": "SEC-02: token presence isn't enough, it must verify.",
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\": 1, \"name\": \"x\", \"price\": 1, \"quantity\": 1}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PB-33 - Tampered JWT signature",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"const good = pm.environment.get(\"userToken\");",
+									"pm.collectionVariables.set(\"tamperedToken\", good.slice(0, -2) + \"xx\");"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"PB-33: tampered JWT signature -> 403 (signature is genuinely verified)\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{tamperedToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/cart",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"cart"
+							]
+						},
+						"description": "Confirms signature verification, not just structural JWT parsing.",
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\": 1, \"name\": \"x\", \"price\": 1, \"quantity\": 1}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PB-34 - Authorization header missing 'Bearer ' prefix",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"PB-34: Authorization header missing the 'Bearer ' prefix -> 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{userToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/cart",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"cart"
+							]
+						},
+						"description": "Header-parsing boundary: authHeader.split(' ')[1] semantics.",
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\": 1, \"name\": \"x\", \"price\": 1, \"quantity\": 1}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PB-35 - Setup: register cart-test user B",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.collectionVariables.set(\"cartUserBEmail\", \"hw06cartB_\" + Date.now() + \"@eshop.com\");"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Setup: register cart-test user B succeeds\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						},
+						"description": "Second, independent user for the cross-user isolation check.",
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\": \"Cart Test B\", \"email\": \"{{cartUserBEmail}}\", \"password\": \"Password123!\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PB-35 - Setup: login as cart-test user B",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Setup: login as cart-test user B succeeds\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.environment.set(\"userTokenB\", pm.response.json().token);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						},
+						"description": "Captures {{userTokenB}}.",
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\": \"{{cartUserBEmail}}\", \"password\": \"Password123!\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PB-35 - Cross-user cart isolation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"PB-35: cross-user cart isolation - user B's cart does not contain user A's items\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    const body = pm.response.json();",
+									"    pm.expect(body).to.be.an(\"array\").with.lengthOf(0);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{userTokenB}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/cart",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"cart"
+							]
+						},
+						"description": "User B's cart must not contain any of user A's many items added above."
 					},
 					"response": []
 				}
