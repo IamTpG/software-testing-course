@@ -1,0 +1,203 @@
+* 90a5831 2026-08-19 docs(hw06): mark Phase 3 (Agent Skill) complete except manual diagram/video| 
+|  hw06/TASKS-CHECKLIST.md | 15 ++++++++-------
+|  1 file changed, 8 insertions(+), 7 deletions(-)
+
+* 6adfc27 2026-08-19 feat(hw06): Phase 3 - AI test generator design + Agent Skill + demo| 
+|  hw06/.claude/skills/api-test-generator/SKILL.md   |  105 +
+|  hw06/reports/AI-Test-Generator-Design.md          |  193 +
+|  hw06/skill-demo/README.md                         |   62 +
+|  hw06/skill-demo/audit-log.md                      |   16 +
+|  hw06/skill-demo/data/register_cases.csv           |   15 +
+|  hw06/skill-demo/extension-log.md                  |   15 +
+|  hw06/skill-demo/generation-log.md                 |   24 +
+|  .../register-demo.postman_collection.json         |  243 +
+|  hw06/skill-demo/register-test-cases.csv           |   22 +
+|  hw06/skill-demo/results_datadriven.html           | 4951 +++++++++++++++++++
+|  hw06/skill-demo/results_extd01.html               | 1816 +++++++
+|  11 files changed, 7462 insertions(+)
+
+* cbfe98e 2026-08-19 docs(hw06): mark Phase 2 (Postman features + CI/CD) complete except screenshots| 
+|  hw06/TASKS-CHECKLIST.md | 12 ++++++------
+|  1 file changed, 6 insertions(+), 6 deletions(-)
+
+* 41c1bcd 2026-08-19 docs(hw06): CI/CD report with both sample pipeline runs| 
+|  hw06/GITHUB-REPO-LINK.txt   |  1 +
+|  hw06/reports/CICD-Report.md | 60 +++++++++++++++++++++++++++++++++++++++++++
+|  2 files changed, 61 insertions(+)
+
+* 96c2e41 2026-08-19 Revert "test(hw06): deliberately break PA-03's expected count for CI/CD demo"| 
+|  hw06/postman/data/api1_products_search.csv | 2 +-
+|  1 file changed, 1 insertion(+), 1 deletion(-)
+
+* 57db2f3 2026-08-19 test(hw06): deliberately break PA-03's expected count for CI/CD demo| 
+|  hw06/postman/data/api1_products_search.csv | 2 +-
+|  1 file changed, 1 insertion(+), 1 deletion(-)
+
+* 3635afc 2026-08-19 ci(hw06): add GitHub Actions workflow running Newman against the SUT| 
+|  .github/workflows/hw06-api-tests.yml  | 155 ++++++++++++++++++++++++++++++++
+|  hw06/.gitignore                       |   4 +
+|  hw06/reports/Postman-Features-Used.md |  77 ++++++++++++++++
+|  3 files changed, 236 insertions(+)
+
+* 86622b4 2026-08-19 docs(hw06): draft API3 bug reports, all 3 API pipelines complete| 
+|  hw06/TASKS-CHECKLIST.md             |  16 +++--
+|  hw06/reports/github-issues-draft.md | 116 +++++++++++++++++++++++++++++++++-
+|  2 files changed, 124 insertions(+), 8 deletions(-)
+
+* 3cd9594 2026-08-19 test(hw06): API3 POST /api/admin/coupons — execute via Postman/Newman, 45/45 pass| 
+|  hw06/postman/EShop-HW06.postman_collection.json   |  697 ++
+|  hw06/postman/data/api3_coupons_create.csv         |   32 +
+|  hw06/reports/test-cases/API3-coupons-cases.csv    |    2 +-
+|  hw06/reports/test-cases/API3-execution-log.md     |   82 +
+|  .../results/23127244_API3_coupons_datadriven.html | 9920 +++++++++++++++++++
+|  hw06/results/23127244_API3_coupons_setup.html     | 1824 ++++
+|  hw06/results/23127244_API3_coupons_verify.html    | 3377 +++++++
+|  7 files changed, 15933 insertions(+), 1 deletion(-)
+
+* ab8b5f8 2026-08-19 test(hw06): API3 POST /api/admin/coupons — extend with 5 cases the AI missed| 
+|  hw06/reports/test-cases/API3-coupons-cases.csv |  5 +++++
+|  hw06/reports/test-cases/API3-extension-log.md  | 15 +++++++++++++++
+|  2 files changed, 20 insertions(+)
+
+* 8969814 2026-08-19 test(hw06): API3 POST /api/admin/coupons — audit 40 generated cases (7 corrected)| 
+|  hw06/reports/test-cases/API3-audit-log.md      | 33 ++++++++++
+|  hw06/reports/test-cases/API3-coupons-cases.csv | 82 ++++++++++++------------
+|  2 files changed, 74 insertions(+), 41 deletions(-)
+
+* 6a94d30 2026-08-19 test(hw06): API3 POST /api/admin/coupons — generate 40 AI test cases| 
+|  hw06/reports/test-cases/API3-coupons-cases.csv | 41 ++++++++++++++++++++++++
+|  hw06/reports/test-cases/API3-generation-log.md | 40 +++++++++++++++++++++++
+|  2 files changed, 81 insertions(+)
+
+* 6d63e62 2026-08-19 docs(hw06): draft API2 bug reports, mark API1+API2 checklist complete| 
+|  hw06/TASKS-CHECKLIST.md             | 30 ++++++-------
+|  hw06/reports/github-issues-draft.md | 84 ++++++++++++++++++++++++++++++++++-
+|  2 files changed, 97 insertions(+), 17 deletions(-)
+
+* e79acdc 2026-08-19 test(hw06): API2 POST /api/cart — execute via Postman/Newman, 45/45 pass| 
+|  hw06/postman/EShop-HW06.postman_collection.json |  925 +-
+|  hw06/postman/data/api2_cart_add.csv             |   32 +
+|  hw06/reports/test-cases/API2-execution-log.md   |   74 +
+|  hw06/results/23127244_API2_cart_datadriven.html | 9938 +++++++++++++++++++++
+|  hw06/results/23127244_API2_cart_setup.html      | 1809 ++++
+|  hw06/results/23127244_API2_cart_verify.html     | 4685 ++++++++++
+|  6 files changed, 17462 insertions(+), 1 deletion(-)
+
+* 9c82553 2026-08-19 test(hw06): API2 POST /api/cart — extend with 5 cases the AI missed| 
+|  hw06/reports/test-cases/API2-cart-cases.csv   |  5 +++++
+|  hw06/reports/test-cases/API2-extension-log.md | 16 ++++++++++++++++
+|  2 files changed, 21 insertions(+)
+
+* 63b8b45 2026-08-19 test(hw06): API2 POST /api/cart — audit 40 generated cases (4 corrected)| 
+|  hw06/reports/test-cases/API2-audit-log.md   | 27 +++++++++
+|  hw06/reports/test-cases/API2-cart-cases.csv | 82 +++++++++++++--------------
+|  2 files changed, 68 insertions(+), 41 deletions(-)
+
+* c320779 2026-08-19 test(hw06): API2 POST /api/cart — generate 40 AI test cases| 
+|  hw06/reports/test-cases/API2-cart-cases.csv    | 41 ++++++++++++++++++++++++
+|  hw06/reports/test-cases/API2-generation-log.md | 35 ++++++++++++++++++++
+|  2 files changed, 76 insertions(+)
+
+* 0e10806 2026-08-19 docs(hw06): draft API1 bug reports (held for batch posting after all 3 APIs)| 
+|  hw06/reports/github-issues-draft.md | 90 +++++++++++++++++++++++++++++++++++
+|  1 file changed, 90 insertions(+)
+
+* 08f96bf 2026-08-19 test(hw06): API1 GET /api/products — execute via Postman/Newman, 43/43 pass| 
+|  hw06/postman/EShop-HW06.postman_collection.json   |   264 +
+|  hw06/postman/EShop-HW06.postman_environment.json  |    55 +
+|  hw06/postman/data/api1_products_search.csv        |    41 +
+|  hw06/reports/test-cases/API1-execution-log.md     |    59 +
+|  .../test-cases/API1-products-search-cases.csv     |     2 +-
+|  .../23127244_API1_products-search_datadriven.html | 11925 ++++++++++++++++++
+|  .../23127244_API1_products-search_edgecases.html  |  1749 +++
+|  7 files changed, 14094 insertions(+), 1 deletion(-)
+
+* 69265a7 2026-08-19 test(hw06): API1 GET /api/products — extend with 5 cases the AI missed| 
+|  hw06/reports/test-cases/API1-extension-log.md          | 16 ++++++++++++++++
+|  hw06/reports/test-cases/API1-products-search-cases.csv |  5 +++++
+|  2 files changed, 21 insertions(+)
+
+* d4fa6d1 2026-08-19 test(hw06): API1 GET /api/products — audit 38 generated cases (4 corrected)| 
+|  hw06/reports/test-cases/API1-audit-log.md         | 31 ++++++++
+|  .../test-cases/API1-products-search-cases.csv     | 78 ++++++++++-----------
+|  2 files changed, 70 insertions(+), 39 deletions(-)
+
+* c84e013 2026-08-19 test(hw06): API1 GET /api/products — generate 38 AI test cases| 
+|  hw06/reports/test-cases/API1-generation-log.md    | 38 ++++++++++++++++++++
+|  .../test-cases/API1-products-search-cases.csv     | 39 +++++++++++++++++++++
+|  2 files changed, 77 insertions(+)
+
+* d634152 2026-08-19 chore(hw06): Phase 0 setup — vendor eshop-sut, confirm 3 target APIs, Newman install  
+   hw06/.gitignore                                   |   11 +
+   hw06/2026.HW06.API Testing_En.md                  |  186 +
+   hw06/2026.HW06.API Testing_En.pdf                 |  Bin 0 -> 455391 bytes
+   hw06/SUBMISSION-CHECKLIST.md                      |   46 +
+   hw06/TASKS-CHECKLIST.md                           |   87 +
+   hw06/eshop-sut/README.md                          |  288 +
+   hw06/eshop-sut/api_specification.md               |  214 +
+   hw06/eshop-sut/backend/database.js                |  119 +
+   hw06/eshop-sut/backend/package-lock.json          | 1663 ++++
+   hw06/eshop-sut/backend/package.json               |   20 +
+   hw06/eshop-sut/backend/server.js                  |  572 ++
+   hw06/eshop-sut/backend/test_profile.js            |    8 +
+   hw06/eshop-sut/frontend-admin/.gitignore          |   24 +
+   hw06/eshop-sut/frontend-admin/README.md           |   16 +
+   hw06/eshop-sut/frontend-admin/eslint.config.js    |   21 +
+   hw06/eshop-sut/frontend-admin/index.html          |   13 +
+   hw06/eshop-sut/frontend-admin/package-lock.json   | 3681 ++++++++
+   hw06/eshop-sut/frontend-admin/package.json        |   32 +
+   hw06/eshop-sut/frontend-admin/postcss.config.js   |    6 +
+   hw06/eshop-sut/frontend-admin/public/favicon.svg  |    1 +
+   hw06/eshop-sut/frontend-admin/public/icons.svg    |   24 +
+   hw06/eshop-sut/frontend-admin/src/App.css         |  184 +
+   hw06/eshop-sut/frontend-admin/src/App.jsx         |  922 ++
+   hw06/eshop-sut/frontend-admin/src/assets/hero.png |  Bin 0 -> 13057 bytes
+   .../eshop-sut/frontend-admin/src/assets/react.svg |    1 +
+   hw06/eshop-sut/frontend-admin/src/assets/vite.svg |    1 +
+   hw06/eshop-sut/frontend-admin/src/index.css       |    8 +
+   hw06/eshop-sut/frontend-admin/src/main.jsx        |   10 +
+   hw06/eshop-sut/frontend-admin/tailwind.config.js  |   11 +
+   hw06/eshop-sut/frontend-admin/vite.config.js      |   11 +
+   hw06/eshop-sut/frontend-mobile/.gitignore         |   41 +
+   hw06/eshop-sut/frontend-mobile/App.js             | 1300 +++
+   hw06/eshop-sut/frontend-mobile/app.json           |   29 +
+   .../frontend-mobile/assets/adaptive-icon.png      |  Bin 0 -> 17547 bytes
+   hw06/eshop-sut/frontend-mobile/assets/favicon.png |  Bin 0 -> 1466 bytes
+   hw06/eshop-sut/frontend-mobile/assets/icon.png    |  Bin 0 -> 22380 bytes
+   .../frontend-mobile/assets/splash-icon.png        |  Bin 0 -> 17547 bytes
+   hw06/eshop-sut/frontend-mobile/index.js           |    8 +
+   hw06/eshop-sut/frontend-mobile/package-lock.json  | 8773 +++++++++++++++++++
+   hw06/eshop-sut/frontend-mobile/package.json       |   18 +
+   hw06/eshop-sut/frontend-web/.gitignore            |   24 +
+   hw06/eshop-sut/frontend-web/README.md             |   16 +
+   hw06/eshop-sut/frontend-web/eslint.config.js      |   21 +
+   hw06/eshop-sut/frontend-web/index.html            |   13 +
+   hw06/eshop-sut/frontend-web/package-lock.json     | 3681 ++++++++
+   hw06/eshop-sut/frontend-web/package.json          |   32 +
+   hw06/eshop-sut/frontend-web/postcss.config.js     |    6 +
+   hw06/eshop-sut/frontend-web/public/favicon.svg    |    1 +
+   hw06/eshop-sut/frontend-web/public/icons.svg      |   24 +
+   hw06/eshop-sut/frontend-web/src/App.css           |  184 +
+   hw06/eshop-sut/frontend-web/src/App.jsx           |   71 +
+   hw06/eshop-sut/frontend-web/src/assets/hero.png   |  Bin 0 -> 13057 bytes
+   hw06/eshop-sut/frontend-web/src/assets/react.svg  |    1 +
+   hw06/eshop-sut/frontend-web/src/assets/vite.svg   |    1 +
+   .../frontend-web/src/context/AuthContext.jsx      |   50 +
+   .../frontend-web/src/context/CartContext.jsx      |   36 +
+   hw06/eshop-sut/frontend-web/src/index.css         |   14 +
+   hw06/eshop-sut/frontend-web/src/main.jsx          |   10 +
+   hw06/eshop-sut/frontend-web/src/pages/Cart.jsx    |   79 +
+   .../eshop-sut/frontend-web/src/pages/Checkout.jsx |  151 +
+   .../frontend-web/src/pages/ForgotPassword.jsx     |  100 +
+   hw06/eshop-sut/frontend-web/src/pages/Home.jsx    |  116 +
+   hw06/eshop-sut/frontend-web/src/pages/Login.jsx   |   69 +
+   .../frontend-web/src/pages/ProductDetail.jsx      |   73 +
+   hw06/eshop-sut/frontend-web/src/pages/Profile.jsx |  217 +
+   .../eshop-sut/frontend-web/src/pages/Register.jsx |   83 +
+   hw06/eshop-sut/frontend-web/tailwind.config.js    |   11 +
+   hw06/eshop-sut/frontend-web/vite.config.js        |    7 +
+   hw06/eshop-sut/run_servers.sh                     |    5 +
+   hw06/eshop-sut/setup_guide.md                     |  117 +
+   hw06/postman/package-lock.json                    | 2393 +++++
+   hw06/postman/package.json                         |   17 +
+   72 files changed, 25972 insertions(+)
