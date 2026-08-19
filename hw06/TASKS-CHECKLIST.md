@@ -29,21 +29,21 @@ consistent with how HW05 posted bug reports — flag here if you'd rather review
 
 Repeat for **each of the 3 selected APIs**. Target ≥ 35 AI-generated cases per API.
 
-### API 1 — Pool A — `GET /api/products`
-- [ ] Drive an AI tool step-by-step (not one mega-prompt) to generate ≥ 35 test cases covering: domain partitions on the `search` param, security (SEC-01–SEC-07, esp. SQL injection — a real vuln was found on this exact param during HW05), and schema validation of the product array response. No state-transition dimension applies to this endpoint.
-- [ ] 🟡 DECISION-adjacent — Audit: label every AI-generated case VALID/INVALID/INCOMPLETE with reasoning, correct the bad ones. Claude drafts the audit; you sign off on ambiguous calls.
-- [ ] Extend: add ≥ 5 original test cases the AI missed (security focus), with a written explanation of *why* the AI missed them.
-- [ ] Execute via Postman + Newman, `X-Student-Id: {StudentID}` header on every request (pre-request script). Produce Newman/HTML report.
-- [ ] Report genuine bugs found: in the Markdown report AND as GitHub Issues (with screenshot attached to each).
-- [ ] Commit: separate commits for generation / audit / extension / execution (Section 12).
+### API 1 — Pool A — `GET /api/products` — ✅ pipeline complete
+- [x] Generated 38 cases (domain-partition/security/schema), driven in 4 separate step-by-step prompts, grounded in reading `server.js` first (found raw SQL string concatenation — SEC-05 violation). `reports/test-cases/API1-generation-log.md` + `API1-products-search-cases.csv`.
+- [x] Audited all 38 empirically against the live SUT: 34 correct, 4 corrected (2 invalid whitespace/parsing assumptions, 1 invalid parsing-model error, 1 incomplete/non-falsifiable). `reports/test-cases/API1-audit-log.md`.
+- [x] Extended with 5 original cases the AI missed: UNION-based credential exfiltration, verbose error disclosure, stacked-query negative test, cross-path Content-Type inconsistency, plaintext-password confirmation. `reports/test-cases/API1-extension-log.md`.
+- [x] Executed via Postman + Newman (data-driven Collection Runner, 40 cases via CSV + 3 fixed-shape edge-case requests), `X-Student-Id` set via collection-level pre-request script. **43/43 pass, 181/181 assertions.** Caught 1 more mistake (PA-34) only at execution time — documented. `reports/test-cases/API1-execution-log.md`, reports in `results/`.
+- [x] Bugs drafted: Critical (SQLi + plaintext passwords, SEC-05+SEC-01), Low (Content-Type inconsistency). `reports/github-issues-draft.md` — 🟡 posting to GitHub Issues held until all 3 APIs done (your call).
+- [x] 4 separate commits: generation / audit / extension / execution (Section 12).
 
-### API 2 — Pool B — `POST /api/cart`
-- [ ] Generate ≥ 35 cases: domain partitions on `id`/`name`/`price`/`quantity` (positive/zero/negative/non-numeric/oversized), security (price tampering since client supplies `price` directly, IDOR on cart ownership, SQLi/XSS in `name`), schema validation of the cart response.
-- [ ] 🟡 DECISION-adjacent — Audit, same process as API 1.
-- [ ] Extend: ≥ 5 original cases the AI missed, with rationale.
-- [ ] Execute via Postman + Newman with `X-Student-Id` header + auth token setup. Newman/HTML report.
-- [ ] Report bugs (Markdown + GitHub Issues + screenshots).
-- [ ] Commit per step.
+### API 2 — Pool B — `POST /api/cart` — ✅ pipeline complete
+- [x] Generated 40 cases (domain-partition/security/schema), grounded in reading the handler first: `userCarts[userId].push(req.body)` with **zero validation of any field** — no SQL surface here (in-memory storage, contrast with API1). `reports/test-cases/API2-generation-log.md` + `API2-cart-cases.csv`.
+- [x] Audited all 40 empirically: 36 correct, 4 corrected (all shared one root cause — AI assumed plausible framework/business-logic behavior instead of this handler's actual unvalidated reality). `reports/test-cases/API2-audit-log.md`.
+- [x] Extended with 5 original cases: combined-hostile-fields probe, mass-assignment (trust-implying fake fields), content-type-triggered cart corruption, unbounded duplicate line items, JWT-has-no-exp-claim. `reports/test-cases/API2-extension-log.md`.
+- [x] Executed via Postman + Newman — 3-stage chained run (setup → 31-case data-driven → verification/security) since a single-folder run would replay setup on every CSV iteration. **45/45 pass, 78/78 assertions.** `reports/test-cases/API2-execution-log.md`, reports in `results/`.
+- [x] Bugs drafted: Medium (zero input validation + mass assignment), Low (content-type corruption + unmerged duplicates), informational (JWT no expiry). Auth enforcement and cross-user cart isolation both confirmed solid (passing controls, documented not just failures). `reports/github-issues-draft.md` — 🟡 posting held until all 3 APIs done.
+- [x] 4 separate commits: generation / audit / extension / execution.
 
 ### API 3 — Pool C — `POST /api/admin/coupons`
 - [ ] Generate ≥ 35 cases: domain partitions on `code`/`type` (percent vs fixed)/`discount_value`/`min_order_amount`/`expired_at`/`max_uses_per_user`, security (SEC-01–SEC-07 — role escalation/access control since this is admin-only, SQLi in `code`), schema validation of the created-coupon response.

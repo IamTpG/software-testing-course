@@ -86,5 +86,85 @@ Error responses should be `application/json`, e.g.
 
 ---
 
-*A 3rd/4th issue slot is reserved for API2 (`POST /api/cart`) and API3
-(`POST /api/admin/coupons`) findings once those pipelines run.*
+## Issue 3 — [Medium] `POST /api/cart` has zero server-side input validation (+ mass assignment)
+
+**Severity:** Medium
+**Labels:** bug, input-validation, api-design
+
+### Summary
+`backend/server.js:290-295` does `userCarts[userId].push(req.body)` with **no validation
+of any field**: no type checks, no required-field checks, no product-existence lookup, and
+no allowlist of accepted fields. Any JSON-serializable body is accepted with `200`.
+
+### Steps to reproduce
+```
+POST /api/cart
+Authorization: Bearer <valid token>
+Content-Type: application/json
+
+{"id":-999,"name":"...3000 chars...","price":-999999999,"quantity":-99999}
+```
+→ `200 {"message":"Added to cart"}`, stored and echoed back verbatim by `GET /api/cart`.
+
+Also reproducible with a completely empty body (`{}`), a JSON array (`[1,2,3]`), or
+fabricated trust-implying fields that aren't in the documented schema:
+```
+{"id":1,"name":"iPhone","price":1,"quantity":1,"isAdminAddedFreeItem":true,"discount_override":100}
+```
+→ both extra fields stored and returned as-is (mass-assignment / OWASP API3-style gap).
+
+### Expected result
+Reject the request (400) when `id`/`price`/`quantity` aren't valid non-negative numbers,
+`name` isn't a non-empty string within a reasonable length, or the body contains fields
+outside an explicit allowlist. `id` should ideally be checked against the real
+`products` table.
+
+### Evidence
+🔴 MANUAL — screenshot to attach.
+
+---
+
+## Issue 4 — [Low] `POST /api/cart` — Content-Type-missing requests silently corrupt the cart, and duplicate adds are never merged/capped
+
+**Severity:** Low
+**Labels:** bug, api-design
+
+### Summary
+Two related, lower-severity defects on the same endpoint:
+1. A POST with no (or a mismatched) `Content-Type` header isn't rejected — `body-parser`
+   silently skips parsing, `req.body` is `undefined`, and that still gets pushed into the
+   cart array. `JSON.stringify` turns the `undefined` element into a literal `null` on the
+   next `GET /api/cart` — any client iterating the cart has to defensively guard against a
+   `null` entry it never explicitly added.
+2. Adding the same product `id` more than once never merges into one line item with an
+   incremented quantity — every repeat POST creates a new, separate entry, with no cap on
+   how many times this can happen.
+
+### Steps to reproduce
+1. `POST /api/cart` with a form-encoded body and no `Content-Type` header → `200`, then
+   `GET /api/cart` shows a `null` entry.
+2. `POST /api/cart` 3× with the same `{"id":555,...}` body → `GET /api/cart` shows 3
+   separate entries for `id:555` instead of 1 entry with `quantity` incremented.
+
+### Expected result
+Reject bodies that don't parse as valid JSON with a clear 4xx, and either merge repeat
+adds of the same product into one line item (typical cart UX) or explicitly document that
+duplicates are intentional.
+
+### Evidence
+🔴 MANUAL — screenshot to attach.
+
+---
+
+## Informational — JWTs are issued without an expiry claim
+
+Not filed as a bug (no single SEC-01–07 item names it), but worth noting in the main
+report: `jwt.sign({id, role}, SECRET_KEY)` at `server.js:51` is called with no
+`expiresIn` option. Decoding a real login token's payload confirms it: `{id, role, iat}`
+only, no `exp`. Every issued token remains valid indefinitely, and there's no
+server-side revocation mechanism. In the spirit of SEC-02 (JWT-based auth), tokens should
+have a bounded lifetime.
+
+---
+
+*A slot is reserved for API3 (`POST /api/admin/coupons`) findings once that pipeline runs.*
