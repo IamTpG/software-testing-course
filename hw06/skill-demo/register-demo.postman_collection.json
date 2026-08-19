@@ -1,0 +1,243 @@
+{
+	"info": {
+		"_postman_id": "23127244-hw06-skill-demo-register",
+		"name": "EShop HW06 - Skill Demo - POST /api/register (23127244)",
+		"description": "Agent Skill demo: api-test-generator applied to a NEW endpoint (not one of the 3 graded APIs), showing the same generate -> verify -> extend -> execute discipline end to end. See ../reports/AI-Test-Generator-Design.md for the design.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.request.headers.upsert({ key: \"X-Student-Id\", value: pm.environment.get(\"studentId\") });"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "dupEmail",
+			"value": ""
+		}
+	],
+	"item": [
+		{
+			"name": "Register (data-driven, 14 cases via CSV)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.request.body.raw = pm.iterationData.get(\"raw_body\");"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const caseId = pm.iterationData.get(\"id\");",
+							"const expectedStatus = parseInt(pm.iterationData.get(\"expected_status\"));",
+							"",
+							"pm.test(caseId + \": status code is \" + expectedStatus, function () {",
+							"    pm.response.to.have.status(expectedStatus);",
+							"});",
+							"",
+							"if (pm.response.code === 200) {",
+							"    pm.test(caseId + \": response body is {message:'User registered successfully', id:<number>}\", function () {",
+							"        const body = pm.response.json();",
+							"        pm.expect(body.message).to.eql(\"User registered successfully\");",
+							"        pm.expect(body.id).to.be.a(\"number\");",
+							"    });",
+							"    pm.test(caseId + \": Content-Type is application/json\", function () {",
+							"        pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+							"    });",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/register",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				},
+				"description": "Run via Collection Runner / Newman with data/register_cases.csv (-d flag). Covers RD-01..RD-12, RD-14, EXT-D-05 (14 of the 21 audited/extended cases).",
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EXT-D-01 - Register account A (unique email)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.collectionVariables.set(\"dupEmail\", \"demo_dup_\" + Date.now() + \"@eshop.com\");"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"EXT-D-01 setup: register account A with a fresh unique email\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/register",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				},
+				"description": "First half of the duplicate-email chain.",
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"Ghost Chain A\", \"email\": \"{{dupEmail}}\", \"password\": \"FirstPass123!\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EXT-D-01 - Register account B (SAME email)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"EXT-D-01: BUG - a SECOND registration with the SAME email is accepted (no unique constraint)\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/register",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				},
+				"description": "Second registration with the identical email.",
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"Ghost Chain B\", \"email\": \"{{dupEmail}}\", \"password\": \"SecondPass123!\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EXT-D-01 - Login as account B - permanently fails",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"EXT-D-01: BUG - the SECOND account can never log in (db.get always resolves to the FIRST row for that email)\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				},
+				"description": "Proves the second account is unusable, not just duplicated.",
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\": \"{{dupEmail}}\", \"password\": \"SecondPass123!\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				}
+			},
+			"response": []
+		}
+	]
+}
