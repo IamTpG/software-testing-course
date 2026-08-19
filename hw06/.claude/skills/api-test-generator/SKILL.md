@@ -49,15 +49,31 @@ building this skill's source material came from trusting a plausible guess over 
 
 ## Initialization
 
-When invoked, ask for:
+When invoked, ask for all of the following **in one message**, and wait for the answers
+before doing anything else:
 1. Target endpoint (method + path) and where its spec entry lives.
 2. SUT source path (for Step 1 grounding) and a live/local URL to verify against.
 3. Any endpoint-specific security concerns already known (e.g. "this is documented
    admin-only", "this endpoint touches payment amounts").
 4. Whether to build a full Postman collection + CSV, or just the audit-trail documents.
+5. **Scope**: `full` (≥ 35 generated + ≥ 5 extension cases, the graded-homework bar) or
+   `demo` (~8–10 generated + 2–3 extension cases, for a shortened walkthrough/recording —
+   state this trade-off explicitly if the user picks `demo`, don't silently under-deliver
+   on a `full` request).
 
 Do not proceed to generation until the target endpoint and a reachable live SUT are known —
 Step 3's verification gate has nothing to check against otherwise.
+
+## Pausing between stages
+
+**After Steps 1, 2, 3, 4, and 5, stop and summarize what you just did in a few sentences,
+then explicitly ask the user to confirm before continuing to the next stage.** Do not chain
+multiple stages into one uninterrupted response. This matters even though it's slower: each
+stage's output (grounding findings, candidate cases, audit corrections, extension cases,
+emitted artifacts) is something the user is expected to actually review, not rubber-stamp
+blindly — the whole discipline of this skill is "don't trust an unverified claim," which
+applies to the user's trust in the AI's output too. Only skip the pauses if the user
+explicitly pre-authorizes running the whole pipeline autonomously in one go.
 
 ## Workflow
 
@@ -68,11 +84,17 @@ requirement, and any already-visible input validation (or lack of it). This is t
 material every later stage's reasoning depends on — do not skip it even if the spec text
 alone "seems enough."
 
+**PAUSE & ASK:** report the grounding findings, then ask the user to confirm before
+generating any test cases.
+
 ### Step 2 — Generate (3 passes)
 Run domain-partition, security, and schema generation as 3 separate passes (3 separate
 prompts/reasoning blocks if you are the LLM doing this), each explicitly informed by Step
 1's findings — e.g., only generate SQLi cases if Step 1 found a DB query; only generate
 role-escalation cases if Step 1 found the endpoint is documented as privileged.
+
+**PAUSE & ASK:** list the generated candidate cases (id + one-line description each),
+then ask the user to confirm before verifying them against the live SUT.
 
 ### Step 3 — Verify (mandatory gate)
 For each candidate case, actually execute it (curl or the eventual Postman request) against
@@ -83,9 +105,16 @@ the handler always explicitly binds the field, so it becomes NULL instead"). Lab
 VALID / INVALID / INCOMPLETE with that reasoning — this labeled set *is* the audit deliverable,
 not a side effect of building it.
 
+**PAUSE & ASK:** report the audit verdicts (how many VALID vs. corrected, with reasoning
+for each correction), then ask the user to confirm before moving to extension.
+
 ### Step 4 — Extend
-Add ≥ 5 cases using the four structural-blind-spot categories in directive 4. Verify these
-empirically too (Step 3's gate applies here as well, not just to the base set).
+Add cases (≥ 5 for `full` scope, 2–3 for `demo` scope per Initialization) using the
+structural-blind-spot categories in directive 4. Verify these empirically too (Step 3's
+gate applies here as well, not just to the base set).
+
+**PAUSE & ASK:** list the extension cases with their "why the base generation missed
+this" reasoning, then ask the user to confirm before emitting the collection.
 
 ### Step 5 — Emit
 Build the Postman collection (split by statefulness per directive 5) and CSV data file(s).
@@ -93,10 +122,16 @@ Write 3 short markdown logs: generation (what was asked, what came back), audit 
 reasoning per case), extension (what was added and why the generator's own earlier passes
 missed it).
 
+**PAUSE & ASK:** confirm the artifacts were written (file paths), then ask the user to
+confirm before executing the suite for real.
+
 ### Step 6 — Execute & lock
 Run the emitted collection via Newman for real. Any failure: diagnose root cause (don't
 assume it's the same class of mistake as a prior one — check), fix, re-run. Only report the
 suite as done once a clean run confirms it.
+
+Report the final pass/fail tally and close out — no further pause needed once the run is
+clean, since there's nothing left to approve.
 
 ## Output
 
